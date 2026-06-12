@@ -65,11 +65,12 @@ match detail modal and fixture-card chips pick them up automatically.
 ### Automatic updates
 
 `.github/workflows/update-data.yml` runs hourly: `scripts/update-data.ts` pulls
-finished results and red-card events from
-[API-Football](https://www.api-football.com/) into `src/data/live.json`, commits
-when something changed, and redeploys GitHub Pages (a Vercel Git integration
-redeploys on the same push). Setup: create a free API-Football key and save it
-as a repository secret named `FOOTBALL_API_KEY`.
+finished results and red cards from
+[football-data.org](https://www.football-data.org/) into `src/data/live.json`,
+commits when something changed, and redeploys GitHub Pages (a Vercel Git
+integration redeploys on the same push). Setup: register a free
+football-data.org key (the free tier includes the World Cup) and save it as a
+repository secret named `FOOTBALL_API_KEY`.
 
 Live data merges with the curated files — manual `RESULTS` entries and
 `discipline.ts` absences take precedence, and auto-detected red cards get their
