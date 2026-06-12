@@ -43,6 +43,7 @@ src/
 ├── components/
 │   ├── Header.tsx     Hero.tsx       GroupTable.tsx
 │   ├── MatchCard.tsx  Fixtures.tsx   Flag.tsx
+│   └── ResultsTicker.tsx
 ├── App.tsx
 ├── main.tsx
 └── index.css          # floodlit-pitch theme (Oswald / Inter / IBM Plex Mono)

@@ -11,11 +11,16 @@ export function GroupTable({ group }: GroupTableProps) {
 
   return (
     <article className="group-card">
+      <span className="group-watermark" aria-hidden="true">
+        {group}
+      </span>
       <div className="group-head">
         <h3>
           Group <span className="group-letter">{group}</span>
         </h3>
-        <span className="group-tag">{anyPlayed ? "In play" : "Not started"}</span>
+        <span className={anyPlayed ? "group-tag is-live" : "group-tag"}>
+          {anyPlayed ? "In play" : "Not started"}
+        </span>
       </div>
 
       <table className="group-table">
@@ -40,7 +45,7 @@ export function GroupTable({ group }: GroupTableProps) {
               <td className="c-team">
                 <Flag team={r.team} />
                 <span className="team-name">{r.team.name}</span>
-                {r.team.host && <span className="host-pin">H</span>}
+                {r.team.host && <span className="host-pin">Host</span>}
               </td>
               <td>{r.played}</td>
               <td>{r.won}</td>
