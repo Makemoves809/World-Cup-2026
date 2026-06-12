@@ -1,4 +1,5 @@
 import type { GroupId, Match, Venue } from "./types";
+import live from "./live.json";
 
 /** The 16 host venues across the three nations. */
 export const venues: Venue[] = [
@@ -129,13 +130,14 @@ const SCHEDULE: ScheduleRow[] = [
 ];
 
 /**
- * Real final scores, keyed by match id. Updated manually as the tournament
- * progresses — current through 11 June 2026 (Day 1). To automate, wire this
- * to a live results feed (see README).
+ * Final scores, keyed by match id. Manual entries seed the data; live.json is
+ * refreshed by the scheduled update-data workflow (see README) and wins when
+ * both have an entry for the same match.
  */
 const RESULTS: Record<string, [number, number]> = {
   "m-A-1": [2, 0], // Mexico 2–0 South Africa — Jun 11, Estadio Azteca
   "m-A-2": [2, 1], // Korea Republic 2–1 Czechia — Jun 11, Estadio Akron
+  ...(live.results as unknown as Record<string, [number, number]>),
 };
 
 function buildMatches(): Match[] {

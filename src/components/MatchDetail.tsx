@@ -119,7 +119,7 @@ function PlayerRow({ a }: { a: PlayerAbsence }) {
       <div className="player-main">
         <span className="player-name">
           <Flag team={team} size={14} /> {a.player}
-          <em className="player-pos">{a.position}</em>
+          {a.position && <em className="player-pos">{a.position}</em>}
         </span>
         <span className="player-reason">{a.reason}</span>
         {a.note && <span className="player-note">{a.note}</span>}

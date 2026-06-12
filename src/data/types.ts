@@ -64,7 +64,7 @@ export type ImpactLevel = 1 | 2 | 3 | 4 | 5;
 /** A player ruled out of one or more matches (red card, ban, injury). */
 export interface PlayerAbsence {
   player: string;
-  position: string;
+  position?: string;
   /** Team id */
   team: string;
   type: AbsenceType;

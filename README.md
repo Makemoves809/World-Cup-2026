@@ -62,13 +62,18 @@ names the player, the match where it happened (`sourceMatchId`), the matches the
 miss (`missesMatchIds`), and an `impact` rating from 1 (fringe) to 5 (star) — the
 match detail modal and fixture-card chips pick them up automatically.
 
-### Wiring a live feed
+### Automatic updates
 
-`src/lib/standings.ts` is pure — it derives tables from any `Match[]`. To go live,
-replace the static import in `fixtures.ts` with a fetch from a results API
-(e.g. [football-data.org](https://www.football-data.org/) or
-[API-Football](https://www.api-football.com/)), map the response into the `Match`
-shape, and the rest of the app works unchanged.
+`.github/workflows/update-data.yml` runs hourly: `scripts/update-data.ts` pulls
+finished results and red-card events from
+[API-Football](https://www.api-football.com/) into `src/data/live.json`, commits
+when something changed, and redeploys GitHub Pages (a Vercel Git integration
+redeploys on the same push). Setup: create a free API-Football key and save it
+as a repository secret named `FOOTBALL_API_KEY`.
+
+Live data merges with the curated files — manual `RESULTS` entries and
+`discipline.ts` absences take precedence, and auto-detected red cards get their
+impact rating from the `STAR_RATINGS` list (default: regular starter).
 
 ## Data accuracy notes
 
