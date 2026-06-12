@@ -4,9 +4,6 @@ import type { Team } from "./types";
  * The 48 qualified nations for the 2026 FIFA World Cup, as drawn on
  * 5 December 2025 in Washington, DC. The four playoff places (Group F,
  * Group I, Group K, and the late UEFA spot) resolved in March 2026.
- *
- * Note: a few inter-confederation / UEFA playoff winners are best-known
- * placeholders — update them here if a result differs.
  */
 export const teams: Team[] = [
   // Group A

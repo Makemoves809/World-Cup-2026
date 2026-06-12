@@ -54,7 +54,8 @@ export function App() {
       <footer className="site-footer">
         <p>
           Unofficial fan project · Standings update automatically from match
-          results. Sample results included — see the README to wire a live feed.
+          results, entered manually after full time — see the README to wire a
+          live feed.
         </p>
         <p className="footer-meta">WC26 Hub · Built with React + TypeScript</p>
       </footer>

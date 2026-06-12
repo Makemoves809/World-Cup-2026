@@ -37,7 +37,7 @@ src/
 ├── data/
 │   ├── types.ts       # Team, Match, Venue, StandingRow types
 │   ├── teams.ts       # all 48 teams, grouped A–L
-│   └── fixtures.ts    # venues + generated round-robin fixtures + sample results
+│   └── fixtures.ts    # venues + official group-stage schedule + results
 ├── lib/
 │   └── standings.ts   # computes & sorts group tables from finished matches
 ├── components/
@@ -64,9 +64,11 @@ shape, and the rest of the app works unchanged.
 
 ## Data accuracy notes
 
-- Groups and host venues reflect the official draw and announced host cities.
-- A few late playoff qualifiers and **all match results/fixture times are sample
-  placeholders** for demonstration — replace them with live data as above.
+- Groups reflect the official 5 December 2025 draw (with the March 2026 playoff
+  winners), and the fixture list follows the official group-stage schedule —
+  kickoffs are stored in UTC and shown in the viewer's local time.
+- Match results are entered manually after full time, so the standings lag live
+  play — wire a live feed (above) for real-time scores.
 - Flags are served from [flagcdn.com](https://flagcdn.com).
 
 ## License
