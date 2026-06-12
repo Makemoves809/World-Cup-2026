@@ -1,5 +1,6 @@
 import type { Match } from "../data/types";
 import { teamById } from "../data/teams";
+import { sentOffIn, unavailableFor } from "../data/discipline";
 import { Flag } from "./Flag";
 
 const fmtDate = new Intl.DateTimeFormat(undefined, {
@@ -12,67 +13,95 @@ const fmtTime = new Intl.DateTimeFormat(undefined, {
   minute: "2-digit",
 });
 
-export function MatchCard({ match }: { match: Match }) {
+interface MatchCardProps {
+  match: Match;
+  onSelect: (match: Match) => void;
+}
+
+export function MatchCard({ match, onSelect }: MatchCardProps) {
   const home = teamById(match.home);
   const away = teamById(match.away);
   const kickoff = new Date(match.kickoff);
   const done = match.status === "finished";
+  const redCount = sentOffIn(match.id).length;
+  const outCount = unavailableFor(match.id).length;
 
   const homeWon = done && (match.homeScore ?? 0) > (match.awayScore ?? 0);
   const awayWon = done && (match.awayScore ?? 0) > (match.homeScore ?? 0);
 
   return (
     <li className={`match-card status-${match.status}`}>
-      <div className="match-meta">
-        <span className="match-group">Group {match.group}</span>
-        {done ? (
-          <span className="ft-badge">FT</span>
-        ) : (
-          <span className="match-when">
-            {fmtDate.format(kickoff)} · {fmtTime.format(kickoff)}
+      <button
+        className="match-open"
+        onClick={() => onSelect(match)}
+        aria-label={`${home.name} vs ${away.name} — match details`}
+      >
+        <span className="match-meta">
+          <span className="match-group">Group {match.group}</span>
+          <span className="meta-chips">
+            {redCount > 0 && (
+              <span className="meta-red" title={`${redCount} red card${redCount > 1 ? "s" : ""}`}>
+                <i className="rc" aria-hidden="true" /> {redCount}
+              </span>
+            )}
+            {outCount > 0 && (
+              <span className="meta-sus" title={`${outCount} suspended`}>
+                <i className="sus-dot" aria-hidden="true" /> {outCount} out
+              </span>
+            )}
+            {done ? (
+              <span className="ft-badge">FT</span>
+            ) : (
+              <span className="match-when">
+                {fmtDate.format(kickoff)} · {fmtTime.format(kickoff)}
+              </span>
+            )}
           </span>
-        )}
-      </div>
+        </span>
 
-      <div className="match-body">
-        <div className={`side ${homeWon ? "won" : ""}`}>
-          <Flag team={home} />
-          <span className="side-name">{home.name}</span>
-        </div>
+        <span className="match-body">
+          <span className={`side ${homeWon ? "won" : ""}`}>
+            <Flag team={home} />
+            <span className="side-name">{home.name}</span>
+          </span>
 
-        <div className={done ? "score is-final" : "score"}>
-          {done ? (
-            <>
-              <span>{match.homeScore}</span>
-              <span className="score-dash">–</span>
-              <span>{match.awayScore}</span>
-            </>
-          ) : (
-            <span className="score-vs">vs</span>
-          )}
-        </div>
+          <span className={done ? "score is-final" : "score"}>
+            {done ? (
+              <>
+                <span>{match.homeScore}</span>
+                <span className="score-dash">–</span>
+                <span>{match.awayScore}</span>
+              </>
+            ) : (
+              <span className="score-vs">vs</span>
+            )}
+          </span>
 
-        <div className={`side side-away ${awayWon ? "won" : ""}`}>
-          <span className="side-name">{away.name}</span>
-          <Flag team={away} />
-        </div>
-      </div>
+          <span className={`side side-away ${awayWon ? "won" : ""}`}>
+            <span className="side-name">{away.name}</span>
+            <Flag team={away} />
+          </span>
+        </span>
 
-      <p className="match-venue">
-        <svg
-          className="pin"
-          viewBox="0 0 12 12"
-          width="10"
-          height="10"
-          aria-hidden="true"
-        >
-          <path
-            d="M6 0a4.2 4.2 0 0 0-4.2 4.2C1.8 7.4 6 12 6 12s4.2-4.6 4.2-7.8A4.2 4.2 0 0 0 6 0Zm0 6a1.8 1.8 0 1 1 0-3.6A1.8 1.8 0 0 1 6 6Z"
-            fill="currentColor"
-          />
-        </svg>
-        {match.venue.stadium} · {match.venue.city}
-      </p>
+        <span className="match-venue">
+          <svg
+            className="pin"
+            viewBox="0 0 12 12"
+            width="10"
+            height="10"
+            aria-hidden="true"
+          >
+            <path
+              d="M6 0a4.2 4.2 0 0 0-4.2 4.2C1.8 7.4 6 12 6 12s4.2-4.6 4.2-7.8A4.2 4.2 0 0 0 6 0Zm0 6a1.8 1.8 0 1 1 0-3.6A1.8 1.8 0 0 1 6 6Z"
+              fill="currentColor"
+            />
+          </svg>
+          {match.venue.stadium} · {match.venue.city}
+          <span className="match-more" aria-hidden="true">
+            Details ›
+          </span>
+        </span>
+      </button>
     </li>
   );
 }

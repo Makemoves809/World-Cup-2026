@@ -13,6 +13,8 @@ one place and every standing, qualification zone, and tiebreak re-sorts itself.
 - **Auto-computed standings** — points → goal difference → goals scored — with qualification zones
   (top 2 qualify, 3rd enters the best-third-placed race).
 - **Full 72-match group-stage fixture list**, filterable by group and grouped by day, across all 16 host venues.
+- **Match detail view** — click any fixture for red cards and player availability, with a
+  1–5 impact meter showing how big a loss each absent player is (fringe player → star).
 - Responsive down to mobile, keyboard-focusable, and respects reduced-motion.
 
 ## Quick start
@@ -54,6 +56,11 @@ src/
 Scores live in `RESULTS` inside `src/data/fixtures.ts`, keyed by match id
 (e.g. `"m-A-1": [2, 0]`). Add or edit an entry and the match flips to `finished`;
 standings recompute on the next render. No other changes needed.
+
+Red cards, suspensions, and injuries live in `src/data/discipline.ts`. Each entry
+names the player, the match where it happened (`sourceMatchId`), the matches they
+miss (`missesMatchIds`), and an `impact` rating from 1 (fringe) to 5 (star) — the
+match detail modal and fixture-card chips pick them up automatically.
 
 ### Wiring a live feed
 

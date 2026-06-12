@@ -55,3 +55,26 @@ export interface StandingRow {
   /** 1-based finishing position within the group */
   position: number;
 }
+
+export type AbsenceType = "red" | "suspension" | "injury";
+
+/** How big a loss the player is for their team, 1 (fringe) – 5 (star). */
+export type ImpactLevel = 1 | 2 | 3 | 4 | 5;
+
+/** A player ruled out of one or more matches (red card, ban, injury). */
+export interface PlayerAbsence {
+  player: string;
+  position: string;
+  /** Team id */
+  team: string;
+  type: AbsenceType;
+  /** Human-readable cause, e.g. "Red card · 49' vs Mexico (DOGSO)" */
+  reason: string;
+  /** Match id where the card/injury happened, if applicable */
+  sourceMatchId?: string;
+  /** Match ids the player is unavailable for */
+  missesMatchIds: string[];
+  impact: ImpactLevel;
+  note?: string;
+}
+

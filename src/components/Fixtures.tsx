@@ -1,7 +1,9 @@
 import { useMemo, useState } from "react";
+import type { Match } from "../data/types";
 import { matches } from "../data/fixtures";
 import { GROUP_IDS } from "../data/teams";
 import { MatchCard } from "./MatchCard";
+import { MatchDetail } from "./MatchDetail";
 
 const dayKey = new Intl.DateTimeFormat(undefined, {
   weekday: "long",
@@ -11,6 +13,7 @@ const dayKey = new Intl.DateTimeFormat(undefined, {
 
 export function Fixtures() {
   const [filter, setFilter] = useState<string>("all");
+  const [selected, setSelected] = useState<Match | null>(null);
 
   const visible = useMemo(
     () => (filter === "all" ? matches : matches.filter((m) => m.group === filter)),
@@ -33,7 +36,8 @@ export function Fixtures() {
         <span className="kicker">Official schedule · times shown in your timezone</span>
         <h2>Fixtures</h2>
         <p className="section-note">
-          All 72 group-stage matches across the 16 host venues.
+          All 72 group-stage matches across the 16 host venues — click a match
+          for red cards and player availability.
         </p>
       </div>
 
@@ -65,11 +69,15 @@ export function Fixtures() {
           </h4>
           <ul className="match-list">
             {dayMatches.map((m) => (
-              <MatchCard key={m.id} match={m} />
+              <MatchCard key={m.id} match={m} onSelect={setSelected} />
             ))}
           </ul>
         </div>
       ))}
+
+      {selected && (
+        <MatchDetail match={selected} onClose={() => setSelected(null)} />
+      )}
     </section>
   );
 }
