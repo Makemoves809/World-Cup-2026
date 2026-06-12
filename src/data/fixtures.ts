@@ -38,16 +38,13 @@ const MATCHDAY_DATES: Record<number, string[]> = {
 const KICKOFFS = ["19:00", "22:00", "01:00"]; // staggered UTC slots
 
 /**
- * Final scores for a handful of matchday-1 fixtures. SAMPLE DATA — wire this
- * to a live results feed (see README) for the real tournament. Keyed by match id.
+ * Real final scores, keyed by match id. Updated manually as the tournament
+ * progresses — current through 11 June 2026 (Day 1). To automate, wire this
+ * to a live results feed (see README).
  */
 const RESULTS: Record<string, [number, number]> = {
-  "m-A-1": [2, 0], // Mexico 2–0 South Africa (the real tournament opener)
-  "m-A-2": [1, 1], // Korea Republic 1–1 Czechia
-  "m-D-1": [1, 0], // United States 1–0 Paraguay
-  "m-D-2": [2, 2], // Australia 2–2 Türkiye
-  "m-L-1": [1, 2], // England 1–2 Croatia
-  "m-L-2": [0, 0], // Ghana 0–0 Panama
+  "m-A-1": [2, 0], // Mexico 2–0 South Africa — Jun 11, Estadio Azteca
+  "m-A-2": [2, 1], // Korea Republic 2–1 Czechia — Jun 11
 };
 
 function buildMatches(): Match[] {
