@@ -171,6 +171,8 @@ img.flag {
   font-size: 14px;
   padding: 7px 14px;
   border-radius: 999px;
+  text-decoration: none;
+  display: inline-block;
   transition: color 0.15s, background 0.15s;
 }
 .nav-link:hover {
@@ -1574,4 +1576,54 @@ img.flag {
 }
 .bk-seed.is-faded {
   opacity: 0.5;
+}
+
+/* ---------- Home quick links ---------- */
+.home-links {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 8px 24px 80px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px;
+}
+.home-link {
+  position: relative;
+  text-align: left;
+  background: linear-gradient(180deg, var(--pitch-2), rgba(13, 36, 25, 0.6));
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-card);
+  padding: 22px 22px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  transition: transform 0.25s var(--ease), border-color 0.2s, box-shadow 0.25s;
+}
+.home-link:hover {
+  transform: translateY(-3px);
+  border-color: rgba(43, 212, 121, 0.3);
+}
+.home-link-title {
+  font-family: var(--font-display);
+  font-size: 22px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: var(--chalk);
+}
+.home-link-desc {
+  font-size: 14px;
+  color: var(--chalk-dim);
+  max-width: 36ch;
+}
+.home-link-arrow {
+  position: absolute;
+  top: 20px;
+  right: 22px;
+  font-size: 20px;
+  color: var(--grass);
+  transition: transform 0.2s var(--ease);
+}
+.home-link:hover .home-link-arrow {
+  transform: translateX(4px);
 }

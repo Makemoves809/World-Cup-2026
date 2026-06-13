@@ -1,61 +1,33 @@
-import { useState } from "react";
 import { Header } from "./components/Header";
-import { Hero } from "./components/Hero";
-import { ResultsTicker } from "./components/ResultsTicker";
-import { GroupTable } from "./components/GroupTable";
 import { Knockout } from "./components/Knockout";
 import { Fixtures } from "./components/Fixtures";
-import { GROUP_IDS } from "./data/teams";
+import { Home } from "./pages/Home";
+import { GroupsPage } from "./pages/GroupsPage";
+import { navigate, useRoute } from "./router";
 
 export function App() {
-  const [active, setActive] = useState("groups");
+  const path = useRoute();
 
-  const navigate = (id: string) => {
-    setActive(id);
-    const el = document.getElementById(id);
-    if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
-  };
+  let page;
+  switch (path) {
+    case "/groups":
+      page = <GroupsPage />;
+      break;
+    case "/knockout":
+      page = <Knockout />;
+      break;
+    case "/fixtures":
+      page = <Fixtures />;
+      break;
+    default:
+      page = <Home />;
+  }
 
   return (
     <div className="app">
-      <Header active={active} onNavigate={navigate} />
+      <Header path={path} />
 
-      <main>
-        <Hero onNavigate={navigate} />
-        <ResultsTicker />
-
-        <section className="groups" id="groups">
-          <div className="section-head">
-            <span className="kicker">12 groups · 48 nations</span>
-            <h2>Group standings</h2>
-            <p className="section-note">
-              Top two advance · third place enters the best-third race.
-            </p>
-          </div>
-
-          <div className="legend">
-            <span className="legend-item">
-              <i className="swatch sw-qualified" /> Qualifies
-            </span>
-            <span className="legend-item">
-              <i className="swatch sw-playoff" /> Best-third race
-            </span>
-            <span className="legend-item">
-              <i className="swatch sw-out" /> Eliminated
-            </span>
-          </div>
-
-          <div className="group-grid">
-            {GROUP_IDS.map((g) => (
-              <GroupTable key={g} group={g} />
-            ))}
-          </div>
-        </section>
-
-        <Knockout />
-
-        <Fixtures />
-      </main>
+      <main>{page}</main>
 
       <footer className="site-footer">
         <div className="footer-grid">
@@ -72,10 +44,10 @@ export function App() {
 
           <nav className="footer-nav" aria-label="Footer">
             <span className="footer-head">Explore</span>
-            <button onClick={() => navigate("top")}>Top</button>
-            <button onClick={() => navigate("groups")}>Group standings</button>
-            <button onClick={() => navigate("knockout")}>Knockout</button>
-            <button onClick={() => navigate("fixtures")}>Fixtures</button>
+            <button onClick={() => navigate("/")}>Home</button>
+            <button onClick={() => navigate("/groups")}>Group standings</button>
+            <button onClick={() => navigate("/knockout")}>Knockout</button>
+            <button onClick={() => navigate("/fixtures")}>Fixtures</button>
           </nav>
 
           <div className="footer-notes">

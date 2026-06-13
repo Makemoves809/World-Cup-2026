@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from "react";
 import type { Match } from "../data/types";
 import { matches } from "../data/fixtures";
 import { teamById } from "../data/teams";
+import { navigate } from "../router";
 import { Flag } from "./Flag";
 
 const TOURNAMENT_START = new Date("2026-06-11T19:00:00Z");
@@ -32,7 +33,7 @@ const STATS = [
   { v: "16", l: "Host cities" },
 ];
 
-export function Hero({ onNavigate }: { onNavigate: (id: string) => void }) {
+export function Hero() {
   const now = useNow();
 
   const nextMatch = useMemo(
@@ -90,10 +91,10 @@ export function Hero({ onNavigate }: { onNavigate: (id: string) => void }) {
         </p>
 
         <div className="hero-actions">
-          <button className="btn btn-primary" onClick={() => onNavigate("groups")}>
+          <button className="btn btn-primary" onClick={() => navigate("/groups")}>
             Group standings
           </button>
-          <button className="btn btn-ghost" onClick={() => onNavigate("fixtures")}>
+          <button className="btn btn-ghost" onClick={() => navigate("/fixtures")}>
             Match schedule
           </button>
         </div>

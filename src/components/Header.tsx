@@ -1,12 +1,13 @@
+import { navigate } from "../router";
+
 interface HeaderProps {
-  active: string;
-  onNavigate: (id: string) => void;
+  path: string;
 }
 
 const LINKS = [
-  { id: "groups", label: "Groups" },
-  { id: "knockout", label: "Knockout" },
-  { id: "fixtures", label: "Fixtures" },
+  { to: "/groups", label: "Groups" },
+  { to: "/knockout", label: "Knockout" },
+  { to: "/fixtures", label: "Fixtures" },
 ];
 
 const DAY_MS = 86_400_000;
@@ -14,7 +15,7 @@ const START = Date.UTC(2026, 5, 11);
 const END = Date.UTC(2026, 6, 19) + DAY_MS;
 const TOTAL_DAYS = 39;
 
-export function Header({ active, onNavigate }: HeaderProps) {
+export function Header({ path }: HeaderProps) {
   const now = Date.now();
   const live = now >= START && now < END;
   const day = Math.min(TOTAL_DAYS, Math.floor((now - START) / DAY_MS) + 1);
@@ -23,10 +24,10 @@ export function Header({ active, onNavigate }: HeaderProps) {
     <header className="site-header">
       <a
         className="brand"
-        href="#top"
+        href="/"
         onClick={(e) => {
           e.preventDefault();
-          onNavigate("top");
+          navigate("/");
         }}
       >
         <img
@@ -46,13 +47,18 @@ export function Header({ active, onNavigate }: HeaderProps) {
 
       <nav className="site-nav" aria-label="Primary">
         {LINKS.map((l) => (
-          <button
-            key={l.id}
-            className={active === l.id ? "nav-link is-active" : "nav-link"}
-            onClick={() => onNavigate(l.id)}
+          <a
+            key={l.to}
+            href={l.to}
+            className={path === l.to ? "nav-link is-active" : "nav-link"}
+            aria-current={path === l.to ? "page" : undefined}
+            onClick={(e) => {
+              e.preventDefault();
+              navigate(l.to);
+            }}
           >
             {l.label}
-          </button>
+          </a>
         ))}
       </nav>
 
