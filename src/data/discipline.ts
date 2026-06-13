@@ -190,6 +190,35 @@ const curated: PlayerAbsence[] = [
     impact: 5,
     note: "Missed the opener; expected to feature later in the group stage.",
   },
+  {
+    player: "Nayef Aguerd",
+    position: "Centre-back",
+    team: "mar",
+    type: "injury",
+    reason: "Pubalgia (groin)",
+    missesMatchIds: ["m-C-1"],
+    impact: 4,
+    note: "Doubtful — left out of the predicted XI vs Brazil.",
+  },
+  {
+    player: "Noussair Mazraoui",
+    position: "Full-back",
+    team: "mar",
+    type: "injury",
+    reason: "Shoulder injury",
+    missesMatchIds: ["m-C-1"],
+    impact: 3,
+    note: "Doubtful for the opener.",
+  },
+  {
+    player: "Luca Jaquez",
+    position: "Centre-back",
+    team: "sui",
+    type: "injury",
+    reason: "Injury — unavailable",
+    missesMatchIds: teamMatchIds("sui"),
+    impact: 2,
+  },
 ];
 
 export const IMPACT_LABELS: Record<ImpactLevel, string> = {
