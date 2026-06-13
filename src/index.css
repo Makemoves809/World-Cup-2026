@@ -569,6 +569,7 @@ img.flag {
 
 /* ---------- Section shells ---------- */
 .groups,
+.knockout,
 .fixtures {
   max-width: var(--maxw);
   margin: 0 auto;
@@ -1354,4 +1355,191 @@ img.flag {
 
 @media (prefers-reduced-motion: reduce) {
   * { animation: none !important; scroll-behavior: auto !important; transition: none !important; }
+}
+
+/* ---------- Knockout ---------- */
+.third-race {
+  background: linear-gradient(180deg, var(--pitch-2), rgba(13, 36, 25, 0.6));
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-card);
+  padding: 22px 22px 18px;
+  margin-bottom: 34px;
+}
+.third-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+.third-head h3 {
+  font-family: var(--font-display);
+  font-size: 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.third-note {
+  font-size: 12px;
+  color: var(--chalk-dim);
+}
+.third-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4px 22px;
+}
+.third-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 10px;
+  border-radius: var(--radius-sm);
+  font-size: 14px;
+}
+.third-row.is-in {
+  box-shadow: inset 3px 0 0 var(--grass);
+  background: var(--grass-soft);
+}
+.third-row.is-out {
+  color: var(--chalk-dim);
+}
+/* Cut-off line under the 8th-ranked team (last to qualify) */
+.third-row:nth-child(8) {
+  position: relative;
+  margin-bottom: 12px;
+}
+.third-row:nth-child(8)::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -7px;
+  border-bottom: 1px dashed rgba(255, 90, 60, 0.7);
+}
+.third-rank {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  width: 20px;
+  color: var(--chalk-faint);
+  text-align: center;
+  flex: none;
+}
+.third-row.is-in .third-rank {
+  color: var(--grass);
+}
+.third-team {
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.third-grp {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--chalk-faint);
+  flex: none;
+}
+.third-stat {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--chalk-dim);
+  flex: none;
+}
+.third-gd {
+  width: 56px;
+  text-align: right;
+}
+.third-foot {
+  margin: 14px 0 0;
+  font-size: 12px;
+  color: var(--chalk-faint);
+}
+
+.bracket-scroll {
+  overflow-x: auto;
+  padding-bottom: 8px;
+  -webkit-overflow-scrolling: touch;
+}
+.bracket {
+  display: flex;
+  gap: 18px;
+  min-width: 920px;
+}
+.bk-round {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 168px;
+}
+.bk-round-head {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--grass);
+  padding-bottom: 12px;
+  text-align: center;
+}
+.bk-round-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  flex: 1;
+  gap: 12px;
+}
+.bk-match {
+  background: linear-gradient(180deg, var(--pitch-2), rgba(13, 36, 25, 0.6));
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-card);
+  overflow: hidden;
+}
+.bk-round[data-round="final"] .bk-match {
+  border-color: rgba(255, 194, 60, 0.4);
+  box-shadow: 0 0 0 1px rgba(255, 194, 60, 0.18), var(--shadow-card);
+}
+.bk-seed {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 11px;
+  font-size: 13px;
+}
+.bk-seed + .bk-seed {
+  border-top: 1px solid var(--line-soft);
+}
+.bk-seed.is-firm {
+  box-shadow: inset 3px 0 0 var(--grass);
+}
+.bk-seed-name {
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: var(--chalk-dim);
+}
+.bk-seed.is-firm .bk-seed-name {
+  color: var(--chalk);
+  font-weight: 500;
+}
+.bk-seed-pip {
+  width: 24px;
+  height: 16px;
+  border-radius: 3px;
+  background: var(--pitch-3);
+  flex: none;
+}
+.bracket-foot {
+  margin: 18px 0 0;
+  font-size: 12px;
+  color: var(--chalk-faint);
+  max-width: 70ch;
+}
+
+@media (max-width: 720px) {
+  .third-list { grid-template-columns: 1fr; }
+  .third-row:nth-child(8) { margin-bottom: 8px; }
 }

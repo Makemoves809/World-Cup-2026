@@ -5,6 +5,7 @@ interface HeaderProps {
 
 const LINKS = [
   { id: "groups", label: "Groups" },
+  { id: "knockout", label: "Knockout" },
   { id: "fixtures", label: "Fixtures" },
 ];
 
