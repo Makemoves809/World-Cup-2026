@@ -1698,3 +1698,50 @@ img.flag {
   color: var(--chalk-faint);
   text-align: center;
 }
+
+/* ---------- Sitewide progress strip ---------- */
+.pstrip {
+  background: rgba(8, 26, 18, 0.6);
+  border-bottom: 1px solid var(--line);
+}
+.pstrip-inner {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 9px 24px;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+.pstrip-phase {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--grass);
+  margin-right: auto;
+}
+.pstrip-stat {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--chalk-dim);
+  white-space: nowrap;
+}
+.pstrip-stat b {
+  color: var(--chalk);
+  font-weight: 600;
+}
+.pstrip-track {
+  height: 3px;
+  background: var(--pitch-3);
+  overflow: hidden;
+}
+.pstrip-fill {
+  display: block;
+  height: 100%;
+  background: linear-gradient(90deg, var(--grass), #7ce8ad);
+}
+@media (max-width: 460px) {
+  .pstrip-inner { gap: 12px; padding: 8px 16px; }
+  .pstrip-togo { display: none; }
+}

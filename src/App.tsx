@@ -1,4 +1,5 @@
 import { Header } from "./components/Header";
+import { ProgressStrip } from "./components/ProgressStrip";
 import { Knockout } from "./components/Knockout";
 import { Fixtures } from "./components/Fixtures";
 import { Home } from "./pages/Home";
@@ -26,6 +27,7 @@ export function App() {
   return (
     <div className="app">
       <Header path={path} />
+      {path !== "/" && <ProgressStrip />}
 
       <main>{page}</main>
 
