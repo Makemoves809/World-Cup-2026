@@ -1,7 +1,22 @@
 import type { Match } from "../data/types";
+import live from "../data/live.json";
 
 /** Rough in-play window: 90' + half-time + stoppage/VAR. */
 const LIVE_MS = 135 * 60 * 1000;
+
+export interface LiveScore {
+  home: number;
+  away: number;
+  minute: number | null;
+}
+
+const liveScores =
+  (live as { liveScores?: Record<string, LiveScore> }).liveScores ?? {};
+
+/** Current in-play score for a match, if the feed has reported one. */
+export function liveScore(matchId: string): LiveScore | undefined {
+  return liveScores[matchId];
+}
 
 /**
  * A match is treated as "live" when it has kicked off, is not yet marked

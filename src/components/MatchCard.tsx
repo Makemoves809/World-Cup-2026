@@ -1,6 +1,7 @@
 import type { Match } from "../data/types";
 import { teamById } from "../data/teams";
 import { sentOffIn, unavailableFor } from "../data/discipline";
+import { liveScore } from "../lib/live";
 import { Flag } from "./Flag";
 
 const fmtDate = new Intl.DateTimeFormat(undefined, {
@@ -29,6 +30,7 @@ export function MatchCard({ match, onSelect, live = false }: MatchCardProps) {
 
   const homeWon = done && (match.homeScore ?? 0) > (match.awayScore ?? 0);
   const awayWon = done && (match.awayScore ?? 0) > (match.homeScore ?? 0);
+  const ls = live ? liveScore(match.id) : undefined;
 
   return (
     <li className={`match-card status-${match.status}${live ? " is-live" : ""}`}>
@@ -55,6 +57,7 @@ export function MatchCard({ match, onSelect, live = false }: MatchCardProps) {
             ) : live ? (
               <span className="live-badge">
                 <span className="live-dot" aria-hidden="true" /> LIVE
+                {ls?.minute != null && <span className="live-min">{ls.minute}'</span>}
               </span>
             ) : (
               <span className="match-when">
@@ -70,12 +73,18 @@ export function MatchCard({ match, onSelect, live = false }: MatchCardProps) {
             <span className="side-name">{home.name}</span>
           </span>
 
-          <span className={done ? "score is-final" : "score"}>
+          <span className={done || ls ? "score is-final" : "score"}>
             {done ? (
               <>
                 <span>{match.homeScore}</span>
                 <span className="score-dash">–</span>
                 <span>{match.awayScore}</span>
+              </>
+            ) : ls ? (
+              <>
+                <span>{ls.home}</span>
+                <span className="score-dash">–</span>
+                <span>{ls.away}</span>
               </>
             ) : (
               <span className="score-vs">vs</span>

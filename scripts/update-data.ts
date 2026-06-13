@@ -54,6 +54,8 @@ interface LiveData {
   yellowCards: LiveYellowCard[];
   /** Finished knockout matches — used to fill the bracket. */
   koResults: KoResult[];
+  /** In-play group scores, keyed by match id (rebuilt each run). */
+  liveScores: Record<string, { home: number; away: number; minute: number | null }>;
   /** Match ids whose post-match events were already fetched. */
   eventsChecked: string[];
 }
@@ -62,11 +64,13 @@ const LIVE_PATH = new URL("../src/data/live.json", import.meta.url);
 const live: LiveData = JSON.parse(readFileSync(LIVE_PATH, "utf8"));
 live.yellowCards = live.yellowCards ?? [];
 live.koResults = live.koResults ?? [];
+live.liveScores = live.liveScores ?? {};
 const before = JSON.stringify({
   results: live.results,
   redCards: live.redCards,
   yellowCards: live.yellowCards,
   koResults: live.koResults,
+  liveScores: live.liveScores,
   eventsChecked: live.eventsChecked,
 });
 
@@ -134,19 +138,39 @@ console.log(`API returned ${fdMatches.length} fixtures`);
 
 /** Our match id → football-data match id, for finished matches we can map. */
 const finishedApi = new Map<string, number>();
+/** In-play group-stage scores, rebuilt fresh each run. */
+const liveScores: Record<
+  string,
+  { home: number; away: number; minute: number | null }
+> = {};
 
 for (const f of fdMatches) {
-  if (f.status !== "FINISHED") continue;
   const homeId = mapTeam(f.homeTeam);
   const awayId = mapTeam(f.awayTeam);
   if (!homeId || !awayId) {
-    console.warn(`Unmapped teams: ${f.homeTeam?.name} vs ${f.awayTeam?.name}`);
+    if (f.status === "FINISHED") {
+      console.warn(`Unmapped teams: ${f.homeTeam?.name} vs ${f.awayTeam?.name}`);
+    }
     continue;
   }
+  const pair = matchByPair.get(`${homeId}|${awayId}`);
+
+  // In-play / half-time: record the running score (group matches only).
+  if (f.status === "IN_PLAY" || f.status === "PAUSED") {
+    if (!pair) continue;
+    const sc = f.score?.fullTime ?? {};
+    const h = sc.home ?? 0;
+    const a = sc.away ?? 0;
+    liveScores[pair.id] = pair.reversed
+      ? { home: a, away: h, minute: f.minute ?? null }
+      : { home: h, away: a, minute: f.minute ?? null };
+    continue;
+  }
+
+  if (f.status !== "FINISHED") continue;
   const ft = f.score?.fullTime;
   if (ft?.home == null || ft?.away == null) continue;
 
-  const pair = matchByPair.get(`${homeId}|${awayId}`);
   if (pair) {
     live.results[pair.id] = pair.reversed
       ? [ft.away, ft.home]
@@ -172,6 +196,8 @@ for (const f of fdMatches) {
     else live.koResults.push(rec);
   }
 }
+
+live.liveScores = liveScores;
 
 // Fetch bookings once per newly finished match (free tier: 10 requests/min).
 for (const [matchId, apiId] of finishedApi) {
@@ -212,6 +238,7 @@ const after = JSON.stringify({
   redCards: live.redCards,
   yellowCards: live.yellowCards,
   koResults: live.koResults,
+  liveScores: live.liveScores,
   eventsChecked: live.eventsChecked,
 });
 

@@ -1821,3 +1821,7 @@ img.flag {
   gap: 9px;
   color: var(--vermilion);
 }
+.live-min {
+  font-variant-numeric: tabular-nums;
+  opacity: 0.85;
+}
