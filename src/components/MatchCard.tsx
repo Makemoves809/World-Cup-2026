@@ -16,9 +16,10 @@ const fmtTime = new Intl.DateTimeFormat(undefined, {
 interface MatchCardProps {
   match: Match;
   onSelect: (match: Match) => void;
+  live?: boolean;
 }
 
-export function MatchCard({ match, onSelect }: MatchCardProps) {
+export function MatchCard({ match, onSelect, live = false }: MatchCardProps) {
   const home = teamById(match.home);
   const away = teamById(match.away);
   const kickoff = new Date(match.kickoff);
@@ -30,7 +31,7 @@ export function MatchCard({ match, onSelect }: MatchCardProps) {
   const awayWon = done && (match.awayScore ?? 0) > (match.homeScore ?? 0);
 
   return (
-    <li className={`match-card status-${match.status}`}>
+    <li className={`match-card status-${match.status}${live ? " is-live" : ""}`}>
       <button
         className="match-open"
         onClick={() => onSelect(match)}
@@ -51,6 +52,10 @@ export function MatchCard({ match, onSelect }: MatchCardProps) {
             )}
             {done ? (
               <span className="ft-badge">FT</span>
+            ) : live ? (
+              <span className="live-badge">
+                <span className="live-dot" aria-hidden="true" /> LIVE
+              </span>
             ) : (
               <span className="match-when">
                 {fmtDate.format(kickoff)} · {fmtTime.format(kickoff)}

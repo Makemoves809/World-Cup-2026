@@ -1,9 +1,20 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import type { Match } from "../data/types";
 import { matches } from "../data/fixtures";
 import { GROUP_IDS } from "../data/teams";
+import { isLive } from "../lib/live";
 import { MatchCard } from "./MatchCard";
 import { MatchDetail } from "./MatchDetail";
+
+/** Current time, ticking so matches flip to "live" as kickoff passes. */
+function useNow(intervalMs: number) {
+  const [now, setNow] = useState(() => Date.now());
+  useEffect(() => {
+    const t = setInterval(() => setNow(Date.now()), intervalMs);
+    return () => clearInterval(t);
+  }, [intervalMs]);
+  return now;
+}
 
 const dayKey = new Intl.DateTimeFormat(undefined, {
   weekday: "long",
@@ -23,6 +34,7 @@ export function Fixtures() {
   const [status, setStatus] = useState<StatusFilter>("upcoming");
   const [group, setGroup] = useState<string>("all");
   const [selected, setSelected] = useState<Match | null>(null);
+  const now = useNow(30_000);
 
   // Matches in the selected group (matches[] is already sorted by kickoff).
   const groupList = useMemo(
@@ -43,15 +55,20 @@ export function Fixtures() {
     return list;
   }, [groupList, status]);
 
-  const byDay = useMemo(() => {
+  // Live matches are pinned to the top; everything else is grouped by day.
+  const { liveMatches, byDay } = useMemo(() => {
+    const live: Match[] = [];
+    const rest: Match[] = [];
+    for (const m of visible) (isLive(m, now) ? live : rest).push(m);
+
     const days = new Map<string, Match[]>();
-    for (const m of visible) {
+    for (const m of rest) {
       const k = dayKey.format(new Date(m.kickoff));
       if (!days.has(k)) days.set(k, []);
       days.get(k)!.push(m);
     }
-    return [...days.entries()];
-  }, [visible]);
+    return { liveMatches: live, byDay: [...days.entries()] };
+  }, [visible, now]);
 
   return (
     <section className="fixtures" id="fixtures">
@@ -97,7 +114,24 @@ export function Fixtures() {
         ))}
       </div>
 
-      {byDay.length === 0 ? (
+      {liveMatches.length > 0 && (
+        <div className="day-block">
+          <h4 className="day-label day-label-live">
+            <span className="live-dot" aria-hidden="true" /> Live now
+            <span className="day-count">
+              {liveMatches.length}{" "}
+              {liveMatches.length === 1 ? "match" : "matches"}
+            </span>
+          </h4>
+          <ul className="match-list">
+            {liveMatches.map((m) => (
+              <MatchCard key={m.id} match={m} live onSelect={setSelected} />
+            ))}
+          </ul>
+        </div>
+      )}
+
+      {byDay.length === 0 && liveMatches.length === 0 ? (
         <p className="fixtures-empty">
           {status === "upcoming"
             ? "No upcoming matches — every game here has been played."
