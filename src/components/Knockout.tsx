@@ -1,14 +1,35 @@
 import {
   bestThirds,
-  bracketRounds,
+  finalInfo,
   groupOutcomes,
-  resolveSeed,
+  resolveBracket,
   type ResolvedSeed,
 } from "../lib/bracket";
 
-function SeedChip({ seed }: { seed: ResolvedSeed }) {
+const fmtDate = new Intl.DateTimeFormat("en-US", {
+  month: "short",
+  day: "numeric",
+  timeZone: "UTC",
+});
+const dayLabel = (iso: string) => fmtDate.format(new Date(`${iso}T12:00:00Z`));
+
+function SeedChip({
+  seed,
+  score,
+  won,
+  faded,
+}: {
+  seed: ResolvedSeed;
+  score?: number;
+  won?: boolean;
+  faded?: boolean;
+}) {
+  const cls = ["bk-seed"];
+  if (seed.firm) cls.push("is-firm");
+  if (won) cls.push("is-won");
+  if (faded) cls.push("is-faded");
   return (
-    <div className={seed.firm ? "bk-seed is-firm" : "bk-seed"}>
+    <div className={cls.join(" ")}>
       {seed.flag ? (
         <img
           className="flag"
@@ -28,6 +49,7 @@ function SeedChip({ seed }: { seed: ResolvedSeed }) {
       )}
       <span className="bk-seed-name">{seed.name}</span>
       {seed.host && <span className="host-pin">Host</span>}
+      {score != null && <span className="bk-score">{score}</span>}
     </div>
   );
 }
@@ -35,6 +57,7 @@ function SeedChip({ seed }: { seed: ResolvedSeed }) {
 export function Knockout() {
   const outcomes = groupOutcomes();
   const thirds = bestThirds();
+  const rounds = resolveBracket();
   const anyPlayed = outcomes.some((o) => o.started);
 
   return (
@@ -43,9 +66,9 @@ export function Knockout() {
         <span className="kicker">32 advance · road to the final</span>
         <h2>Knockout bracket</h2>
         <p className="section-note">
-          12 group winners · 12 runners-up · 8 best third-placed teams.
+          The official Round of 32 → Final (matches 73–104).
           {anyPlayed
-            ? " Projected live from the standings — final once each group wraps."
+            ? " Group winners and runners-up are projected live from the standings — firm once each group is decided."
             : " Slots fill automatically as group results come in."}
         </p>
       </div>
@@ -91,14 +114,32 @@ export function Knockout() {
 
       <div className="bracket-scroll">
         <div className="bracket" role="group" aria-label="Knockout bracket">
-          {bracketRounds.map((round) => (
+          {rounds.map((round) => (
             <div className="bk-round" key={round.id} data-round={round.id}>
               <div className="bk-round-head">{round.name}</div>
               <div className="bk-round-body">
                 {round.matches.map((m) => (
-                  <div className="bk-match" key={m.id}>
-                    <SeedChip seed={resolveSeed(m.home, outcomes, thirds)} />
-                    <SeedChip seed={resolveSeed(m.away, outcomes, thirds)} />
+                  <div
+                    className="bk-match"
+                    key={m.id}
+                    title={`Match ${m.num} · ${m.venue}`}
+                  >
+                    <div className="bk-match-meta">
+                      <span>#{m.num}</span>
+                      <span>{dayLabel(m.date)}</span>
+                    </div>
+                    <SeedChip
+                      seed={m.home}
+                      score={m.homeScore}
+                      won={m.finished && m.winner === "home"}
+                      faded={m.finished && m.winner === "away"}
+                    />
+                    <SeedChip
+                      seed={m.away}
+                      score={m.awayScore}
+                      won={m.finished && m.winner === "away"}
+                      faded={m.finished && m.winner === "home"}
+                    />
                   </div>
                 ))}
               </div>
@@ -108,9 +149,10 @@ export function Knockout() {
       </div>
 
       <p className="bracket-foot">
-        Bracket layout is a projection for fun — official Round-of-32 pairings
-        are confirmed by FIFA after the group stage. The Final is July 19 at
-        MetLife Stadium, New York / New Jersey.
+        {finalInfo.thirdPlace} · {finalInfo.final}. The eight matches with a
+        “3rd …” slot host a best third-placed team; FIFA assigns the exact team
+        after the group stage, and live results fill the bracket as the
+        knockouts are played.
       </p>
     </section>
   );

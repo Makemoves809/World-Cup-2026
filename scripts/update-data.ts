@@ -35,12 +35,25 @@ interface LiveYellowCard {
   minute: number | null;
 }
 
+interface KoResult {
+  /** API stage, e.g. "LAST_32", "LAST_16", "QUARTER_FINALS", "FINAL". */
+  stage: string;
+  homeId: string;
+  awayId: string;
+  homeScore: number;
+  awayScore: number;
+  /** Team id that advanced (after extra time / penalties), if known. */
+  winnerId: string | null;
+}
+
 interface LiveData {
   updatedAt: string;
   results: Record<string, [number, number]>;
   redCards: LiveRedCard[];
   /** Straight yellow cards — used to compute two-yellow suspensions. */
   yellowCards: LiveYellowCard[];
+  /** Finished knockout matches — used to fill the bracket. */
+  koResults: KoResult[];
   /** Match ids whose post-match events were already fetched. */
   eventsChecked: string[];
 }
@@ -48,10 +61,12 @@ interface LiveData {
 const LIVE_PATH = new URL("../src/data/live.json", import.meta.url);
 const live: LiveData = JSON.parse(readFileSync(LIVE_PATH, "utf8"));
 live.yellowCards = live.yellowCards ?? [];
+live.koResults = live.koResults ?? [];
 const before = JSON.stringify({
   results: live.results,
   redCards: live.redCards,
   yellowCards: live.yellowCards,
+  koResults: live.koResults,
   eventsChecked: live.eventsChecked,
 });
 
@@ -128,13 +143,34 @@ for (const f of fdMatches) {
     console.warn(`Unmapped teams: ${f.homeTeam?.name} vs ${f.awayTeam?.name}`);
     continue;
   }
-  const pair = matchByPair.get(`${homeId}|${awayId}`);
-  if (!pair) continue; // knockout round — not in the group-stage data
   const ft = f.score?.fullTime;
   if (ft?.home == null || ft?.away == null) continue;
 
-  live.results[pair.id] = pair.reversed ? [ft.away, ft.home] : [ft.home, ft.away];
-  finishedApi.set(pair.id, f.id);
+  const pair = matchByPair.get(`${homeId}|${awayId}`);
+  if (pair) {
+    live.results[pair.id] = pair.reversed
+      ? [ft.away, ft.home]
+      : [ft.home, ft.away];
+    finishedApi.set(pair.id, f.id);
+  } else if (f.stage && f.stage !== "GROUP_STAGE") {
+    // Knockout match — record by stage + teams so the bracket can fill in.
+    const w = f.score?.winner;
+    const winnerId =
+      w === "HOME_TEAM" ? homeId : w === "AWAY_TEAM" ? awayId : null;
+    const existing = live.koResults.find(
+      (k) => k.homeId === homeId && k.awayId === awayId && k.stage === f.stage
+    );
+    const rec: KoResult = {
+      stage: f.stage,
+      homeId,
+      awayId,
+      homeScore: ft.home,
+      awayScore: ft.away,
+      winnerId,
+    };
+    if (existing) Object.assign(existing, rec);
+    else live.koResults.push(rec);
+  }
 }
 
 // Fetch bookings once per newly finished match (free tier: 10 requests/min).
@@ -175,6 +211,7 @@ const after = JSON.stringify({
   results: live.results,
   redCards: live.redCards,
   yellowCards: live.yellowCards,
+  koResults: live.koResults,
   eventsChecked: live.eventsChecked,
 });
 

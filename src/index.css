@@ -1543,3 +1543,35 @@ img.flag {
   .third-list { grid-template-columns: 1fr; }
   .third-row:nth-child(8) { margin-bottom: 8px; }
 }
+
+/* Knockout match meta + live scores */
+.bk-match-meta {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 10px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.05em;
+  color: var(--chalk-faint);
+  border-bottom: 1px solid var(--line-soft);
+}
+.bk-score {
+  font-family: var(--font-mono);
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--chalk);
+  margin-left: 8px;
+}
+.bk-seed.is-won {
+  background: var(--grass-soft);
+}
+.bk-seed.is-won .bk-seed-name {
+  color: var(--chalk);
+  font-weight: 600;
+}
+.bk-seed.is-won .bk-score {
+  color: var(--grass);
+}
+.bk-seed.is-faded {
+  opacity: 0.5;
+}
