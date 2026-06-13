@@ -11,14 +11,12 @@ concurrency:
 
 permissions:
   contents: write
-  pages: write
-  id-token: write
 
 jobs:
+  # Fetch finished results + red cards and commit them. The push triggers
+  # Vercel's Git integration, which rebuilds and redeploys the site.
   update:
     runs-on: ubuntu-latest
-    outputs:
-      changed: ${{ steps.commit.outputs.changed }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -29,10 +27,9 @@ jobs:
       - run: npx tsx scripts/update-data.ts
         env:
           FOOTBALL_API_KEY: ${{ secrets.FOOTBALL_API_KEY }}
-      - id: commit
+      - name: Commit any data changes
         run: |
           if git diff --quiet; then
-            echo "changed=false" >> "$GITHUB_OUTPUT"
             echo "No data changes."
           else
             git config user.name "github-actions[bot]"
@@ -40,30 +37,4 @@ jobs:
             git add src/data/live.json
             git commit -m "Update live results and red cards"
             git push
-            echo "changed=true" >> "$GITHUB_OUTPUT"
           fi
-
-  # Pushes made with GITHUB_TOKEN don't trigger the regular deploy workflow,
-  # so redeploy GitHub Pages here when the data changed.
-  deploy:
-    needs: update
-    if: needs.update.outputs.changed == 'true'
-    runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          ref: ${{ github.ref }}
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 22
-          cache: npm
-      - run: npm ci
-      - run: npm run build
-      - uses: actions/upload-pages-artifact@v3
-        with:
-          path: dist
-      - id: deployment
-        uses: actions/deploy-pages@v4

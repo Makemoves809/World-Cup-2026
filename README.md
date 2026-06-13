@@ -66,11 +66,11 @@ match detail modal and fixture-card chips pick them up automatically.
 
 `.github/workflows/update-data.yml` runs hourly: `scripts/update-data.ts` pulls
 finished results and red cards from
-[football-data.org](https://www.football-data.org/) into `src/data/live.json`,
-commits when something changed, and redeploys GitHub Pages (a Vercel Git
-integration redeploys on the same push). Setup: register a free
-football-data.org key (the free tier includes the World Cup) and save it as a
-repository secret named `FOOTBALL_API_KEY`.
+[football-data.org](https://www.football-data.org/) into `src/data/live.json`
+and commits when something changed. Deployment is handled by Vercel's Git
+integration, which rebuilds the site on every push (including these automated
+commits). Setup: register a free football-data.org key (the free tier includes
+the World Cup) and save it as a repository secret named `FOOTBALL_API_KEY`.
 
 Live data merges with the curated files — manual `RESULTS` entries and
 `discipline.ts` absences take precedence, and auto-detected red cards get their
