@@ -1344,7 +1344,8 @@ img.flag {
   .hero-row { margin-bottom: 44px; }
   .hero-stats { margin: 0 -16px; }
   .stat { padding: 16px 16px 18px; }
-  .groups, .fixtures { padding: 56px 16px; }
+  .groups, .knockout, .fixtures { padding: 56px 16px; }
+  .home-links { padding: 8px 16px 56px; }
   .filter-row { top: 53px; }
   .cell { min-width: 56px; }
   .cell-num { font-size: 28px; }
@@ -1353,6 +1354,13 @@ img.flag {
   .modal { padding: 22px 18px 18px; }
   .player-row { flex-direction: column; align-items: flex-start; gap: 10px; }
   .impact { align-items: flex-start; }
+}
+
+/* Narrow phones: keep the header on one row that always fits. */
+@media (max-width: 440px) {
+  .site-header { gap: 8px; }
+  .day-badge { display: none; }
+  .nav-link { padding: 6px 7px; font-size: 12px; letter-spacing: 0.04em; }
 }
 
 @media (prefers-reduced-motion: reduce) {
