@@ -2,12 +2,19 @@ import type { ImpactLevel, PlayerAbsence } from "./types";
 import { matches } from "./fixtures";
 import live from "./live.json";
 
+/** All match ids a team plays in — used for tournament-long absences. */
+const teamMatchIds = (teamId: string): string[] =>
+  matches
+    .filter((m) => m.home === teamId || m.away === teamId)
+    .map((m) => m.id);
+
 /**
  * Player availability ledger — manually curated red cards, suspensions, and
- * injuries. The scheduled update-data workflow appends new red cards via
- * live.json; manual entries here take precedence (richer notes, curated
- * impact and positions). A red card carries an automatic one-match ban; add
- * further matches to `missesMatchIds` if FIFA extends it.
+ * injuries. The scheduled update-data workflow appends new red cards and
+ * two-yellow suspensions via live.json; manual entries here take precedence
+ * (richer notes, curated impact and positions). A red card carries an
+ * automatic one-match ban; add further matches to `missesMatchIds` if FIFA
+ * extends it. Injuries have no free data feed, so they are refreshed by hand.
  */
 const curated: PlayerAbsence[] = [
   {
@@ -40,6 +47,148 @@ const curated: PlayerAbsence[] = [
     sourceMatchId: "m-A-1",
     missesMatchIds: ["m-A-4"],
     impact: 4,
+  },
+
+  /* ----- Injuries (hand-curated; no free feed — refresh manually) ----- */
+  {
+    player: "Rodrygo",
+    position: "Forward",
+    team: "bra",
+    type: "injury",
+    reason: "Torn ACL & meniscus (right knee)",
+    missesMatchIds: teamMatchIds("bra"),
+    impact: 5,
+    note: "Ruled out of the tournament.",
+  },
+  {
+    player: "Éder Militão",
+    position: "Centre-back",
+    team: "bra",
+    type: "injury",
+    reason: "Ruptured thigh tendon — surgery",
+    missesMatchIds: teamMatchIds("bra"),
+    impact: 4,
+    note: "Ruled out of the tournament.",
+  },
+  {
+    player: "Estêvão",
+    position: "Winger",
+    team: "bra",
+    type: "injury",
+    reason: "Hamstring tear (right leg)",
+    missesMatchIds: teamMatchIds("bra"),
+    impact: 3,
+    note: "Left out of Brazil's squad.",
+  },
+  {
+    player: "Neymar",
+    position: "Forward",
+    team: "bra",
+    type: "injury",
+    reason: "Calf injury (grade 2)",
+    missesMatchIds: ["m-C-1"],
+    impact: 4,
+    note: "Doubtful for the opener vs Morocco; making good progress.",
+  },
+  {
+    player: "Hugo Ekitike",
+    position: "Striker",
+    team: "fra",
+    type: "injury",
+    reason: "Ruptured Achilles tendon",
+    missesMatchIds: teamMatchIds("fra"),
+    impact: 3,
+    note: "Ruled out of the tournament.",
+  },
+  {
+    player: "Serge Gnabry",
+    position: "Winger",
+    team: "ger",
+    type: "injury",
+    reason: "Adductor tear (right thigh)",
+    missesMatchIds: teamMatchIds("ger"),
+    impact: 4,
+    note: "Ruled out of the tournament.",
+  },
+  {
+    player: "Xavi Simons",
+    position: "Attacking midfielder",
+    team: "ned",
+    type: "injury",
+    reason: "Torn ACL (right knee)",
+    missesMatchIds: teamMatchIds("ned"),
+    impact: 4,
+    note: "Ruled out of the tournament.",
+  },
+  {
+    player: "Jurriën Timber",
+    position: "Defender",
+    team: "ned",
+    type: "injury",
+    reason: "Groin injury",
+    missesMatchIds: teamMatchIds("ned"),
+    impact: 4,
+    note: "Ruled out of the tournament.",
+  },
+  {
+    player: "Juan Foyth",
+    position: "Defender",
+    team: "arg",
+    type: "injury",
+    reason: "Ruptured Achilles tendon (left)",
+    missesMatchIds: teamMatchIds("arg"),
+    impact: 3,
+    note: "Ruled out of the tournament.",
+  },
+  {
+    player: "Wataru Endo",
+    position: "Defensive midfielder",
+    team: "jpn",
+    type: "injury",
+    reason: "Ankle ligament tear",
+    missesMatchIds: teamMatchIds("jpn"),
+    impact: 4,
+    note: "Captain; ruled out of the tournament.",
+  },
+  {
+    player: "Christoph Baumgartner",
+    position: "Attacking midfielder",
+    team: "aut",
+    type: "injury",
+    reason: "Thigh muscle injury",
+    missesMatchIds: teamMatchIds("aut"),
+    impact: 4,
+    note: "Ruled out of the tournament.",
+  },
+  {
+    player: "Billy Gilmour",
+    position: "Midfielder",
+    team: "sco",
+    type: "injury",
+    reason: "Knee injury",
+    missesMatchIds: teamMatchIds("sco"),
+    impact: 4,
+    note: "Ruled out of the tournament.",
+  },
+  {
+    player: "Cho Yu-min",
+    position: "Centre-back",
+    team: "kor",
+    type: "injury",
+    reason: "Plantar fascia tear (right foot)",
+    missesMatchIds: teamMatchIds("kor"),
+    impact: 3,
+    note: "Ruled out of the tournament.",
+  },
+  {
+    player: "Alphonso Davies",
+    position: "Left-back",
+    team: "can",
+    type: "injury",
+    reason: "Grade-2 hamstring tear",
+    missesMatchIds: ["m-B-1"],
+    impact: 5,
+    note: "Missed the opener; expected to feature later in the group stage.",
   },
 ];
 
@@ -160,7 +309,80 @@ const liveAbsences: PlayerAbsence[] = (
     };
   });
 
-export const absences: PlayerAbsence[] = [...curated, ...liveAbsences];
+/* ----- Two-yellow suspensions from the update-data workflow ----- */
+
+interface LiveYellowCard {
+  player: string;
+  team: string;
+  matchId: string;
+  minute: number | null;
+}
+
+const kickoffOf = (matchId: string): string =>
+  matches.find((m) => m.id === matchId)?.kickoff ?? "";
+
+/**
+ * FIFA rule: two yellow cards in separate matches bring a one-match ban, then
+ * the tally resets (so a 4th yellow bans again). We sort each player's yellows
+ * by kickoff and trigger a suspension on every second booking, for the team's
+ * next match after it. (Yellows are wiped after the quarter-finals; with only
+ * group-stage fixtures in the data that boundary isn't reached here.)
+ */
+function buildSuspensions(yellows: LiveYellowCard[]): PlayerAbsence[] {
+  const byPlayer = new Map<string, LiveYellowCard[]>();
+  for (const y of yellows) {
+    const key = `${y.team}|${normName(y.player)}`;
+    const arr = byPlayer.get(key);
+    if (arr) arr.push(y);
+    else byPlayer.set(key, [y]);
+  }
+
+  const out: PlayerAbsence[] = [];
+  for (const list of byPlayer.values()) {
+    list.sort((a, b) =>
+      kickoffOf(a.matchId).localeCompare(kickoffOf(b.matchId))
+    );
+    // Every second booking (index 1, 3, …) completes a pair → one-match ban.
+    for (let i = 1; i < list.length; i += 2) {
+      const y = list[i];
+      const misses = nextMatchFor(y.team, y.matchId);
+      if (misses.length === 0) continue; // no further match to miss
+      out.push({
+        player: y.player,
+        team: y.team,
+        type: "suspension",
+        reason: "Two yellow cards — one-match suspension",
+        sourceMatchId: y.matchId,
+        missesMatchIds: misses,
+        impact: impactFor(y.team, y.player),
+      });
+    }
+  }
+  return out;
+}
+
+const priorAbsences = [...curated, ...liveAbsences];
+
+/** True when a curated/red entry already rules this player out of that match. */
+function alreadyCovered(s: PlayerAbsence): boolean {
+  const words = nameWords(s.player);
+  return priorAbsences.some(
+    (a) =>
+      a.team === s.team &&
+      nameWords(a.player).some((w) => words.includes(w)) &&
+      s.missesMatchIds.some((m) => a.missesMatchIds.includes(m))
+  );
+}
+
+const liveSuspensions = buildSuspensions(
+  (live.yellowCards as unknown as LiveYellowCard[]) ?? []
+).filter((s) => !alreadyCovered(s));
+
+export const absences: PlayerAbsence[] = [
+  ...curated,
+  ...liveAbsences,
+  ...liveSuspensions,
+];
 
 /** Players shown a red card during the given match. */
 export const sentOffIn = (matchId: string): PlayerAbsence[] =>

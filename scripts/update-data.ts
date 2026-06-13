@@ -28,19 +28,30 @@ interface LiveRedCard {
   detail: string;
 }
 
+interface LiveYellowCard {
+  player: string;
+  team: string;
+  matchId: string;
+  minute: number | null;
+}
+
 interface LiveData {
   updatedAt: string;
   results: Record<string, [number, number]>;
   redCards: LiveRedCard[];
+  /** Straight yellow cards — used to compute two-yellow suspensions. */
+  yellowCards: LiveYellowCard[];
   /** Match ids whose post-match events were already fetched. */
   eventsChecked: string[];
 }
 
 const LIVE_PATH = new URL("../src/data/live.json", import.meta.url);
 const live: LiveData = JSON.parse(readFileSync(LIVE_PATH, "utf8"));
+live.yellowCards = live.yellowCards ?? [];
 const before = JSON.stringify({
   results: live.results,
   redCards: live.redCards,
+  yellowCards: live.yellowCards,
   eventsChecked: live.eventsChecked,
 });
 
@@ -135,17 +146,27 @@ for (const [matchId, apiId] of finishedApi) {
   const bookings: any[] = detail.bookings ?? detail.match?.bookings ?? [];
   for (const b of bookings) {
     const card: string = b.card ?? "";
-    if (!card.includes("RED")) continue; // RED or YELLOW_RED
     const teamId = mapTeam(b.team);
     if (!teamId || !b.player?.name) continue;
-    live.redCards.push({
-      player: b.player.name,
-      team: teamId,
-      matchId,
-      minute: b.minute ?? null,
-      extra: null,
-      detail: card === "YELLOW_RED" ? "second yellow card" : "straight red",
-    });
+    if (card.includes("RED")) {
+      // RED (straight) or YELLOW_RED (second yellow) — a sending off.
+      live.redCards.push({
+        player: b.player.name,
+        team: teamId,
+        matchId,
+        minute: b.minute ?? null,
+        extra: null,
+        detail: card === "YELLOW_RED" ? "second yellow card" : "straight red",
+      });
+    } else if (card === "YELLOW") {
+      // Straight yellow — tracked so two across matches => a suspension.
+      live.yellowCards.push({
+        player: b.player.name,
+        team: teamId,
+        matchId,
+        minute: b.minute ?? null,
+      });
+    }
   }
   live.eventsChecked.push(matchId);
 }
@@ -153,6 +174,7 @@ for (const [matchId, apiId] of finishedApi) {
 const after = JSON.stringify({
   results: live.results,
   redCards: live.redCards,
+  yellowCards: live.yellowCards,
   eventsChecked: live.eventsChecked,
 });
 
@@ -162,6 +184,6 @@ if (after === before) {
   live.updatedAt = new Date().toISOString();
   writeFileSync(LIVE_PATH, JSON.stringify(live, null, 2) + "\n");
   console.log(
-    `Updated: ${Object.keys(live.results).length} results, ${live.redCards.length} red cards.`
+    `Updated: ${Object.keys(live.results).length} results, ${live.redCards.length} red cards, ${live.yellowCards.length} yellow cards.`
   );
 }
