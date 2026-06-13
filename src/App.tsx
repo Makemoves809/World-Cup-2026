@@ -3,6 +3,7 @@ import { Header } from "./components/Header";
 import { Hero } from "./components/Hero";
 import { ResultsTicker } from "./components/ResultsTicker";
 import { GroupTable } from "./components/GroupTable";
+import { Knockout } from "./components/Knockout";
 import { Fixtures } from "./components/Fixtures";
 import { GROUP_IDS } from "./data/teams";
 
@@ -51,6 +52,8 @@ export function App() {
           </div>
         </section>
 
+        <Knockout />
+
         <Fixtures />
       </main>
 
@@ -71,6 +74,7 @@ export function App() {
             <span className="footer-head">Explore</span>
             <button onClick={() => navigate("top")}>Top</button>
             <button onClick={() => navigate("groups")}>Group standings</button>
+            <button onClick={() => navigate("knockout")}>Knockout</button>
             <button onClick={() => navigate("fixtures")}>Fixtures</button>
           </nav>
 
