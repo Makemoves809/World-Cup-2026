@@ -58,7 +58,7 @@ const SCHEDULE: ScheduleRow[] = [
 
   // Group D
   ["D", "usa", "par", "2026-06-13T01:00:00Z", "Los Angeles"],
-  ["D", "aus", "tur", "2026-06-13T04:00:00Z", "Vancouver"],
+  ["D", "aus", "tur", "2026-06-14T04:00:00Z", "Vancouver"],
   ["D", "usa", "aus", "2026-06-19T19:00:00Z", "Seattle"],
   ["D", "tur", "par", "2026-06-20T03:00:00Z", "San Francisco Bay Area"],
   ["D", "tur", "usa", "2026-06-26T02:00:00Z", "Los Angeles"],
