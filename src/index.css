@@ -1861,10 +1861,10 @@ img.flag {
   height: 100%;
   transition: width 0.4s var(--ease);
 }
-.vs-home {
+.vs-fill.vs-home {
   background: linear-gradient(90deg, #2bd479, #7ce8ad);
 }
-.vs-away {
+.vs-fill.vs-away {
   background: linear-gradient(90deg, #ffb03a, var(--floodlight));
 }
 .vs-fill.is-fav {
