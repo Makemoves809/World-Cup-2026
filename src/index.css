@@ -1955,29 +1955,41 @@ img.flag {
 }
 .vs-details summary {
   cursor: pointer;
-  font-family: var(--font-mono);
-  font-size: 11px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--chalk-dim);
   list-style: none;
-  display: inline-flex;
+  display: flex;
   align-items: center;
-  gap: 6px;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 10px 14px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  background: var(--line-soft);
+  color: var(--chalk);
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: 13px;
+  transition: background 0.15s, border-color 0.15s;
 }
 .vs-details summary::-webkit-details-marker {
   display: none;
 }
-.vs-details summary::before {
-  content: "▸";
+.vs-details summary::after {
+  content: "›";
+  font-size: 19px;
+  line-height: 1;
   color: var(--grass);
-  transition: transform 0.15s var(--ease);
+  transition: transform 0.2s var(--ease);
 }
-.vs-details[open] summary::before {
+.vs-details[open] summary::after {
   transform: rotate(90deg);
 }
 .vs-details summary:hover {
-  color: var(--chalk);
+  background: var(--grass-soft);
+  border-color: rgba(43, 212, 121, 0.4);
+}
+.vs-details[open] summary {
+  border-color: rgba(43, 212, 121, 0.4);
 }
 .vs-explain {
   margin: 12px 0 14px;
