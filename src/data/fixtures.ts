@@ -137,6 +137,7 @@ const SCHEDULE: ScheduleRow[] = [
 const RESULTS: Record<string, [number, number]> = {
   "m-A-1": [2, 0], // Mexico 2–0 South Africa — Jun 11, Estadio Azteca
   "m-A-2": [2, 1], // Korea Republic 2–1 Czechia — Jun 11, Estadio Akron
+  "m-D-2": [2, 0], // Australia 2–0 Türkiye — Jun 14, BC Place
   ...(live.results as unknown as Record<string, [number, number]>),
 };
 
