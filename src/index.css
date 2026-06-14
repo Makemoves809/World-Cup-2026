@@ -2056,3 +2056,35 @@ img.flag {
   font-weight: 600;
   color: var(--chalk);
 }
+
+/* Clickable hero panels -> open matchup detail */
+.hero-open {
+  cursor: pointer;
+  transition: border-color 0.2s, transform 0.2s var(--ease);
+}
+.hero-open:hover {
+  border-color: rgba(43, 212, 121, 0.4);
+  transform: translateY(-2px);
+}
+.hero-open:focus-visible {
+  outline: 2px solid var(--floodlight);
+  outline-offset: 3px;
+}
+.hero-open .next-venue {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.hero-open-hint {
+  margin-left: auto;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--grass);
+  opacity: 0.75;
+  white-space: nowrap;
+}
+.hero-open:hover .hero-open-hint {
+  opacity: 1;
+}

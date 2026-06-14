@@ -1,10 +1,11 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState, type KeyboardEvent } from "react";
 import type { Match } from "../data/types";
 import { matches } from "../data/fixtures";
 import { teamById } from "../data/teams";
 import { isLive, liveScore } from "../lib/live";
 import { navigate } from "../router";
 import { Flag } from "./Flag";
+import { MatchDetail } from "./MatchDetail";
 
 const TOURNAMENT_START = new Date("2026-06-11T19:00:00Z");
 const TOURNAMENT_END = new Date("2026-07-19T23:00:00Z");
@@ -59,6 +60,19 @@ export function Hero() {
   );
   const liveMatch = liveList[0];
 
+  const [selected, setSelected] = useState<Match | null>(null);
+  const open = (match: Match) => ({
+    role: "button" as const,
+    tabIndex: 0,
+    onClick: () => setSelected(match),
+    onKeyDown: (e: KeyboardEvent) => {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        setSelected(match);
+      }
+    },
+  });
+
   const target = nextMatch ? new Date(nextMatch.kickoff) : TOURNAMENT_START;
   const { days, hours, mins, secs } = splitDuration(
     target.getTime() - now.getTime()
@@ -108,7 +122,7 @@ export function Hero() {
 
         <div className="hero-row">
           {liveMatch ? (
-            <div className="countdown livepanel" aria-live="polite">
+            <div className="countdown livepanel hero-open" aria-live="polite" {...open(liveMatch)}>
               <span className="panel-label panel-label-live">
                 <span className="live-dot" aria-hidden="true" /> Live now
                 {liveList.length > 1 && (
@@ -118,6 +132,7 @@ export function Hero() {
               <LiveLine match={liveMatch} />
               <span className="next-venue">
                 {liveMatch.venue.stadium} · {liveMatch.venue.city}
+                <span className="hero-open-hint">Matchup ›</span>
               </span>
             </div>
           ) : (
@@ -136,10 +151,11 @@ export function Hero() {
                 ))}
               </div>
               {nextMatch && (
-                <div className="next-fixture">
+                <div className="next-fixture hero-open" {...open(nextMatch)}>
                   <FixtureLine match={nextMatch} />
                   <span className="next-venue">
                     {nextMatch.venue.stadium} · {nextMatch.venue.city}
+                    <span className="hero-open-hint">Matchup ›</span>
                   </span>
                 </div>
               )}
@@ -147,11 +163,12 @@ export function Hero() {
           )}
 
           {latestResult && (
-            <div className="latest-card">
+            <div className="latest-card hero-open" {...open(latestResult)}>
               <span className="panel-label panel-label-gold">Latest result</span>
               <ResultLine match={latestResult} />
               <span className="next-venue">
                 {latestResult.venue.stadium} · {latestResult.venue.city}
+                <span className="hero-open-hint">Matchup ›</span>
               </span>
             </div>
           )}
@@ -166,6 +183,10 @@ export function Hero() {
           ))}
         </dl>
       </div>
+
+      {selected && (
+        <MatchDetail match={selected} onClose={() => setSelected(null)} />
+      )}
     </section>
   );
 }
