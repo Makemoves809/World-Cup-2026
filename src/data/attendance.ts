@@ -6,7 +6,15 @@ import live from "./live.json";
  * provides it. Curated values take precedence.
  */
 const curated: Record<string, number> = {
-  // filled from official figures as matches are played
+  "m-A-1": 80824, // Mexico 2–0 South Africa — Estadio Azteca (opener)
+  "m-A-2": 44985, // Korea Republic 2–1 Czechia — Estadio Akron
+  "m-B-1": 43002, // Canada 1–1 Bosnia — BMO Field
+  "m-B-2": 67966, // Qatar 1–1 Switzerland — Levi's Stadium
+  "m-C-1": 80663, // Brazil 1–1 Morocco — MetLife Stadium
+  "m-C-2": 64146, // Haiti 0–1 Scotland — Gillette Stadium
+  "m-D-1": 70492, // United States 4–1 Paraguay — SoFi Stadium
+  "m-D-2": 52497, // Australia 2–0 Türkiye — BC Place
+  "m-E-1": 68021, // Germany 7–1 Curaçao — NRG Stadium
 };
 
 const liveAttendance =

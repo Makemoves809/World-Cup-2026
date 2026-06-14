@@ -3,22 +3,22 @@ import live from "./live.json";
 
 /** The 16 host venues across the three nations. */
 export const venues: Venue[] = [
-  { city: "Mexico City", stadium: "Estadio Azteca", country: "Mexico" },
-  { city: "Guadalajara", stadium: "Estadio Akron", country: "Mexico" },
-  { city: "Monterrey", stadium: "Estadio BBVA", country: "Mexico" },
-  { city: "Toronto", stadium: "BMO Field", country: "Canada" },
-  { city: "Vancouver", stadium: "BC Place", country: "Canada" },
-  { city: "Atlanta", stadium: "Mercedes-Benz Stadium", country: "USA" },
-  { city: "Boston", stadium: "Gillette Stadium", country: "USA" },
-  { city: "Dallas", stadium: "AT&T Stadium", country: "USA" },
-  { city: "Houston", stadium: "NRG Stadium", country: "USA" },
-  { city: "Kansas City", stadium: "Arrowhead Stadium", country: "USA" },
-  { city: "Los Angeles", stadium: "SoFi Stadium", country: "USA" },
-  { city: "Miami", stadium: "Hard Rock Stadium", country: "USA" },
-  { city: "New York / New Jersey", stadium: "MetLife Stadium", country: "USA" },
-  { city: "Philadelphia", stadium: "Lincoln Financial Field", country: "USA" },
-  { city: "San Francisco Bay Area", stadium: "Levi's Stadium", country: "USA" },
-  { city: "Seattle", stadium: "Lumen Field", country: "USA" },
+  { city: "Mexico City", stadium: "Estadio Azteca", country: "Mexico", capacity: 80824 },
+  { city: "Guadalajara", stadium: "Estadio Akron", country: "Mexico", capacity: 48000 },
+  { city: "Monterrey", stadium: "Estadio BBVA", country: "Mexico", capacity: 53500 },
+  { city: "Toronto", stadium: "BMO Field", country: "Canada", capacity: 45000 },
+  { city: "Vancouver", stadium: "BC Place", country: "Canada", capacity: 54000 },
+  { city: "Atlanta", stadium: "Mercedes-Benz Stadium", country: "USA", capacity: 71000 },
+  { city: "Boston", stadium: "Gillette Stadium", country: "USA", capacity: 64146 },
+  { city: "Dallas", stadium: "AT&T Stadium", country: "USA", capacity: 94000 },
+  { city: "Houston", stadium: "NRG Stadium", country: "USA", capacity: 71000 },
+  { city: "Kansas City", stadium: "Arrowhead Stadium", country: "USA", capacity: 73000 },
+  { city: "Los Angeles", stadium: "SoFi Stadium", country: "USA", capacity: 71000 },
+  { city: "Miami", stadium: "Hard Rock Stadium", country: "USA", capacity: 65000 },
+  { city: "New York / New Jersey", stadium: "MetLife Stadium", country: "USA", capacity: 82500 },
+  { city: "Philadelphia", stadium: "Lincoln Financial Field", country: "USA", capacity: 69000 },
+  { city: "San Francisco Bay Area", stadium: "Levi's Stadium", country: "USA", capacity: 70000 },
+  { city: "Seattle", stadium: "Lumen Field", country: "USA", capacity: 68000 },
 ];
 
 const venueByCity = new Map(venues.map((v) => [v.city, v]));
