@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from "react";
 import type { Match } from "../data/types";
 import { matches } from "../data/fixtures";
 import { teamById } from "../data/teams";
+import { isLive, liveScore } from "../lib/live";
 import { navigate } from "../router";
 import { Flag } from "./Flag";
 
@@ -52,6 +53,12 @@ export function Hero() {
     []
   );
 
+  const liveList = useMemo(
+    () => matches.filter((m) => isLive(m, now.getTime())),
+    [now]
+  );
+  const liveMatch = liveList[0];
+
   const target = nextMatch ? new Date(nextMatch.kickoff) : TOURNAMENT_START;
   const { days, hours, mins, secs } = splitDuration(
     target.getTime() - now.getTime()
@@ -100,27 +107,44 @@ export function Hero() {
         </div>
 
         <div className="hero-row">
-          <div className="countdown" role="timer" aria-live="off">
-            <span className="panel-label">
-              {nextMatch ? "Next kickoff in" : status}
-            </span>
-            <div className="countdown-cells">
-              {cells.map((c) => (
-                <div className="cell" key={c.l}>
-                  <span className="cell-num">{String(c.v).padStart(2, "0")}</span>
-                  <span className="cell-lab">{c.l}</span>
-                </div>
-              ))}
+          {liveMatch ? (
+            <div className="countdown livepanel" aria-live="polite">
+              <span className="panel-label panel-label-live">
+                <span className="live-dot" aria-hidden="true" /> Live now
+                {liveList.length > 1 && (
+                  <span className="live-more"> · {liveList.length} games</span>
+                )}
+              </span>
+              <LiveLine match={liveMatch} />
+              <span className="next-venue">
+                {liveMatch.venue.stadium} · {liveMatch.venue.city}
+              </span>
             </div>
-            {nextMatch && (
-              <div className="next-fixture">
-                <FixtureLine match={nextMatch} />
-                <span className="next-venue">
-                  {nextMatch.venue.stadium} · {nextMatch.venue.city}
-                </span>
+          ) : (
+            <div className="countdown" role="timer" aria-live="off">
+              <span className="panel-label">
+                {nextMatch ? "Next kickoff in" : status}
+              </span>
+              <div className="countdown-cells">
+                {cells.map((c) => (
+                  <div className="cell" key={c.l}>
+                    <span className="cell-num">
+                      {String(c.v).padStart(2, "0")}
+                    </span>
+                    <span className="cell-lab">{c.l}</span>
+                  </div>
+                ))}
               </div>
-            )}
-          </div>
+              {nextMatch && (
+                <div className="next-fixture">
+                  <FixtureLine match={nextMatch} />
+                  <span className="next-venue">
+                    {nextMatch.venue.stadium} · {nextMatch.venue.city}
+                  </span>
+                </div>
+              )}
+            </div>
+          )}
 
           {latestResult && (
             <div className="latest-card">
@@ -155,6 +179,26 @@ function FixtureLine({ match }: { match: Match }) {
         <Flag team={home} size={18} /> {home.code}
       </span>
       <span className="nt-v">vs</span>
+      <span className="nt">
+        {away.code} <Flag team={away} size={18} />
+      </span>
+    </div>
+  );
+}
+
+function LiveLine({ match }: { match: Match }) {
+  const home = teamById(match.home);
+  const away = teamById(match.away);
+  const ls = liveScore(match.id);
+  return (
+    <div className="next-teams">
+      <span className="nt">
+        <Flag team={home} size={18} /> {home.code}
+      </span>
+      <span className="nt-score">
+        {ls ? `${ls.home}–${ls.away}` : "–"}
+        {ls?.minute != null && <span className="live-min"> {ls.minute}'</span>}
+      </span>
       <span className="nt">
         {away.code} <Flag team={away} size={18} />
       </span>

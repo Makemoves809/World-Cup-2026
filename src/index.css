@@ -1825,3 +1825,22 @@ img.flag {
   font-variant-numeric: tabular-nums;
   opacity: 0.85;
 }
+
+/* Hero: live-game panel */
+.panel-label-live {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: var(--vermilion);
+}
+.live-more {
+  color: var(--chalk-dim);
+  letter-spacing: 0.04em;
+}
+.livepanel {
+  border-color: rgba(255, 90, 60, 0.4);
+  box-shadow: 0 0 0 1px rgba(255, 90, 60, 0.18), var(--shadow-card);
+}
+.livepanel .nt-score {
+  color: var(--chalk);
+}
