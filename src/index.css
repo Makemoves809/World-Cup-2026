@@ -2142,3 +2142,16 @@ img.flag {
   border-radius: 999px;
   background: linear-gradient(90deg, var(--floodlight), #ffd877);
 }
+
+/* Fixture-card attendance chip */
+.meta-att {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--chalk-dim);
+}
+.meta-att svg {
+  color: var(--floodlight);
+}

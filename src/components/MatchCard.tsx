@@ -1,6 +1,7 @@
 import type { Match } from "../data/types";
 import { teamById } from "../data/teams";
 import { sentOffIn, unavailableFor } from "../data/discipline";
+import { attendanceFor } from "../data/attendance";
 import { liveScore } from "../lib/live";
 import { matchup } from "../lib/matchup";
 import { Flag } from "./Flag";
@@ -33,6 +34,7 @@ export function MatchCard({ match, onSelect, live = false }: MatchCardProps) {
   const awayWon = done && (match.awayScore ?? 0) > (match.homeScore ?? 0);
   const ls = live ? liveScore(match.id) : undefined;
   const strength = done ? null : matchup(match);
+  const att = done ? attendanceFor(match.id) : undefined;
 
   return (
     <li className={`match-card status-${match.status}${live ? " is-live" : ""}`}>
@@ -52,6 +54,17 @@ export function MatchCard({ match, onSelect, live = false }: MatchCardProps) {
             {outCount > 0 && (
               <span className="meta-sus" title={`${outCount} suspended`}>
                 <i className="sus-dot" aria-hidden="true" /> {outCount} out
+              </span>
+            )}
+            {done && att != null && (
+              <span className="meta-att" title="Attendance">
+                <svg viewBox="0 0 16 16" width="11" height="11" aria-hidden="true">
+                  <path
+                    d="M5 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4Zm6 0a2 2 0 1 0 0-4 2 2 0 0 0 0 4ZM5 8c-2.2 0-4 1.1-4 3v1h6.2c-.1-.3-.2-.6-.2-1 0-1 .5-1.9 1.2-2.5A6 6 0 0 0 5 8Zm6 0c-.5 0-1 .1-1.5.2.9.6 1.5 1.6 1.5 2.8v1h4v-1c0-1.9-1.8-3-4-3Z"
+                    fill="currentColor"
+                  />
+                </svg>
+                {att.toLocaleString()}
               </span>
             )}
             {done ? (
