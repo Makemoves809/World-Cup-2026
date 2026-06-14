@@ -1053,7 +1053,7 @@ img.flag {
   position: relative;
   width: min(620px, 100%);
   max-height: min(82vh, 720px);
-  overflow-y: auto;
+  overflow: hidden auto;
   padding: 28px 28px 22px;
   background: linear-gradient(180deg, var(--pitch-2), var(--pitch));
   border: 1px solid var(--line);
@@ -1872,23 +1872,36 @@ img.flag {
 }
 .vs-rows {
   display: flex;
-  justify-content: space-between;
-  gap: 14px;
-  margin-top: 12px;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 14px;
 }
 .vs-row {
   display: flex;
   align-items: center;
-  gap: 8px;
+  justify-content: space-between;
+  gap: 10px;
   font-size: 14px;
+  min-width: 0;
 }
-.vs-row:last-child {
-  flex-direction: row-reverse;
-  text-align: right;
+.vs-team-id {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+.vs-figs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: none;
 }
 .vs-name {
   color: var(--chalk);
   font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .vs-rating {
   font-family: var(--font-mono);

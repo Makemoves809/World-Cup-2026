@@ -195,17 +195,21 @@ function StrengthBreakdown({ s }: { s: TeamStrength }) {
 function TeamStrengthRow({ s }: { s: TeamStrength }) {
   return (
     <div className="vs-row">
-      <Flag team={s.team} size={16} />
-      <span className="vs-name">{s.team.name}</span>
-      {s.penalty > 0 && (
-        <span
-          className="vs-pen"
-          title={`Out: ${s.outs.map((o) => o.player).join(", ")}`}
-        >
-          −{s.penalty}
-        </span>
-      )}
-      <span className="vs-rating">{s.effective}</span>
+      <span className="vs-team-id">
+        <Flag team={s.team} size={16} />
+        <span className="vs-name">{s.team.name}</span>
+      </span>
+      <span className="vs-figs">
+        {s.penalty > 0 && (
+          <span
+            className="vs-pen"
+            title={`Out: ${s.outs.map((o) => o.player).join(", ")}`}
+          >
+            −{s.penalty}
+          </span>
+        )}
+        <span className="vs-rating">{s.effective}</span>
+      </span>
     </div>
   );
 }
