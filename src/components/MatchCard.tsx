@@ -2,6 +2,7 @@ import type { Match } from "../data/types";
 import { teamById } from "../data/teams";
 import { sentOffIn, unavailableFor } from "../data/discipline";
 import { liveScore } from "../lib/live";
+import { matchup } from "../lib/matchup";
 import { Flag } from "./Flag";
 
 const fmtDate = new Intl.DateTimeFormat(undefined, {
@@ -31,6 +32,7 @@ export function MatchCard({ match, onSelect, live = false }: MatchCardProps) {
   const homeWon = done && (match.homeScore ?? 0) > (match.awayScore ?? 0);
   const awayWon = done && (match.awayScore ?? 0) > (match.homeScore ?? 0);
   const ls = live ? liveScore(match.id) : undefined;
+  const strength = done ? null : matchup(match);
 
   return (
     <li className={`match-card status-${match.status}${live ? " is-live" : ""}`}>
@@ -96,6 +98,23 @@ export function MatchCard({ match, onSelect, live = false }: MatchCardProps) {
             <Flag team={away} />
           </span>
         </span>
+
+        {strength && (
+          <span className="match-strength" title={`${strength.verdict} (strength rating)`}>
+            <span className="ms-num">{strength.home.effective}</span>
+            <span className="ms-bar">
+              <span
+                className="ms-fill ms-home"
+                style={{ width: `${strength.homeShare}%` }}
+              />
+              <span
+                className="ms-fill ms-away"
+                style={{ width: `${100 - strength.homeShare}%` }}
+              />
+            </span>
+            <span className="ms-num">{strength.away.effective}</span>
+          </span>
+        )}
 
         <span className="match-venue">
           <svg

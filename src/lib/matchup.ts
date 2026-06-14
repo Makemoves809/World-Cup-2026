@@ -11,7 +11,20 @@ import { unavailableFor } from "../data/discipline";
  * are compared to call who's favoured and by how much.
  */
 
-const IMPACT_PTS: Record<number, number> = { 1: 1, 2: 2, 3: 4, 4: 6, 5: 9 };
+const IMPACT_PTS: Record<number, number> = {
+  1: 0.5,
+  2: 1.5,
+  3: 3,
+  4: 4.5,
+  5: 6.5,
+};
+
+/**
+ * Deeper squads absorb absences better, so the same loss dents a stronger
+ * team less. Scales the penalty from ~0.7× (elite) to ~1.1× (weakest).
+ */
+const depthFactor = (base: number) =>
+  Math.min(1.1, Math.max(0.7, 1 - (base - 65) / 120));
 
 function positionWeight(pos?: string): number {
   if (!pos) return 1;
@@ -46,10 +59,11 @@ function strengthFor(teamId: string, matchId: string): TeamStrength {
   const team = teamById(teamId);
   const base = teamRating(teamId);
   const outs = unavailableFor(matchId).filter((a) => a.team === teamId);
-  const penalty = outs.reduce(
+  const raw = outs.reduce(
     (sum, a) => sum + IMPACT_PTS[a.impact] * positionWeight(a.position),
     0
   );
+  const penalty = raw * depthFactor(base);
   return {
     team,
     base,
