@@ -1872,29 +1872,33 @@ img.flag {
 }
 .vs-rows {
   display: flex;
-  flex-direction: column;
-  gap: 8px;
+  justify-content: space-between;
+  gap: 12px;
   margin-top: 14px;
 }
 .vs-row {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 10px;
-  font-size: 14px;
+  flex-direction: column;
+  gap: 5px;
   min-width: 0;
+  flex: 1 1 0;
+  font-size: 14px;
+}
+.vs-away {
+  align-items: flex-end;
+  text-align: right;
 }
 .vs-team-id {
   display: flex;
   align-items: center;
   gap: 8px;
   min-width: 0;
+  max-width: 100%;
 }
 .vs-figs {
   display: flex;
   align-items: center;
   gap: 8px;
-  flex: none;
 }
 .vs-name {
   color: var(--chalk);
@@ -2118,10 +2122,14 @@ img.flag {
 .attendance {
   margin-top: 14px;
 }
-.att-head {
+.att-stats {
   display: flex;
-  align-items: baseline;
-  gap: 10px;
+  gap: 32px;
+}
+.att-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
 }
 .att-label {
   font-family: var(--font-mono);
@@ -2136,14 +2144,16 @@ img.flag {
   font-weight: 600;
   color: var(--chalk);
 }
-.att-cap {
-  font-family: var(--font-body);
-  font-size: 13px;
-  font-weight: 400;
+.att-stat-cap .att-num {
   color: var(--chalk-dim);
 }
+.att-note {
+  margin: 8px 0 0;
+  font-size: 12px;
+  color: var(--chalk-faint);
+}
 .att-bar {
-  margin-top: 8px;
+  margin-top: 12px;
   height: 8px;
   border-radius: 999px;
   background: var(--pitch-3);

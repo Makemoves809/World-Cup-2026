@@ -159,6 +159,11 @@ for (const f of fdMatches) {
   }
   const pair = matchByPair.get(`${homeId}|${awayId}`);
 
+  // Attendance is sometimes on the list object (even while in play).
+  if (pair && typeof f.attendance === "number" && f.attendance > 0) {
+    live.attendance[pair.id] = f.attendance;
+  }
+
   // In-play / half-time: record the running score (group matches only).
   if (f.status === "IN_PLAY" || f.status === "PAUSED") {
     if (!pair) continue;

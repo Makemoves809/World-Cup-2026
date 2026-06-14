@@ -93,8 +93,8 @@ export function MatchDetail({ match, onClose }: MatchDetailProps) {
             />
           </div>
           <div className="vs-rows">
-            <TeamStrengthRow s={m.home} />
-            <TeamStrengthRow s={m.away} />
+            <TeamStrengthRow s={m.home} side="home" />
+            <TeamStrengthRow s={m.away} side="away" />
           </div>
           <p className="vs-verdict">{m.verdict}</p>
 
@@ -192,9 +192,15 @@ function StrengthBreakdown({ s }: { s: TeamStrength }) {
   );
 }
 
-function TeamStrengthRow({ s }: { s: TeamStrength }) {
+function TeamStrengthRow({
+  s,
+  side,
+}: {
+  s: TeamStrength;
+  side: "home" | "away";
+}) {
   return (
-    <div className="vs-row">
+    <div className={`vs-row vs-${side}`}>
       <span className="vs-team-id">
         <Flag team={s.team} size={16} />
         <span className="vs-name">{s.team.name}</span>
@@ -223,19 +229,29 @@ function Attendance({ match }: { match: Match }) {
 
   return (
     <div className="attendance">
-      <div className="att-head">
-        <span className="att-label">{att != null ? "Turnout" : "Capacity"}</span>
-        <span className="att-num">
-          {(att ?? cap)!.toLocaleString()}
-          {att != null && cap != null && (
-            <span className="att-cap"> · {pct}% of {cap.toLocaleString()}</span>
-          )}
-        </span>
+      <div className="att-stats">
+        <div className="att-stat">
+          <span className="att-label">Attendance</span>
+          <span className="att-num">
+            {att != null ? att.toLocaleString() : "—"}
+          </span>
+        </div>
+        <div className="att-stat att-stat-cap">
+          <span className="att-label">Capacity</span>
+          <span className="att-num">
+            {cap != null ? cap.toLocaleString() : "—"}
+          </span>
+        </div>
       </div>
       {pct != null && (
         <div className="att-bar" role="img" aria-label={`${pct}% full`}>
           <span className="att-fill" style={{ width: `${pct}%` }} />
         </div>
+      )}
+      {pct != null ? (
+        <p className="att-note">{pct}% full</p>
+      ) : (
+        att == null && <p className="att-note">Attendance reported after kickoff.</p>
       )}
     </div>
   );
