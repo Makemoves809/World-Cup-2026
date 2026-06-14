@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-14T21:52:48.600Z",
+  "updatedAt": "2026-06-14T23:13:53.801Z",
   "results": {
     "m-A-1": [
       2,
@@ -36,18 +36,16 @@
     "m-E-1": [
       7,
       1
+    ],
+    "m-F-1": [
+      2,
+      2
     ]
   },
   "redCards": [],
   "yellowCards": [],
   "koResults": [],
-  "liveScores": {
-    "m-F-1": {
-      "home": 2,
-      "away": 1,
-      "minute": null
-    }
-  },
+  "liveScores": {},
   "attendance": {},
   "eventsChecked": [
     "m-A-1",
@@ -58,6 +56,7 @@
     "m-C-1",
     "m-C-2",
     "m-D-2",
-    "m-E-1"
+    "m-E-1",
+    "m-F-1"
   ]
 }
