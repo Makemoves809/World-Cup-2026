@@ -2159,7 +2159,7 @@ img.flag {
 .att-bar {
   position: relative;
   margin-top: 12px;
-  height: 18px;
+  height: 20px;
   border-radius: 999px;
   background: var(--pitch-3);
   overflow: hidden;
@@ -2177,7 +2177,10 @@ img.flag {
 .att-bar-pct {
   position: relative;
   margin-left: auto;
-  padding-right: 10px;
+  margin-right: 5px;
+  padding: 2px 9px;
+  border-radius: 999px;
+  background: rgba(4, 16, 10, 0.62);
   font-family: var(--font-mono);
   font-size: 11px;
   font-weight: 600;
