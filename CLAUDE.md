@@ -24,3 +24,26 @@ This branch IS the live site, so don't push something broken:
 
 1. `npm run build` must pass (type-check + production build).
 2. Then commit and `git push origin claude/repository-edits-completion-rs4u72`.
+
+## Always do: refresh manually-curated data (IMPORTANT)
+
+The owner does NOT want to have to ask for this. **On every request — whenever
+you're already making a change — proactively check whether the hand-curated
+match data is current, and update it yourself (with web sources) before
+finishing.** Don't wait to be told.
+
+The free football-data feed auto-updates **scores, live in-play scores, cards,
+and standings** — but several things are **manual / curated** and must be kept
+current by hand:
+
+- **Attendance** (`src/data/attendance.ts`) — the free feed does NOT provide
+  it. Add each newly-finished match's official attendance figure (researched
+  and cross-checked). This is the main one to keep on top of.
+- **Injuries & suspensions** (`src/data/discipline.ts`) — add red cards / new
+  injuries for recent matches, and move/retire entries whose match has passed.
+- **Team ratings** (`src/data/ratings.ts`) — adjust if form shifts materially.
+
+Workflow each time: check which matches have finished since the data was last
+touched, fill in their attendance (and any new cards/injuries), then build and
+push along with whatever the owner actually asked for.
+
