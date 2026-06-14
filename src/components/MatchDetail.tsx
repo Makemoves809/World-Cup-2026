@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import type { Match, PlayerAbsence } from "../data/types";
 import { teamById } from "../data/teams";
 import { IMPACT_LABELS, sentOffIn, unavailableFor } from "../data/discipline";
+import { attendanceFor } from "../data/attendance";
 import { matchup, type TeamStrength } from "../lib/matchup";
 import { Flag } from "./Flag";
 
@@ -71,6 +72,9 @@ export function MatchDetail({ match, onClose }: MatchDetailProps) {
         <p className="modal-venue">
           {match.venue.stadium} · {match.venue.city}, {match.venue.country}
         </p>
+
+        <Attendance match={match} />
+
 
         <section className="modal-section matchup">
           <h4 className="modal-head">Team comparison</h4>
@@ -202,6 +206,33 @@ function TeamStrengthRow({ s }: { s: TeamStrength }) {
         </span>
       )}
       <span className="vs-rating">{s.effective}</span>
+    </div>
+  );
+}
+
+function Attendance({ match }: { match: Match }) {
+  const att = attendanceFor(match.id);
+  const cap = match.venue.capacity;
+  if (att == null && cap == null) return null;
+  const pct =
+    att != null && cap ? Math.min(100, Math.round((att / cap) * 100)) : null;
+
+  return (
+    <div className="attendance">
+      <div className="att-head">
+        <span className="att-label">{att != null ? "Turnout" : "Capacity"}</span>
+        <span className="att-num">
+          {(att ?? cap)!.toLocaleString()}
+          {att != null && cap != null && (
+            <span className="att-cap"> · {pct}% of {cap.toLocaleString()}</span>
+          )}
+        </span>
+      </div>
+      {pct != null && (
+        <div className="att-bar" role="img" aria-label={`${pct}% full`}>
+          <span className="att-fill" style={{ width: `${pct}%` }} />
+        </div>
+      )}
     </div>
   );
 }

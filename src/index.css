@@ -2100,3 +2100,45 @@ img.flag {
 .hero-open:hover .hero-open-hint {
   opacity: 1;
 }
+
+/* ---------- Match-detail attendance / turnout ---------- */
+.attendance {
+  margin-top: 14px;
+}
+.att-head {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+.att-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--chalk-dim);
+}
+.att-num {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--chalk);
+}
+.att-cap {
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--chalk-dim);
+}
+.att-bar {
+  margin-top: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: var(--pitch-3);
+  overflow: hidden;
+}
+.att-fill {
+  display: block;
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--floodlight), #ffd877);
+}

@@ -23,6 +23,8 @@ export interface Venue {
   city: string;
   stadium: string;
   country: "USA" | "Canada" | "Mexico";
+  /** Seating capacity for the tournament (used for turnout %). */
+  capacity?: number;
 }
 
 export interface Match {

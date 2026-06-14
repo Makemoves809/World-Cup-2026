@@ -56,6 +56,8 @@ interface LiveData {
   koResults: KoResult[];
   /** In-play group scores, keyed by match id (rebuilt each run). */
   liveScores: Record<string, { home: number; away: number; minute: number | null }>;
+  /** Announced attendance, keyed by match id. */
+  attendance: Record<string, number>;
   /** Match ids whose post-match events were already fetched. */
   eventsChecked: string[];
 }
@@ -65,12 +67,14 @@ const live: LiveData = JSON.parse(readFileSync(LIVE_PATH, "utf8"));
 live.yellowCards = live.yellowCards ?? [];
 live.koResults = live.koResults ?? [];
 live.liveScores = live.liveScores ?? {};
+live.attendance = live.attendance ?? {};
 const before = JSON.stringify({
   results: live.results,
   redCards: live.redCards,
   yellowCards: live.yellowCards,
   koResults: live.koResults,
   liveScores: live.liveScores,
+  attendance: live.attendance,
   eventsChecked: live.eventsChecked,
 });
 
@@ -205,6 +209,8 @@ for (const [matchId, apiId] of finishedApi) {
   console.log(`Fetching events for ${matchId} (fd match ${apiId})`);
   await sleep(6500);
   const detail = await get(`/matches/${apiId}`);
+  const att = detail.attendance ?? detail.match?.attendance;
+  if (typeof att === "number" && att > 0) live.attendance[matchId] = att;
   const bookings: any[] = detail.bookings ?? detail.match?.bookings ?? [];
   for (const b of bookings) {
     const card: string = b.card ?? "";
@@ -239,6 +245,7 @@ const after = JSON.stringify({
   yellowCards: live.yellowCards,
   koResults: live.koResults,
   liveScores: live.liveScores,
+  attendance: live.attendance,
   eventsChecked: live.eventsChecked,
 });
 
