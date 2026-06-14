@@ -2124,7 +2124,8 @@ img.flag {
 }
 .att-stats {
   display: flex;
-  gap: 32px;
+  flex-wrap: wrap;
+  gap: 12px 26px;
 }
 .att-stat {
   display: flex;
@@ -2140,12 +2141,15 @@ img.flag {
 }
 .att-num {
   font-family: var(--font-display);
-  font-size: 22px;
+  font-size: 21px;
   font-weight: 600;
   color: var(--chalk);
 }
 .att-stat-cap .att-num {
   color: var(--chalk-dim);
+}
+.att-stat-pct .att-num {
+  color: var(--floodlight);
 }
 .att-note {
   margin: 8px 0 0;
@@ -2153,17 +2157,33 @@ img.flag {
   color: var(--chalk-faint);
 }
 .att-bar {
+  position: relative;
   margin-top: 12px;
-  height: 8px;
+  height: 18px;
   border-radius: 999px;
   background: var(--pitch-3);
   overflow: hidden;
+  display: flex;
+  align-items: center;
 }
 .att-fill {
-  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
   height: 100%;
   border-radius: 999px;
   background: linear-gradient(90deg, var(--floodlight), #ffd877);
+}
+.att-bar-pct {
+  position: relative;
+  margin-left: auto;
+  padding-right: 10px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--chalk);
+  z-index: 1;
 }
 
 /* Fixture-card attendance chip */

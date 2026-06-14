@@ -242,16 +242,21 @@ function Attendance({ match }: { match: Match }) {
             {cap != null ? cap.toLocaleString() : "—"}
           </span>
         </div>
+        {pct != null && (
+          <div className="att-stat att-stat-pct">
+            <span className="att-label">Full</span>
+            <span className="att-num">{pct}%</span>
+          </div>
+        )}
       </div>
       {pct != null && (
         <div className="att-bar" role="img" aria-label={`${pct}% full`}>
           <span className="att-fill" style={{ width: `${pct}%` }} />
+          <span className="att-bar-pct">{pct}% full</span>
         </div>
       )}
-      {pct != null ? (
-        <p className="att-note">{pct}% full</p>
-      ) : (
-        att == null && <p className="att-note">Attendance reported after kickoff.</p>
+      {att == null && (
+        <p className="att-note">Attendance reported after kickoff.</p>
       )}
     </div>
   );
