@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import type { Match, PlayerAbsence } from "../data/types";
 import { teamById } from "../data/teams";
 import { IMPACT_LABELS, sentOffIn, unavailableFor } from "../data/discipline";
+import { matchup, type TeamStrength } from "../lib/matchup";
 import { Flag } from "./Flag";
 
 const fmtFull = new Intl.DateTimeFormat(undefined, {
@@ -23,6 +24,7 @@ export function MatchDetail({ match, onClose }: MatchDetailProps) {
   const done = match.status === "finished";
   const reds = sentOffIn(match.id);
   const out = unavailableFor(match.id);
+  const m = matchup(match);
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
@@ -70,6 +72,29 @@ export function MatchDetail({ match, onClose }: MatchDetailProps) {
           {match.venue.stadium} · {match.venue.city}, {match.venue.country}
         </p>
 
+        <section className="modal-section matchup">
+          <h4 className="modal-head">Team comparison</h4>
+          <div
+            className="vs-bar"
+            role="img"
+            aria-label={`Strength ${m.home.effective} vs ${m.away.effective}`}
+          >
+            <span
+              className={`vs-fill vs-home${m.favored === "home" ? " is-fav" : ""}`}
+              style={{ width: `${m.homeShare}%` }}
+            />
+            <span
+              className={`vs-fill vs-away${m.favored === "away" ? " is-fav" : ""}`}
+              style={{ width: `${100 - m.homeShare}%` }}
+            />
+          </div>
+          <div className="vs-rows">
+            <TeamStrengthRow s={m.home} />
+            <TeamStrengthRow s={m.away} />
+          </div>
+          <p className="vs-verdict">{m.verdict}</p>
+        </section>
+
         {reds.length > 0 && (
           <section className="modal-section">
             <h4 className="modal-head">
@@ -108,6 +133,24 @@ export function MatchDetail({ match, onClose }: MatchDetailProps) {
           from fringe player to star.
         </p>
       </div>
+    </div>
+  );
+}
+
+function TeamStrengthRow({ s }: { s: TeamStrength }) {
+  return (
+    <div className="vs-row">
+      <Flag team={s.team} size={16} />
+      <span className="vs-name">{s.team.name}</span>
+      {s.penalty > 0 && (
+        <span
+          className="vs-pen"
+          title={`Out: ${s.outs.map((o) => o.player).join(", ")}`}
+        >
+          −{s.penalty}
+        </span>
+      )}
+      <span className="vs-rating">{s.effective}</span>
     </div>
   );
 }
