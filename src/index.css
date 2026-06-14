@@ -1946,3 +1946,113 @@ img.flag {
 .ms-away {
   background: var(--floodlight);
 }
+
+/* Match-detail comparison: expandable breakdown */
+.vs-details {
+  margin-top: 14px;
+  border-top: 1px solid var(--line-soft);
+  padding-top: 12px;
+}
+.vs-details summary {
+  cursor: pointer;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--chalk-dim);
+  list-style: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.vs-details summary::-webkit-details-marker {
+  display: none;
+}
+.vs-details summary::before {
+  content: "▸";
+  color: var(--grass);
+  transition: transform 0.15s var(--ease);
+}
+.vs-details[open] summary::before {
+  transform: rotate(90deg);
+}
+.vs-details summary:hover {
+  color: var(--chalk);
+}
+.vs-explain {
+  margin: 12px 0 14px;
+  font-size: 13px;
+  color: var(--chalk-dim);
+  line-height: 1.5;
+}
+.vs-bd {
+  margin-top: 12px;
+  background: var(--ink);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  padding: 12px 14px;
+}
+.vs-bd-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+.vs-bd-team {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-weight: 600;
+  color: var(--chalk);
+}
+.vs-bd-base {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--chalk-dim);
+}
+.vs-bd-none {
+  margin: 0;
+  font-size: 13px;
+  color: var(--grass);
+}
+.vs-bd-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.vs-bd-list li {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 13px;
+  color: var(--chalk-dim);
+}
+.vs-bd-list em {
+  color: var(--chalk-faint);
+  font-style: normal;
+  font-size: 11px;
+}
+.vs-bd-pts {
+  font-family: var(--font-mono);
+  color: var(--vermilion);
+  flex: none;
+}
+.vs-bd-foot {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-top: 10px;
+  padding-top: 8px;
+  border-top: 1px solid var(--line-soft);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--chalk-dim);
+}
+.vs-bd-eff {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--chalk);
+}

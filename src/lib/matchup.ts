@@ -38,12 +38,21 @@ function positionWeight(pos?: string): number {
 
 const round1 = (n: number) => Math.round(n * 10) / 10;
 
+export interface AbsenceHit {
+  absence: PlayerAbsence;
+  /** Points knocked off the rating for this player (after the depth factor). */
+  points: number;
+}
+
 export interface TeamStrength {
   team: Team;
   base: number;
   penalty: number;
   effective: number;
+  /** Depth multiplier applied to the raw penalty (rounded for display). */
+  depth: number;
   outs: PlayerAbsence[];
+  breakdown: AbsenceHit[];
 }
 
 export interface Matchup {
@@ -59,17 +68,20 @@ function strengthFor(teamId: string, matchId: string): TeamStrength {
   const team = teamById(teamId);
   const base = teamRating(teamId);
   const outs = unavailableFor(matchId).filter((a) => a.team === teamId);
-  const raw = outs.reduce(
-    (sum, a) => sum + IMPACT_PTS[a.impact] * positionWeight(a.position),
-    0
-  );
-  const penalty = raw * depthFactor(base);
+  const df = depthFactor(base);
+  const breakdown: AbsenceHit[] = outs.map((a) => ({
+    absence: a,
+    points: round1(IMPACT_PTS[a.impact] * positionWeight(a.position) * df),
+  }));
+  const penalty = round1(breakdown.reduce((sum, b) => sum + b.points, 0));
   return {
     team,
     base,
-    penalty: round1(penalty),
+    penalty,
     effective: round1(Math.max(30, base - penalty)),
+    depth: Math.round(df * 100) / 100,
     outs,
+    breakdown,
   };
 }
 

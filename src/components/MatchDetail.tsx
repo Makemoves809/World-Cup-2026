@@ -93,6 +93,18 @@ export function MatchDetail({ match, onClose }: MatchDetailProps) {
             <TeamStrengthRow s={m.away} />
           </div>
           <p className="vs-verdict">{m.verdict}</p>
+
+          <details className="vs-details">
+            <summary>Why these numbers?</summary>
+            <p className="vs-explain">
+              Each side starts from its FIFA-ranking base (0–100), then loses
+              points for players ruled out — weighted by how big a loss each is
+              (impact 1–5) and their position. Deeper squads are docked a little
+              less (depth ×).
+            </p>
+            <StrengthBreakdown s={m.home} />
+            <StrengthBreakdown s={m.away} />
+          </details>
         </section>
 
         {reds.length > 0 && (
@@ -132,6 +144,45 @@ export function MatchDetail({ match, onClose }: MatchDetailProps) {
           Impact gauges how big a loss each absent player is to their side,
           from fringe player to star.
         </p>
+      </div>
+    </div>
+  );
+}
+
+function StrengthBreakdown({ s }: { s: TeamStrength }) {
+  return (
+    <div className="vs-bd">
+      <div className="vs-bd-head">
+        <span className="vs-bd-team">
+          <Flag team={s.team} size={14} /> {s.team.name}
+        </span>
+        <span className="vs-bd-base">base {s.base}</span>
+      </div>
+      {s.breakdown.length === 0 ? (
+        <p className="vs-bd-none">Full strength — no players out.</p>
+      ) : (
+        <ul className="vs-bd-list">
+          {s.breakdown.map((b) => (
+            <li key={b.absence.player}>
+              <span>
+                {b.absence.player}
+                {b.absence.position ? ` · ${b.absence.position}` : ""}{" "}
+                <em>({IMPACT_LABELS[b.absence.impact]})</em>
+              </span>
+              <span className="vs-bd-pts">−{b.points}</span>
+            </li>
+          ))}
+        </ul>
+      )}
+      <div className="vs-bd-foot">
+        {s.penalty > 0 ? (
+          <span>
+            −{s.penalty} total · depth ×{s.depth}
+          </span>
+        ) : (
+          <span />
+        )}
+        <span className="vs-bd-eff">= {s.effective}</span>
       </div>
     </div>
   );
