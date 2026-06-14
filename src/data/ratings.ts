@@ -5,29 +5,29 @@
  */
 export const TEAM_RATING: Record<string, number> = {
   // Group A
-  mex: 79, rsa: 66, kor: 76, cze: 74,
+  mex: 81, rsa: 61, kor: 74, cze: 67,
   // Group B
-  can: 74, sui: 80, qat: 66, bih: 70,
+  can: 71, sui: 78, qat: 63, bih: 58,
   // Group C
-  bra: 90, mar: 84, sco: 72, hai: 54,
+  bra: 86, mar: 86, sco: 67, hai: 51,
   // Group D
-  usa: 76, par: 71, aus: 70, tur: 78,
+  usa: 80, par: 67, aus: 69, tur: 73,
   // Group E
-  ger: 87, cuw: 52, civ: 74, ecu: 77,
+  ger: 84, cuw: 51, civ: 70, ecu: 74,
   // Group F
-  ned: 86, jpn: 79, tun: 70, swe: 74,
+  ned: 86, jpn: 79, tun: 65, swe: 67,
   // Group G
-  bel: 85, egy: 74, irn: 74, nzl: 58,
+  bel: 84, egy: 71, irn: 76, nzl: 50,
   // Group H
-  esp: 92, cpv: 57, uru: 84, ksa: 66,
+  esp: 95, cpv: 57, uru: 80, ksa: 61,
   // Group I
-  fra: 93, sen: 82, nor: 80, irq: 64,
+  fra: 95, sen: 81, nor: 71, irq: 63,
   // Group J
-  arg: 94, alg: 73, aut: 77, jor: 63,
+  arg: 95, alg: 72, aut: 74, jor: 58,
   // Group K
-  por: 88, col: 83, uzb: 66, cod: 70,
+  por: 87, col: 82, uzb: 64, cod: 65,
   // Group L
-  eng: 90, cro: 82, gha: 71, pan: 65,
+  eng: 92, cro: 83, gha: 55, pan: 70,
 };
 
 /** Fallback for any unmapped team. */
