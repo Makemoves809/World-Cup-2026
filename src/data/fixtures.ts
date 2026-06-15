@@ -89,7 +89,7 @@ const SCHEDULE: ScheduleRow[] = [
   ["G", "nzl", "bel", "2026-06-27T03:00:00Z", "Vancouver"],
 
   // Group H
-  ["H", "esp", "cpv", "2026-06-15T17:00:00Z", "Atlanta"],
+  ["H", "esp", "cpv", "2026-06-15T16:00:00Z", "Atlanta"],
   ["H", "ksa", "uru", "2026-06-15T22:00:00Z", "Miami"],
   ["H", "esp", "ksa", "2026-06-21T16:00:00Z", "Atlanta"],
   ["H", "uru", "cpv", "2026-06-21T22:00:00Z", "Miami"],
