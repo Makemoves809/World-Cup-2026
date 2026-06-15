@@ -32,10 +32,10 @@ export function Header({ path }: HeaderProps) {
       >
         <img
           className="brand-ball"
-          src={`${import.meta.env.BASE_URL}ball.svg`}
+          src={`${import.meta.env.BASE_URL}icon.png`}
           alt=""
-          width={28}
-          height={28}
+          width={30}
+          height={30}
         />
         <span className="brand-text">
           <span className="brand-mark">

@@ -126,11 +126,11 @@ img.flag {
   text-decoration: none;
 }
 .brand-ball {
-  filter: drop-shadow(0 0 8px rgba(43, 212, 121, 0.35));
-  transition: transform 0.5s var(--ease);
+  filter: drop-shadow(0 0 7px rgba(43, 212, 121, 0.28));
+  transition: transform 0.25s var(--ease);
 }
 .brand:hover .brand-ball {
-  transform: rotate(120deg);
+  transform: scale(1.08);
 }
 .brand-text {
   display: flex;
