@@ -15,8 +15,11 @@ request and no manual merge step.**
 - **Commit changes directly to the production branch and push.** Vercel's Git
   integration rebuilds and redeploys automatically on every push (~1–2 min).
   Do **not** open a PR or use a separate feature branch unless explicitly asked.
-- The hourly `update-data` GitHub Action also commits to this same branch, so
-  if a push is rejected as non-fast-forward, `git pull --rebase` and push again.
+- The `update-data` GitHub Action also commits to this same branch, so if a
+  push is rejected as non-fast-forward, `git pull --rebase` and push again. It
+  runs every ~5 min, driven by an **external cron (cron-job.org)** that calls
+  the `workflow_dispatch` API (GitHub's own scheduler is too unreliable for
+  frequent runs). To force an update, trigger `update-data.yml` manually.
 
 ### Before every push to production
 
