@@ -2,10 +2,11 @@ name: Update live data
 
 on:
   schedule:
-    # Match hours (games span many time zones, ~16:00–07:00 UTC): every 10 min
-    # so live and final scores refresh quickly.
-    - cron: "*/10 16-23 * * *"
-    - cron: "*/10 0-6 * * *"
+    # Match hours (games span many time zones, ~16:00–07:00 UTC): every 2 min
+    # for fast live/final scores. ~0.5 req/min — well within the 10 req/min
+    # free-tier limit.
+    - cron: "*/2 16-23 * * *"
+    - cron: "*/2 0-6 * * *"
     # Quiet hours (no matches in play): hourly.
     - cron: "20 7-15 * * *"
   workflow_dispatch:
