@@ -2,13 +2,10 @@ name: Update live data
 
 on:
   schedule:
-    # Match hours (games span many time zones, ~16:00–07:00 UTC): every 2 min
-    # for fast live/final scores. ~0.5 req/min — well within the 10 req/min
-    # free-tier limit.
-    - cron: "*/2 16-23 * * *"
-    - cron: "*/2 0-6 * * *"
-    # Quiet hours (no matches in play): hourly.
-    - cron: "20 7-15 * * *"
+    # Every 5 minutes, all day — GitHub Actions' minimum scheduled interval.
+    # Public repo = free unlimited Actions, and the script only commits when
+    # data actually changes, so quiet-hour polls are cheap no-ops.
+    - cron: "*/5 * * * *"
   workflow_dispatch:
 
 concurrency:
