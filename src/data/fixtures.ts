@@ -139,6 +139,7 @@ const RESULTS: Record<string, [number, number]> = {
   "m-A-2": [2, 1], // Korea Republic 2–1 Czechia — Jun 11, Estadio Akron
   "m-D-2": [2, 0], // Australia 2–0 Türkiye — Jun 14, BC Place
   "m-F-1": [2, 2], // Netherlands 2–2 Japan — Jun 14, AT&T Stadium
+  "m-G-1": [1, 1], // Belgium 1–1 Egypt — Jun 15, Lumen Field
   ...(live.results as unknown as Record<string, [number, number]>),
 };
 

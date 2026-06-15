@@ -17,6 +17,7 @@ const curated: Record<string, number> = {
   "m-E-1": 68021, // Germany 7–1 Curaçao — NRG Stadium
   "m-F-1": 69285, // Netherlands 2–2 Japan — AT&T Stadium
   "m-F-2": 50987, // Sweden 5–1 Tunisia — Estadio BBVA
+  "m-G-1": 66775, // Belgium 1–1 Egypt — Lumen Field
 };
 
 const liveAttendance =
