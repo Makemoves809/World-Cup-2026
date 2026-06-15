@@ -10,7 +10,7 @@ export const venues: Venue[] = [
   { city: "Vancouver", stadium: "BC Place", country: "Canada", capacity: 54000 },
   { city: "Atlanta", stadium: "Mercedes-Benz Stadium", country: "USA", capacity: 71000 },
   { city: "Boston", stadium: "Gillette Stadium", country: "USA", capacity: 64146 },
-  { city: "Dallas", stadium: "AT&T Stadium", country: "USA", capacity: 94000 },
+  { city: "Dallas", stadium: "AT&T Stadium", country: "USA", capacity: 70122 },
   { city: "Houston", stadium: "NRG Stadium", country: "USA", capacity: 71000 },
   { city: "Kansas City", stadium: "Arrowhead Stadium", country: "USA", capacity: 73000 },
   { city: "Los Angeles", stadium: "SoFi Stadium", country: "USA", capacity: 71000 },
