@@ -41,7 +41,17 @@ current by hand:
   and cross-checked). This is the main one to keep on top of.
 - **Injuries & suspensions** (`src/data/discipline.ts`) — add red cards / new
   injuries for recent matches, and move/retire entries whose match has passed.
+  Confirm **suspension length** (violent-conduct reds can be more than one
+  game), and remember **yellow-card totals are wiped after the quarter-finals**
+  — don't let the two-yellow auto-suspension carry yellows into the semis.
 - **Team ratings** (`src/data/ratings.ts`) — adjust if form shifts materially.
+- **Standings & qualification (tiebreakers)** (`src/lib/standings.ts`) — the
+  auto-sort only does points → goal difference → goals scored. FIFA's real
+  tiebreakers then go to **head-to-head**, **fair play (fewest cards)**, and
+  **drawing of lots**. So when a group finishes level, our computed 2nd/3rd —
+  i.e. **who qualifies** — can be wrong. When each group wraps, verify the
+  official finishing order (and the **8 best third-placed teams**) and correct
+  it if the simplified sort got it wrong; this feeds the bracket.
 - **Knockout bracket** (`src/lib/bracket.ts`) — verify it against the official
   FIFA bracket. Before the group stage ends it's a projection; once the Round
   of 32 is drawn (after June 27), confirm the real matchups — especially the
@@ -50,9 +60,14 @@ current by hand:
   differs. As knockout games are played, confirm teams and scores fill in
   correctly (knockout results auto-capture via `koResults`, but slotting may
   need a manual check).
+- **Revisit flagged / pending figures** — circle back on anything left
+  uncertain. Currently pending: Côte d'Ivoire–Ecuador (m-E-2) attendance, and a
+  few low-confidence venue capacities (Estadio Azteca, Arrowhead, Lumen Field).
+  Fill or correct them when better sources appear.
 
 Workflow each time: check which matches have finished since the data was last
-touched, fill in their attendance (and any new cards/injuries), verify the
-knockout bracket if the knockouts have started, then build and push along with
-whatever the owner actually asked for.
+touched, fill in their attendance (and any new cards/injuries), verify final
+group order/qualification once a group ends, verify the knockout bracket once
+the knockouts have started, revisit any pending figures, then build and push
+along with whatever the owner actually asked for.
 
