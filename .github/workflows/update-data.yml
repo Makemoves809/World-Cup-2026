@@ -36,10 +36,17 @@ jobs:
         run: |
           if git diff --quiet; then
             echo "No data changes."
-          else
-            git config user.name "github-actions[bot]"
-            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-            git add src/data/live.json
-            git commit -m "Update live results and red cards"
-            git push
+            exit 0
           fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add src/data/live.json
+          git commit -m "Update live results and red cards"
+          # Push with rebase-retry to tolerate concurrent pushes to the branch.
+          for i in 1 2 3 4 5; do
+            if git push; then exit 0; fi
+            echo "push rejected, rebasing (attempt $i)…"
+            git pull --rebase --autostash origin "${GITHUB_REF_NAME}" || true
+            sleep 2
+          done
+          echo "push failed after retries"; exit 1

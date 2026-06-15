@@ -124,17 +124,31 @@ for (const m of matches) {
   matchByPair.set(`${m.away}|${m.home}`, { id: m.id, reversed: true });
 }
 
-async function get(path: string): Promise<any> {
-  const res = await fetch(`${API}${path}`, {
-    headers: { "X-Auth-Token": KEY! },
-  });
-  if (!res.ok) {
-    throw new Error(`${path}: HTTP ${res.status} ${await res.text()}`);
-  }
-  return res.json();
-}
-
 const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
+
+async function get(path: string, attempts = 4): Promise<any> {
+  for (let i = 1; ; i++) {
+    try {
+      const res = await fetch(`${API}${path}`, {
+        headers: { "X-Auth-Token": KEY! },
+      });
+      if (res.status === 429 && i < attempts) {
+        await sleep(7000); // rate limited — wait out the per-minute window
+        continue;
+      }
+      if (!res.ok) {
+        throw new Error(`${path}: HTTP ${res.status} ${await res.text()}`);
+      }
+      return res.json();
+    } catch (err) {
+      // Transient network errors (dropped sockets, DNS, timeouts) are common
+      // at 1-minute polling — back off and retry rather than crash the run.
+      if (i >= attempts) throw err;
+      console.warn(`get ${path} failed (attempt ${i}/${attempts}): ${err}`);
+      await sleep(1500 * i);
+    }
+  }
+}
 
 const data = await get(`/competitions/${COMPETITION}/matches`);
 const fdMatches: any[] = data.matches ?? [];
