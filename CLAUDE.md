@@ -42,8 +42,17 @@ current by hand:
 - **Injuries & suspensions** (`src/data/discipline.ts`) — add red cards / new
   injuries for recent matches, and move/retire entries whose match has passed.
 - **Team ratings** (`src/data/ratings.ts`) — adjust if form shifts materially.
+- **Knockout bracket** (`src/lib/bracket.ts`) — verify it against the official
+  FIFA bracket. Before the group stage ends it's a projection; once the Round
+  of 32 is drawn (after June 27), confirm the real matchups — especially the
+  best-third-placed allocations and the previously-flagged slots (Match 83 =
+  2K v 2L, and the R16 89/90 city pairings) — and correct the structure if it
+  differs. As knockout games are played, confirm teams and scores fill in
+  correctly (knockout results auto-capture via `koResults`, but slotting may
+  need a manual check).
 
 Workflow each time: check which matches have finished since the data was last
-touched, fill in their attendance (and any new cards/injuries), then build and
-push along with whatever the owner actually asked for.
+touched, fill in their attendance (and any new cards/injuries), verify the
+knockout bracket if the knockouts have started, then build and push along with
+whatever the owner actually asked for.
 
