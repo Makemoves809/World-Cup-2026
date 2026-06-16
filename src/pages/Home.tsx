@@ -19,6 +19,11 @@ const LINKS = [
     title: "Fixtures",
     desc: "All 72 group-stage matches in your timezone.",
   },
+  {
+    to: "/qatar2022",
+    title: "Qatar 2022",
+    desc: "Relive the last World Cup — full results & bracket.",
+  },
 ];
 
 export function Home() {
