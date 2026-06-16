@@ -101,10 +101,11 @@ export function MatchDetail({ match, onClose }: MatchDetailProps) {
           <details className="vs-details">
             <summary>Why these numbers?</summary>
             <p className="vs-explain">
-              Each side starts from its FIFA-ranking base (0–100), then loses
-              points for players ruled out — weighted by how big a loss each is
-              (impact 1–5) and their position. Deeper squads are docked a little
-              less (depth ×).
+              Each side starts from a rating that blends its FIFA ranking with
+              tournament form — results so far nudge it up (▲) or down (▼), so
+              an upset like a 0–0 dents the favourite. It then loses points for
+              players ruled out (weighted by impact 1–5 and position). Deeper
+              squads are docked a little less.
             </p>
             <StrengthBreakdown s={m.home} />
             <StrengthBreakdown s={m.away} />
@@ -160,7 +161,16 @@ function StrengthBreakdown({ s }: { s: TeamStrength }) {
         <span className="vs-bd-team">
           <Flag team={s.team} size={14} /> {s.team.name}
         </span>
-        <span className="vs-bd-base">base {s.base}</span>
+        <span className="vs-bd-base">
+          {s.base}
+          {s.formDelta !== 0 && (
+            <em className="vs-bd-form">
+              {" "}
+              · FIFA {s.fifaBase} {s.formDelta > 0 ? "+" : ""}
+              {s.formDelta} form
+            </em>
+          )}
+        </span>
       </div>
       {s.breakdown.length === 0 ? (
         <p className="vs-bd-none">Full strength — no players out.</p>
@@ -206,6 +216,15 @@ function TeamStrengthRow({
         <span className="vs-name">{s.team.name}</span>
       </span>
       <span className="vs-figs">
+        {s.formDelta !== 0 && (
+          <span
+            className={`vs-form ${s.formDelta > 0 ? "up" : "down"}`}
+            title="Form vs pre-tournament rating"
+          >
+            {s.formDelta > 0 ? "▲" : "▼"}
+            {Math.abs(s.formDelta)}
+          </span>
+        )}
         {s.penalty > 0 && (
           <span
             className="vs-pen"

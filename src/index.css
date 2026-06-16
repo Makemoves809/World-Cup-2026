@@ -2299,3 +2299,17 @@ img.flag {
     padding: 56px 16px;
   }
 }
+
+/* Form-adjusted rating indicators */
+.vs-form {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+}
+.vs-form.up { color: var(--grass); }
+.vs-form.down { color: var(--vermilion); }
+.vs-bd-form {
+  font-style: normal;
+  color: var(--chalk-faint);
+  font-size: 11px;
+}

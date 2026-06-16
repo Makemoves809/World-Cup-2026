@@ -1,7 +1,7 @@
 import type { Match, PlayerAbsence, Team } from "../data/types";
 import { teamById } from "../data/teams";
-import { teamRating } from "../data/ratings";
 import { unavailableFor } from "../data/discipline";
+import { formRating } from "./form";
 
 /**
  * Match-up strength model. Each team starts from its 0–100 base rating, then
@@ -46,7 +46,12 @@ export interface AbsenceHit {
 
 export interface TeamStrength {
   team: Team;
+  /** Form-adjusted rating used as the comparison's starting point. */
   base: number;
+  /** Pre-tournament FIFA-based rating. */
+  fifaBase: number;
+  /** Form movement so far (base − fifaBase). */
+  formDelta: number;
   penalty: number;
   effective: number;
   /** Depth multiplier applied to the raw penalty (rounded for display). */
@@ -66,7 +71,8 @@ export interface Matchup {
 
 function strengthFor(teamId: string, matchId: string): TeamStrength {
   const team = teamById(teamId);
-  const base = teamRating(teamId);
+  const fr = formRating(teamId);
+  const base = fr.rating;
   const outs = unavailableFor(matchId).filter((a) => a.team === teamId);
   const df = depthFactor(base);
   const breakdown: AbsenceHit[] = outs.map((a) => ({
@@ -77,6 +83,8 @@ function strengthFor(teamId: string, matchId: string): TeamStrength {
   return {
     team,
     base,
+    fifaBase: fr.base,
+    formDelta: fr.delta,
     penalty,
     effective: round1(Math.max(30, base - penalty)),
     depth: Math.round(df * 100) / 100,
