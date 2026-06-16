@@ -5,6 +5,7 @@ import { Fixtures } from "./components/Fixtures";
 import { Home } from "./pages/Home";
 import { GroupsPage } from "./pages/GroupsPage";
 import { Qatar2022 } from "./pages/Qatar2022";
+import { FormTable } from "./pages/FormTable";
 import { navigate, useRoute } from "./router";
 
 export function App() {
@@ -20,6 +21,9 @@ export function App() {
       break;
     case "/fixtures":
       page = <Fixtures />;
+      break;
+    case "/form":
+      page = <FormTable />;
       break;
     case "/qatar2022":
       page = <Qatar2022 />;
@@ -54,6 +58,7 @@ export function App() {
             <button onClick={() => navigate("/groups")}>Group standings</button>
             <button onClick={() => navigate("/knockout")}>Knockout</button>
             <button onClick={() => navigate("/fixtures")}>Fixtures</button>
+            <button onClick={() => navigate("/form")}>Form table</button>
             <button onClick={() => navigate("/qatar2022")}>Qatar 2022</button>
           </nav>
 

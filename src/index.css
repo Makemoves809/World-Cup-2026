@@ -2313,3 +2313,129 @@ img.flag {
   color: var(--chalk-faint);
   font-size: 11px;
 }
+
+/* ---------- Form table page ---------- */
+.formpage {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 80px 24px;
+}
+.movers {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 14px;
+  margin-bottom: 26px;
+}
+.mover {
+  padding: 16px 18px;
+  border-radius: var(--radius);
+  border: 1px solid var(--line);
+  background: linear-gradient(180deg, var(--pitch-2), rgba(13, 36, 25, 0.6));
+  box-shadow: var(--shadow-card);
+}
+.mover.is-up { border-color: rgba(43, 212, 121, 0.4); }
+.mover.is-down { border-color: rgba(255, 90, 60, 0.4); }
+.mover-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--chalk-dim);
+}
+.mover-main {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin: 7px 0 4px;
+}
+.mover-name {
+  font-family: var(--font-display);
+  font-size: 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  color: var(--chalk);
+  flex: 1;
+}
+.mover-sub {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--chalk-faint);
+}
+.form-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.form-row,
+.form-head {
+  display: grid;
+  grid-template-columns: 28px 1fr 40px 48px 56px 52px;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 12px;
+  border-radius: var(--radius-sm);
+}
+.form-head {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--chalk-faint);
+  padding-bottom: 6px;
+}
+.form-row:nth-child(odd) {
+  background: var(--line-soft);
+}
+.form-rank {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--chalk-dim);
+  text-align: center;
+}
+.form-team {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  min-width: 0;
+}
+.form-name {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: var(--chalk);
+}
+.form-grp {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--chalk-faint);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  padding: 1px 5px;
+  flex: none;
+}
+.form-col {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  text-align: center;
+  color: var(--chalk-dim);
+}
+.form-col-rating {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--chalk);
+}
+.form-faint { color: var(--chalk-faint); }
+.form-flat { color: var(--chalk-faint); }
+.form-foot { margin-top: 18px; }
+
+@media (max-width: 560px) {
+  .formpage { padding: 56px 16px; }
+  .form-row,
+  .form-head {
+    grid-template-columns: 24px 1fr 36px 52px 48px;
+    gap: 6px;
+    padding: 9px 9px;
+  }
+  /* drop the FIFA column on narrow screens */
+  .form-fifa { display: none; }
+}

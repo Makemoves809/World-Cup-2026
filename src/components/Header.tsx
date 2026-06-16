@@ -8,6 +8,7 @@ const LINKS = [
   { to: "/groups", label: "Groups" },
   { to: "/knockout", label: "Knockout" },
   { to: "/fixtures", label: "Fixtures" },
+  { to: "/form", label: "Form" },
   { to: "/qatar2022", label: "Qatar '22" },
 ];
 
