@@ -7,13 +7,16 @@ import { GroupsPage } from "./pages/GroupsPage";
 import { Qatar2022 } from "./pages/Qatar2022";
 import { FormTable } from "./pages/FormTable";
 import { Continuity } from "./pages/Continuity";
-import { FranceSquad } from "./pages/FranceSquad";
+import { SquadPitch } from "./pages/SquadPitch";
 import { navigate, useRoute } from "./router";
 
 export function App() {
   const path = useRoute();
 
   let page;
+  if (path.startsWith("/squad/")) {
+    page = <SquadPitch teamId={path.slice("/squad/".length)} />;
+  } else
   switch (path) {
     case "/groups":
       page = <GroupsPage />;
@@ -32,9 +35,6 @@ export function App() {
       break;
     case "/continuity":
       page = <Continuity />;
-      break;
-    case "/france":
-      page = <FranceSquad />;
       break;
     default:
       page = <Home />;
@@ -68,7 +68,6 @@ export function App() {
             <button onClick={() => navigate("/fixtures")}>Fixtures</button>
             <button onClick={() => navigate("/form")}>Form table</button>
             <button onClick={() => navigate("/continuity")}>Squad turnover</button>
-            <button onClick={() => navigate("/france")}>France squad</button>
             <button onClick={() => navigate("/qatar2022")}>Qatar 2022</button>
           </nav>
 

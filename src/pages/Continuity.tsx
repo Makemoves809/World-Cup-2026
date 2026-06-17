@@ -1,4 +1,5 @@
 import { CONTINUITY } from "../data/continuity";
+import { SQUADS } from "../data/squads";
 import { teams } from "../data/teams";
 import { Flag } from "../components/Flag";
 import { navigate } from "../router";
@@ -70,26 +71,37 @@ export function Continuity() {
       )}
 
       <ol className="cont-list">
-        {known.map((r) => (
-          <li className="cont-row" key={r.team.id}>
-            <span className="cont-team">
-              <Flag team={r.team} size={18} />
-              <span className="cont-name">{r.team.name}</span>
-            </span>
-            <span className="cont-bar">
-              <span className="cont-fill" style={{ width: `${r.pct}%` }} />
-            </span>
-            <span className="cont-val">
-              {r.pct}%
-              <span className="cont-frac">{r.returning}/26</span>
-            </span>
-          </li>
-        ))}
+        {known.map((r) => {
+          const hasSquad = !!SQUADS[r.team.id];
+          return (
+            <li className="cont-row" key={r.team.id}>
+              <button
+                className={`cont-rowbtn${hasSquad ? " has-squad" : ""}`}
+                onClick={() => hasSquad && navigate(`/squad/${r.team.id}`)}
+                disabled={!hasSquad}
+                title={hasSquad ? `See ${r.team.name}'s line-up` : undefined}
+              >
+                <span className="cont-team">
+                  <Flag team={r.team} size={18} />
+                  <span className="cont-name">{r.team.name}</span>
+                  {hasSquad && <span className="cont-xi">XI ›</span>}
+                </span>
+                <span className="cont-bar">
+                  <span className="cont-fill" style={{ width: `${r.pct}%` }} />
+                </span>
+                <span className="cont-val">
+                  {r.pct}%
+                  <span className="cont-frac">{r.returning}/26</span>
+                </span>
+              </button>
+            </li>
+          );
+        })}
       </ol>
 
       <div className="cont-aside">
-        <button className="cont-france" onClick={() => navigate("/france")}>
-          See France's squad on the pitch →
+        <button className="cont-france" onClick={() => navigate("/squad/fra")}>
+          See France's starting XI on the pitch →
         </button>
       </div>
 

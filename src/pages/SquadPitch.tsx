@@ -1,14 +1,13 @@
 import { useEffect, useState } from "react";
 import {
-  FRANCE,
+  SQUADS,
   LINE_LABEL,
   playerPhoto,
   initials,
-  type Line,
   type Player,
-} from "../data/france";
-
-const LINES: Line[] = ["fwd", "mid", "def", "gk"];
+} from "../data/squads";
+import { teamById } from "../data/teams";
+import { navigate } from "../router";
 
 /** Circular headshot with a lettered fallback when the photo can't load. */
 function Avatar({ player, size }: { player: Player; size: number }) {
@@ -80,31 +79,58 @@ function PlayerModal({ player, onClose }: { player: Player; onClose: () => void 
 
         <p className="pl-modal-note">
           {player.at2022
-            ? "One of the 11 players carried over from France's Qatar 2022 squad."
-            : "A fresh face since Qatar 2022 — part of the 58% of the squad that has turned over."}
+            ? "Carried over from this team's Qatar 2022 squad."
+            : "A new face since Qatar 2022."}
         </p>
       </div>
     </div>
   );
 }
 
-export function FranceSquad() {
+export function SquadPitch({ teamId }: { teamId: string }) {
   const [active, setActive] = useState<Player | null>(null);
-  const returning = FRANCE.filter((p) => p.at2022).length;
+  const squad = SQUADS[teamId];
+
+  let team;
+  try {
+    team = teamById(teamId);
+  } catch {
+    team = undefined;
+  }
+
+  if (!squad) {
+    return (
+      <section className="squadpage" id="squad">
+        <div className="section-head">
+          <span className="kicker">Squad map</span>
+          <h2>{team ? team.name : "Squad"} · coming soon</h2>
+          <p className="section-note">
+            A pitch line-up for this team hasn't been added yet.
+          </p>
+        </div>
+        <button className="cont-france" onClick={() => navigate("/continuity")}>
+          ← Back to squad turnover
+        </button>
+      </section>
+    );
+  }
+
+  const xi = squad.players.filter((p) => p.start);
+  const bench = squad.players.filter((p) => !p.start);
+  const name = team ? team.name : teamId.toUpperCase();
 
   return (
-    <section className="squadpage" id="france">
+    <section className="squadpage" id="squad">
       <div className="section-head">
-        <span className="kicker">Squad map · Les Bleus</span>
-        <h2>France · the 26</h2>
+        <span className="kicker">Projected XI · {squad.formation}</span>
+        <h2>{name} · starting line-up</h2>
         <p className="section-note">
-          Didier Deschamps' 2026 World Cup squad, laid out by position. Tap any
-          player for their details. {returning} of 26 also played at Qatar 2022
-          ({Math.round((returning / 26) * 100)}% continuity).
+          A likely first eleven for {name}. Tap any player — on the pitch or the
+          bench — for their details.
         </p>
       </div>
 
-      <div className="pitch" role="group" aria-label="France squad on a pitch">
+      <div className="pitch" role="group" aria-label={`${name} starting eleven`}>
         <div className="pitch-lines" aria-hidden="true">
           <span className="pitch-circle" />
           <span className="pitch-spot" />
@@ -112,28 +138,47 @@ export function FranceSquad() {
           <span className="pitch-box pitch-box-bot" />
         </div>
 
-        {LINES.map((line) => (
-          <div className={`pitch-line line-${line}`} key={line}>
-            {FRANCE.filter((p) => p.line === line).map((p) => (
-              <button
-                className="pl-token"
-                key={p.num}
-                onClick={() => setActive(p)}
-                aria-label={`${p.name}, ${p.role}`}
-              >
-                <Avatar player={p} size={64} />
-                <span className="pl-name">{p.short}</span>
-              </button>
-            ))}
+        {xi.map((p) => (
+          <div
+            className="pitch-pos"
+            key={p.num}
+            style={{ left: `${p.start!.x}%`, top: `${p.start!.y}%` }}
+          >
+            <button
+              className="pl-token"
+              onClick={() => setActive(p)}
+              aria-label={`${p.name}, ${p.role}`}
+            >
+              <Avatar player={p} size={60} />
+              <span className="pl-name">{p.short}</span>
+            </button>
           </div>
         ))}
       </div>
 
-      <p className="section-note squad-foot">
-        Headshots via Wikimedia Commons; players without a free photo show their
-        initials. <strong>{returning}/26</strong> returning from Qatar 2022 — see
-        how France compares on the Continuity page.
-      </p>
+      <div className="bench">
+        <h3 className="bench-head">Bench &amp; squad</h3>
+        <div className="bench-grid">
+          {bench.map((p) => (
+            <button
+              className="bench-item"
+              key={p.num}
+              onClick={() => setActive(p)}
+              aria-label={`${p.name}, ${p.role}`}
+            >
+              <Avatar player={p} size={40} />
+              <span className="bench-meta">
+                <span className="bench-name">{p.short}</span>
+                <span className="bench-role">{p.role}</span>
+              </span>
+            </button>
+          ))}
+        </div>
+      </div>
+
+      <button className="cont-france back-link" onClick={() => navigate("/continuity")}>
+        ← Back to squad turnover
+      </button>
 
       {active && <PlayerModal player={active} onClose={() => setActive(null)} />}
     </section>
