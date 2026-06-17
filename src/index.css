@@ -2450,3 +2450,382 @@ img.flag {
   /* drop the FIFA column on narrow screens */
   .form-fifa { display: none; }
 }
+
+/* ============================================================
+   Squad turnover (Continuity) page
+   ============================================================ */
+.contpage {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 64px 20px 96px;
+}
+.cont-highs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin: 22px 0 28px;
+}
+.cont-high {
+  padding: 14px 16px;
+  background: var(--pitch-2);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+}
+.cont-high-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--chalk-faint);
+}
+.cont-high-team {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin-top: 8px;
+  font-family: var(--font-display);
+  font-size: 17px;
+  color: var(--chalk);
+}
+.cont-high-team strong {
+  margin-left: auto;
+  font-family: var(--font-mono);
+  color: var(--grass);
+}
+.cont-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+.cont-row {
+  display: grid;
+  grid-template-columns: 168px 1fr 64px;
+  align-items: center;
+  gap: 12px;
+}
+.cont-team {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  min-width: 0;
+}
+.cont-name {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: var(--chalk);
+  font-size: 14px;
+}
+.cont-bar {
+  position: relative;
+  height: 16px;
+  border-radius: 999px;
+  background: var(--line-soft);
+  overflow: hidden;
+}
+.cont-fill {
+  position: absolute;
+  inset: 0 auto 0 0;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--grass-soft), var(--grass));
+  animation: cont-grow 0.7s var(--ease) both;
+}
+@keyframes cont-grow {
+  from { transform: scaleX(0); transform-origin: left; }
+}
+.cont-val {
+  text-align: right;
+  font-family: var(--font-mono);
+  font-size: 14px;
+  color: var(--chalk);
+}
+.cont-frac {
+  display: block;
+  font-size: 10px;
+  color: var(--chalk-faint);
+}
+.cont-aside {
+  margin: 26px 0 8px;
+}
+.cont-france {
+  width: 100%;
+  padding: 13px 16px;
+  background: linear-gradient(100deg, #1a2a6b, #21409a);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: var(--radius-sm);
+  color: #fff;
+  font-family: var(--font-display);
+  font-size: 16px;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  transition: transform 0.15s var(--ease), filter 0.15s;
+}
+.cont-france:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.08);
+}
+.cont-group {
+  margin-top: 34px;
+}
+.cont-sub {
+  font-family: var(--font-display);
+  font-size: 18px;
+  margin: 0 0 4px;
+  color: var(--chalk);
+}
+.cont-sub-note {
+  margin: 0 0 12px;
+  font-size: 13px;
+  color: var(--chalk-dim);
+}
+.cont-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.cont-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 6px 11px;
+  background: var(--pitch-2);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  font-size: 13px;
+  color: var(--chalk-dim);
+}
+.cont-chip.is-pending {
+  border-style: dashed;
+  color: var(--chalk-faint);
+}
+.cont-foot { margin-top: 30px; }
+
+/* ============================================================
+   France squad map (pitch) + player tokens & modal
+   ============================================================ */
+.squadpage {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 64px 20px 96px;
+}
+.pitch {
+  position: relative;
+  margin: 24px 0 18px;
+  padding: 30px 14px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 18px;
+  min-height: 620px;
+  border: 2px solid rgba(246, 244, 235, 0.18);
+  border-radius: 18px;
+  background:
+    repeating-linear-gradient(
+      0deg,
+      rgba(255, 255, 255, 0.022) 0 56px,
+      rgba(0, 0, 0, 0.04) 56px 112px
+    ),
+    radial-gradient(120% 80% at 50% 0%, #15512f, #0c351e 70%);
+  overflow: hidden;
+}
+.pitch-lines {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+.pitch-lines::before {
+  /* halfway line */
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 2px;
+  background: rgba(246, 244, 235, 0.16);
+}
+.pitch-circle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 140px;
+  height: 140px;
+  transform: translate(-50%, -50%);
+  border: 2px solid rgba(246, 244, 235, 0.16);
+  border-radius: 50%;
+}
+.pitch-spot {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 6px;
+  height: 6px;
+  transform: translate(-50%, -50%);
+  background: rgba(246, 244, 235, 0.3);
+  border-radius: 50%;
+}
+.pitch-box {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 180px;
+  height: 64px;
+  border: 2px solid rgba(246, 244, 235, 0.14);
+}
+.pitch-box-top { top: -2px; border-top: none; }
+.pitch-box-bot { bottom: -2px; border-bottom: none; }
+.pitch-line {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 10px 16px;
+}
+.pl-token {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  width: 72px;
+  padding: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+.pl-disc {
+  position: relative;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: linear-gradient(160deg, #2a3f9c, #16245f);
+  border: 2px solid rgba(255, 255, 255, 0.7);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.45);
+  overflow: hidden;
+  transition: transform 0.16s var(--ease), box-shadow 0.16s;
+}
+.pl-token:hover .pl-disc,
+.pl-token:focus-visible .pl-disc {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.55);
+}
+.pl-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+}
+.pl-initials {
+  font-family: var(--font-display);
+  font-size: 20px;
+  letter-spacing: 0.04em;
+  color: #fff;
+}
+.pl-num {
+  position: absolute;
+  right: -2px;
+  bottom: -2px;
+  min-width: 19px;
+  height: 19px;
+  padding: 0 4px;
+  display: grid;
+  place-items: center;
+  background: var(--chalk);
+  color: var(--ink);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  border-radius: 999px;
+}
+.pl-capt {
+  position: absolute;
+  left: -3px;
+  top: -3px;
+  width: 18px;
+  height: 18px;
+  display: grid;
+  place-items: center;
+  background: var(--floodlight);
+  color: var(--ink);
+  font-family: var(--font-display);
+  font-size: 11px;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.25);
+}
+.pl-name {
+  font-size: 11.5px;
+  line-height: 1.15;
+  color: var(--chalk);
+  text-align: center;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
+}
+.squad-foot { margin-top: 4px; }
+
+/* Player modal */
+.pl-modal { width: min(460px, 100%); }
+.pl-modal-head {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 18px;
+}
+.pl-modal-id h3 {
+  margin: 3px 0 4px;
+  font-family: var(--font-display);
+  font-size: 24px;
+  color: var(--chalk);
+}
+.pl-modal-kicker {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--floodlight);
+}
+.pl-modal-role { font-size: 14px; color: var(--chalk-dim); }
+.pl-facts {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  margin: 0;
+  background: var(--line);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+}
+.pl-facts > div {
+  padding: 11px 14px;
+  background: var(--pitch-2);
+}
+.pl-facts dt {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--chalk-faint);
+}
+.pl-facts dd {
+  margin: 4px 0 0;
+  font-size: 15px;
+  color: var(--chalk);
+}
+.pl-yes { color: var(--grass); }
+.pl-no { color: var(--chalk-dim); }
+.pl-modal-note {
+  margin: 14px 0 0;
+  font-size: 13px;
+  color: var(--chalk-dim);
+}
+
+@media (max-width: 560px) {
+  .cont-highs { grid-template-columns: 1fr; }
+  .cont-row { grid-template-columns: 116px 1fr 54px; gap: 8px; }
+  .cont-name { font-size: 13px; }
+  .pitch { min-height: 560px; padding: 22px 8px; }
+  .pl-token { width: 60px; }
+  .pl-name { font-size: 10.5px; }
+  .pl-facts { grid-template-columns: 1fr; }
+}

@@ -9,6 +9,8 @@ const LINKS = [
   { to: "/knockout", label: "Knockout" },
   { to: "/fixtures", label: "Fixtures" },
   { to: "/form", label: "Form" },
+  { to: "/continuity", label: "vs '22" },
+  { to: "/france", label: "France" },
   { to: "/qatar2022", label: "Qatar '22" },
 ];
 

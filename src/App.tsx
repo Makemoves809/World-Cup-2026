@@ -6,6 +6,8 @@ import { Home } from "./pages/Home";
 import { GroupsPage } from "./pages/GroupsPage";
 import { Qatar2022 } from "./pages/Qatar2022";
 import { FormTable } from "./pages/FormTable";
+import { Continuity } from "./pages/Continuity";
+import { FranceSquad } from "./pages/FranceSquad";
 import { navigate, useRoute } from "./router";
 
 export function App() {
@@ -27,6 +29,12 @@ export function App() {
       break;
     case "/qatar2022":
       page = <Qatar2022 />;
+      break;
+    case "/continuity":
+      page = <Continuity />;
+      break;
+    case "/france":
+      page = <FranceSquad />;
       break;
     default:
       page = <Home />;
@@ -59,6 +67,8 @@ export function App() {
             <button onClick={() => navigate("/knockout")}>Knockout</button>
             <button onClick={() => navigate("/fixtures")}>Fixtures</button>
             <button onClick={() => navigate("/form")}>Form table</button>
+            <button onClick={() => navigate("/continuity")}>Squad turnover</button>
+            <button onClick={() => navigate("/france")}>France squad</button>
             <button onClick={() => navigate("/qatar2022")}>Qatar 2022</button>
           </nav>
 
