@@ -64,12 +64,14 @@ current by hand:
   correctly (knockout results auto-capture via `koResults`, but slotting may
   need a manual check).
 - **Squad line-ups & formations** (`src/data/squads.ts`) — for every team with
-  a pitch map, keep the **projected starting XI and formation current**. A
-  line-up moves with injuries, suspensions and form, so re-check who'd actually
-  start and the shape they're using (e.g. 4-3-3 vs 4-4-2), and update each
-  starter's `start` coordinates plus the squad's `formation`. Also fill any
+  a pitch map, the `formation` and the eleven flagged with a `start` must mirror
+  **the XI and shape that team used in its most recent completed match** — not a
+  generic projection. **After every new match a mapped team plays, re-check it
+  and update if they changed shape or personnel** (e.g. a team that opened 4-3-3
+  but switched to 4-4-2): set `formation` to the new shape and move each
+  starter's `start` coordinates (and bench membership) to match. Also fill any
   missing player **photos** (Wikimedia Commons file names) and verify the eleven
-  flagged with a `start` are the real projected XI, not the whole squad.
+  flagged with a `start` are the real most-recent XI, not the whole squad.
 - **Revisit flagged / pending figures** — circle back on anything left
   uncertain. Currently pending: Côte d'Ivoire–Ecuador (m-E-2) attendance, and a
   few low-confidence venue capacities (Estadio Azteca, Arrowhead, Lumen Field).
