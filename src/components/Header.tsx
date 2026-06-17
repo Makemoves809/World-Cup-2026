@@ -1,16 +1,22 @@
+import { useEffect, useRef, useState } from "react";
 import { navigate } from "../router";
 
 interface HeaderProps {
   path: string;
 }
 
-const LINKS = [
+/** Core tournament navigation — always visible. */
+const PRIMARY = [
   { to: "/groups", label: "Groups" },
   { to: "/knockout", label: "Knockout" },
   { to: "/fixtures", label: "Fixtures" },
-  { to: "/form", label: "Form" },
-  { to: "/continuity", label: "vs '22" },
-  { to: "/qatar2022", label: "Qatar '22" },
+];
+
+/** Analysis & archive — tucked under the "More" menu to keep the bar clean. */
+const MORE = [
+  { to: "/form", label: "Form table" },
+  { to: "/continuity", label: "Squad turnover" },
+  { to: "/qatar2022", label: "Qatar 2022" },
 ];
 
 const DAY_MS = 86_400_000;
@@ -22,6 +28,37 @@ export function Header({ path }: HeaderProps) {
   const now = Date.now();
   const live = now >= START && now < END;
   const day = Math.min(TOTAL_DAYS, Math.floor((now - START) / DAY_MS) + 1);
+
+  const [open, setOpen] = useState(false);
+  const moreRef = useRef<HTMLDivElement>(null);
+
+  // Close the menu on outside click or Escape.
+  useEffect(() => {
+    if (!open) return;
+    const onDown = (e: MouseEvent) => {
+      if (moreRef.current && !moreRef.current.contains(e.target as Node)) {
+        setOpen(false);
+      }
+    };
+    const onKey = (e: KeyboardEvent) => e.key === "Escape" && setOpen(false);
+    document.addEventListener("mousedown", onDown);
+    document.addEventListener("keydown", onKey);
+    return () => {
+      document.removeEventListener("mousedown", onDown);
+      document.removeEventListener("keydown", onKey);
+    };
+  }, [open]);
+
+  // Close the menu whenever the route changes.
+  useEffect(() => setOpen(false), [path]);
+
+  const go = (to: string) => {
+    navigate(to);
+    setOpen(false);
+  };
+
+  // "More" is active when viewing one of its pages, or any team squad map.
+  const moreActive = MORE.some((l) => l.to === path) || path.startsWith("/squad");
 
   return (
     <header className="site-header">
@@ -49,7 +86,7 @@ export function Header({ path }: HeaderProps) {
       </a>
 
       <nav className="site-nav" aria-label="Primary">
-        {LINKS.map((l) => (
+        {PRIMARY.map((l) => (
           <a
             key={l.to}
             href={l.to}
@@ -63,6 +100,37 @@ export function Header({ path }: HeaderProps) {
             {l.label}
           </a>
         ))}
+
+        <div className="nav-more" ref={moreRef}>
+          <button
+            type="button"
+            className={`nav-link nav-more-btn${moreActive ? " is-active" : ""}`}
+            aria-haspopup="true"
+            aria-expanded={open}
+            onClick={() => setOpen((o) => !o)}
+          >
+            More
+            <span className={`nav-caret${open ? " is-open" : ""}`} aria-hidden="true">
+              ▾
+            </span>
+          </button>
+
+          {open && (
+            <div className="nav-menu" role="menu">
+              {MORE.map((l) => (
+                <button
+                  key={l.to}
+                  type="button"
+                  role="menuitem"
+                  className={`nav-menu-item${path === l.to ? " is-active" : ""}`}
+                  onClick={() => go(l.to)}
+                >
+                  {l.label}
+                </button>
+              ))}
+            </div>
+          )}
+        </div>
       </nav>
 
       <span className="day-badge">
