@@ -28,17 +28,17 @@ export const CONTINUITY: Record<string, Continuity> = {
   sco: { at2022: false },
   hai: { at2022: false },
   // Group D
-  usa: { at2022: true },
+  usa: { at2022: true, returning: 13 }, // 13/26 returnees — half the roster (cited)
   par: { at2022: false },
   aus: { at2022: true },
   tur: { at2022: false },
   // Group E
-  ger: { at2022: true },
+  ger: { at2022: true, returning: 9 }, // 9/26 — heavy turnover after Qatar 2022
   cuw: { at2022: false },
   civ: { at2022: false },
   ecu: { at2022: true },
   // Group F
-  ned: { at2022: true },
+  ned: { at2022: true, returning: 11 }, // 11/26 carried over from Qatar 2022
   jpn: { at2022: true },
   tun: { at2022: true },
   swe: { at2022: false },
@@ -48,7 +48,7 @@ export const CONTINUITY: Record<string, Continuity> = {
   irn: { at2022: true },
   nzl: { at2022: false },
   // Group H
-  esp: { at2022: true },
+  esp: { at2022: true, returning: 12 }, // 12/26 carried over from Qatar 2022
   cpv: { at2022: false },
   uru: { at2022: true, returning: 14 }, // 14/26 carried over from Qatar 2022
   ksa: { at2022: true },
