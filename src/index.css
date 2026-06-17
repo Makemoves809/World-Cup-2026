@@ -2953,3 +2953,36 @@ img.flag {
   .pl-facts { grid-template-columns: 1fr; }
   .bench-grid { grid-template-columns: repeat(auto-fill, minmax(132px, 1fr)); }
 }
+
+/* Clickable teams in match comparison → squad map */
+.team-link {
+  background: none;
+  border: none;
+  font: inherit;
+  letter-spacing: inherit;
+  color: inherit;
+  cursor: pointer;
+  padding: 0;
+  transition: color 0.14s;
+}
+.team-link:hover,
+.team-link:focus-visible {
+  color: var(--grass);
+}
+.team-link:hover .vs-name,
+.team-link:focus-visible .vs-name {
+  color: var(--grass);
+}
+.team-link-cue {
+  flex: none;
+  color: var(--grass);
+  font-weight: 700;
+  opacity: 0;
+  transform: translateX(-4px);
+  transition: opacity 0.15s var(--ease), transform 0.15s var(--ease);
+}
+.vs-team-id.team-link:hover .team-link-cue,
+.vs-team-id.team-link:focus-visible .team-link-cue {
+  opacity: 1;
+  transform: translateX(0);
+}

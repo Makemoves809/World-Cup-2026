@@ -4,6 +4,7 @@ import { teamById } from "../data/teams";
 import { IMPACT_LABELS, sentOffIn, unavailableFor } from "../data/discipline";
 import { attendanceFor } from "../data/attendance";
 import { matchup, type TeamStrength } from "../lib/matchup";
+import { navigate } from "../router";
 import { Flag } from "./Flag";
 
 const fmtFull = new Intl.DateTimeFormat(undefined, {
@@ -26,6 +27,11 @@ export function MatchDetail({ match, onClose }: MatchDetailProps) {
   const reds = sentOffIn(match.id);
   const out = unavailableFor(match.id);
   const m = matchup(match);
+
+  const openSquad = (teamId: string) => {
+    onClose();
+    navigate(`/squad/${teamId}`);
+  };
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
@@ -58,15 +64,25 @@ export function MatchDetail({ match, onClose }: MatchDetailProps) {
         </p>
 
         <div className="modal-tie">
-          <span className="modal-team">
+          <button
+            type="button"
+            className="modal-team team-link"
+            onClick={() => openSquad(home.id)}
+            title={`${home.name} squad`}
+          >
             <Flag team={home} size={22} /> {home.name}
-          </span>
+          </button>
           <span className={done ? "modal-score is-final" : "modal-score"}>
             {done ? `${match.homeScore}–${match.awayScore}` : "vs"}
           </span>
-          <span className="modal-team modal-team-away">
+          <button
+            type="button"
+            className="modal-team modal-team-away team-link"
+            onClick={() => openSquad(away.id)}
+            title={`${away.name} squad`}
+          >
             {away.name} <Flag team={away} size={22} />
-          </span>
+          </button>
         </div>
 
         <p className="modal-venue">
@@ -93,8 +109,8 @@ export function MatchDetail({ match, onClose }: MatchDetailProps) {
             />
           </div>
           <div className="vs-rows">
-            <TeamStrengthRow s={m.home} side="home" />
-            <TeamStrengthRow s={m.away} side="away" />
+            <TeamStrengthRow s={m.home} side="home" onOpen={openSquad} />
+            <TeamStrengthRow s={m.away} side="away" onOpen={openSquad} />
           </div>
           <p className="vs-verdict">{m.verdict}</p>
 
@@ -205,16 +221,24 @@ function StrengthBreakdown({ s }: { s: TeamStrength }) {
 function TeamStrengthRow({
   s,
   side,
+  onOpen,
 }: {
   s: TeamStrength;
   side: "home" | "away";
+  onOpen: (teamId: string) => void;
 }) {
   return (
     <div className={`vs-row vs-${side}`}>
-      <span className="vs-team-id">
+      <button
+        type="button"
+        className="vs-team-id team-link"
+        onClick={() => onOpen(s.team.id)}
+        title={`${s.team.name} squad`}
+      >
         <Flag team={s.team} size={16} />
         <span className="vs-name">{s.team.name}</span>
-      </span>
+        <span className="team-link-cue" aria-hidden="true">›</span>
+      </button>
       <span className="vs-figs">
         {s.formDelta !== 0 && (
           <span
