@@ -13,7 +13,7 @@ export interface Continuity {
 
 export const CONTINUITY: Record<string, Continuity> = {
   // Group A
-  mex: { at2022: true },
+  mex: { at2022: true, returning: 12 }, // 12/26 carried over from Qatar 2022
   rsa: { at2022: false },
   kor: { at2022: true },
   cze: { at2022: false },
@@ -23,8 +23,8 @@ export const CONTINUITY: Record<string, Continuity> = {
   qat: { at2022: true },
   bih: { at2022: false },
   // Group C
-  bra: { at2022: true },
-  mar: { at2022: true },
+  bra: { at2022: true, returning: 15 }, // 15/26 carried over from Qatar 2022
+  mar: { at2022: true, returning: 9 }, // 9 of the 2022 semi-final squad return
   sco: { at2022: false },
   hai: { at2022: false },
   // Group D
@@ -50,7 +50,7 @@ export const CONTINUITY: Record<string, Continuity> = {
   // Group H
   esp: { at2022: true },
   cpv: { at2022: false },
-  uru: { at2022: true },
+  uru: { at2022: true, returning: 14 }, // 14/26 carried over from Qatar 2022
   ksa: { at2022: true },
   // Group I
   fra: { at2022: true, returning: 11 }, // 11/26 retained from Qatar 2022
@@ -70,7 +70,7 @@ export const CONTINUITY: Record<string, Continuity> = {
   cod: { at2022: false },
   // Group L
   eng: { at2022: true, returning: 8 }, // 8/26 carried over from Qatar 2022
-  cro: { at2022: true },
+  cro: { at2022: true, returning: 14 }, // 14/26 carried over from Qatar 2022
   gha: { at2022: true },
   pan: { at2022: false },
 };
