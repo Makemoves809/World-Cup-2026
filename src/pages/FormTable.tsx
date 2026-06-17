@@ -1,7 +1,29 @@
 import { teams } from "../data/teams";
 import { formRating, type FormRating } from "../lib/form";
+import { continuity } from "../data/continuity";
 import { Flag } from "../components/Flag";
 import type { Team } from "../data/types";
+
+function Continuity({ id }: { id: string }) {
+  const c = continuity(id);
+  if (c.status === "known")
+    return (
+      <span className="form-cont" title={`${c.returning} of 26 also played at Qatar 2022`}>
+        {c.pct}%
+      </span>
+    );
+  if (c.status === "new")
+    return (
+      <span className="form-cont form-cont-new" title="Not at the 2022 World Cup">
+        new
+      </span>
+    );
+  return (
+    <span className="form-cont form-faint" title="Continuity vs 2022 — being researched">
+      –
+    </span>
+  );
+}
 
 interface Row {
   team: Team;
@@ -63,6 +85,7 @@ export function FormTable() {
           <span className="form-col form-fifa">FIFA</span>
           <span className="form-col form-col-rating">Form</span>
           <span className="form-col">+/−</span>
+          <span className="form-col form-cont-col">vs '22</span>
         </li>
         {rows.map((r, i) => (
           <li className="form-row" key={r.team.id}>
@@ -85,13 +108,19 @@ export function FormTable() {
                 </span>
               )}
             </span>
+            <span className="form-col form-cont-col">
+              <Continuity id={r.team.id} />
+            </span>
           </li>
         ))}
       </ol>
 
       <p className="section-note form-foot">
         Form is a fan heuristic for tracking who's over- or under-performing
-        their seed — not a betting predictor.
+        their seed — not a betting predictor. <strong>vs '22</strong> is the
+        share of each 26-man squad that also played at Qatar 2022 (“new” = not
+        at the last World Cup); more teams are being added as squads are
+        cross-checked.
       </p>
     </section>
   );

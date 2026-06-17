@@ -53,22 +53,23 @@ export const CONTINUITY: Record<string, Continuity> = {
   uru: { at2022: true },
   ksa: { at2022: true },
   // Group I
-  fra: { at2022: true, returning: 11 },
+  fra: { at2022: true, returning: 11 }, // 11/26 retained from Qatar 2022
+
   sen: { at2022: true },
   nor: { at2022: false },
   irq: { at2022: false },
   // Group J
-  arg: { at2022: true },
+  arg: { at2022: true, returning: 17 }, // kept 17 from the 2022 winning side
   alg: { at2022: false },
   aut: { at2022: false },
   jor: { at2022: false },
   // Group K
-  por: { at2022: true },
+  por: { at2022: true, returning: 14 }, // 14/26 carried over from Qatar 2022
   col: { at2022: false },
   uzb: { at2022: false },
   cod: { at2022: false },
   // Group L
-  eng: { at2022: true },
+  eng: { at2022: true, returning: 8 }, // 8/26 carried over from Qatar 2022
   cro: { at2022: true },
   gha: { at2022: true },
   pan: { at2022: false },
