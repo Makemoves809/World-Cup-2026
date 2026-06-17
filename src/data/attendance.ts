@@ -26,6 +26,7 @@ const curated: Record<string, number> = {
   "m-I-2": 63106, // Iraq 1–4 Norway — Gillette Stadium
   "m-J-1": 69045, // Argentina 3–0 Algeria — GEHA Field at Arrowhead (Messi hat-trick)
   "m-J-2": 69391, // Austria 3–1 Jordan — Levi's Stadium
+  "m-K-1": 68777, // Portugal 1–1 DR Congo — NRG Stadium
 };
 
 const liveAttendance =
