@@ -166,8 +166,84 @@ const SPAIN: TeamSquad = {
   ],
 };
 
+const ENGLAND: TeamSquad = {
+  teamId: "eng",
+  // Opener vs Croatia: a 4-2-3-1, Saka rested.
+  formation: "4-2-3-1",
+  players: [
+    // ---- Starting XI ----
+    { num: 1, name: "Jordan Pickford", short: "Pickford", line: "gk", role: "Goalkeeper", club: "Everton", at2022: true, start: { x: 50, y: 90 } },
+    { num: 24, name: "Reece James", short: "James", line: "def", role: "Right-back", club: "Chelsea", at2022: false, start: { x: 84, y: 70 } },
+    { num: 5, name: "John Stones", short: "Stones", line: "def", role: "Centre-back", club: "Manchester City", at2022: true, start: { x: 62, y: 73 } },
+    { num: 2, name: "Ezri Konsa", short: "Konsa", line: "def", role: "Centre-back", club: "Aston Villa", at2022: false, start: { x: 38, y: 73 } },
+    { num: 3, name: "Nico O'Reilly", short: "O'Reilly", line: "def", role: "Left-back", club: "Manchester City", at2022: false, start: { x: 16, y: 70 } },
+    { num: 8, name: "Elliot Anderson", short: "Anderson", line: "mid", role: "Defensive midfield", club: "Nottingham Forest", at2022: false, start: { x: 64, y: 50 } },
+    { num: 4, name: "Declan Rice", short: "Rice", line: "mid", role: "Defensive midfield", club: "Arsenal", at2022: true, start: { x: 36, y: 50 } },
+    { num: 20, name: "Noni Madueke", short: "Madueke", line: "fwd", role: "Right winger", club: "Arsenal", at2022: false, start: { x: 78, y: 29 } },
+    { num: 10, name: "Jude Bellingham", short: "Bellingham", line: "mid", role: "Attacking midfield", club: "Real Madrid", at2022: true, photo: "Jude Bellingham 2022-11-21 1.jpg", start: { x: 50, y: 31 } },
+    { num: 18, name: "Anthony Gordon", short: "Gordon", line: "fwd", role: "Left winger", club: "Newcastle", at2022: false, start: { x: 22, y: 29 } },
+    { num: 9, name: "Harry Kane", short: "Kane", line: "fwd", role: "Striker", club: "Bayern Munich", at2022: true, captain: true, photo: "Harry Kane (24685589756).jpg", start: { x: 50, y: 13 } },
+
+    // ---- Bench ----
+    { num: 13, name: "Dean Henderson", short: "D. Henderson", line: "gk", role: "Goalkeeper", club: "Crystal Palace", at2022: false },
+    { num: 23, name: "James Trafford", short: "Trafford", line: "gk", role: "Goalkeeper", club: "Manchester City", at2022: false },
+    { num: 6, name: "Marc Guéhi", short: "Guéhi", line: "def", role: "Centre-back", club: "Crystal Palace", at2022: false },
+    { num: 12, name: "Trevoh Chalobah", short: "Chalobah", line: "def", role: "Centre-back", club: "Chelsea", at2022: false },
+    { num: 15, name: "Dan Burn", short: "Burn", line: "def", role: "Centre-back", club: "Newcastle", at2022: false },
+    { num: 25, name: "Djed Spence", short: "Spence", line: "def", role: "Full-back", club: "Tottenham", at2022: false },
+    { num: 26, name: "Jarell Quansah", short: "Quansah", line: "def", role: "Centre-back", club: "Bayer Leverkusen", at2022: false },
+    { num: 14, name: "Jordan Henderson", short: "J. Henderson", line: "mid", role: "Central midfield", club: "Brentford", at2022: true },
+    { num: 16, name: "Kobbie Mainoo", short: "Mainoo", line: "mid", role: "Central midfield", club: "Manchester United", at2022: false },
+    { num: 17, name: "Morgan Rogers", short: "Rogers", line: "mid", role: "Attacking midfield", club: "Aston Villa", at2022: false },
+    { num: 21, name: "Eberechi Eze", short: "Eze", line: "mid", role: "Attacking midfield", club: "Arsenal", at2022: false },
+    { num: 7, name: "Bukayo Saka", short: "Saka", line: "fwd", role: "Right winger", club: "Arsenal", at2022: true },
+    { num: 11, name: "Marcus Rashford", short: "Rashford", line: "fwd", role: "Forward", club: "Barcelona", at2022: true },
+    { num: 19, name: "Ollie Watkins", short: "Watkins", line: "fwd", role: "Striker", club: "Aston Villa", at2022: false },
+    { num: 22, name: "Ivan Toney", short: "Toney", line: "fwd", role: "Striker", club: "Al-Ahli", at2022: false },
+  ],
+};
+
+const PORTUGAL: TeamSquad = {
+  teamId: "por",
+  // Opener vs DR Congo (1–1): a 4-2-3-1 with Ronaldo up top.
+  formation: "4-2-3-1",
+  players: [
+    // ---- Starting XI ----
+    { num: 1, name: "Diogo Costa", short: "D. Costa", line: "gk", role: "Goalkeeper", club: "FC Porto", at2022: true, start: { x: 50, y: 90 } },
+    { num: 20, name: "João Cancelo", short: "Cancelo", line: "def", role: "Right-back", club: "Barcelona", at2022: true, start: { x: 84, y: 70 } },
+    { num: 4, name: "Tomás Araújo", short: "T. Araújo", line: "def", role: "Centre-back", club: "Benfica", at2022: false, start: { x: 62, y: 73 } },
+    { num: 13, name: "Renato Veiga", short: "R. Veiga", line: "def", role: "Centre-back", club: "Villarreal", at2022: false, start: { x: 38, y: 73 } },
+    { num: 25, name: "Nuno Mendes", short: "N. Mendes", line: "def", role: "Left-back", club: "PSG", at2022: true, start: { x: 16, y: 70 } },
+    { num: 15, name: "João Neves", short: "J. Neves", line: "mid", role: "Defensive midfield", club: "PSG", at2022: false, start: { x: 64, y: 50 } },
+    { num: 23, name: "Vitinha", short: "Vitinha", line: "mid", role: "Central midfield", club: "PSG", at2022: true, start: { x: 36, y: 50 } },
+    { num: 10, name: "Bernardo Silva", short: "B. Silva", line: "mid", role: "Right winger", club: "Manchester City", at2022: true, start: { x: 78, y: 29 } },
+    { num: 8, name: "Bruno Fernandes", short: "B. Fernandes", line: "mid", role: "Attacking midfield", club: "Manchester United", at2022: true, start: { x: 50, y: 31 } },
+    { num: 18, name: "Pedro Neto", short: "Neto", line: "fwd", role: "Left winger", club: "Chelsea", at2022: false, start: { x: 22, y: 29 } },
+    { num: 7, name: "Cristiano Ronaldo", short: "Ronaldo", line: "fwd", role: "Forward", club: "Al Nassr", at2022: true, captain: true, photo: "Cristiano Ronaldo WC2022 - 01 (cropped).jpg", start: { x: 50, y: 13 } },
+
+    // ---- Bench ----
+    { num: 12, name: "Rui Silva", short: "Rui Silva", line: "gk", role: "Goalkeeper", club: "Sporting CP", at2022: false },
+    { num: 22, name: "José Sá", short: "José Sá", line: "gk", role: "Goalkeeper", club: "Wolves", at2022: true },
+    { num: 3, name: "Rúben Dias", short: "R. Dias", line: "def", role: "Centre-back", club: "Manchester City", at2022: true },
+    { num: 24, name: "Gonçalo Inácio", short: "Inácio", line: "def", role: "Centre-back", club: "Sporting CP", at2022: false },
+    { num: 2, name: "Nélson Semedo", short: "Semedo", line: "def", role: "Right-back", club: "Fenerbahçe", at2022: true },
+    { num: 5, name: "Diogo Dalot", short: "Dalot", line: "def", role: "Full-back", club: "Manchester United", at2022: true },
+    { num: 26, name: "Matheus Nunes", short: "M. Nunes", line: "mid", role: "Central midfield", club: "Manchester City", at2022: true },
+    { num: 14, name: "Samú Costa", short: "Samú", line: "mid", role: "Defensive midfield", club: "Mallorca", at2022: false },
+    { num: 21, name: "Rúben Neves", short: "R. Neves", line: "mid", role: "Defensive midfield", club: "Al Hilal", at2022: true },
+    { num: 11, name: "Francisco Trincão", short: "Trincão", line: "fwd", role: "Winger", club: "Sporting CP", at2022: false },
+    { num: 16, name: "João Félix", short: "Félix", line: "fwd", role: "Forward", club: "Al Nassr", at2022: true },
+    { num: 17, name: "Francisco Conceição", short: "Conceição", line: "fwd", role: "Winger", club: "Juventus", at2022: false },
+    { num: 19, name: "Rafael Leão", short: "Leão", line: "fwd", role: "Forward", club: "AC Milan", at2022: true },
+    { num: 6, name: "Gonçalo Guedes", short: "Guedes", line: "fwd", role: "Winger", club: "Real Sociedad", at2022: false },
+    { num: 9, name: "Gonçalo Ramos", short: "G. Ramos", line: "fwd", role: "Striker", club: "PSG", at2022: true },
+  ],
+};
+
 export const SQUADS: Record<string, TeamSquad> = {
   fra: FRANCE,
   arg: ARGENTINA,
   esp: SPAIN,
+  eng: ENGLAND,
+  por: PORTUGAL,
 };
