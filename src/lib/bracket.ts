@@ -167,6 +167,8 @@ export interface ResolvedSeed {
   label: string;
   /** Team name when known, else a descriptor. */
   name: string;
+  /** Team id when a real team occupies the slot (for linking to its squad). */
+  id?: string;
   flag?: string;
   host?: boolean;
   /** True when this is a decided team rather than a projection. */
@@ -196,7 +198,7 @@ export interface ResolvedRound {
 const seedFromTeamId = (id: string, label: string, firm: boolean): ResolvedSeed => {
   try {
     const t = teamById(id);
-    return { label, name: t.name, flag: t.flag, host: t.host, firm };
+    return { label, name: t.name, id: t.id, flag: t.flag, host: t.host, firm };
   } catch {
     return { label, name: label, firm: false };
   }

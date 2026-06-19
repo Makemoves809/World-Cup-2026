@@ -2986,3 +2986,62 @@ img.flag {
   opacity: 1;
   transform: translateX(0);
 }
+
+/* ============================================================
+   Clickable teams everywhere → in-place roster overlay
+   ============================================================ */
+.team-link:hover .team-name,
+.team-link:focus-visible .team-name,
+.team-link:hover .form-name,
+.team-link:focus-visible .form-name,
+.team-link:hover .bk-seed-name,
+.team-link:focus-visible .bk-seed-name,
+.team-link:hover .third-team,
+.team-link:focus-visible .third-team {
+  color: var(--grass);
+}
+.team-link:hover .team-link-cue,
+.team-link:focus-visible .team-link-cue {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Standings team cell */
+.team-cell {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  min-width: 0;
+  width: 100%;
+}
+/* Form table team */
+.form-team.team-link { text-align: left; }
+/* Third-place race team */
+.third-team-link {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+/* Bracket seed team */
+.bk-seed-link {
+  flex: 1;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+
+/* Roster overlay (opens in place, never leaves the tab) */
+.roster-backdrop { z-index: 50; }
+.player-backdrop { z-index: 60; }
+.roster-modal { width: min(560px, 100%); }
+.roster-head { margin-bottom: 6px; }
+.roster-head h3 {
+  margin: 4px 0 0;
+  font-family: var(--font-display);
+  font-size: 26px;
+  color: var(--chalk);
+}
+.roster-empty { margin-top: 10px; }

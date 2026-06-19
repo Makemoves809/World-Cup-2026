@@ -1,6 +1,7 @@
 import { teams } from "../data/teams";
 import { formRating, type FormRating } from "../lib/form";
 import { continuity } from "../data/continuity";
+import { openRoster } from "../lib/roster";
 import { Flag } from "../components/Flag";
 import type { Team } from "../data/types";
 
@@ -90,11 +91,16 @@ export function FormTable() {
         {rows.map((r, i) => (
           <li className="form-row" key={r.team.id}>
             <span className="form-rank">{i + 1}</span>
-            <span className="form-team">
+            <button
+              className="form-team team-link"
+              onClick={() => openRoster(r.team.id)}
+              title={`${r.team.name} squad`}
+            >
               <Flag team={r.team} />
               <span className="form-name">{r.team.name}</span>
               <span className="form-grp">{r.team.group}</span>
-            </span>
+              <span className="team-link-cue" aria-hidden="true">›</span>
+            </button>
             <span className="form-col">{r.f.played}</span>
             <span className="form-col form-faint form-fifa">{r.f.base}</span>
             <span className="form-col form-col-rating">{r.f.rating}</span>

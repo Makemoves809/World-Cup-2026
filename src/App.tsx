@@ -8,10 +8,13 @@ import { Qatar2022 } from "./pages/Qatar2022";
 import { FormTable } from "./pages/FormTable";
 import { Continuity } from "./pages/Continuity";
 import { SquadPitch } from "./pages/SquadPitch";
+import { RosterModal } from "./components/RosterModal";
 import { navigate, useRoute } from "./router";
+import { useRoster } from "./lib/roster";
 
 export function App() {
   const path = useRoute();
+  const roster = useRoster();
 
   let page;
   if (path.startsWith("/squad/")) {
@@ -85,6 +88,8 @@ export function App() {
           WC26 Hub · Built with React + TypeScript · Jun 11 – Jul 19, 2026
         </p>
       </footer>
+
+      {roster && <RosterModal teamId={roster} />}
     </div>
   );
 }

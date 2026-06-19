@@ -1,4 +1,5 @@
 import { standingsForGroup, zoneFor } from "../lib/standings";
+import { openRoster } from "../lib/roster";
 import { Flag } from "./Flag";
 
 interface GroupTableProps {
@@ -43,9 +44,16 @@ export function GroupTable({ group }: GroupTableProps) {
                 <span className="pos-pip">{r.position}</span>
               </td>
               <td className="c-team">
-                <Flag team={r.team} />
-                <span className="team-name">{r.team.name}</span>
-                {r.team.host && <span className="host-pin">Host</span>}
+                <button
+                  className="team-link team-cell"
+                  onClick={() => openRoster(r.team.id)}
+                  title={`${r.team.name} squad`}
+                >
+                  <Flag team={r.team} />
+                  <span className="team-name">{r.team.name}</span>
+                  {r.team.host && <span className="host-pin">Host</span>}
+                  <span className="team-link-cue" aria-hidden="true">›</span>
+                </button>
               </td>
               <td>{r.played}</td>
               <td>{r.won}</td>

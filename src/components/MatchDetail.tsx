@@ -4,7 +4,7 @@ import { teamById } from "../data/teams";
 import { IMPACT_LABELS, sentOffIn, unavailableFor } from "../data/discipline";
 import { attendanceFor } from "../data/attendance";
 import { matchup, type TeamStrength } from "../lib/matchup";
-import { navigate } from "../router";
+import { openRoster } from "../lib/roster";
 import { Flag } from "./Flag";
 
 const fmtFull = new Intl.DateTimeFormat(undefined, {
@@ -30,7 +30,7 @@ export function MatchDetail({ match, onClose }: MatchDetailProps) {
 
   const openSquad = (teamId: string) => {
     onClose();
-    navigate(`/squad/${teamId}`);
+    openRoster(teamId);
   };
 
   useEffect(() => {

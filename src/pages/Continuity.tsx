@@ -2,7 +2,7 @@ import { CONTINUITY } from "../data/continuity";
 import { SQUADS } from "../data/squads";
 import { teams } from "../data/teams";
 import { Flag } from "../components/Flag";
-import { navigate } from "../router";
+import { openRoster } from "../lib/roster";
 import type { Team } from "../data/types";
 
 const byId = new Map<string, Team>(teams.map((t) => [t.id, t]));
@@ -77,7 +77,7 @@ export function Continuity() {
             <li className="cont-row" key={r.team.id}>
               <button
                 className={`cont-rowbtn${hasSquad ? " has-squad" : ""}`}
-                onClick={() => hasSquad && navigate(`/squad/${r.team.id}`)}
+                onClick={() => hasSquad && openRoster(r.team.id)}
                 disabled={!hasSquad}
                 title={hasSquad ? `See ${r.team.name}'s line-up` : undefined}
               >
@@ -100,7 +100,7 @@ export function Continuity() {
       </ol>
 
       <div className="cont-aside">
-        <button className="cont-france" onClick={() => navigate("/squad/fra")}>
+        <button className="cont-france" onClick={() => openRoster("fra")}>
           See France's starting XI on the pitch →
         </button>
       </div>

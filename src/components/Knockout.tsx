@@ -5,6 +5,7 @@ import {
   resolveBracket,
   type ResolvedSeed,
 } from "../lib/bracket";
+import { openRoster } from "../lib/roster";
 
 const fmtDate = new Intl.DateTimeFormat("en-US", {
   month: "short",
@@ -28,27 +29,44 @@ function SeedChip({
   if (seed.firm) cls.push("is-firm");
   if (won) cls.push("is-won");
   if (faded) cls.push("is-faded");
+
+  const flagEl = seed.flag ? (
+    <img
+      className="flag"
+      src={`https://flagcdn.com/w40/${seed.flag}.png`}
+      srcSet={`https://flagcdn.com/w80/${seed.flag}.png 2x`}
+      width={24}
+      height={16}
+      loading="lazy"
+      alt=""
+      aria-hidden="true"
+      onError={(e) => {
+        (e.currentTarget as HTMLImageElement).style.display = "none";
+      }}
+    />
+  ) : (
+    <span className="bk-seed-pip" aria-hidden="true" />
+  );
+
   return (
     <div className={cls.join(" ")}>
-      {seed.flag ? (
-        <img
-          className="flag"
-          src={`https://flagcdn.com/w40/${seed.flag}.png`}
-          srcSet={`https://flagcdn.com/w80/${seed.flag}.png 2x`}
-          width={24}
-          height={16}
-          loading="lazy"
-          alt=""
-          aria-hidden="true"
-          onError={(e) => {
-            (e.currentTarget as HTMLImageElement).style.display = "none";
-          }}
-        />
+      {seed.id ? (
+        <button
+          className="team-link bk-seed-link"
+          onClick={() => openRoster(seed.id!)}
+          title={`${seed.name} squad`}
+        >
+          {flagEl}
+          <span className="bk-seed-name">{seed.name}</span>
+          {seed.host && <span className="host-pin">Host</span>}
+        </button>
       ) : (
-        <span className="bk-seed-pip" aria-hidden="true" />
+        <>
+          {flagEl}
+          <span className="bk-seed-name">{seed.name}</span>
+          {seed.host && <span className="host-pin">Host</span>}
+        </>
       )}
-      <span className="bk-seed-name">{seed.name}</span>
-      {seed.host && <span className="host-pin">Host</span>}
       {score != null && <span className="bk-score">{score}</span>}
     </div>
   );
@@ -85,20 +103,26 @@ export function Knockout() {
               className={t.qualifies ? "third-row is-in" : "third-row is-out"}
             >
               <span className="third-rank">{t.rank}</span>
-              <img
-                className="flag"
-                src={`https://flagcdn.com/w40/${t.row.team.flag}.png`}
-                srcSet={`https://flagcdn.com/w80/${t.row.team.flag}.png 2x`}
-                width={24}
-                height={16}
-                loading="lazy"
-                alt=""
-                aria-hidden="true"
-                onError={(e) => {
-                  (e.currentTarget as HTMLImageElement).style.display = "none";
-                }}
-              />
-              <span className="third-team">{t.row.team.name}</span>
+              <button
+                className="team-link third-team-link"
+                onClick={() => openRoster(t.row.team.id)}
+                title={`${t.row.team.name} squad`}
+              >
+                <img
+                  className="flag"
+                  src={`https://flagcdn.com/w40/${t.row.team.flag}.png`}
+                  srcSet={`https://flagcdn.com/w80/${t.row.team.flag}.png 2x`}
+                  width={24}
+                  height={16}
+                  loading="lazy"
+                  alt=""
+                  aria-hidden="true"
+                  onError={(e) => {
+                    (e.currentTarget as HTMLImageElement).style.display = "none";
+                  }}
+                />
+                <span className="third-team">{t.row.team.name}</span>
+              </button>
               <span className="third-grp">3{t.row.team.group}</span>
               <span className="third-stat">{t.row.points} pts</span>
               <span className="third-stat third-gd">
