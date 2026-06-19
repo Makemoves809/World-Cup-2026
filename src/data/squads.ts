@@ -240,10 +240,124 @@ const PORTUGAL: TeamSquad = {
   ],
 };
 
+const USA: TeamSquad = {
+  teamId: "usa",
+  // Opener vs Paraguay (4–1): a 4-2-3-1.
+  formation: "4-2-3-1",
+  players: [
+    // ---- Starting XI ----
+    { num: 24, name: "Matt Freese", short: "Freese", line: "gk", role: "Goalkeeper", club: "New York City FC", at2022: false, start: { x: 50, y: 90 } },
+    { num: 16, name: "Alex Freeman", short: "Freeman", line: "def", role: "Right-back", club: "Villarreal", at2022: false, start: { x: 84, y: 70 } },
+    { num: 3, name: "Chris Richards", short: "Richards", line: "def", role: "Centre-back", club: "Crystal Palace", at2022: false, start: { x: 62, y: 73 } },
+    { num: 13, name: "Tim Ream", short: "Ream", line: "def", role: "Centre-back", club: "Charlotte FC", at2022: true, start: { x: 38, y: 73 } },
+    { num: 5, name: "Antonee Robinson", short: "A. Robinson", line: "def", role: "Left-back", club: "Fulham", at2022: true, start: { x: 16, y: 70 } },
+    { num: 4, name: "Tyler Adams", short: "Adams", line: "mid", role: "Defensive midfield", club: "Bournemouth", at2022: true, start: { x: 64, y: 50 } },
+    { num: 8, name: "Weston McKennie", short: "McKennie", line: "mid", role: "Central midfield", club: "Juventus", at2022: true, start: { x: 36, y: 50 } },
+    { num: 2, name: "Sergiño Dest", short: "Dest", line: "def", role: "Right winger", club: "PSV", at2022: true, start: { x: 78, y: 29 } },
+    { num: 17, name: "Malik Tillman", short: "Tillman", line: "mid", role: "Attacking midfield", club: "Bayer Leverkusen", at2022: false, start: { x: 50, y: 31 } },
+    { num: 10, name: "Christian Pulisic", short: "Pulisic", line: "fwd", role: "Left winger", club: "AC Milan", at2022: true, captain: true, start: { x: 22, y: 29 } },
+    { num: 20, name: "Folarin Balogun", short: "Balogun", line: "fwd", role: "Striker", club: "Monaco", at2022: false, start: { x: 50, y: 13 } },
+
+    // ---- Bench ----
+    { num: 1, name: "Matt Turner", short: "Turner", line: "gk", role: "Goalkeeper", club: "New England Revolution", at2022: true },
+    { num: 25, name: "Chris Brady", short: "Brady", line: "gk", role: "Goalkeeper", club: "Chicago Fire", at2022: false },
+    { num: 6, name: "Auston Trusty", short: "Trusty", line: "def", role: "Centre-back", club: "Celtic", at2022: false },
+    { num: 12, name: "Miles Robinson", short: "M. Robinson", line: "def", role: "Centre-back", club: "FC Cincinnati", at2022: false },
+    { num: 18, name: "Max Arfsten", short: "Arfsten", line: "def", role: "Left-back", club: "Columbus Crew", at2022: false },
+    { num: 22, name: "Mark McKenzie", short: "McKenzie", line: "def", role: "Centre-back", club: "Toulouse", at2022: false },
+    { num: 23, name: "Joe Scally", short: "Scally", line: "def", role: "Right-back", club: "Mönchengladbach", at2022: true },
+    { num: 7, name: "Gio Reyna", short: "Reyna", line: "mid", role: "Attacking midfield", club: "Mönchengladbach", at2022: true },
+    { num: 14, name: "Sebastian Berhalter", short: "Berhalter", line: "mid", role: "Central midfield", club: "Vancouver Whitecaps", at2022: false },
+    { num: 15, name: "Cristian Roldan", short: "Roldan", line: "mid", role: "Central midfield", club: "Seattle Sounders", at2022: true },
+    { num: 11, name: "Brenden Aaronson", short: "Aaronson", line: "mid", role: "Attacking midfield", club: "Leeds United", at2022: true },
+    { num: 9, name: "Ricardo Pepi", short: "Pepi", line: "fwd", role: "Striker", club: "PSV", at2022: false },
+    { num: 19, name: "Haji Wright", short: "H. Wright", line: "fwd", role: "Striker", club: "Coventry City", at2022: true },
+    { num: 21, name: "Tim Weah", short: "Weah", line: "fwd", role: "Winger", club: "Marseille", at2022: true },
+    { num: 26, name: "Alex Zendejas", short: "Zendejas", line: "fwd", role: "Winger", club: "Club América", at2022: false },
+  ],
+};
+
+const SCOTLAND: TeamSquad = {
+  teamId: "sco",
+  // Opener vs Haiti (1–0): a 4-4-2.
+  formation: "4-4-2",
+  players: [
+    // ---- Starting XI ----
+    { num: 1, name: "Angus Gunn", short: "Gunn", line: "gk", role: "Goalkeeper", club: "Nottingham Forest", at2022: false, start: { x: 50, y: 90 } },
+    { num: 2, name: "Aaron Hickey", short: "Hickey", line: "def", role: "Right-back", club: "Brentford", at2022: false, start: { x: 84, y: 70 } },
+    { num: 13, name: "Jack Hendry", short: "Hendry", line: "def", role: "Centre-back", club: "Al-Ettifaq", at2022: false, start: { x: 62, y: 73 } },
+    { num: 5, name: "Grant Hanley", short: "Hanley", line: "def", role: "Centre-back", club: "Birmingham City", at2022: false, start: { x: 38, y: 73 } },
+    { num: 3, name: "Andy Robertson", short: "Robertson", line: "def", role: "Left-back", club: "Liverpool", at2022: false, captain: true, start: { x: 16, y: 70 } },
+    { num: 17, name: "Ben Gannon-Doak", short: "Gannon-Doak", line: "mid", role: "Right midfield", club: "Liverpool", at2022: false, start: { x: 84, y: 44 } },
+    { num: 4, name: "Scott McTominay", short: "McTominay", line: "mid", role: "Central midfield", club: "Napoli", at2022: false, start: { x: 58, y: 50 } },
+    { num: 19, name: "Lewis Ferguson", short: "Ferguson", line: "mid", role: "Central midfield", club: "Bologna", at2022: false, start: { x: 38, y: 50 } },
+    { num: 7, name: "John McGinn", short: "McGinn", line: "mid", role: "Left midfield", club: "Aston Villa", at2022: false, start: { x: 14, y: 44 } },
+    { num: 20, name: "Lawrence Shankland", short: "Shankland", line: "fwd", role: "Striker", club: "Hearts", at2022: false, start: { x: 62, y: 16 } },
+    { num: 10, name: "Ché Adams", short: "Adams", line: "fwd", role: "Striker", club: "Torino", at2022: false, start: { x: 38, y: 16 } },
+
+    // ---- Bench ----
+    { num: 21, name: "Craig Gordon", short: "Gordon", line: "gk", role: "Goalkeeper", club: "Hearts", at2022: false },
+    { num: 12, name: "Liam Kelly", short: "Kelly", line: "gk", role: "Goalkeeper", club: "Rangers", at2022: false },
+    { num: 6, name: "Kieran Tierney", short: "Tierney", line: "def", role: "Left-back", club: "Celtic", at2022: false },
+    { num: 15, name: "John Souttar", short: "J. Souttar", line: "def", role: "Centre-back", club: "Rangers", at2022: false },
+    { num: 16, name: "Dominic Hyam", short: "Hyam", line: "def", role: "Centre-back", club: "Blackburn", at2022: false },
+    { num: 22, name: "Nathan Patterson", short: "Patterson", line: "def", role: "Right-back", club: "Everton", at2022: false },
+    { num: 24, name: "Anthony Ralston", short: "Ralston", line: "def", role: "Right-back", club: "Celtic", at2022: false },
+    { num: 26, name: "Scott McKenna", short: "McKenna", line: "def", role: "Centre-back", club: "Las Palmas", at2022: false },
+    { num: 8, name: "Tyler Fletcher", short: "Fletcher", line: "mid", role: "Central midfield", club: "West Ham", at2022: false },
+    { num: 11, name: "Ryan Christie", short: "Christie", line: "mid", role: "Attacking midfield", club: "Bournemouth", at2022: false },
+    { num: 23, name: "Kenny McLean", short: "McLean", line: "mid", role: "Central midfield", club: "Norwich City", at2022: false },
+    { num: 25, name: "Findlay Curtis", short: "Curtis", line: "mid", role: "Winger", club: "Rangers", at2022: false },
+    { num: 9, name: "Lyndon Dykes", short: "Dykes", line: "fwd", role: "Striker", club: "Birmingham City", at2022: false },
+    { num: 14, name: "Ross Stewart", short: "Stewart", line: "fwd", role: "Striker", club: "Southampton", at2022: false },
+    { num: 18, name: "George Hirst", short: "Hirst", line: "fwd", role: "Striker", club: "Ipswich Town", at2022: false },
+  ],
+};
+
+const MOROCCO: TeamSquad = {
+  teamId: "mar",
+  // Opener vs Brazil (1–1): a 4-2-3-1.
+  formation: "4-2-3-1",
+  players: [
+    // ---- Starting XI ----
+    { num: 1, name: "Yassine Bounou", short: "Bounou", line: "gk", role: "Goalkeeper", club: "Al-Hilal", at2022: true, start: { x: 50, y: 90 } },
+    { num: 2, name: "Achraf Hakimi", short: "Hakimi", line: "def", role: "Right-back", club: "PSG", at2022: true, captain: true, start: { x: 84, y: 70 } },
+    { num: 14, name: "Issa Diop", short: "Diop", line: "def", role: "Centre-back", club: "Fulham", at2022: false, start: { x: 62, y: 73 } },
+    { num: 18, name: "Chadi Riad", short: "Riad", line: "def", role: "Centre-back", club: "Crystal Palace", at2022: false, start: { x: 38, y: 73 } },
+    { num: 3, name: "Noussair Mazraoui", short: "Mazraoui", line: "def", role: "Left-back", club: "Manchester United", at2022: true, start: { x: 16, y: 70 } },
+    { num: 24, name: "Neil El Aynaoui", short: "El Aynaoui", line: "mid", role: "Defensive midfield", club: "AS Roma", at2022: false, start: { x: 64, y: 50 } },
+    { num: 6, name: "Ayyoub Bouaddi", short: "Bouaddi", line: "mid", role: "Defensive midfield", club: "Lille", at2022: false, start: { x: 36, y: 50 } },
+    { num: 10, name: "Brahim Díaz", short: "Brahim", line: "mid", role: "Right winger", club: "Real Madrid", at2022: false, start: { x: 78, y: 29 } },
+    { num: 8, name: "Azzedine Ounahi", short: "Ounahi", line: "mid", role: "Attacking midfield", club: "Girona", at2022: true, start: { x: 50, y: 31 } },
+    { num: 23, name: "Bilal El Khannouss", short: "El Khannouss", line: "mid", role: "Left winger", club: "Stuttgart", at2022: false, start: { x: 22, y: 29 } },
+    { num: 11, name: "Ismael Saibari", short: "Saibari", line: "fwd", role: "Striker", club: "PSV", at2022: false, start: { x: 50, y: 13 } },
+
+    // ---- Bench ----
+    { num: 12, name: "Munir Mohamedi", short: "Munir", line: "gk", role: "Goalkeeper", club: "RS Berkane", at2022: true },
+    { num: 22, name: "Reda Tagnaouti", short: "Tagnaouti", line: "gk", role: "Goalkeeper", club: "AS FAR", at2022: true },
+    { num: 5, name: "Nayef Aguerd", short: "Aguerd", line: "def", role: "Centre-back", club: "Marseille", at2022: true },
+    { num: 13, name: "Zakaria El Ouahdi", short: "El Ouahdi", line: "def", role: "Right-back", club: "Genk", at2022: false },
+    { num: 19, name: "Youssef Belammari", short: "Belammari", line: "def", role: "Centre-back", club: "Al Ahly", at2022: false },
+    { num: 25, name: "Redouane Halhal", short: "Halhal", line: "def", role: "Centre-back", club: "KV Mechelen", at2022: false },
+    { num: 26, name: "Anass Salah-Eddine", short: "Salah-Eddine", line: "def", role: "Left-back", club: "PSV", at2022: false },
+    { num: 4, name: "Sofyan Amrabat", short: "Amrabat", line: "mid", role: "Defensive midfield", club: "Real Betis", at2022: true },
+    { num: 15, name: "Samir El Mourabet", short: "El Mourabet", line: "mid", role: "Central midfield", club: "Strasbourg", at2022: false },
+    { num: 7, name: "Chemsdine Talbi", short: "Talbi", line: "fwd", role: "Winger", club: "Sunderland", at2022: false },
+    { num: 9, name: "Soufiane Rahimi", short: "Rahimi", line: "fwd", role: "Striker", club: "Al Ain", at2022: false },
+    { num: 16, name: "Ayoub El Kaabi", short: "El Kaabi", line: "fwd", role: "Striker", club: "Olympiacos", at2022: false },
+    { num: 17, name: "Abde Ezzalzouli", short: "Ezzalzouli", line: "fwd", role: "Winger", club: "Real Betis", at2022: false },
+    { num: 20, name: "Yassine Gessime", short: "Gessime", line: "fwd", role: "Forward", club: "Strasbourg", at2022: false },
+    { num: 21, name: "Ayoube Amaimouni", short: "Amaimouni", line: "fwd", role: "Forward", club: "Eintracht Frankfurt", at2022: false },
+  ],
+};
+
 export const SQUADS: Record<string, TeamSquad> = {
   fra: FRANCE,
   arg: ARGENTINA,
   esp: SPAIN,
   eng: ENGLAND,
   por: PORTUGAL,
+  usa: USA,
+  sco: SCOTLAND,
+  mar: MOROCCO,
 };
