@@ -73,9 +73,11 @@ current by hand:
   missing player **photos** (Wikimedia Commons file names) and verify the eleven
   flagged with a `start` are the real most-recent XI, not the whole squad.
 - **Revisit flagged / pending figures** — circle back on anything left
-  uncertain. Currently pending: Côte d'Ivoire–Ecuador (m-E-2) attendance, and a
-  few low-confidence venue capacities (Estadio Azteca, Arrowhead, Lumen Field).
-  Fill or correct them when better sources appear.
+  uncertain. Currently pending: official attendances for England 4–2 Croatia
+  (m-L-1), Czechia 1–1 South Africa (m-A-3) and Mexico 1–0 Korea Rep (m-A-4) —
+  only "expected" estimates have surfaced so far. Also fill in remaining squad
+  photos (initials-token starters) as Commons files are confirmed. Fill or
+  correct them when better sources appear.
 
 Workflow each time: check which matches have finished since the data was last
 touched, fill in their attendance (and any new cards/injuries), verify final

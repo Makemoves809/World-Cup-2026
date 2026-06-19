@@ -27,6 +27,13 @@ const curated: Record<string, number> = {
   "m-J-1": 69045, // Argentina 3–0 Algeria — GEHA Field at Arrowhead (Messi hat-trick)
   "m-J-2": 69391, // Austria 3–1 Jordan — Levi's Stadium
   "m-K-1": 68777, // Portugal 1–1 DR Congo — NRG Stadium
+  // Matchday 2 onward
+  "m-B-3": 70026, // Switzerland 4–1 Bosnia — SoFi Stadium
+  "m-B-4": 52497, // Canada 6–0 Qatar — BC Place (first-ever WC win)
+  "m-K-2": 80824, // Uzbekistan 1–3 Colombia — Estadio Azteca
+  "m-L-2": 42942, // Ghana 1–0 Panama — BMO Field
+  // Pending official figures: m-L-1 England 4–2 Croatia (AT&T), m-A-3 Czechia
+  // 1–1 South Africa (Mercedes-Benz), m-A-4 Mexico 1–0 Korea Rep (Akron).
 };
 
 const liveAttendance =
