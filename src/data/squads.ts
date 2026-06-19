@@ -335,7 +335,7 @@ const MOROCCO: TeamSquad = {
     // ---- Bench ----
     { num: 12, name: "Munir Mohamedi", short: "Munir", line: "gk", role: "Goalkeeper", club: "RS Berkane", at2022: true },
     { num: 22, name: "Reda Tagnaouti", short: "Tagnaouti", line: "gk", role: "Goalkeeper", club: "AS FAR", at2022: true },
-    { num: 5, name: "Nayef Aguerd", short: "Aguerd", line: "def", role: "Centre-back", club: "Marseille", at2022: true },
+    { num: 5, name: "Marwane Saadane", short: "Saadane", line: "def", role: "Centre-back", club: "Al-Fateh", at2022: false },
     { num: 13, name: "Zakaria El Ouahdi", short: "El Ouahdi", line: "def", role: "Right-back", club: "Genk", at2022: false },
     { num: 19, name: "Youssef Belammari", short: "Belammari", line: "def", role: "Centre-back", club: "Al Ahly", at2022: false },
     { num: 25, name: "Redouane Halhal", short: "Halhal", line: "def", role: "Centre-back", club: "KV Mechelen", at2022: false },
@@ -345,7 +345,7 @@ const MOROCCO: TeamSquad = {
     { num: 7, name: "Chemsdine Talbi", short: "Talbi", line: "fwd", role: "Winger", club: "Sunderland", at2022: false },
     { num: 9, name: "Soufiane Rahimi", short: "Rahimi", line: "fwd", role: "Striker", club: "Al Ain", at2022: false },
     { num: 16, name: "Ayoub El Kaabi", short: "El Kaabi", line: "fwd", role: "Striker", club: "Olympiacos", at2022: false },
-    { num: 17, name: "Abde Ezzalzouli", short: "Ezzalzouli", line: "fwd", role: "Winger", club: "Real Betis", at2022: false },
+    { num: 17, name: "Hamza Igamane", short: "Igamane", line: "fwd", role: "Striker", club: "Lille", at2022: false },
     { num: 20, name: "Yassine Gessime", short: "Gessime", line: "fwd", role: "Forward", club: "Strasbourg", at2022: false },
     { num: 21, name: "Ayoube Amaimouni", short: "Amaimouni", line: "fwd", role: "Forward", club: "Eintracht Frankfurt", at2022: false },
   ],

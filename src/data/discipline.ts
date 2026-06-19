@@ -424,6 +424,44 @@ export const absences: PlayerAbsence[] = [
   ...liveSuspensions,
 ];
 
+/* ----- Per-player card / availability status (for squad maps) ----- */
+
+export interface CardStatus {
+  /** Single yellow cards accumulated (2 = a suspension). */
+  yellows: number;
+  /** Sent off at some point. */
+  red: boolean;
+  /** Banned from an upcoming match (red or two yellows). */
+  suspended: boolean;
+  /** Out injured. */
+  injured: boolean;
+  /** Short reason for the most relevant entry (tooltip / modal). */
+  note?: string;
+}
+
+const allYellows = (live.yellowCards as unknown as LiveYellowCard[]) ?? [];
+
+/** Card / availability status for a named player on a team. */
+export function cardStatus(teamId: string, playerName: string): CardStatus {
+  const words = nameWords(playerName).filter((w) => w.length >= 3);
+  const mine = (a: { team: string; player: string }) =>
+    a.team === teamId && nameWords(a.player).some((w) => words.includes(w));
+
+  const hits = absences.filter(mine);
+  const red = hits.some((a) => a.type === "red");
+  const susp = hits.some((a) => a.type === "suspension");
+  const injured = hits.some((a) => a.type === "injury");
+  const yellowCount = allYellows.filter(mine).length;
+  const yellows = susp ? Math.max(yellowCount, 2) : yellowCount;
+
+  const primary =
+    hits.find((a) => a.type === "red") ??
+    hits.find((a) => a.type === "suspension") ??
+    hits.find((a) => a.type === "injury");
+
+  return { yellows, red, suspended: red || susp, injured, note: primary?.reason };
+}
+
 /** Players shown a red card during the given match. */
 export const sentOffIn = (matchId: string): PlayerAbsence[] =>
   absences.filter((a) => a.type === "red" && a.sourceMatchId === matchId);

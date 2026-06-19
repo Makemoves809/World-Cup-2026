@@ -6,13 +6,32 @@ import {
   initials,
   type Player,
 } from "../data/squads";
+import { cardStatus, type CardStatus } from "../data/discipline";
 
-/** Circular headshot with a lettered fallback when the photo can't load. */
-export function Avatar({ player, size }: { player: Player; size: number }) {
+/** Which coloured ring/badge a player's status warrants (most severe first). */
+function statusKind(cs: CardStatus): "red" | "yellow" | "out" | null {
+  if (cs.red || cs.suspended) return "red";
+  if (cs.yellows > 0) return "yellow";
+  if (cs.injured) return "out";
+  return null;
+}
+
+/** Circular headshot with a lettered fallback + a card/availability badge. */
+export function Avatar({
+  player,
+  size,
+  status,
+}: {
+  player: Player;
+  size: number;
+  status?: CardStatus;
+}) {
   const [failed, setFailed] = useState(false);
   const show = player.photo && !failed;
+  const kind = status ? statusKind(status) : null;
+
   return (
-    <span className="pl-disc" style={{ width: size, height: size }}>
+    <span className={`pl-disc${kind ? ` ring-${kind}` : ""}`} style={{ width: size, height: size }}>
       {show ? (
         <img
           className="pl-photo"
@@ -26,11 +45,54 @@ export function Avatar({ player, size }: { player: Player; size: number }) {
       )}
       <span className="pl-num">{player.num}</span>
       {player.captain && <span className="pl-capt" title="Captain">C</span>}
+
+      {kind === "red" && (
+        <span className="pl-card pl-card-red" title={status?.note || "Suspended"} />
+      )}
+      {kind === "yellow" && (
+        <span className="pl-card pl-card-yellow" title={status?.note || "Booked"}>
+          {status!.yellows > 1 ? status!.yellows : ""}
+        </span>
+      )}
+      {kind === "out" && (
+        <span className="pl-out" title={status?.note || "Out injured"}>
+          +
+        </span>
+      )}
     </span>
   );
 }
 
-function PlayerModal({ player, onClose }: { player: Player; onClose: () => void }) {
+function StatusLine({ status }: { status: CardStatus }) {
+  const kind = statusKind(status);
+  if (!kind) return null;
+  const label =
+    kind === "red"
+      ? status.red
+        ? "Sent off · suspended"
+        : "Suspended (two yellows)"
+      : kind === "yellow"
+      ? status.yellows > 1
+        ? "Two yellows"
+        : "One booking"
+      : "Out injured";
+  return (
+    <p className={`pl-status pl-status-${kind}`}>
+      <span className="pl-status-tag">{label}</span>
+      {status.note && <span className="pl-status-note">{status.note}</span>}
+    </p>
+  );
+}
+
+function PlayerModal({
+  player,
+  status,
+  onClose,
+}: {
+  player: Player;
+  status: CardStatus;
+  onClose: () => void;
+}) {
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => e.key === "Escape" && onClose();
     window.addEventListener("keydown", onKey);
@@ -44,7 +106,7 @@ function PlayerModal({ player, onClose }: { player: Player; onClose: () => void 
           ×
         </button>
         <div className="pl-modal-head">
-          <Avatar player={player} size={120} />
+          <Avatar player={player} size={120} status={status} />
           <div className="pl-modal-id">
             <span className="pl-modal-kicker">
               {player.captain ? "Captain · " : ""}#{player.num} · {LINE_LABEL[player.line]}
@@ -53,6 +115,8 @@ function PlayerModal({ player, onClose }: { player: Player; onClose: () => void 
             <span className="pl-modal-role">{player.role}</span>
           </div>
         </div>
+
+        <StatusLine status={status} />
 
         <dl className="pl-facts">
           <div>
@@ -93,6 +157,7 @@ export function SquadView({ teamId }: { teamId: string }) {
 
   const xi = squad.players.filter((p) => p.start);
   const bench = squad.players.filter((p) => !p.start);
+  const statusOf = (p: Player) => cardStatus(teamId, p.name);
 
   return (
     <>
@@ -115,7 +180,7 @@ export function SquadView({ teamId }: { teamId: string }) {
               onClick={() => setActive(p)}
               aria-label={`${p.name}, ${p.role}`}
             >
-              <Avatar player={p} size={60} />
+              <Avatar player={p} size={60} status={statusOf(p)} />
               <span className="pl-name">{p.short}</span>
             </button>
           </div>
@@ -132,7 +197,7 @@ export function SquadView({ teamId }: { teamId: string }) {
               onClick={() => setActive(p)}
               aria-label={`${p.name}, ${p.role}`}
             >
-              <Avatar player={p} size={40} />
+              <Avatar player={p} size={40} status={statusOf(p)} />
               <span className="bench-meta">
                 <span className="bench-name">{p.short}</span>
                 <span className="bench-role">{p.role}</span>
@@ -142,7 +207,13 @@ export function SquadView({ teamId }: { teamId: string }) {
         </div>
       </div>
 
-      {active && <PlayerModal player={active} onClose={() => setActive(null)} />}
+      {active && (
+        <PlayerModal
+          player={active}
+          status={statusOf(active)}
+          onClose={() => setActive(null)}
+        />
+      )}
     </>
   );
 }

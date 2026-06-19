@@ -3045,3 +3045,72 @@ img.flag {
   color: var(--chalk);
 }
 .roster-empty { margin-top: 10px; }
+
+/* ============================================================
+   Card / availability indicators on player tokens
+   ============================================================ */
+.pl-disc.ring-red { border-color: var(--vermilion); }
+.pl-disc.ring-yellow { border-color: var(--floodlight); }
+.pl-disc.ring-out { border-color: var(--chalk-faint); }
+
+.pl-card {
+  position: absolute;
+  top: -3px;
+  right: -3px;
+  min-width: 11px;
+  height: 15px;
+  padding: 0 1px;
+  border-radius: 2px;
+  border: 1px solid rgba(0, 0, 0, 0.35);
+  display: grid;
+  place-items: center;
+  font-family: var(--font-mono);
+  font-size: 8px;
+  font-weight: 700;
+  color: var(--ink);
+  transform: rotate(8deg);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+}
+.pl-card-red { background: var(--vermilion); }
+.pl-card-yellow { background: var(--floodlight); }
+.pl-out {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  width: 15px;
+  height: 15px;
+  display: grid;
+  place-items: center;
+  background: var(--chalk);
+  color: #c0271a;
+  font-weight: 800;
+  font-size: 13px;
+  line-height: 1;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+/* Status line in the player detail modal */
+.pl-status {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px 10px;
+  margin: 0 0 14px;
+  padding: 9px 12px;
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+}
+.pl-status-red { background: rgba(255, 90, 60, 0.12); border: 1px solid rgba(255, 90, 60, 0.3); }
+.pl-status-yellow { background: var(--floodlight-soft); border: 1px solid rgba(255, 194, 60, 0.3); }
+.pl-status-out { background: var(--line-soft); border: 1px solid var(--line); }
+.pl-status-tag {
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-size: 12px;
+}
+.pl-status-red .pl-status-tag { color: var(--vermilion); }
+.pl-status-yellow .pl-status-tag { color: var(--floodlight); }
+.pl-status-out .pl-status-tag { color: var(--chalk-dim); }
+.pl-status-note { color: var(--chalk-dim); }
