@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-19T01:56:21.468Z",
+  "updatedAt": "2026-06-19T02:17:15.128Z",
   "results": {
     "m-A-1": [
       2,
@@ -115,7 +115,7 @@
   "koResults": [],
   "liveScores": {
     "m-A-4": {
-      "home": 0,
+      "home": 1,
       "away": 0,
       "minute": null
     }
