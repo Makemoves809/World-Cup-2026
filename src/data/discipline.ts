@@ -161,6 +161,16 @@ const curated: PlayerAbsence[] = [
     note: "Ruled out of the tournament.",
   },
   {
+    player: "Christian Pulisic",
+    position: "Winger",
+    team: "usa",
+    type: "injury",
+    reason: "Calf strain — sat out the Australia game",
+    missesMatchIds: ["m-D-3"],
+    impact: 5,
+    note: "Captain; in doubt — hoping to return for the final group game.",
+  },
+  {
     player: "Billy Gilmour",
     position: "Midfielder",
     team: "sco",
