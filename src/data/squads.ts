@@ -352,6 +352,147 @@ const MOROCCO: TeamSquad = {
   ],
 };
 
+const BRAZIL: TeamSquad = {
+  teamId: "bra",
+  // Opener vs Morocco (1–1): a 4-2-3-1, Igor Thiago up top with Neymar doubtful.
+  formation: "4-2-3-1",
+  players: [
+    { num: 1, name: "Alisson", short: "Alisson", line: "gk", role: "Goalkeeper", club: "Liverpool", at2022: true, start: { x: 50, y: 90 } },
+    { num: 24, name: "Roger Ibañez", short: "Ibañez", line: "def", role: "Right-back", club: "Al-Ahli", at2022: false, start: { x: 84, y: 70 } },
+    { num: 4, name: "Marquinhos", short: "Marquinhos", line: "def", role: "Centre-back", club: "PSG", at2022: true, captain: true, start: { x: 62, y: 73 } },
+    { num: 3, name: "Gabriel Magalhães", short: "Gabriel M.", line: "def", role: "Centre-back", club: "Arsenal", at2022: false, start: { x: 38, y: 73 } },
+    { num: 16, name: "Douglas Santos", short: "D. Santos", line: "def", role: "Left-back", club: "Zenit", at2022: false, start: { x: 16, y: 70 } },
+    { num: 5, name: "Casemiro", short: "Casemiro", line: "mid", role: "Defensive midfield", club: "Manchester United", at2022: true, start: { x: 64, y: 50 } },
+    { num: 8, name: "Bruno Guimarães", short: "Bruno G.", line: "mid", role: "Central midfield", club: "Newcastle", at2022: true, start: { x: 36, y: 50 } },
+    { num: 11, name: "Raphinha", short: "Raphinha", line: "fwd", role: "Right winger", club: "Barcelona", at2022: true, start: { x: 78, y: 29 } },
+    { num: 20, name: "Lucas Paquetá", short: "Paquetá", line: "mid", role: "Attacking midfield", club: "West Ham", at2022: true, start: { x: 50, y: 31 } },
+    { num: 7, name: "Vinícius Júnior", short: "Vini Jr", line: "fwd", role: "Left winger", club: "Real Madrid", at2022: true, start: { x: 22, y: 29 } },
+    { num: 25, name: "Igor Thiago", short: "I. Thiago", line: "fwd", role: "Striker", club: "Brentford", at2022: false, start: { x: 50, y: 13 } },
+
+    { num: 12, name: "Weverton", short: "Weverton", line: "gk", role: "Goalkeeper", club: "Palmeiras", at2022: true },
+    { num: 23, name: "Ederson", short: "Ederson", line: "gk", role: "Goalkeeper", club: "Fenerbahçe", at2022: true },
+    { num: 6, name: "Alex Sandro", short: "A. Sandro", line: "def", role: "Left-back", club: "Flamengo", at2022: true },
+    { num: 13, name: "Danilo", short: "Danilo", line: "def", role: "Right-back", club: "Flamengo", at2022: true },
+    { num: 14, name: "Bremer", short: "Bremer", line: "def", role: "Centre-back", club: "Juventus", at2022: true },
+    { num: 15, name: "Léo Pereira", short: "L. Pereira", line: "def", role: "Centre-back", club: "Flamengo", at2022: false },
+    { num: 2, name: "Éderson", short: "Éderson", line: "mid", role: "Central midfield", club: "Atalanta", at2022: false },
+    { num: 17, name: "Fabinho", short: "Fabinho", line: "mid", role: "Defensive midfield", club: "Al-Ittihad", at2022: true },
+    { num: 18, name: "Danilo", short: "Danilo S.", line: "mid", role: "Central midfield", club: "Botafogo", at2022: false },
+    { num: 9, name: "Matheus Cunha", short: "M. Cunha", line: "fwd", role: "Forward", club: "Manchester United", at2022: false },
+    { num: 10, name: "Neymar", short: "Neymar", line: "fwd", role: "Forward", club: "Santos", at2022: true },
+    { num: 19, name: "Endrick", short: "Endrick", line: "fwd", role: "Striker", club: "Real Madrid", at2022: false },
+    { num: 21, name: "Luiz Henrique", short: "L. Henrique", line: "fwd", role: "Winger", club: "Zenit", at2022: false },
+    { num: 22, name: "Gabriel Martinelli", short: "Martinelli", line: "fwd", role: "Winger", club: "Arsenal", at2022: true },
+    { num: 26, name: "Rayan", short: "Rayan", line: "fwd", role: "Winger", club: "Vasco da Gama", at2022: false },
+  ],
+};
+
+const NETHERLANDS: TeamSquad = {
+  teamId: "ned",
+  // Opener vs Japan (2–2): a 4-3-3.
+  formation: "4-3-3",
+  players: [
+    { num: 1, name: "Bart Verbruggen", short: "Verbruggen", line: "gk", role: "Goalkeeper", club: "Brighton", at2022: false, start: { x: 50, y: 90 } },
+    { num: 6, name: "Denzel Dumfries", short: "Dumfries", line: "def", role: "Right-back", club: "Inter Milan", at2022: true, start: { x: 84, y: 70 } },
+    { num: 9, name: "Jan Paul van Hecke", short: "van Hecke", line: "def", role: "Centre-back", club: "Brighton", at2022: false, start: { x: 62, y: 73 } },
+    { num: 4, name: "Virgil van Dijk", short: "van Dijk", line: "def", role: "Centre-back", club: "Liverpool", at2022: true, captain: true, start: { x: 38, y: 73 } },
+    { num: 8, name: "Micky van de Ven", short: "van de Ven", line: "def", role: "Left-back", club: "Tottenham", at2022: false, start: { x: 16, y: 70 } },
+    { num: 11, name: "Ryan Gravenberch", short: "Gravenberch", line: "mid", role: "Defensive midfield", club: "Liverpool", at2022: false, start: { x: 50, y: 48 } },
+    { num: 10, name: "Frenkie de Jong", short: "de Jong", line: "mid", role: "Central midfield", club: "Barcelona", at2022: true, start: { x: 30, y: 40 } },
+    { num: 14, name: "Tijjani Reijnders", short: "Reijnders", line: "mid", role: "Central midfield", club: "Manchester City", at2022: false, start: { x: 70, y: 40 } },
+    { num: 26, name: "Crysencio Summerville", short: "Summerville", line: "fwd", role: "Right winger", club: "West Ham", at2022: false, start: { x: 82, y: 18 } },
+    { num: 18, name: "Cody Gakpo", short: "Gakpo", line: "fwd", role: "Forward", club: "Liverpool", at2022: true, start: { x: 50, y: 13 } },
+    { num: 20, name: "Donyell Malen", short: "Malen", line: "fwd", role: "Left winger", club: "Aston Villa", at2022: false, start: { x: 18, y: 18 } },
+
+    { num: 13, name: "Robin Roefs", short: "Roefs", line: "gk", role: "Goalkeeper", club: "Sunderland", at2022: false },
+    { num: 23, name: "Mark Flekken", short: "Flekken", line: "gk", role: "Goalkeeper", club: "Bayer Leverkusen", at2022: false },
+    { num: 2, name: "Jurriën Timber", short: "J. Timber", line: "def", role: "Right-back", club: "Arsenal", at2022: true },
+    { num: 5, name: "Nathan Aké", short: "Aké", line: "def", role: "Centre-back", club: "Manchester City", at2022: true },
+    { num: 7, name: "Jorrel Hato", short: "Hato", line: "def", role: "Centre-back", club: "Chelsea", at2022: false },
+    { num: 3, name: "Marten de Roon", short: "de Roon", line: "mid", role: "Defensive midfield", club: "Atalanta", at2022: true },
+    { num: 12, name: "Teun Koopmeiners", short: "Koopmeiners", line: "mid", role: "Central midfield", club: "Juventus", at2022: true },
+    { num: 15, name: "Guus Til", short: "Til", line: "mid", role: "Central midfield", club: "PSV", at2022: false },
+    { num: 16, name: "Quinten Timber", short: "Q. Timber", line: "mid", role: "Central midfield", club: "Feyenoord", at2022: false },
+    { num: 17, name: "Mats Wieffer", short: "Wieffer", line: "mid", role: "Defensive midfield", club: "Brighton", at2022: false },
+    { num: 19, name: "Memphis Depay", short: "Depay", line: "fwd", role: "Forward", club: "Corinthians", at2022: true },
+    { num: 21, name: "Brian Brobbey", short: "Brobbey", line: "fwd", role: "Striker", club: "Sunderland", at2022: false },
+    { num: 22, name: "Wout Weghorst", short: "Weghorst", line: "fwd", role: "Striker", club: "Ajax", at2022: true },
+    { num: 24, name: "Justin Kluivert", short: "Kluivert", line: "fwd", role: "Winger", club: "Bournemouth", at2022: false },
+    { num: 25, name: "Noa Lang", short: "Lang", line: "fwd", role: "Winger", club: "Napoli", at2022: true },
+  ],
+};
+
+const HAITI: TeamSquad = {
+  teamId: "hai",
+  // Opener vs Scotland (0–1): a 4-4-2.
+  formation: "4-4-2",
+  players: [
+    { num: 1, name: "Johny Placide", short: "Placide", line: "gk", role: "Goalkeeper", club: "Bastia", at2022: false, captain: true, start: { x: 50, y: 90 } },
+    { num: 2, name: "Carlens Arcus", short: "Arcus", line: "def", role: "Right-back", club: "Angers", at2022: false, start: { x: 84, y: 70 } },
+    { num: 4, name: "Ricardo Adé", short: "Adé", line: "def", role: "Centre-back", club: "LDU Quito", at2022: false, start: { x: 62, y: 73 } },
+    { num: 5, name: "Hannes Delcroix", short: "Delcroix", line: "def", role: "Centre-back", club: "Lugano", at2022: false, start: { x: 38, y: 73 } },
+    { num: 8, name: "Martin Experience", short: "Experience", line: "def", role: "Left-back", club: "Nancy", at2022: false, start: { x: 16, y: 70 } },
+    { num: 18, name: "Ruben Providence", short: "Providence", line: "mid", role: "Right midfield", club: "RWD Molenbeek", at2022: false, start: { x: 84, y: 44 } },
+    { num: 10, name: "Jean-Ricner Bellegarde", short: "Bellegarde", line: "mid", role: "Central midfield", club: "Wolves", at2022: false, start: { x: 58, y: 50 } },
+    { num: 14, name: "Leverton Pierre", short: "L. Pierre", line: "mid", role: "Central midfield", club: "Vizela", at2022: false, start: { x: 38, y: 50 } },
+    { num: 15, name: "Josué Casimir", short: "Casimir", line: "mid", role: "Left midfield", club: "Le Havre", at2022: false, start: { x: 14, y: 44 } },
+    { num: 9, name: "Duckens Nazon", short: "Nazon", line: "fwd", role: "Striker", club: "Esteghlal", at2022: false, start: { x: 62, y: 16 } },
+    { num: 20, name: "Wilson Isidor", short: "Isidor", line: "fwd", role: "Striker", club: "Sunderland", at2022: false, start: { x: 38, y: 16 } },
+
+    { num: 12, name: "Alexandre Pierre", short: "A. Pierre", line: "gk", role: "Goalkeeper", club: "Sochaux", at2022: false },
+    { num: 23, name: "Josué Duverger", short: "Duverger", line: "gk", role: "Goalkeeper", club: "Cosmos Koblenz", at2022: false },
+    { num: 3, name: "Keeto Thermoncy", short: "Thermoncy", line: "def", role: "Centre-back", club: "Young Boys", at2022: false },
+    { num: 13, name: "Duke Lacroix", short: "Lacroix", line: "def", role: "Right-back", club: "Colorado Springs", at2022: false },
+    { num: 22, name: "Jean-Kévin Duverne", short: "Duverne", line: "def", role: "Centre-back", club: "Gent", at2022: false },
+    { num: 24, name: "Wilguens Paugain", short: "Paugain", line: "def", role: "Full-back", club: "Zulte Waregem", at2022: false },
+    { num: 6, name: "Carl Sainté", short: "Sainté", line: "mid", role: "Central midfield", club: "El Paso", at2022: false },
+    { num: 17, name: "Danley Jean Jacques", short: "Jean Jacques", line: "mid", role: "Central midfield", club: "Philadelphia Union", at2022: false },
+    { num: 25, name: "Dominique Simon", short: "D. Simon", line: "mid", role: "Central midfield", club: "Tatran Prešov", at2022: false },
+    { num: 26, name: "Woodensky Pierre", short: "W. Pierre", line: "mid", role: "Midfielder", club: "Violette", at2022: false },
+    { num: 7, name: "Derrick Etienne Jr", short: "Etienne", line: "fwd", role: "Winger", club: "Toronto FC", at2022: false },
+    { num: 11, name: "Frantzdy Pierrot", short: "Pierrot", line: "fwd", role: "Striker", club: "Gaziantep", at2022: false },
+    { num: 16, name: "Yassin Fortuné", short: "Fortuné", line: "fwd", role: "Winger", club: "Le Havre", at2022: false },
+    { num: 19, name: "Louicius Deedson", short: "Deedson", line: "fwd", role: "Forward", club: "Famalicão", at2022: false },
+    { num: 21, name: "Lenny Joseph", short: "L. Joseph", line: "fwd", role: "Striker", club: "Bordeaux", at2022: false },
+  ],
+};
+
+const SWEDEN: TeamSquad = {
+  teamId: "swe",
+  // Opener vs Tunisia (5–1): a 4-4-2, Isak & Gyökeres up top. Some bench
+  // shirt numbers are best-effort pending the official list.
+  formation: "4-4-2",
+  players: [
+    { num: 23, name: "Kristoffer Nordfeldt", short: "Nordfeldt", line: "gk", role: "Goalkeeper", club: "AIK", at2022: false, start: { x: 50, y: 90 } },
+    { num: 2, name: "Gustaf Lagerbielke", short: "Lagerbielke", line: "def", role: "Right-back", club: "Braga", at2022: false, start: { x: 84, y: 70 } },
+    { num: 3, name: "Victor Lindelöf", short: "Lindelöf", line: "def", role: "Centre-back", club: "Aston Villa", at2022: false, captain: true, start: { x: 62, y: 73 } },
+    { num: 4, name: "Isak Hien", short: "Hien", line: "def", role: "Centre-back", club: "Atalanta", at2022: false, start: { x: 38, y: 73 } },
+    { num: 5, name: "Gabriel Gudmundsson", short: "Gudmundsson", line: "def", role: "Left-back", club: "Leeds United", at2022: false, start: { x: 16, y: 70 } },
+    { num: 22, name: "Alexander Bernhardsson", short: "Bernhardsson", line: "mid", role: "Right midfield", club: "Brann", at2022: false, start: { x: 84, y: 44 } },
+    { num: 16, name: "Jesper Karlström", short: "Karlström", line: "mid", role: "Central midfield", club: "Udinese", at2022: false, start: { x: 58, y: 50 } },
+    { num: 18, name: "Yasin Ayari", short: "Ayari", line: "mid", role: "Central midfield", club: "Brighton", at2022: false, start: { x: 38, y: 50 } },
+    { num: 17, name: "Benjamin Nygren", short: "Nygren", line: "mid", role: "Left midfield", club: "Celtic", at2022: false, start: { x: 14, y: 44 } },
+    { num: 11, name: "Alexander Isak", short: "Isak", line: "fwd", role: "Striker", club: "Liverpool", at2022: false, start: { x: 62, y: 16 } },
+    { num: 9, name: "Viktor Gyökeres", short: "Gyökeres", line: "fwd", role: "Striker", club: "Arsenal", at2022: false, start: { x: 38, y: 16 } },
+
+    { num: 1, name: "Jacob Widell Zetterström", short: "Zetterström", line: "gk", role: "Goalkeeper", club: "Derby County", at2022: false },
+    { num: 12, name: "Viktor Johansson", short: "V. Johansson", line: "gk", role: "Goalkeeper", club: "Stoke City", at2022: false },
+    { num: 6, name: "Herman Johansson", short: "H. Johansson", line: "def", role: "Right-back", club: "FC Dallas", at2022: false },
+    { num: 8, name: "Daniel Svensson", short: "Svensson", line: "def", role: "Left-back", club: "Borussia Dortmund", at2022: false },
+    { num: 14, name: "Hjalmar Ekdal", short: "Ekdal", line: "def", role: "Centre-back", club: "Burnley", at2022: false },
+    { num: 15, name: "Carl Starfelt", short: "Starfelt", line: "def", role: "Centre-back", club: "Celta Vigo", at2022: false },
+    { num: 20, name: "Eric Smith", short: "E. Smith", line: "def", role: "Centre-back", club: "St. Pauli", at2022: false },
+    { num: 24, name: "Elliot Stroud", short: "Stroud", line: "def", role: "Full-back", club: "Mjällby", at2022: false },
+    { num: 7, name: "Lucas Bergvall", short: "Bergvall", line: "mid", role: "Central midfield", club: "Tottenham", at2022: false },
+    { num: 13, name: "Ken Sema", short: "Sema", line: "mid", role: "Winger", club: "Pafos", at2022: false },
+    { num: 10, name: "Mattias Svanberg", short: "Svanberg", line: "mid", role: "Central midfield", club: "Wolfsburg", at2022: false },
+    { num: 25, name: "Besfort Zeneli", short: "Zeneli", line: "mid", role: "Winger", club: "Rosenborg", at2022: false },
+    { num: 21, name: "Anthony Elanga", short: "Elanga", line: "fwd", role: "Winger", club: "Newcastle", at2022: false },
+    { num: 19, name: "Gustaf Nilsson", short: "G. Nilsson", line: "fwd", role: "Striker", club: "Club Brugge", at2022: false },
+    { num: 26, name: "Taha Ali", short: "Taha Ali", line: "fwd", role: "Winger", club: "Sirius", at2022: false },
+  ],
+};
+
 export const SQUADS: Record<string, TeamSquad> = {
   fra: FRANCE,
   arg: ARGENTINA,
@@ -361,4 +502,8 @@ export const SQUADS: Record<string, TeamSquad> = {
   usa: USA,
   sco: SCOTLAND,
   mar: MOROCCO,
+  bra: BRAZIL,
+  ned: NETHERLANDS,
+  hai: HAITI,
+  swe: SWEDEN,
 };
