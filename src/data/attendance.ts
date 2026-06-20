@@ -36,7 +36,8 @@ const curated: Record<string, number> = {
   // Pending official figures: m-L-1 England 4–2 Croatia (AT&T), m-A-3 Czechia
   // 1–1 South Africa (Mercedes-Benz),
   // m-D-3 USA 2–0 Australia (Lumen Field — "over 66,000", exact TBC),
-  // m-C-3 Scotland 0–1 Morocco (Gillette Stadium).
+  // m-C-3 Scotland 0–1 Morocco (Gillette Stadium), m-C-4 Brazil 3–0 Haiti
+  // (Lincoln Financial Field), m-D-4 Türkiye 0–1 Paraguay (Levi's Stadium).
 };
 
 const liveAttendance =
