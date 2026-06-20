@@ -280,38 +280,38 @@ const USA: TeamSquad = {
 
 const SCOTLAND: TeamSquad = {
   teamId: "sco",
-  // Opener vs Haiti (1–0): a 4-4-2.
-  formation: "4-4-2",
+  // Most recent: vs Morocco (0–1) — switched to a back-three 3-4-2-1.
+  formation: "3-4-2-1",
   players: [
     // ---- Starting XI ----
     { num: 1, name: "Angus Gunn", short: "Gunn", line: "gk", role: "Goalkeeper", club: "Nottingham Forest", at2022: false, start: { x: 50, y: 90 } },
-    { num: 2, name: "Aaron Hickey", short: "Hickey", line: "def", role: "Right-back", club: "Brentford", at2022: false, start: { x: 84, y: 70 } },
-    { num: 13, name: "Jack Hendry", short: "Hendry", line: "def", role: "Centre-back", club: "Al-Ettifaq", at2022: false, start: { x: 62, y: 73 } },
-    { num: 5, name: "Grant Hanley", short: "Hanley", line: "def", role: "Centre-back", club: "Birmingham City", at2022: false, start: { x: 38, y: 73 } },
-    { num: 3, name: "Andy Robertson", short: "Robertson", line: "def", role: "Left-back", club: "Liverpool", at2022: false, captain: true, photo: "LFC Parade 2019 01 Andy Robertson.jpg", start: { x: 16, y: 70 } },
-    { num: 17, name: "Ben Gannon-Doak", short: "Gannon-Doak", line: "mid", role: "Right midfield", club: "Liverpool", at2022: false, start: { x: 84, y: 44 } },
-    { num: 4, name: "Scott McTominay", short: "McTominay", line: "mid", role: "Central midfield", club: "Napoli", at2022: false, start: { x: 58, y: 50 } },
+    { num: 6, name: "Kieran Tierney", short: "Tierney", line: "def", role: "Centre-back", club: "Celtic", at2022: false, start: { x: 28, y: 75 } },
+    { num: 5, name: "Grant Hanley", short: "Hanley", line: "def", role: "Centre-back", club: "Birmingham City", at2022: false, start: { x: 50, y: 77 } },
+    { num: 13, name: "Jack Hendry", short: "Hendry", line: "def", role: "Centre-back", club: "Al-Ettifaq", at2022: false, start: { x: 72, y: 75 } },
+    { num: 3, name: "Andy Robertson", short: "Robertson", line: "def", role: "Left wing-back", club: "Liverpool", at2022: false, captain: true, photo: "LFC Parade 2019 01 Andy Robertson.jpg", start: { x: 11, y: 55 } },
+    { num: 22, name: "Nathan Patterson", short: "Patterson", line: "def", role: "Right wing-back", club: "Everton", at2022: false, start: { x: 89, y: 55 } },
     { num: 19, name: "Lewis Ferguson", short: "Ferguson", line: "mid", role: "Central midfield", club: "Bologna", at2022: false, start: { x: 38, y: 50 } },
-    { num: 7, name: "John McGinn", short: "McGinn", line: "mid", role: "Left midfield", club: "Aston Villa", at2022: false, start: { x: 14, y: 44 } },
-    { num: 20, name: "Lawrence Shankland", short: "Shankland", line: "fwd", role: "Striker", club: "Hearts", at2022: false, start: { x: 62, y: 16 } },
-    { num: 10, name: "Ché Adams", short: "Adams", line: "fwd", role: "Striker", club: "Torino", at2022: false, start: { x: 38, y: 16 } },
+    { num: 4, name: "Scott McTominay", short: "McTominay", line: "mid", role: "Central midfield", club: "Napoli", at2022: false, start: { x: 62, y: 50 } },
+    { num: 7, name: "John McGinn", short: "McGinn", line: "mid", role: "Attacking midfield", club: "Aston Villa", at2022: false, start: { x: 32, y: 30 } },
+    { num: 11, name: "Ryan Christie", short: "Christie", line: "mid", role: "Attacking midfield", club: "Bournemouth", at2022: false, start: { x: 68, y: 30 } },
+    { num: 10, name: "Ché Adams", short: "Adams", line: "fwd", role: "Striker", club: "Torino", at2022: false, start: { x: 50, y: 13 } },
 
     // ---- Bench ----
     { num: 21, name: "Craig Gordon", short: "Gordon", line: "gk", role: "Goalkeeper", club: "Hearts", at2022: false },
     { num: 12, name: "Liam Kelly", short: "Kelly", line: "gk", role: "Goalkeeper", club: "Rangers", at2022: false },
-    { num: 6, name: "Kieran Tierney", short: "Tierney", line: "def", role: "Left-back", club: "Celtic", at2022: false },
+    { num: 2, name: "Aaron Hickey", short: "Hickey", line: "def", role: "Right-back", club: "Brentford", at2022: false },
     { num: 15, name: "John Souttar", short: "J. Souttar", line: "def", role: "Centre-back", club: "Rangers", at2022: false },
     { num: 16, name: "Dominic Hyam", short: "Hyam", line: "def", role: "Centre-back", club: "Blackburn", at2022: false },
-    { num: 22, name: "Nathan Patterson", short: "Patterson", line: "def", role: "Right-back", club: "Everton", at2022: false },
     { num: 24, name: "Anthony Ralston", short: "Ralston", line: "def", role: "Right-back", club: "Celtic", at2022: false },
     { num: 26, name: "Scott McKenna", short: "McKenna", line: "def", role: "Centre-back", club: "Las Palmas", at2022: false },
     { num: 8, name: "Tyler Fletcher", short: "Fletcher", line: "mid", role: "Central midfield", club: "West Ham", at2022: false },
-    { num: 11, name: "Ryan Christie", short: "Christie", line: "mid", role: "Attacking midfield", club: "Bournemouth", at2022: false },
     { num: 23, name: "Kenny McLean", short: "McLean", line: "mid", role: "Central midfield", club: "Norwich City", at2022: false },
     { num: 25, name: "Findlay Curtis", short: "Curtis", line: "mid", role: "Winger", club: "Rangers", at2022: false },
+    { num: 17, name: "Ben Gannon-Doak", short: "Gannon-Doak", line: "mid", role: "Winger", club: "Liverpool", at2022: false },
     { num: 9, name: "Lyndon Dykes", short: "Dykes", line: "fwd", role: "Striker", club: "Birmingham City", at2022: false },
     { num: 14, name: "Ross Stewart", short: "Stewart", line: "fwd", role: "Striker", club: "Southampton", at2022: false },
     { num: 18, name: "George Hirst", short: "Hirst", line: "fwd", role: "Striker", club: "Ipswich Town", at2022: false },
+    { num: 20, name: "Lawrence Shankland", short: "Shankland", line: "fwd", role: "Striker", club: "Hearts", at2022: false },
   ],
 };
 

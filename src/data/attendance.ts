@@ -34,7 +34,8 @@ const curated: Record<string, number> = {
   "m-L-2": 42942, // Ghana 1–0 Panama — BMO Field
   // Pending official figures: m-L-1 England 4–2 Croatia (AT&T), m-A-3 Czechia
   // 1–1 South Africa (Mercedes-Benz), m-A-4 Mexico 1–0 Korea Rep (Akron),
-  // m-D-3 USA 2–0 Australia (Lumen Field — "over 66,000", exact TBC).
+  // m-D-3 USA 2–0 Australia (Lumen Field — "over 66,000", exact TBC),
+  // m-C-3 Scotland 0–1 Morocco (Gillette Stadium).
 };
 
 const liveAttendance =
