@@ -38,7 +38,7 @@ export const CONTINUITY: Record<string, Continuity> = {
   civ: { at2022: false },
   ecu: { at2022: true },
   // Group F
-  ned: { at2022: true, returning: 11 }, // 11/26 carried over from Qatar 2022
+  ned: { at2022: true, returning: 10 }, // 10/26 — J. Timber (a returnee) out injured, replaced by Geertruida
   jpn: { at2022: true },
   tun: { at2022: true },
   swe: { at2022: false },
