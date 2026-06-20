@@ -144,7 +144,7 @@ const SPAIN: TeamSquad = {
     { num: 8, name: "Fabián Ruiz", short: "Fabián", line: "mid", role: "Central midfield", club: "PSG", at2022: false, photo: "UEFA EURO qualifiers Sweden vs Spain 20191015 Fabian Ruiz.jpg", start: { x: 36, y: 50 } },
     { num: 7, name: "Ferran Torres", short: "Ferran", line: "fwd", role: "Right winger", club: "Barcelona", at2022: true, start: { x: 78, y: 29 } },
     { num: 20, name: "Pedri", short: "Pedri", line: "mid", role: "Attacking midfield", club: "Barcelona", at2022: true, photo: "Pedri.jpg", start: { x: 50, y: 31 } },
-    { num: 9, name: "Gavi", short: "Gavi", line: "mid", role: "Left winger", club: "Barcelona", at2022: true, start: { x: 22, y: 29 } },
+    { num: 9, name: "Gavi", short: "Gavi", line: "mid", role: "Left winger", club: "Barcelona", at2022: true, photo: "Gavi (footballer).jpg", start: { x: 22, y: 29 } },
     { num: 21, name: "Mikel Oyarzabal", short: "Oyarzabal", line: "fwd", role: "Striker", club: "Real Sociedad", at2022: false, photo: "Mikel Oyarzabal.jpg", start: { x: 50, y: 13 } },
 
     // ---- Bench ----
@@ -252,7 +252,7 @@ const USA: TeamSquad = {
     { num: 13, name: "Tim Ream", short: "Ream", line: "def", role: "Centre-back", club: "Charlotte FC", at2022: true, captain: true, start: { x: 50, y: 77 } },
     { num: 16, name: "Alex Freeman", short: "Freeman", line: "def", role: "Centre-back", club: "Villarreal", at2022: false, start: { x: 72, y: 75 } },
     { num: 5, name: "Antonee Robinson", short: "A. Robinson", line: "def", role: "Left wing-back", club: "Fulham", at2022: true, start: { x: 11, y: 55 } },
-    { num: 2, name: "Sergiño Dest", short: "Dest", line: "def", role: "Right wing-back", club: "PSV", at2022: true, start: { x: 89, y: 55 } },
+    { num: 2, name: "Sergiño Dest", short: "Dest", line: "def", role: "Right wing-back", club: "PSV", at2022: true, photo: "2022 FIFA World Cup United States 1–1 Wales - (210) (cropped).jpg", start: { x: 89, y: 55 } },
     { num: 4, name: "Tyler Adams", short: "Adams", line: "mid", role: "Central midfield", club: "Bournemouth", at2022: true, photo: "Tyler Adams (28160524650).jpg", start: { x: 38, y: 50 } },
     { num: 8, name: "Weston McKennie", short: "McKennie", line: "mid", role: "Central midfield", club: "Juventus", at2022: true, start: { x: 62, y: 50 } },
     { num: 17, name: "Malik Tillman", short: "Tillman", line: "mid", role: "Attacking midfield", club: "Bayer Leverkusen", at2022: false, start: { x: 50, y: 31 } },
@@ -325,12 +325,12 @@ const MOROCCO: TeamSquad = {
     { num: 2, name: "Achraf Hakimi", short: "Hakimi", line: "def", role: "Right-back", club: "PSG", at2022: true, captain: true, photo: "HakimiAchraf.jpg", start: { x: 84, y: 70 } },
     { num: 14, name: "Issa Diop", short: "Diop", line: "def", role: "Centre-back", club: "Fulham", at2022: false, start: { x: 62, y: 73 } },
     { num: 18, name: "Chadi Riad", short: "Riad", line: "def", role: "Centre-back", club: "Crystal Palace", at2022: false, start: { x: 38, y: 73 } },
-    { num: 3, name: "Noussair Mazraoui", short: "Mazraoui", line: "def", role: "Left-back", club: "Manchester United", at2022: true, start: { x: 16, y: 70 } },
+    { num: 3, name: "Noussair Mazraoui", short: "Mazraoui", line: "def", role: "Left-back", club: "Manchester United", at2022: true, photo: "Noussair Mazraoui.jpg", start: { x: 16, y: 70 } },
     { num: 24, name: "Neil El Aynaoui", short: "El Aynaoui", line: "mid", role: "Defensive midfield", club: "AS Roma", at2022: false, start: { x: 64, y: 50 } },
     { num: 6, name: "Ayyoub Bouaddi", short: "Bouaddi", line: "mid", role: "Defensive midfield", club: "Lille", at2022: false, start: { x: 36, y: 50 } },
     { num: 10, name: "Brahim Díaz", short: "Brahim", line: "mid", role: "Right winger", club: "Real Madrid", at2022: false, start: { x: 78, y: 29 } },
-    { num: 8, name: "Azzedine Ounahi", short: "Ounahi", line: "mid", role: "Attacking midfield", club: "Girona", at2022: true, start: { x: 50, y: 31 } },
-    { num: 23, name: "Bilal El Khannouss", short: "El Khannouss", line: "mid", role: "Left winger", club: "Stuttgart", at2022: false, start: { x: 22, y: 29 } },
+    { num: 8, name: "Azzedine Ounahi", short: "Ounahi", line: "mid", role: "Attacking midfield", club: "Girona", at2022: true, photo: "Ounahi.jpg", start: { x: 50, y: 31 } },
+    { num: 23, name: "Bilal El Khannouss", short: "El Khannouss", line: "mid", role: "Left winger", club: "Stuttgart", at2022: false, photo: "Bilal El Khannouss.jpg", start: { x: 22, y: 29 } },
     { num: 11, name: "Ismael Saibari", short: "Saibari", line: "fwd", role: "Striker", club: "PSV", at2022: false, start: { x: 50, y: 13 } },
 
     // ---- Bench ----
