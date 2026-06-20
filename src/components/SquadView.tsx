@@ -31,18 +31,20 @@ export function Avatar({
   const kind = status ? statusKind(status) : null;
 
   return (
-    <span className={`pl-disc${kind ? ` ring-${kind}` : ""}`} style={{ width: size, height: size }}>
-      {show ? (
-        <img
-          className="pl-photo"
-          src={playerPhoto(player.photo!, size >= 120 ? 256 : 160)}
-          alt={player.name}
-          loading="lazy"
-          onError={() => setFailed(true)}
-        />
-      ) : (
-        <span className="pl-initials">{initials(player.short)}</span>
-      )}
+    <span className="pl-avatar" style={{ width: size, height: size }}>
+      <span className={`pl-disc${kind ? ` ring-${kind}` : ""}`}>
+        {show ? (
+          <img
+            className="pl-photo"
+            src={playerPhoto(player.photo!, size >= 120 ? 256 : 160)}
+            alt={player.name}
+            loading="lazy"
+            onError={() => setFailed(true)}
+          />
+        ) : (
+          <span className="pl-initials">{initials(player.short)}</span>
+        )}
+      </span>
       <span className="pl-num">{player.num}</span>
       {player.captain && <span className="pl-capt" title="Captain">C</span>}
 
