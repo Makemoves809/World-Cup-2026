@@ -365,7 +365,7 @@ const BRAZIL: TeamSquad = {
     { num: 5, name: "Casemiro", short: "Casemiro", line: "mid", role: "Defensive midfield", club: "Manchester United", at2022: true, start: { x: 50, y: 48 } },
     { num: 8, name: "Bruno Guimarães", short: "Bruno G.", line: "mid", role: "Central midfield", club: "Newcastle", at2022: true, start: { x: 30, y: 40 } },
     { num: 20, name: "Lucas Paquetá", short: "Paquetá", line: "mid", role: "Central midfield", club: "West Ham", at2022: true, start: { x: 70, y: 40 } },
-    { num: 11, name: "Raphinha", short: "Raphinha", line: "fwd", role: "Right winger", club: "Barcelona", at2022: true, start: { x: 82, y: 18 } },
+    { num: 11, name: "Raphinha", short: "Raphinha", line: "fwd", role: "Right winger", club: "Barcelona", at2022: true, photo: "Raphinha (2025) (cropped).png", start: { x: 82, y: 18 } },
     { num: 9, name: "Matheus Cunha", short: "M. Cunha", line: "fwd", role: "Forward", club: "Manchester United", at2022: false, start: { x: 50, y: 13 } },
     { num: 7, name: "Vinícius Júnior", short: "Vini Jr", line: "fwd", role: "Left winger", club: "Real Madrid", at2022: true, photo: "Vinicius Jr 2021.jpg", start: { x: 18, y: 18 } },
 
@@ -460,21 +460,21 @@ const HAITI: TeamSquad = {
 
 const SWEDEN: TeamSquad = {
   teamId: "swe",
-  // Opener vs Tunisia (5–1): a 4-4-2, Isak & Gyökeres up top. Some bench
+  // Most recent: vs Netherlands (1–5) — switched to a 3-5-2. Some bench
   // shirt numbers are best-effort pending the official list.
-  formation: "4-4-2",
+  formation: "3-5-2",
   players: [
     { num: 23, name: "Kristoffer Nordfeldt", short: "Nordfeldt", line: "gk", role: "Goalkeeper", club: "AIK", at2022: false, start: { x: 50, y: 90 } },
-    { num: 2, name: "Gustaf Lagerbielke", short: "Lagerbielke", line: "def", role: "Right-back", club: "Braga", at2022: false, start: { x: 84, y: 70 } },
-    { num: 3, name: "Victor Lindelöf", short: "Lindelöf", line: "def", role: "Centre-back", club: "Aston Villa", at2022: false, captain: true, start: { x: 62, y: 73 } },
-    { num: 4, name: "Isak Hien", short: "Hien", line: "def", role: "Centre-back", club: "Atalanta", at2022: false, start: { x: 38, y: 73 } },
-    { num: 5, name: "Gabriel Gudmundsson", short: "Gudmundsson", line: "def", role: "Left-back", club: "Leeds United", at2022: false, start: { x: 16, y: 70 } },
-    { num: 22, name: "Alexander Bernhardsson", short: "Bernhardsson", line: "mid", role: "Right midfield", club: "Brann", at2022: false, start: { x: 84, y: 44 } },
-    { num: 16, name: "Jesper Karlström", short: "Karlström", line: "mid", role: "Central midfield", club: "Udinese", at2022: false, start: { x: 58, y: 50 } },
-    { num: 18, name: "Yasin Ayari", short: "Ayari", line: "mid", role: "Central midfield", club: "Brighton", at2022: false, start: { x: 38, y: 50 } },
-    { num: 17, name: "Benjamin Nygren", short: "Nygren", line: "mid", role: "Left midfield", club: "Celtic", at2022: false, start: { x: 14, y: 44 } },
-    { num: 11, name: "Alexander Isak", short: "Isak", line: "fwd", role: "Striker", club: "Liverpool", at2022: false, photo: "Alexander Isak (training 2016, cropped 3).jpg", start: { x: 62, y: 16 } },
-    { num: 9, name: "Viktor Gyökeres", short: "Gyökeres", line: "fwd", role: "Striker", club: "Arsenal", at2022: false, photo: "Viktor Gyökeres 2018.jpg", start: { x: 38, y: 16 } },
+    { num: 2, name: "Gustaf Lagerbielke", short: "Lagerbielke", line: "def", role: "Centre-back", club: "Braga", at2022: false, start: { x: 28, y: 75 } },
+    { num: 4, name: "Isak Hien", short: "Hien", line: "def", role: "Centre-back", club: "Atalanta", at2022: false, start: { x: 50, y: 77 } },
+    { num: 3, name: "Victor Lindelöf", short: "Lindelöf", line: "def", role: "Centre-back", club: "Aston Villa", at2022: false, captain: true, start: { x: 72, y: 75 } },
+    { num: 5, name: "Gabriel Gudmundsson", short: "Gudmundsson", line: "def", role: "Left wing-back", club: "Leeds United", at2022: false, start: { x: 11, y: 52 } },
+    { num: 22, name: "Alexander Bernhardsson", short: "Bernhardsson", line: "mid", role: "Right wing-back", club: "Brann", at2022: false, start: { x: 89, y: 52 } },
+    { num: 16, name: "Jesper Karlström", short: "Karlström", line: "mid", role: "Defensive midfield", club: "Udinese", at2022: false, start: { x: 50, y: 50 } },
+    { num: 17, name: "Benjamin Nygren", short: "Nygren", line: "mid", role: "Central midfield", club: "Celtic", at2022: false, start: { x: 30, y: 40 } },
+    { num: 18, name: "Yasin Ayari", short: "Ayari", line: "mid", role: "Central midfield", club: "Brighton", at2022: false, start: { x: 70, y: 40 } },
+    { num: 11, name: "Alexander Isak", short: "Isak", line: "fwd", role: "Striker", club: "Liverpool", at2022: false, photo: "Alexander Isak (training 2016, cropped 3).jpg", start: { x: 62, y: 15 } },
+    { num: 9, name: "Viktor Gyökeres", short: "Gyökeres", line: "fwd", role: "Striker", club: "Arsenal", at2022: false, photo: "Viktor Gyökeres 2018.jpg", start: { x: 38, y: 15 } },
 
     { num: 1, name: "Jacob Widell Zetterström", short: "Zetterström", line: "gk", role: "Goalkeeper", club: "Derby County", at2022: false },
     { num: 12, name: "Viktor Johansson", short: "V. Johansson", line: "gk", role: "Goalkeeper", club: "Stoke City", at2022: false },
@@ -509,7 +509,7 @@ const GERMANY: TeamSquad = {
     { num: 19, name: "Leroy Sané", short: "Sané", line: "fwd", role: "Right winger", club: "Galatasaray", at2022: true, start: { x: 78, y: 29 } },
     { num: 10, name: "Jamal Musiala", short: "Musiala", line: "mid", role: "Attacking midfield", club: "Bayern Munich", at2022: true, photo: "Jamal Musiala 2022 (cropped).jpg", start: { x: 50, y: 31 } },
     { num: 17, name: "Florian Wirtz", short: "Wirtz", line: "fwd", role: "Left winger", club: "Liverpool", at2022: false, photo: "Florian Wirtz, 2022-07-31, Saisoneröffnung Bayer 04, Leverkusen (1) (cropped).jpg", start: { x: 22, y: 29 } },
-    { num: 7, name: "Kai Havertz", short: "Havertz", line: "fwd", role: "Striker", club: "Arsenal", at2022: true, start: { x: 50, y: 13 } },
+    { num: 7, name: "Kai Havertz", short: "Havertz", line: "fwd", role: "Striker", club: "Arsenal", at2022: true, photo: "Kai-Havertz-August-2018.jpg", start: { x: 50, y: 13 } },
 
     { num: 12, name: "Oliver Baumann", short: "Baumann", line: "gk", role: "Goalkeeper", club: "Hoffenheim", at2022: false },
     { num: 21, name: "Alexander Nübel", short: "Nübel", line: "gk", role: "Goalkeeper", club: "Stuttgart", at2022: false },
@@ -601,36 +601,37 @@ const TURKIYE: TeamSquad = {
 
 const IVORY_COAST: TeamSquad = {
   teamId: "civ",
-  // Opener vs Ecuador (1–0): a 4-3-3. Some shirt numbers best-effort.
+  // Most recent: vs Germany (1–2) — a 4-3-3 (Kossounou, Oulaï, Bonny, Amad,
+  // Yan Diomandé in). Some shirt numbers best-effort.
   formation: "4-3-3",
   players: [
     { num: 1, name: "Yahia Fofana", short: "Fofana", line: "gk", role: "Goalkeeper", club: "Çaykur Rizespor", at2022: false, start: { x: 50, y: 90 } },
-    { num: 17, name: "Guéla Doué", short: "Doué", line: "def", role: "Right-back", club: "Strasbourg", at2022: false, start: { x: 84, y: 70 } },
-    { num: 5, name: "Wilfried Singo", short: "Singo", line: "def", role: "Centre-back", club: "Monaco", at2022: false, start: { x: 62, y: 73 } },
+    { num: 5, name: "Wilfried Singo", short: "Singo", line: "def", role: "Right-back", club: "Monaco", at2022: false, start: { x: 84, y: 70 } },
+    { num: 7, name: "Odilon Kossounou", short: "Kossounou", line: "def", role: "Centre-back", club: "Atalanta", at2022: false, start: { x: 62, y: 73 } },
     { num: 6, name: "Emmanuel Agbadou", short: "Agbadou", line: "def", role: "Centre-back", club: "Wolves", at2022: false, start: { x: 38, y: 73 } },
     { num: 3, name: "Ghislain Konan", short: "Konan", line: "def", role: "Left-back", club: "Al-Ittihad", at2022: false, start: { x: 16, y: 70 } },
     { num: 18, name: "Ibrahim Sangaré", short: "Sangaré", line: "mid", role: "Defensive midfield", club: "Nottingham Forest", at2022: false, start: { x: 50, y: 48 } },
     { num: 8, name: "Franck Kessié", short: "Kessié", line: "mid", role: "Central midfield", club: "Al-Ahli", at2022: false, captain: true, start: { x: 30, y: 40 } },
-    { num: 4, name: "Jean-Michaël Seri", short: "Seri", line: "mid", role: "Central midfield", club: "Al-Gharafa", at2022: false, start: { x: 70, y: 40 } },
-    { num: 11, name: "Simon Adingra", short: "Adingra", line: "fwd", role: "Right winger", club: "Sunderland", at2022: false, start: { x: 82, y: 18 } },
-    { num: 9, name: "Evann Guessand", short: "Guessand", line: "fwd", role: "Striker", club: "Aston Villa", at2022: false, start: { x: 50, y: 13 } },
-    { num: 19, name: "Nicolas Pépé", short: "Pépé", line: "fwd", role: "Left winger", club: "Villarreal", at2022: false, start: { x: 18, y: 18 } },
+    { num: 14, name: "Christ Inao Oulaï", short: "Oulaï", line: "mid", role: "Central midfield", club: "Hoffenheim", at2022: false, start: { x: 70, y: 40 } },
+    { num: 15, name: "Amad Diallo", short: "Amad", line: "fwd", role: "Right winger", club: "Manchester United", at2022: false, start: { x: 82, y: 18 } },
+    { num: 26, name: "Ange-Yoan Bonny", short: "Bonny", line: "fwd", role: "Striker", club: "Inter Milan", at2022: false, start: { x: 50, y: 13 } },
+    { num: 10, name: "Yan Diomandé", short: "Y. Diomandé", line: "fwd", role: "Left winger", club: "RB Leipzig", at2022: false, start: { x: 18, y: 18 } },
 
     { num: 16, name: "Mohamed Koné", short: "M. Koné", line: "gk", role: "Goalkeeper", club: "Stade Tunisien", at2022: false },
     { num: 23, name: "Alban Lafont", short: "Lafont", line: "gk", role: "Goalkeeper", club: "Nantes", at2022: false },
     { num: 2, name: "Ousmane Diomande", short: "Diomande", line: "def", role: "Centre-back", club: "Sporting CP", at2022: false },
-    { num: 7, name: "Odilon Kossounou", short: "Kossounou", line: "def", role: "Centre-back", club: "Atalanta", at2022: false },
+    { num: 17, name: "Guéla Doué", short: "Doué", line: "def", role: "Right-back", club: "Strasbourg", at2022: false },
     { num: 21, name: "Evan Ndicka", short: "Ndicka", line: "def", role: "Centre-back", club: "Roma", at2022: false },
     { num: 12, name: "Christopher Operi", short: "Operi", line: "def", role: "Left-back", club: "Le Havre", at2022: false },
     { num: 13, name: "Seko Fofana", short: "S. Fofana", line: "mid", role: "Central midfield", club: "Al-Nassr", at2022: false },
-    { num: 14, name: "Christ Inao Oulaï", short: "Oulaï", line: "mid", role: "Defensive midfield", club: "Hoffenheim", at2022: false },
+    { num: 4, name: "Jean-Michaël Seri", short: "Seri", line: "mid", role: "Central midfield", club: "Al-Gharafa", at2022: false },
     { num: 20, name: "Parfait Guiagon", short: "Guiagon", line: "mid", role: "Attacking midfield", club: "Le Havre", at2022: false },
-    { num: 15, name: "Amad Diallo", short: "Amad", line: "fwd", role: "Winger", club: "Manchester United", at2022: false },
-    { num: 10, name: "Yan Diomandé", short: "Y. Diomandé", line: "fwd", role: "Winger", club: "RB Leipzig", at2022: false },
+    { num: 11, name: "Simon Adingra", short: "Adingra", line: "fwd", role: "Winger", club: "Sunderland", at2022: false },
+    { num: 9, name: "Evann Guessand", short: "Guessand", line: "fwd", role: "Striker", club: "Aston Villa", at2022: false },
+    { num: 19, name: "Nicolas Pépé", short: "Pépé", line: "fwd", role: "Winger", club: "Villarreal", at2022: false },
     { num: 22, name: "Oumar Diakité", short: "Diakité", line: "fwd", role: "Striker", club: "Reims", at2022: false },
     { num: 24, name: "Bazoumana Touré", short: "B. Touré", line: "fwd", role: "Winger", club: "Salzburg", at2022: false },
     { num: 25, name: "Elye Wahi", short: "Wahi", line: "fwd", role: "Striker", club: "Eintracht Frankfurt", at2022: false },
-    { num: 26, name: "Ange-Yoan Bonny", short: "Bonny", line: "fwd", role: "Striker", club: "Inter Milan", at2022: false },
   ],
 };
 
