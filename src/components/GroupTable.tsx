@@ -1,4 +1,5 @@
 import { standingsForGroup, zoneFor } from "../lib/standings";
+import { groupQualification, type GroupStatus } from "../lib/qualification";
 import { openRoster } from "../lib/roster";
 import { Flag } from "./Flag";
 
@@ -6,8 +7,15 @@ interface GroupTableProps {
   group: string;
 }
 
+const STATUS_BADGE: Record<GroupStatus, { mark: string; text: string; title: string } | null> = {
+  through: { mark: "✓", text: "Through", title: "Clinched a top-2 place — into the Round of 32" },
+  out: { mark: "✗", text: "Out", title: "Eliminated — can only finish 4th" },
+  contention: null,
+};
+
 export function GroupTable({ group }: GroupTableProps) {
   const rows = standingsForGroup(group);
+  const qual = groupQualification(group);
   const anyPlayed = rows.some((r) => r.played > 0);
 
   return (
@@ -38,8 +46,10 @@ export function GroupTable({ group }: GroupTableProps) {
           </tr>
         </thead>
         <tbody>
-          {rows.map((r) => (
-            <tr key={r.team.id} className={`zone-${zoneFor(r.position)}`}>
+          {rows.map((r) => {
+            const badge = STATUS_BADGE[qual[r.team.id]];
+            return (
+            <tr key={r.team.id} className={`zone-${zoneFor(r.position)} stat-${qual[r.team.id]}`}>
               <td className="c-pos">
                 <span className="pos-pip">{r.position}</span>
               </td>
@@ -52,6 +62,12 @@ export function GroupTable({ group }: GroupTableProps) {
                   <Flag team={r.team} />
                   <span className="team-name">{r.team.name}</span>
                   {r.team.host && <span className="host-pin">Host</span>}
+                  {badge && (
+                    <span className={`qual-badge qual-${qual[r.team.id]}`} title={badge.title}>
+                      <span className="qb-mark">{badge.mark}</span>
+                      <span className="qb-text"> {badge.text}</span>
+                    </span>
+                  )}
                   <span className="team-link-cue" aria-hidden="true">›</span>
                 </button>
               </td>
@@ -64,7 +80,8 @@ export function GroupTable({ group }: GroupTableProps) {
               </td>
               <td className="c-pts">{r.points}</td>
             </tr>
-          ))}
+            );
+          })}
         </tbody>
       </table>
     </article>

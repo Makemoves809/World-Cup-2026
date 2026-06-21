@@ -3125,3 +3125,32 @@ img.flag {
 .pl-status-yellow .pl-status-tag { color: var(--floodlight); }
 .pl-status-out .pl-status-tag { color: var(--chalk-dim); }
 .pl-status-note { color: var(--chalk-dim); }
+
+/* Mathematical qualification badges in group standings */
+.qual-badge {
+  flex: none;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  padding: 2px 6px;
+  border-radius: 999px;
+  white-space: nowrap;
+  line-height: 1.4;
+}
+.qual-through {
+  background: var(--grass);
+  color: var(--grass-ink);
+}
+.qual-out {
+  background: rgba(255, 90, 60, 0.16);
+  color: var(--vermilion);
+  border: 1px solid rgba(255, 90, 60, 0.32);
+}
+tr.stat-out .team-name { color: var(--chalk-dim); }
+
+@media (max-width: 560px) {
+  /* Show just the ✓/✗ mark on narrow screens to save room */
+  .qb-text { display: none; }
+  .qual-badge { padding: 2px 5px; }
+}
