@@ -39,7 +39,8 @@ const curated: Record<string, number> = {
   // m-D-3 USA 2–0 Australia (Lumen Field — "over 66,000", exact TBC),
   // m-C-3 Scotland 0–1 Morocco (Gillette Stadium), m-C-4 Brazil 3–0 Haiti
   // (Lincoln Financial Field), m-D-4 Türkiye 0–1 Paraguay (Levi's Stadium),
-  // m-E-3 Germany 2–1 Côte d'Ivoire (BMO Field).
+  // m-E-3 Germany 2–1 Côte d'Ivoire (BMO Field), m-E-4 Ecuador–Curaçao,
+  // m-F-4 Japan 4–0 Tunisia (Estadio BBVA).
 };
 
 const liveAttendance =
