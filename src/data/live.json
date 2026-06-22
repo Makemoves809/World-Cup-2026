@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-22T03:08:22.284Z",
+  "updatedAt": "2026-06-22T17:06:16.214Z",
   "results": {
     "m-A-1": [
       2,
@@ -165,7 +165,13 @@
   "redCards": [],
   "yellowCards": [],
   "koResults": [],
-  "liveScores": {},
+  "liveScores": {
+    "m-J-3": {
+      "home": 0,
+      "away": 0,
+      "minute": null
+    }
+  },
   "attendance": {},
   "eventsChecked": [
     "m-A-1",
