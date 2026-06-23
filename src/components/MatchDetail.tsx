@@ -5,6 +5,7 @@ import { IMPACT_LABELS, sentOffIn, unavailableFor } from "../data/discipline";
 import { attendanceFor } from "../data/attendance";
 import { matchup, type TeamStrength } from "../lib/matchup";
 import { matchScript } from "../lib/script";
+import { gradeMatch, modelAccuracy } from "../lib/accuracy";
 import { openRoster, isRosterOpen } from "../lib/roster";
 import { Flag } from "./Flag";
 
@@ -29,6 +30,8 @@ export function MatchDetail({ match, onClose }: MatchDetailProps) {
   const out = unavailableFor(match.id);
   const m = matchup(match);
   const script = matchScript(match);
+  const grade = gradeMatch(match);
+  const acc = modelAccuracy();
 
   // Open the roster as an overlay *on top of* this comparison (it sits at a
   // higher z-index) rather than closing it — so dismissing the roster returns
@@ -114,9 +117,28 @@ export function MatchDetail({ match, onClose }: MatchDetailProps) {
               <span className="script-score">{script.projection}</span>
             </p>
           )}
+          {grade && (
+            <p className={`script-grade ${grade.outcomeHit ? "is-hit" : "is-miss"}`}>
+              <span className="grade-mark">{grade.outcomeHit ? "✓" : "✗"}</span>
+              {grade.outcomeHit ? "Called the result" : "Missed the result"}
+              <span className="grade-detail">
+                pre-match lean {grade.projection}
+                {grade.exactHit && " — exact score"}
+              </span>
+            </p>
+          )}
           <p className="script-foot">
             Auto-generated from the form-adjusted ratings below — a projection,
             not a prediction.
+            {acc.graded > 0 && (
+              <>
+                {" "}
+                <strong className="script-record">
+                  Script record: {acc.outcomeCorrect}/{acc.graded} results right (
+                  {acc.outcomePct}%){acc.exactCorrect > 0 && `, ${acc.exactCorrect} exact`}
+                </strong>
+              </>
+            )}
           </p>
         </section>
 

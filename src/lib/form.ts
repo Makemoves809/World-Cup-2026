@@ -14,6 +14,7 @@ import { TEAM_RATING, teamRating } from "../data/ratings";
 const D = 18; // rating-gap scale for the expected-result curve
 const K = 3.5; // how strongly each result moves the rating
 const clamp = (n: number) => Math.max(30, Math.min(99, n));
+const round1 = (n: number) => Math.round(n * 10) / 10;
 
 export interface FormRating {
   /** Current, form-adjusted rating. */
@@ -25,7 +26,14 @@ export interface FormRating {
   played: number;
 }
 
-function compute(): Map<string, FormRating> {
+/**
+ * Replay every finished result (optionally only those before `beforeKickoff`)
+ * in kickoff order, accumulating the Elo-style ratings. Returns each team's
+ * live rating and games-played count.
+ */
+function accumulate(
+  beforeKickoff?: string
+): Map<string, { rating: number; played: number }> {
   const cur = new Map<string, number>();
   const played = new Map<string, number>();
   for (const id of Object.keys(TEAM_RATING)) cur.set(id, TEAM_RATING[id]);
@@ -35,6 +43,7 @@ function compute(): Map<string, FormRating> {
       (m) =>
         m.status === "finished" && m.homeScore != null && m.awayScore != null
     )
+    .filter((m) => beforeKickoff == null || m.kickoff < beforeKickoff)
     .sort((a, b) => a.kickoff.localeCompare(b.kickoff));
 
   for (const m of finished) {
@@ -53,26 +62,48 @@ function compute(): Map<string, FormRating> {
     played.set(m.away, (played.get(m.away) ?? 0) + 1);
   }
 
-  const out = new Map<string, FormRating>();
+  const out = new Map<string, { rating: number; played: number }>();
   for (const id of Object.keys(TEAM_RATING)) {
-    const base = TEAM_RATING[id];
-    const rating = Math.round((cur.get(id) ?? base) * 10) / 10;
     out.set(id, {
-      rating,
-      base,
-      delta: Math.round((rating - base) * 10) / 10,
+      rating: round1(cur.get(id) ?? TEAM_RATING[id]),
       played: played.get(id) ?? 0,
     });
   }
   return out;
 }
 
-// Source data is static per build, so compute once.
-const FORM = compute();
+function toFormRatings(
+  acc: Map<string, { rating: number; played: number }>
+): Map<string, FormRating> {
+  const out = new Map<string, FormRating>();
+  for (const id of Object.keys(TEAM_RATING)) {
+    const base = TEAM_RATING[id];
+    const a = acc.get(id)!;
+    out.set(id, {
+      rating: a.rating,
+      base,
+      delta: round1(a.rating - base),
+      played: a.played,
+    });
+  }
+  return out;
+}
+
+// Source data is static per build, so compute the all-results table once.
+const FORM = toFormRatings(accumulate());
 
 export function formRating(id: string): FormRating {
   const f = FORM.get(id);
   if (f) return f;
   const base = teamRating(id);
   return { rating: base, base, delta: 0, played: 0 };
+}
+
+/**
+ * Form ratings as they stood *before* a given kickoff — using only the
+ * results played earlier. Used to grade the model's pre-match calls without
+ * leaking the outcome of the match being judged.
+ */
+export function formRatingsBefore(kickoff: string): Map<string, FormRating> {
+  return toFormRatings(accumulate(kickoff));
 }

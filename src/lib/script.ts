@@ -38,6 +38,39 @@ function tierScore(absGap: number): { hi: number; lo: number } {
   return { hi: 3, lo: 0 };
 }
 
+export interface Prediction {
+  /** Who the model leans toward, or undefined when "evenly matched". */
+  favored?: "home" | "away";
+  homeGoals: number;
+  awayGoals: number;
+  /** Lean scoreline as "home–away". */
+  projection: string;
+}
+
+/**
+ * The model's lean from two (effective) ratings and their form trends.
+ * Shared by the live Script and the accuracy grader so they always agree.
+ */
+export function predict(
+  homeEff: number,
+  awayEff: number,
+  homeDelta: number,
+  awayDelta: number
+): Prediction {
+  const gap = homeEff - awayEff;
+  const absGap = Math.abs(gap);
+  const favHome = gap >= 0;
+  const { hi, lo: lo0 } = tierScore(absGap);
+  let lo = lo0;
+  const dogDelta = favHome ? awayDelta : homeDelta;
+  if (lo === 0 && dogDelta >= 3) lo = 1; // an in-form underdog likely nicks one
+  const favored: "home" | "away" | undefined =
+    absGap < 2 ? undefined : favHome ? "home" : "away";
+  const homeGoals = absGap < 2 || favHome ? hi : lo;
+  const awayGoals = absGap < 2 || favHome ? lo : hi;
+  return { favored, homeGoals, awayGoals, projection: `${homeGoals}–${awayGoals}` };
+}
+
 export function matchScript(match: Match): MatchScript {
   const m = matchup(match);
   const { home, away } = m;
@@ -108,17 +141,13 @@ export function matchScript(match: Match): MatchScript {
     lines.push("Both sides are at full strength — no suspensions or injuries bite.");
   }
 
-  // Model's lean scoreline (favourite first, then oriented to home–away).
-  let { hi, lo } = tierScore(absGap);
-  if (lo === 0 && dog.formDelta >= 3) lo = 1; // in-form dog likely nicks one
-  const favGoals = hi;
-  const dogGoals = lo;
-  const projection =
-    absGap < 2
-      ? `${hi}–${lo}`
-      : favHome
-        ? `${favGoals}–${dogGoals}`
-        : `${dogGoals}–${favGoals}`;
+  // Model's lean scoreline (shared with the accuracy grader).
+  const { projection } = predict(
+    home.effective,
+    away.effective,
+    home.formDelta,
+    away.formDelta
+  );
 
   return { headline: m.verdict, lines, projection };
 }

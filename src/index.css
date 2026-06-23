@@ -1980,11 +1980,40 @@ img.flag {
   letter-spacing: 0;
   color: var(--floodlight);
 }
+.script-grade {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 6px 10px;
+  margin: 12px 0 0;
+  padding: 8px 12px;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 600;
+}
+.script-grade.is-hit {
+  background: var(--grass-soft);
+  color: var(--grass);
+}
+.script-grade.is-miss {
+  background: rgba(255, 90, 60, 0.12);
+  color: #ff8d78;
+}
+.grade-mark { font-weight: 800; }
+.grade-detail {
+  font-weight: 500;
+  font-size: 12px;
+  color: var(--chalk-dim);
+}
 .script-foot {
   margin: 12px 0 0;
   font-size: 11px;
   color: var(--chalk-faint);
   font-style: italic;
+}
+.script-record {
+  font-style: normal;
+  color: var(--chalk-dim);
 }
 
 /* Fixture-card mini strength bar */
