@@ -17,6 +17,11 @@ export function openRoster(teamId: string) {
   emit();
 }
 
+/** Whether a roster overlay is currently open (non-reactive read). */
+export function isRosterOpen(): boolean {
+  return current !== null;
+}
+
 export function closeRoster() {
   if (current === null) return;
   current = null;

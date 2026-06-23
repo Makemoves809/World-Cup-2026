@@ -10,10 +10,13 @@ export function RosterModal({ teamId }: { teamId: string }) {
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => e.key === "Escape" && closeRoster();
     document.addEventListener("keydown", onKey);
+    // Restore whatever the prior lock state was (e.g. a match comparison still
+    // open beneath us) rather than always unlocking on close.
+    const prevOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
     return () => {
       document.removeEventListener("keydown", onKey);
-      document.body.style.overflow = "";
+      document.body.style.overflow = prevOverflow;
     };
   }, []);
 

@@ -4,7 +4,7 @@ import { teamById } from "../data/teams";
 import { IMPACT_LABELS, sentOffIn, unavailableFor } from "../data/discipline";
 import { attendanceFor } from "../data/attendance";
 import { matchup, type TeamStrength } from "../lib/matchup";
-import { openRoster } from "../lib/roster";
+import { openRoster, isRosterOpen } from "../lib/roster";
 import { Flag } from "./Flag";
 
 const fmtFull = new Intl.DateTimeFormat(undefined, {
@@ -28,14 +28,18 @@ export function MatchDetail({ match, onClose }: MatchDetailProps) {
   const out = unavailableFor(match.id);
   const m = matchup(match);
 
+  // Open the roster as an overlay *on top of* this comparison (it sits at a
+  // higher z-index) rather than closing it — so dismissing the roster returns
+  // here, not all the way back to the fixtures list.
   const openSquad = (teamId: string) => {
-    onClose();
     openRoster(teamId);
   };
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") onClose();
+      // If a roster overlay is open on top, let it handle Escape first so we
+      // don't close both layers at once.
+      if (e.key === "Escape" && !isRosterOpen()) onClose();
     };
     document.addEventListener("keydown", onKey);
     document.body.style.overflow = "hidden";
