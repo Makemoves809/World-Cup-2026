@@ -2067,6 +2067,53 @@ img.flag {
   gap: 9px;
   margin-top: 11px;
 }
+/* Per-card Script call — lean (upcoming) or graded ✓/✗ (finished) */
+.card-script {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  margin-top: 10px;
+  font-size: 12px;
+  color: var(--chalk-dim);
+}
+.card-script .cs-text strong {
+  font-family: var(--font-mono);
+  color: var(--chalk);
+  font-weight: 700;
+}
+.cs-tag {
+  font-family: var(--font-display);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--grass-ink);
+  background: var(--grass);
+  padding: 1px 6px;
+  border-radius: 5px;
+}
+.cs-mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  border-radius: 5px;
+  font-size: 11px;
+  font-weight: 800;
+}
+.card-script.is-hit .cs-mark {
+  background: var(--grass-soft);
+  color: var(--grass);
+}
+.card-script.is-miss .cs-mark {
+  background: rgba(255, 90, 60, 0.14);
+  color: #ff8d78;
+}
+.card-script.is-hit .cs-text strong,
+.card-script.is-miss .cs-text strong {
+  color: var(--chalk-dim);
+}
 .ms-num {
   font-family: var(--font-mono);
   font-size: 11px;

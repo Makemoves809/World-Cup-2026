@@ -4,6 +4,8 @@ import { sentOffIn, unavailableFor } from "../data/discipline";
 import { attendanceFor } from "../data/attendance";
 import { liveScore } from "../lib/live";
 import { matchup } from "../lib/matchup";
+import { predict } from "../lib/script";
+import { gradeMatch } from "../lib/accuracy";
 import { Flag } from "./Flag";
 
 const fmtDate = new Intl.DateTimeFormat(undefined, {
@@ -35,6 +37,16 @@ export function MatchCard({ match, onSelect, live = false }: MatchCardProps) {
   const ls = live ? liveScore(match.id) : undefined;
   const strength = done ? null : matchup(match);
   const att = done ? attendanceFor(match.id) : undefined;
+  // Script call: a lean for games still to come, a graded ✓/✗ once played.
+  const grade = done ? gradeMatch(match) : null;
+  const lean = strength
+    ? predict(
+        strength.home.effective,
+        strength.away.effective,
+        strength.home.formDelta,
+        strength.away.formDelta
+      )
+    : null;
 
   return (
     <li className={`match-card status-${match.status}${live ? " is-live" : ""}`}>
@@ -126,6 +138,31 @@ export function MatchCard({ match, onSelect, live = false }: MatchCardProps) {
               />
             </span>
             <span className="ms-num">{strength.away.effective}</span>
+          </span>
+        )}
+
+        {lean && (
+          <span
+            className="card-script"
+            title={`Script lean: ${lean.projection}${lean.favored ? "" : " (evenly matched)"}`}
+          >
+            <span className="cs-tag">Script</span>
+            <span className="cs-text">
+              lean <strong>{lean.projection}</strong>
+            </span>
+          </span>
+        )}
+        {grade && (
+          <span
+            className={`card-script ${grade.outcomeHit ? "is-hit" : "is-miss"}`}
+            title={`Pre-match lean ${grade.projection} — ${grade.outcomeHit ? "called the result" : "missed"}${grade.exactHit ? ", exact score" : ""}`}
+          >
+            <span className="cs-mark">{grade.outcomeHit ? "✓" : "✗"}</span>
+            <span className="cs-text">
+              {grade.outcomeHit ? "Called it" : "Missed"} ·{" "}
+              <strong>{grade.projection}</strong>
+              {grade.exactHit && " exact"}
+            </span>
           </span>
         )}
 
