@@ -4,6 +4,10 @@ Fan site + live group-stage standings tracker for the 2026 FIFA World Cup
 (Canada · México · USA). React + TypeScript + Vite. See `README.md` for the
 full project tour.
 
+It also has clickable team rosters everywhere (pitch line-ups + each team's
+results so far) and a per-match **"Script"** — an auto-written read, lean
+scoreline, and self-graded accuracy record (see the upkeep notes below).
+
 ## Deployment workflow (IMPORTANT)
 
 The owner wants changes to appear on the live site **immediately, with no pull
@@ -72,16 +76,32 @@ current by hand:
   starter's `start` coordinates (and bench membership) to match. Also fill any
   missing player **photos** (Wikimedia Commons file names) and verify the eleven
   flagged with a `start` are the real most-recent XI, not the whole squad.
+- **Match "Script" & model accuracy** (`src/lib/script.ts`,
+  `src/lib/accuracy.ts`) — the per-match written read, lean scoreline, the
+  ✓/✗ "called it / missed" grade on played games, the per-card chips, and the
+  Fixtures-header accuracy badge are **all auto-generated** from results + form
+  ratings (`src/lib/form.ts`) + squad captains, and recompute on every build.
+  There is **nothing to hand-edit** — but it's part of the update: after new
+  results land, sanity-check that each newly-finished game shows a ✓/✗ and the
+  **Script record** ticked over. Two invariants to preserve if you touch the
+  model: grading uses **pre-match** ratings (`formRatingsBefore`, so a game
+  never informs its own call), and the live Script and the grader share one
+  `predict()` so the lean shown always equals the lean judged. The favoured
+  side's named leader is read from the squad `captain` flag, so a wrong or
+  missing captain surfaces here too.
 - **Revisit flagged / pending figures** — circle back on anything left
-  uncertain. Currently pending: official attendances for England 4–2 Croatia
-  (m-L-1), Czechia 1–1 South Africa (m-A-3) and Mexico 1–0 Korea Rep (m-A-4) —
-  only "expected" estimates have surfaced so far. Also fill in remaining squad
-  photos (initials-token starters) as Commons files are confirmed. Fill or
-  correct them when better sources appear.
+  uncertain. Pending: official attendances for England 4–2 Croatia (m-L-1),
+  Czechia 1–1 South Africa (m-A-3), and the June 21–22 matches (Belgium–Iran
+  m-G-3, NZ–Egypt m-G-4, Spain–Saudi m-H-3, Uruguay–Cabo Verde m-H-4,
+  France–Iraq m-I-3, Jordan–Algeria m-J-4) — only estimates/capacities have
+  surfaced so far. Also fill in remaining squad photos (initials-token
+  starters) as Commons files are confirmed. Fill or correct them when better
+  sources appear.
 
 Workflow each time: check which matches have finished since the data was last
 touched, fill in their attendance (and any new cards/injuries), verify final
 group order/qualification once a group ends, verify the knockout bracket once
-the knockouts have started, revisit any pending figures, then build and push
+the knockouts have started, confirm the Script auto-graded the new results
+(✓/✗ + the record ticked), revisit any pending figures, then build and push
 along with whatever the owner actually asked for.
 
