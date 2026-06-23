@@ -31,7 +31,7 @@ const STATUS_TABS: { id: StatusFilter; label: string }[] = [
 ];
 
 export function Fixtures() {
-  const [status, setStatus] = useState<StatusFilter>("all");
+  const [status, setStatus] = useState<StatusFilter>("upcoming");
   const [group, setGroup] = useState<string>("all");
   const [selected, setSelected] = useState<Match | null>(null);
   const now = useNow(30_000);
