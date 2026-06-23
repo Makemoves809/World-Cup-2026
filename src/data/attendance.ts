@@ -35,13 +35,18 @@ const curated: Record<string, number> = {
   "m-A-4": 45522, // Mexico 1–0 Korea Republic — Estadio Akron
   "m-F-3": 68777, // Netherlands 5–1 Sweden — NRG Stadium
   "m-J-3": 70649, // Argentina 2–0 Austria — AT&T Stadium, Dallas
+  "m-I-4": 80663, // Norway 3–2 Senegal — MetLife Stadium (Haaland brace)
   // Pending official figures: m-L-1 England 4–2 Croatia (AT&T), m-A-3 Czechia
   // 1–1 South Africa (Mercedes-Benz),
   // m-D-3 USA 2–0 Australia (Lumen Field — "over 66,000", exact TBC),
   // m-C-3 Scotland 0–1 Morocco (Gillette Stadium), m-C-4 Brazil 3–0 Haiti
   // (Lincoln Financial Field), m-D-4 Türkiye 0–1 Paraguay (Levi's Stadium),
   // m-E-3 Germany 2–1 Côte d'Ivoire (BMO Field), m-E-4 Ecuador–Curaçao,
-  // m-F-4 Japan 4–0 Tunisia (Estadio BBVA).
+  // m-F-4 Japan 4–0 Tunisia (Estadio BBVA),
+  // m-G-3 Belgium 0–0 Iran (SoFi), m-G-4 New Zealand 1–3 Egypt (BC Place),
+  // m-H-3 Spain 4–0 Saudi Arabia (Mercedes-Benz), m-H-4 Uruguay 2–2 Cabo
+  // Verde (Hard Rock), m-I-3 France 3–0 Iraq (Lincoln Financial — 2hr storm
+  // delay), m-J-4 Jordan 1–2 Algeria (Levi's).
 };
 
 const liveAttendance =
