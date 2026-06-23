@@ -34,6 +34,7 @@ const curated: Record<string, number> = {
   "m-L-2": 42942, // Ghana 1–0 Panama — BMO Field
   "m-A-4": 45522, // Mexico 1–0 Korea Republic — Estadio Akron
   "m-F-3": 68777, // Netherlands 5–1 Sweden — NRG Stadium
+  "m-J-3": 70649, // Argentina 2–0 Austria — AT&T Stadium, Dallas
   // Pending official figures: m-L-1 England 4–2 Croatia (AT&T), m-A-3 Czechia
   // 1–1 South Africa (Mercedes-Benz),
   // m-D-3 USA 2–0 Australia (Lumen Field — "over 66,000", exact TBC),

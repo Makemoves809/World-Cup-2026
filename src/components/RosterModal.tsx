@@ -3,6 +3,7 @@ import { SQUADS } from "../data/squads";
 import { teamById } from "../data/teams";
 import { closeRoster } from "../lib/roster";
 import { SquadView } from "./SquadView";
+import { TeamResults } from "./TeamResults";
 
 /** In-place team-roster overlay — opens over the current tab without navigating. */
 export function RosterModal({ teamId }: { teamId: string }) {
@@ -37,6 +38,8 @@ export function RosterModal({ teamId }: { teamId: string }) {
           </span>
           <h3>{name}</h3>
         </div>
+
+        <TeamResults teamId={teamId} />
 
         {squad ? (
           <SquadView teamId={teamId} />

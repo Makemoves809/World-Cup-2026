@@ -3057,6 +3057,89 @@ img.flag {
 }
 .roster-empty { margin-top: 10px; }
 
+/* Team's results so far, shown in the roster overlay */
+.team-results {
+  margin: 10px 0 14px;
+  padding: 10px 12px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--line-soft);
+}
+.team-results-title {
+  margin: 0 0 8px;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--chalk-dim);
+}
+.team-results-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.team-result-row {
+  display: grid;
+  grid-template-columns: 26px 34px 1fr auto;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 2px;
+}
+.team-result-row.is-next {
+  border-top: 1px dashed var(--line);
+  padding-top: 7px;
+  margin-top: 2px;
+}
+.tr-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 22px;
+  height: 22px;
+  padding: 0 5px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 800;
+  color: var(--grass-ink);
+}
+.tr-W { background: var(--grass); }
+.tr-D { background: var(--floodlight); }
+.tr-L { background: var(--vermilion); color: #fff; }
+.tr-next {
+  background: transparent;
+  border: 1px solid var(--line);
+  color: var(--chalk-dim);
+  font-size: 10px;
+  font-weight: 700;
+}
+.tr-md {
+  font-size: 11px;
+  color: var(--chalk-faint);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.tr-opp {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  min-width: 0;
+}
+.tr-opp-name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: var(--chalk);
+  font-size: 14px;
+}
+.tr-score {
+  font-variant-numeric: tabular-nums;
+  font-weight: 700;
+  color: var(--chalk);
+}
+.tr-when { font-weight: 600; color: var(--chalk-dim); font-size: 13px; }
+
 /* ============================================================
    Card / availability indicators on player tokens
    ============================================================ */

@@ -176,3 +176,7 @@ export const matches: Match[] = buildMatches();
 
 export const matchesInGroup = (group: string): Match[] =>
   matches.filter((m) => m.group === group);
+
+/** Every match a team is involved in (any stage), in kickoff order. */
+export const matchesForTeam = (teamId: string): Match[] =>
+  matches.filter((m) => m.home === teamId || m.away === teamId);
