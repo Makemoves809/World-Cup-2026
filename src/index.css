@@ -579,6 +579,50 @@ img.flag {
 }
 .section-head {
   margin-bottom: 26px;
+  position: relative;
+}
+/* The Script model's running accuracy, top-right of the Fixtures header */
+.script-badge {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 8px;
+  margin-top: 14px;
+  padding: 8px 13px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--line-soft);
+  cursor: default;
+}
+.script-badge-tag {
+  font-family: var(--font-display);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--grass-ink);
+  background: var(--grass);
+  padding: 2px 7px;
+  border-radius: 5px;
+}
+.script-badge-pct {
+  font-family: var(--font-mono);
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--floodlight);
+}
+.script-badge-sub {
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--chalk-faint);
+}
+@media (min-width: 700px) {
+  .script-badge {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin-top: 0;
+  }
 }
 .kicker {
   display: block;

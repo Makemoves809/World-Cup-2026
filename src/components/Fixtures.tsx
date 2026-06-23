@@ -3,6 +3,7 @@ import type { Match } from "../data/types";
 import { matches } from "../data/fixtures";
 import { GROUP_IDS } from "../data/teams";
 import { isLive } from "../lib/live";
+import { modelAccuracy } from "../lib/accuracy";
 import { MatchCard } from "./MatchCard";
 import { MatchDetail } from "./MatchDetail";
 
@@ -35,6 +36,7 @@ export function Fixtures() {
   const [group, setGroup] = useState<string>("all");
   const [selected, setSelected] = useState<Match | null>(null);
   const now = useNow(30_000);
+  const acc = modelAccuracy();
 
   // Matches in the selected group (matches[] is already sorted by kickoff).
   const groupList = useMemo(
@@ -77,8 +79,22 @@ export function Fixtures() {
         <h2>Fixtures</h2>
         <p className="section-note">
           All 72 group-stage matches — switch between what's still to come and
-          finished results. Click a match for red cards and availability.
+          finished results. Click a match for the Script, red cards and
+          availability.
         </p>
+        {acc.graded > 0 && (
+          <span
+            className="script-badge"
+            title={`The Script model's pre-match calls: ${acc.outcomeCorrect} of ${acc.graded} results correct${acc.exactCorrect > 0 ? `, ${acc.exactCorrect} exact scorelines` : ""}. Open any played match to see its call.`}
+          >
+            <span className="script-badge-tag">Script</span>
+            <span className="script-badge-pct">{acc.outcomePct}%</span>
+            <span className="script-badge-sub">
+              {acc.outcomeCorrect}/{acc.graded} results
+              {acc.exactCorrect > 0 && ` · ${acc.exactCorrect} exact`}
+            </span>
+          </span>
+        )}
       </div>
 
       <div className="seg" role="tablist" aria-label="Filter by status">
