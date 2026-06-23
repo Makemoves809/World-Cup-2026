@@ -1932,6 +1932,61 @@ img.flag {
   color: var(--grass);
 }
 
+/* Auto-written match "script" */
+.match-script .modal-head { margin-bottom: 12px; }
+.script-tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 8px;
+  border-radius: 6px;
+  background: var(--grass);
+  color: var(--grass-ink);
+  font-family: var(--font-display);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+}
+.script-headline {
+  margin: 0 0 10px;
+  font-family: var(--font-display);
+  font-size: 18px;
+  letter-spacing: 0.01em;
+  color: var(--chalk);
+}
+.script-line {
+  margin: 0 0 8px;
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--chalk-dim);
+}
+.script-projection {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin: 4px 0 0;
+  padding: 7px 12px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--line-soft);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--chalk-faint);
+}
+.script-score {
+  font-family: var(--font-mono);
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0;
+  color: var(--floodlight);
+}
+.script-foot {
+  margin: 12px 0 0;
+  font-size: 11px;
+  color: var(--chalk-faint);
+  font-style: italic;
+}
+
 /* Fixture-card mini strength bar */
 .match-strength {
   display: flex;

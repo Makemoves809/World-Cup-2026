@@ -4,6 +4,7 @@ import { teamById } from "../data/teams";
 import { IMPACT_LABELS, sentOffIn, unavailableFor } from "../data/discipline";
 import { attendanceFor } from "../data/attendance";
 import { matchup, type TeamStrength } from "../lib/matchup";
+import { matchScript } from "../lib/script";
 import { openRoster, isRosterOpen } from "../lib/roster";
 import { Flag } from "./Flag";
 
@@ -27,6 +28,7 @@ export function MatchDetail({ match, onClose }: MatchDetailProps) {
   const reds = sentOffIn(match.id);
   const out = unavailableFor(match.id);
   const m = matchup(match);
+  const script = matchScript(match);
 
   // Open the roster as an overlay *on top of* this comparison (it sits at a
   // higher z-index) rather than closing it — so dismissing the roster returns
@@ -95,6 +97,28 @@ export function MatchDetail({ match, onClose }: MatchDetailProps) {
 
         <Attendance match={match} />
 
+        <section className="modal-section match-script">
+          <h4 className="modal-head">
+            <span className="script-tag">Script</span>
+            {match.status === "finished" ? "Match recap" : "The read"}
+          </h4>
+          <p className="script-headline">{script.headline}</p>
+          {script.lines.map((line, i) => (
+            <p key={i} className="script-line">
+              {line}
+            </p>
+          ))}
+          {script.projection && (
+            <p className="script-projection">
+              Model lean
+              <span className="script-score">{script.projection}</span>
+            </p>
+          )}
+          <p className="script-foot">
+            Auto-generated from the form-adjusted ratings below — a projection,
+            not a prediction.
+          </p>
+        </section>
 
         <section className="modal-section matchup">
           <h4 className="modal-head">Team comparison</h4>
