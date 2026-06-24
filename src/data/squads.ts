@@ -1230,6 +1230,146 @@ const PANAMA: TeamSquad = {
   ],
 };
 
+const MEXICO: TeamSquad = {
+  teamId: "mex",
+  // 4-1-4-1 — XI vs Korea (Montes suspended). Bench numbers best-effort.
+  formation: "4-1-4-1",
+  players: [
+    { num: 13, name: "Raúl Rangel", short: "Rangel", line: "gk", role: "Goalkeeper", club: "Guadalajara", at2022: false, start: { x: 50, y: 90 } },
+    { num: 19, name: "Israel Reyes", short: "Reyes", line: "def", role: "Right-back", club: "América", at2022: false, start: { x: 84, y: 70 } },
+    { num: 3, name: "Johan Vásquez", short: "Vásquez", line: "def", role: "Centre-back", club: "Genoa", at2022: false, start: { x: 62, y: 73 } },
+    { num: 4, name: "Edson Álvarez", short: "Álvarez", line: "def", role: "Centre-back", club: "West Ham", at2022: true, captain: true, start: { x: 38, y: 73 } },
+    { num: 23, name: "Jesús Gallardo", short: "Gallardo", line: "def", role: "Left-back", club: "Toluca", at2022: true, start: { x: 16, y: 70 } },
+    { num: 6, name: "Érik Lira", short: "Lira", line: "mid", role: "Defensive midfield", club: "Cruz Azul", at2022: false, start: { x: 50, y: 52 } },
+    { num: 7, name: "Brian Gutiérrez", short: "B. Gutiérrez", line: "mid", role: "Right midfield", club: "Chicago Fire", at2022: false, start: { x: 82, y: 38 } },
+    { num: 16, name: "Álvaro Fidalgo", short: "Fidalgo", line: "mid", role: "Central midfield", club: "América", at2022: false, start: { x: 60, y: 40 } },
+    { num: 8, name: "Roberto Alvarado", short: "Alvarado", line: "mid", role: "Central midfield", club: "Guadalajara", at2022: true, start: { x: 38, y: 40 } },
+    { num: 11, name: "Julián Quiñones", short: "Quiñones", line: "fwd", role: "Left winger", club: "Al-Qadsiah", at2022: false, start: { x: 18, y: 38 } },
+    { num: 9, name: "Raúl Jiménez", short: "Jiménez", line: "fwd", role: "Striker", club: "Fulham", at2022: true, start: { x: 50, y: 14 } },
+
+    { num: 1, name: "Luis Malagón", short: "Malagón", line: "gk", role: "Goalkeeper", club: "América", at2022: false },
+    { num: 12, name: "Carlos Acevedo", short: "Acevedo", line: "gk", role: "Goalkeeper", club: "Santos Laguna", at2022: false },
+    { num: 2, name: "César Montes", short: "Montes", line: "def", role: "Centre-back", club: "Lokomotiv Moscow", at2022: true },
+    { num: 5, name: "Jesús Orozco", short: "Orozco", line: "def", role: "Centre-back", club: "Guadalajara", at2022: false },
+    { num: 15, name: "Kevin Álvarez", short: "K. Álvarez", line: "def", role: "Right-back", club: "América", at2022: false },
+    { num: 25, name: "Rodrigo Huescas", short: "Huescas", line: "def", role: "Right-back", club: "Copenhagen", at2022: false },
+    { num: 18, name: "Luis Chávez", short: "Chávez", line: "mid", role: "Defensive midfield", club: "Dynamo Moscow", at2022: true },
+    { num: 24, name: "Luis Romo", short: "Romo", line: "mid", role: "Central midfield", club: "Monterrey", at2022: true },
+    { num: 14, name: "Erick Sánchez", short: "E. Sánchez", line: "mid", role: "Central midfield", club: "América", at2022: false },
+    { num: 17, name: "Orbelín Pineda", short: "Pineda", line: "mid", role: "Attacking midfield", club: "AEK Athens", at2022: false },
+    { num: 10, name: "Diego Lainez", short: "Lainez", line: "fwd", role: "Winger", club: "Tigres", at2022: false },
+    { num: 22, name: "Hirving Lozano", short: "Lozano", line: "fwd", role: "Right winger", club: "San Diego FC", at2022: true },
+    { num: 20, name: "Uriel Antuna", short: "Antuna", line: "fwd", role: "Winger", club: "Cruz Azul", at2022: false },
+    { num: 21, name: "Henry Martín", short: "Martín", line: "fwd", role: "Striker", club: "América", at2022: true },
+    { num: 26, name: "Santiago Giménez", short: "S. Giménez", line: "fwd", role: "Striker", club: "AC Milan", at2022: false },
+  ],
+};
+
+const SOUTH_AFRICA: TeamSquad = {
+  teamId: "rsa",
+  // 4-3-3 — XI vs Czechia. Bench numbers best-effort.
+  formation: "4-3-3",
+  players: [
+    { num: 1, name: "Ronwen Williams", short: "Williams", line: "gk", role: "Goalkeeper", club: "Mamelodi Sundowns", at2022: false, captain: true, start: { x: 50, y: 90 } },
+    { num: 2, name: "Khuliso Mudau", short: "Mudau", line: "def", role: "Right-back", club: "Mamelodi Sundowns", at2022: false, start: { x: 84, y: 70 } },
+    { num: 5, name: "Mbekezeli Mbokazi", short: "Mbokazi", line: "def", role: "Centre-back", club: "Orlando Pirates", at2022: false, start: { x: 62, y: 73 } },
+    { num: 24, name: "Ime Okon", short: "Okon", line: "def", role: "Centre-back", club: "Stellenbosch", at2022: false, start: { x: 38, y: 73 } },
+    { num: 3, name: "Aubrey Modiba", short: "Modiba", line: "def", role: "Left-back", club: "Mamelodi Sundowns", at2022: false, start: { x: 16, y: 70 } },
+    { num: 8, name: "Teboho Mokoena", short: "Mokoena", line: "mid", role: "Defensive midfield", club: "Mamelodi Sundowns", at2022: false, start: { x: 50, y: 48 } },
+    { num: 12, name: "Thalente Mbatha", short: "Mbatha", line: "mid", role: "Central midfield", club: "Orlando Pirates", at2022: false, start: { x: 70, y: 40 } },
+    { num: 15, name: "Jayden Adams", short: "Adams", line: "mid", role: "Central midfield", club: "Stellenbosch", at2022: false, start: { x: 30, y: 40 } },
+    { num: 11, name: "Oswin Appollis", short: "Appollis", line: "fwd", role: "Right winger", club: "Polokwane City", at2022: false, start: { x: 82, y: 18 } },
+    { num: 9, name: "Iqraam Rayners", short: "Rayners", line: "fwd", role: "Striker", club: "Mamelodi Sundowns", at2022: false, start: { x: 50, y: 13 } },
+    { num: 17, name: "Thapelo Maseko", short: "Maseko", line: "fwd", role: "Left winger", club: "Mamelodi Sundowns", at2022: false, start: { x: 18, y: 18 } },
+
+    { num: 22, name: "Sipho Chaine", short: "Chaine", line: "gk", role: "Goalkeeper", club: "Orlando Pirates", at2022: false },
+    { num: 21, name: "Ricardo Goss", short: "Goss", line: "gk", role: "Goalkeeper", club: "Mamelodi Sundowns", at2022: false },
+    { num: 4, name: "Nkosinathi Sibisi", short: "Sibisi", line: "def", role: "Centre-back", club: "Orlando Pirates", at2022: false },
+    { num: 13, name: "Thabo Moloisane", short: "Moloisane", line: "def", role: "Centre-back", club: "Sekhukhune", at2022: false },
+    { num: 14, name: "Bandile Shandu", short: "Shandu", line: "def", role: "Right-back", club: "Orlando Pirates", at2022: false },
+    { num: 6, name: "Sphephelo Sithole", short: "Sithole", line: "mid", role: "Defensive midfield", club: "Tondela", at2022: false },
+    { num: 16, name: "Sipho Mbule", short: "Mbule", line: "mid", role: "Central midfield", club: "Mamelodi Sundowns", at2022: false },
+    { num: 7, name: "Patrick Maswanganyi", short: "Maswanganyi", line: "mid", role: "Attacking midfield", club: "Orlando Pirates", at2022: false },
+    { num: 10, name: "Themba Zwane", short: "Zwane", line: "mid", role: "Attacking midfield", club: "Mamelodi Sundowns", at2022: false },
+    { num: 20, name: "Relebohile Mofokeng", short: "Mofokeng", line: "fwd", role: "Winger", club: "Orlando Pirates", at2022: false },
+    { num: 18, name: "Evidence Makgopa", short: "Makgopa", line: "fwd", role: "Striker", club: "Orlando Pirates", at2022: false },
+    { num: 19, name: "Lyle Foster", short: "Foster", line: "fwd", role: "Striker", club: "Burnley", at2022: false },
+    { num: 23, name: "Mihlali Mayambela", short: "Mayambela", line: "fwd", role: "Winger", club: "Aris Limassol", at2022: false },
+    { num: 25, name: "Elias Mokwana", short: "Mokwana", line: "fwd", role: "Winger", club: "Esperance", at2022: false },
+    { num: 26, name: "Tashreeq Matthews", short: "Matthews", line: "mid", role: "Winger", club: "Marítimo", at2022: false },
+  ],
+};
+
+const KOREA: TeamSquad = {
+  teamId: "kor",
+  // 4-3-3 — XI vs Mexico. Bench numbers best-effort.
+  formation: "4-3-3",
+  players: [
+    { num: 1, name: "Kim Seung-gyu", short: "Kim S-g", line: "gk", role: "Goalkeeper", club: "Al-Shabab", at2022: true, start: { x: 50, y: 90 } },
+    { num: 13, name: "Seol Young-woo", short: "Seol", line: "def", role: "Right-back", club: "Ulsan HD", at2022: false, start: { x: 84, y: 70 } },
+    { num: 4, name: "Kim Min-jae", short: "Kim M-j", line: "def", role: "Centre-back", club: "Bayern Munich", at2022: true, start: { x: 62, y: 73 } },
+    { num: 20, name: "Lee Han-beom", short: "Lee H-b", line: "def", role: "Centre-back", club: "Gangwon", at2022: false, start: { x: 38, y: 73 } },
+    { num: 2, name: "Kim Moon-hwan", short: "Kim M-h", line: "def", role: "Left-back", club: "Jeonbuk", at2022: true, start: { x: 16, y: 70 } },
+    { num: 26, name: "Lee Gi-hyuk", short: "Lee G-h", line: "mid", role: "Defensive midfield", club: "Pohang Steelers", at2022: false, start: { x: 50, y: 48 } },
+    { num: 6, name: "Hwang In-beom", short: "Hwang I-b", line: "mid", role: "Central midfield", club: "Feyenoord", at2022: true, start: { x: 70, y: 40 } },
+    { num: 8, name: "Paik Seung-ho", short: "Paik", line: "mid", role: "Central midfield", club: "Birmingham", at2022: false, start: { x: 30, y: 40 } },
+    { num: 18, name: "Lee Kang-in", short: "Lee K-i", line: "fwd", role: "Right winger", club: "Paris Saint-Germain", at2022: true, start: { x: 82, y: 18 } },
+    { num: 7, name: "Son Heung-min", short: "Son", line: "fwd", role: "Striker", club: "LAFC", at2022: true, captain: true, start: { x: 50, y: 13 } },
+    { num: 17, name: "Lee Jae-sung", short: "Lee J-s", line: "fwd", role: "Left winger", club: "Mainz", at2022: true, start: { x: 18, y: 18 } },
+
+    { num: 21, name: "Jo Hyeon-woo", short: "Jo H-w", line: "gk", role: "Goalkeeper", club: "Ulsan HD", at2022: true },
+    { num: 12, name: "Song Bum-keun", short: "Song", line: "gk", role: "Goalkeeper", club: "Jeonbuk", at2022: false },
+    { num: 3, name: "Kim Jin-su", short: "Kim J-s", line: "def", role: "Left-back", club: "Jeonbuk", at2022: true },
+    { num: 5, name: "Jung Seung-hyun", short: "Jung S-h", line: "def", role: "Centre-back", club: "Al-Wakrah", at2022: false },
+    { num: 15, name: "Kim Ji-soo", short: "Kim Ji-soo", line: "def", role: "Centre-back", club: "Paris FC", at2022: false },
+    { num: 23, name: "Lee Myung-jae", short: "Lee M-j", line: "def", role: "Right-back", club: "FC Seoul", at2022: false },
+    { num: 16, name: "Won Du-jae", short: "Won", line: "mid", role: "Defensive midfield", club: "Ulsan HD", at2022: false },
+    { num: 14, name: "Hong Hyun-seok", short: "Hong", line: "mid", role: "Central midfield", club: "Mainz", at2022: false },
+    { num: 10, name: "Bae Jun-ho", short: "Bae", line: "mid", role: "Attacking midfield", club: "Stoke City", at2022: false },
+    { num: 11, name: "Hwang Hee-chan", short: "Hwang H-c", line: "fwd", role: "Winger", club: "Wolves", at2022: true },
+    { num: 9, name: "Cho Gue-sung", short: "Cho G-s", line: "fwd", role: "Striker", club: "Midtjylland", at2022: true },
+    { num: 19, name: "Oh Hyeon-gyu", short: "Oh", line: "fwd", role: "Striker", club: "Genk", at2022: false },
+    { num: 24, name: "Yang Min-hyuk", short: "Yang", line: "fwd", role: "Winger", club: "Tottenham", at2022: false },
+    { num: 25, name: "Jeong Sang-bin", short: "Jeong", line: "fwd", role: "Winger", club: "Minnesota United", at2022: false },
+    { num: 22, name: "Kim Tae-hyeon", short: "Kim T-h", line: "def", role: "Right-back", club: "Gangwon", at2022: false },
+  ],
+};
+
+const CZECHIA: TeamSquad = {
+  teamId: "cze",
+  // 3-4-2-1 — XI vs South Africa. Bench numbers best-effort.
+  formation: "3-4-2-1",
+  players: [
+    { num: 1, name: "Matěj Kovář", short: "Kovář", line: "gk", role: "Goalkeeper", club: "Bayer Leverkusen", at2022: false, start: { x: 50, y: 90 } },
+    { num: 3, name: "Tomáš Chaloupek", short: "Chaloupek", line: "def", role: "Centre-back", club: "Slavia Prague", at2022: false, start: { x: 30, y: 75 } },
+    { num: 4, name: "Robin Hranáč", short: "Hranáč", line: "def", role: "Centre-back", club: "Hoffenheim", at2022: false, start: { x: 50, y: 77 } },
+    { num: 6, name: "Ladislav Krejčí", short: "Krejčí", line: "def", role: "Centre-back", club: "Wolfsburg", at2022: false, start: { x: 70, y: 75 } },
+    { num: 5, name: "Vladimír Coufal", short: "Coufal", line: "def", role: "Right wing-back", club: "Hoffenheim", at2022: true, start: { x: 88, y: 52 } },
+    { num: 8, name: "Tomáš Souček", short: "Souček", line: "mid", role: "Central midfield", club: "West Ham", at2022: true, captain: true, start: { x: 60, y: 50 } },
+    { num: 22, name: "Michal Sadílek", short: "Sadílek", line: "mid", role: "Central midfield", club: "Twente", at2022: false, start: { x: 40, y: 50 } },
+    { num: 18, name: "Jan Zelený", short: "Zelený", line: "def", role: "Left wing-back", club: "Sparta Prague", at2022: false, start: { x: 12, y: 52 } },
+    { num: 20, name: "Lukáš Provod", short: "Provod", line: "mid", role: "Attacking midfield", club: "Slavia Prague", at2022: false, start: { x: 64, y: 30 } },
+    { num: 10, name: "Pavel Šulc", short: "Šulc", line: "mid", role: "Attacking midfield", club: "Lyon", at2022: false, start: { x: 36, y: 30 } },
+    { num: 9, name: "Patrik Schick", short: "Schick", line: "fwd", role: "Striker", club: "Bayer Leverkusen", at2022: false, start: { x: 50, y: 13 } },
+
+    { num: 16, name: "Jindřich Staněk", short: "Staněk", line: "gk", role: "Goalkeeper", club: "Slavia Prague", at2022: false },
+    { num: 23, name: "Vítězslav Jaroš", short: "Jaroš", line: "gk", role: "Goalkeeper", club: "Liverpool", at2022: false },
+    { num: 2, name: "David Zima", short: "Zima", line: "def", role: "Centre-back", club: "Slavia Prague", at2022: false },
+    { num: 13, name: "David Doudera", short: "Doudera", line: "def", role: "Right-back", club: "Slavia Prague", at2022: false },
+    { num: 14, name: "Václav Jemelka", short: "Jemelka", line: "def", role: "Centre-back", club: "Plzeň", at2022: false },
+    { num: 15, name: "Martin Vitík", short: "Vitík", line: "def", role: "Centre-back", club: "Sparta Prague", at2022: false },
+    { num: 7, name: "Antonín Barák", short: "Barák", line: "mid", role: "Central midfield", club: "Fiorentina", at2022: true },
+    { num: 21, name: "Lukáš Červ", short: "Červ", line: "mid", role: "Defensive midfield", club: "Plzeň", at2022: false },
+    { num: 17, name: "Adam Karabec", short: "Karabec", line: "mid", role: "Attacking midfield", club: "Hamburg", at2022: false },
+    { num: 11, name: "Vasil Kušej", short: "Kušej", line: "fwd", role: "Winger", club: "Slavia Prague", at2022: false },
+    { num: 19, name: "Václav Sejk", short: "Sejk", line: "fwd", role: "Striker", club: "Sparta Prague", at2022: false },
+    { num: 24, name: "Pavel Kadeřábek", short: "Kadeřábek", line: "def", role: "Right-back", club: "Hoffenheim", at2022: true },
+    { num: 25, name: "Daniel Vašulín", short: "Vašulín", line: "fwd", role: "Striker", club: "Hradec Králové", at2022: false },
+    { num: 26, name: "Mojmír Chytil", short: "Chytil", line: "fwd", role: "Striker", club: "Slavia Prague", at2022: false },
+    { num: 12, name: "Tomáš Holeš", short: "Holeš", line: "mid", role: "Defensive midfield", club: "Slavia Prague", at2022: true },
+  ],
+};
+
 const SWITZERLAND: TeamSquad = {
   teamId: "sui",
   // 4-3-3 — XI around the Bosnia win / Canada decider. Bench numbers best-effort.
@@ -1408,4 +1548,8 @@ export const SQUADS: Record<string, TeamSquad> = {
   can: CANADA,
   qat: QATAR,
   bih: BOSNIA,
+  mex: MEXICO,
+  rsa: SOUTH_AFRICA,
+  kor: KOREA,
+  cze: CZECHIA,
 };
