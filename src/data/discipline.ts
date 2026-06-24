@@ -451,6 +451,14 @@ export interface CardStatus {
 
 const allYellows = (live.yellowCards as unknown as LiveYellowCard[]) ?? [];
 
+/** A match counts as already played once it's finished. */
+const matchPlayed = (matchId: string): boolean =>
+  matches.find((m) => m.id === matchId)?.status === "finished";
+
+/** True while an absence still rules the player out of a match yet to be played. */
+const banStillActive = (a: PlayerAbsence): boolean =>
+  a.missesMatchIds.some((id) => !matchPlayed(id));
+
 /** Card / availability status for a named player on a team. */
 export function cardStatus(teamId: string, playerName: string): CardStatus {
   const words = nameWords(playerName).filter((w) => w.length >= 3);
@@ -458,16 +466,20 @@ export function cardStatus(teamId: string, playerName: string): CardStatus {
     a.team === teamId && nameWords(a.player).some((w) => words.includes(w));
 
   const hits = absences.filter(mine);
-  const red = hits.some((a) => a.type === "red");
-  const susp = hits.some((a) => a.type === "suspension");
-  const injured = hits.some((a) => a.type === "injury");
+  // Only count a red/suspension/injury while it still covers an unplayed match,
+  // so served bans and one-game injuries clear themselves once that game is in
+  // the books (the red card stays in the match history via sentOffIn).
+  const redHit = hits.find((a) => a.type === "red" && banStillActive(a));
+  const suspHit = hits.find((a) => a.type === "suspension" && banStillActive(a));
+  const injHit = hits.find((a) => a.type === "injury" && banStillActive(a));
+  const red = !!redHit;
+  const susp = !!suspHit;
+  const injured = !!injHit;
+
   const yellowCount = allYellows.filter(mine).length;
   const yellows = susp ? Math.max(yellowCount, 2) : yellowCount;
 
-  const primary =
-    hits.find((a) => a.type === "red") ??
-    hits.find((a) => a.type === "suspension") ??
-    hits.find((a) => a.type === "injury");
+  const primary = redHit ?? suspHit ?? injHit;
 
   return { yellows, red, suspended: red || susp, injured, note: primary?.reason };
 }

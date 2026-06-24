@@ -37,18 +37,24 @@ const curated: Record<string, number> = {
   "m-J-3": 70649, // Argentina 2–0 Austria — AT&T Stadium, Dallas
   "m-I-4": 80663, // Norway 3–2 Senegal — MetLife Stadium (Haaland brace)
   "m-K-3": 68777, // Portugal 5–0 Uzbekistan — NRG Stadium (Ronaldo brace)
-  // Pending official figures: m-L-1 England 4–2 Croatia (AT&T), m-A-3 Czechia
-  // 1–1 South Africa (Mercedes-Benz),
-  // m-L-3 England 0–0 Ghana (Gillette — "over 63,000", exact TBC),
-  // m-D-3 USA 2–0 Australia (Lumen Field — "over 66,000", exact TBC),
-  // m-C-3 Scotland 0–1 Morocco (Gillette Stadium), m-C-4 Brazil 3–0 Haiti
-  // (Lincoln Financial Field), m-D-4 Türkiye 0–1 Paraguay (Levi's Stadium),
-  // m-E-3 Germany 2–1 Côte d'Ivoire (BMO Field), m-E-4 Ecuador–Curaçao,
-  // m-F-4 Japan 4–0 Tunisia (Estadio BBVA),
-  // m-G-3 Belgium 0–0 Iran (SoFi), m-G-4 New Zealand 1–3 Egypt (BC Place),
-  // m-H-3 Spain 4–0 Saudi Arabia (Mercedes-Benz), m-H-4 Uruguay 2–2 Cabo
-  // Verde (Hard Rock), m-I-3 France 3–0 Iraq (Lincoln Financial — 2hr storm
-  // delay), m-J-4 Jordan 1–2 Algeria (Levi's).
+  // Matchday 2/3 — figures researched & cross-checked (FIFA/Wikipedia/ESPN)
+  "m-L-1": 70389, // England 4–2 Croatia — AT&T Stadium, Dallas
+  "m-A-3": 67442, // Czechia 1–1 South Africa — Mercedes-Benz Stadium
+  "m-D-3": 66925, // United States 2–0 Australia — Lumen Field (sellout)
+  "m-C-4": 68324, // Brazil 3–0 Haiti — Lincoln Financial Field
+  "m-D-4": 68827, // Türkiye 0–1 Paraguay — Levi's Stadium
+  "m-E-3": 43036, // Germany 2–1 Côte d'Ivoire — BMO Field
+  "m-E-4": 68598, // Ecuador 0–0 Curaçao — Arrowhead Stadium
+  "m-F-4": 51243, // Tunisia 0–4 Japan — Estadio BBVA
+  "m-H-3": 68239, // Spain 4–0 Saudi Arabia — Mercedes-Benz Stadium
+  "m-G-3": 70317, // Belgium 0–0 Iran — SoFi Stadium
+  "m-H-4": 64003, // Uruguay 2–2 Cabo Verde — Hard Rock Stadium
+  "m-G-4": 52497, // New Zealand 1–3 Egypt — BC Place
+  "m-I-3": 68234, // France 3–0 Iraq — Lincoln Financial Field (2hr storm delay)
+  "m-J-4": 68371, // Jordan 1–2 Algeria — Levi's Stadium
+  // Pending official figures: m-C-3 Scotland 0–1 Morocco (Gillette — only a
+  // figure matching capacity has surfaced, unverified) and m-L-3 England 0–0
+  // Ghana (Gillette — "over 63,000", exact TBC). Fill when confirmed.
 };
 
 const liveAttendance =
