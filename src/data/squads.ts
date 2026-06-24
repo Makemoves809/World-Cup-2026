@@ -285,7 +285,7 @@ const SCOTLAND: TeamSquad = {
   players: [
     // ---- Starting XI ----
     { num: 1, name: "Angus Gunn", short: "Gunn", line: "gk", role: "Goalkeeper", club: "Nottingham Forest", at2022: false, start: { x: 50, y: 90 } },
-    { num: 6, name: "Kieran Tierney", short: "Tierney", line: "def", role: "Centre-back", club: "Celtic", at2022: false, start: { x: 28, y: 75 } },
+    { num: 6, name: "Kieran Tierney", short: "Tierney", line: "def", role: "Centre-back", club: "Celtic", at2022: false, photo: "Kieran Tierney (close-up image).jpg", start: { x: 28, y: 75 } },
     { num: 5, name: "Grant Hanley", short: "Hanley", line: "def", role: "Centre-back", club: "Birmingham City", at2022: false, start: { x: 50, y: 77 } },
     { num: 13, name: "Jack Hendry", short: "Hendry", line: "def", role: "Centre-back", club: "Al-Ettifaq", at2022: false, start: { x: 72, y: 75 } },
     { num: 3, name: "Andy Robertson", short: "Robertson", line: "def", role: "Left wing-back", club: "Liverpool", at2022: false, captain: true, photo: "LFC Parade 2019 01 Andy Robertson.jpg", start: { x: 11, y: 55 } },
