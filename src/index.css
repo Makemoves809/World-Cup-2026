@@ -3324,8 +3324,8 @@ img.flag {
 
 .pl-card {
   position: absolute;
-  top: -3px;
-  right: -3px;
+  bottom: -3px;
+  left: -3px;
   min-width: 11px;
   height: 15px;
   padding: 0 1px;
@@ -3344,8 +3344,8 @@ img.flag {
 .pl-card-yellow { background: var(--floodlight); }
 .pl-out {
   position: absolute;
-  top: -4px;
-  right: -4px;
+  bottom: -4px;
+  left: -4px;
   width: 15px;
   height: 15px;
   display: grid;
@@ -3357,6 +3357,52 @@ img.flag {
   line-height: 1;
   border-radius: 50%;
   border: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+/* SofaScore-style estimated match-rating pill (top-right of the avatar) */
+.pl-rating {
+  position: absolute;
+  top: -5px;
+  right: -8px;
+  min-width: 24px;
+  padding: 1px 5px;
+  display: grid;
+  place-items: center;
+  border-radius: 6px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  color: #06150d;
+  border: 1.5px solid var(--pitch);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.45);
+}
+.pl-rating.rate-high { background: #2bd479; }
+.pl-rating.rate-mid { background: #ffa53c; }
+.pl-rating.rate-low { background: #ff5a3c; color: #fff; }
+.bench-item .pl-rating { display: none; } /* bench has no match rating */
+.pl-modal-head .pl-rating {
+  top: -3px;
+  right: -10px;
+  min-width: 30px;
+  font-size: 14px;
+  padding: 2px 7px;
+}
+.pl-rate-val em {
+  font-style: normal;
+  font-size: 10px;
+  color: var(--chalk-faint);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+.pl-rate-val.rate-high { color: var(--grass); }
+.pl-rate-val.rate-mid { color: var(--floodlight); }
+.pl-rate-val.rate-low { color: #ff8d78; }
+.pitch-caption {
+  margin: 10px 0 0;
+  font-size: 11px;
+  font-style: italic;
+  color: var(--chalk-faint);
+  text-align: center;
 }
 
 /* Status line in the player detail modal */

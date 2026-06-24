@@ -7,6 +7,7 @@ import {
   type Player,
 } from "../data/squads";
 import { cardStatus, type CardStatus } from "../data/discipline";
+import { playerRating, type PlayerRating } from "../lib/playerRating";
 
 /** Which coloured ring/badge a player's status warrants (most severe first). */
 function statusKind(cs: CardStatus): "red" | "yellow" | "out" | null {
@@ -21,10 +22,12 @@ export function Avatar({
   player,
   size,
   status,
+  rating,
 }: {
   player: Player;
   size: number;
   status?: CardStatus;
+  rating?: PlayerRating | null;
 }) {
   const [failed, setFailed] = useState(false);
   const show = player.photo && !failed;
@@ -47,6 +50,15 @@ export function Avatar({
       </span>
       <span className="pl-num">{player.num}</span>
       {player.captain && <span className="pl-capt" title="Captain">C</span>}
+
+      {rating && (
+        <span
+          className={`pl-rating rate-${rating.tone}`}
+          title="Projected match rating (model estimate from the team's last result)"
+        >
+          {rating.value.toFixed(1)}
+        </span>
+      )}
 
       {kind === "red" && (
         <span className="pl-card pl-card-red" title={status?.note || "Suspended"} />
@@ -89,10 +101,12 @@ function StatusLine({ status }: { status: CardStatus }) {
 function PlayerModal({
   player,
   status,
+  rating,
   onClose,
 }: {
   player: Player;
   status: CardStatus;
+  rating: PlayerRating | null;
   onClose: () => void;
 }) {
   useEffect(() => {
@@ -108,7 +122,7 @@ function PlayerModal({
           ×
         </button>
         <div className="pl-modal-head">
-          <Avatar player={player} size={120} status={status} />
+          <Avatar player={player} size={120} status={status} rating={rating} />
           <div className="pl-modal-id">
             <span className="pl-modal-kicker">
               {player.captain ? "Captain · " : ""}#{player.num} · {LINE_LABEL[player.line]}
@@ -121,6 +135,14 @@ function PlayerModal({
         <StatusLine status={status} />
 
         <dl className="pl-facts">
+          {rating && (
+            <div>
+              <dt>Last-match rating</dt>
+              <dd className={`pl-rate-val rate-${rating.tone}`}>
+                {rating.value.toFixed(1)} <em>est.</em>
+              </dd>
+            </div>
+          )}
           <div>
             <dt>Club</dt>
             <dd>{player.club}</dd>
@@ -160,6 +182,8 @@ export function SquadView({ teamId }: { teamId: string }) {
   const xi = squad.players.filter((p) => p.start);
   const bench = squad.players.filter((p) => !p.start);
   const statusOf = (p: Player) => cardStatus(teamId, p.name);
+  const ratingOf = (p: Player) => playerRating(teamId, p);
+  const hasRatings = xi.some((p) => ratingOf(p));
 
   return (
     <>
@@ -182,12 +206,19 @@ export function SquadView({ teamId }: { teamId: string }) {
               onClick={() => setActive(p)}
               aria-label={`${p.name}, ${p.role}`}
             >
-              <Avatar player={p} size={60} status={statusOf(p)} />
+              <Avatar player={p} size={60} status={statusOf(p)} rating={ratingOf(p)} />
               <span className="pl-name">{p.short}</span>
             </button>
           </div>
         ))}
       </div>
+
+      {hasRatings && (
+        <p className="pitch-caption">
+          Ratings are model estimates from each team's most recent result — a
+          read on the performance, not an official feed.
+        </p>
+      )}
 
       <div className="bench">
         <h3 className="bench-head">Bench &amp; squad</h3>
@@ -213,6 +244,7 @@ export function SquadView({ teamId }: { teamId: string }) {
         <PlayerModal
           player={active}
           status={statusOf(active)}
+          rating={ratingOf(active)}
           onClose={() => setActive(null)}
         />
       )}
