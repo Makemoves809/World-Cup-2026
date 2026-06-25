@@ -2003,6 +2003,26 @@ img.flag {
   line-height: 1.55;
   color: var(--chalk-dim);
 }
+.script-note {
+  margin: 0 0 12px;
+  padding: 10px 12px;
+  border-left: 3px solid var(--floodlight);
+  border-radius: 0 8px 8px 0;
+  background: var(--floodlight-soft);
+  font-size: 13.5px;
+  line-height: 1.55;
+  color: var(--chalk);
+}
+.script-note-tag {
+  display: inline-block;
+  margin-right: 8px;
+  font-family: var(--font-display);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--floodlight);
+}
 .script-projection {
   display: inline-flex;
   align-items: center;

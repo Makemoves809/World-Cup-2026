@@ -6,6 +6,7 @@ import { attendanceFor } from "../data/attendance";
 import { matchup, type TeamStrength } from "../lib/matchup";
 import { matchScript } from "../lib/script";
 import { gradeMatch, modelAccuracy } from "../lib/accuracy";
+import { matchNote } from "../data/matchNotes";
 import { openRoster, isRosterOpen } from "../lib/roster";
 import { Flag } from "./Flag";
 
@@ -32,6 +33,7 @@ export function MatchDetail({ match, onClose }: MatchDetailProps) {
   const script = matchScript(match);
   const grade = gradeMatch(match);
   const acc = modelAccuracy();
+  const note = matchNote(match.id);
 
   // Open the roster as an overlay *on top of* this comparison (it sits at a
   // higher z-index) rather than closing it — so dismissing the roster returns
@@ -106,6 +108,12 @@ export function MatchDetail({ match, onClose }: MatchDetailProps) {
             {match.status === "finished" ? "Match recap" : "The read"}
           </h4>
           <p className="script-headline">{script.headline}</p>
+          {note && (
+            <p className="script-note">
+              <span className="script-note-tag">Editor's note</span>
+              {note}
+            </p>
+          )}
           {script.lines.map((line, i) => (
             <p key={i} className="script-line">
               {line}
