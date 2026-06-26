@@ -6,13 +6,12 @@
  */
 export const MATCH_NOTES: Record<string, string> = {
   "m-D-5":
-    "Heavily rotated USA. With top spot in hand and Türkiye already eliminated, " +
-    "Pochettino rests four regulars carrying a yellow — Tyler Adams, Folarin " +
-    "Balogun, Chris Richards and Antonee Robinson — to keep them clear of a " +
-    "Round-of-32 suspension. Christian Pulisic returns from a calf strain to " +
-    "captain a much-changed XI (he may only play a half). The model's " +
-    "“strong favourites” read is built on full-strength form, so weigh it " +
-    "against that second-string lineup.",
+    "A much-changed USA came up short. Already through as group winners and with " +
+    "Türkiye eliminated, Pochettino made a record nine changes — resting Adams, " +
+    "Balogun, Richards and Robinson (all on a yellow) to keep them clear of a " +
+    "Round-of-32 ban. McKennie captained the second-string side and Pulisic came " +
+    "off the bench, but Türkiye took it 3–2. A dead-rubber result that doesn't " +
+    "dent the US: they still topped Group D from their opening two wins.",
 };
 
 /** Editorial note for a match, if one has been curated. */

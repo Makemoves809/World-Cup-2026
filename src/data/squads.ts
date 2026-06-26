@@ -242,10 +242,10 @@ const PORTUGAL: TeamSquad = {
 
 const USA: TeamSquad = {
   teamId: "usa",
-  // PROJECTED XI vs Türkiye (Jun 26, final Group D game) — Pochettino rotates
-  // heavily: rests Adams, Balogun, Richards & A. Robinson (all on a yellow,
-  // protected for the R32), Pulisic returns to start. A 4-2-3-1. Update to the
-  // confirmed/actual XI after kickoff.
+  // Most recent: vs Türkiye (lost 2–3) — Pochettino made a record 9 changes,
+  // resting four regulars on a yellow ahead of the R32. McKennie captained;
+  // Pulisic came off the bench. A 4-2-3-1 second-string side. (USA still won
+  // Group D from their first two wins.)
   formation: "4-2-3-1",
   players: [
     // ---- Starting XI ----
@@ -256,8 +256,8 @@ const USA: TeamSquad = {
     { num: 5, name: "Antonee Robinson", short: "A. Robinson", line: "def", role: "Left wing-back", club: "Fulham", at2022: true, photo: "Antonee Robinson WC2022 (cropped).jpg" },
     { num: 2, name: "Sergiño Dest", short: "Dest", line: "def", role: "Right wing-back", club: "PSV", at2022: true, photo: "2022 FIFA World Cup United States 1–1 Wales - (210) (cropped).jpg" },
     { num: 4, name: "Tyler Adams", short: "Adams", line: "mid", role: "Central midfield", club: "Bournemouth", at2022: true, photo: "Tyler Adams (28160524650).jpg" },
-    { num: 8, name: "Weston McKennie", short: "McKennie", line: "mid", role: "Central midfield", club: "Juventus", at2022: true, photo: "Weston McKennie USMNT v Belgium Mar 28 2026-68 (cropped).jpg" },
-    { num: 17, name: "Malik Tillman", short: "Tillman", line: "mid", role: "Attacking midfield", club: "Bayer Leverkusen", at2022: false, photo: "Malik Tillman 2022.jpg", start: { x: 36, y: 50 } },
+    { num: 8, name: "Weston McKennie", short: "McKennie", line: "mid", role: "Central midfield", club: "Juventus", at2022: true, photo: "Weston McKennie USMNT v Belgium Mar 28 2026-68 (cropped).jpg", captain: true, start: { x: 36, y: 50 } },
+    { num: 17, name: "Malik Tillman", short: "Tillman", line: "mid", role: "Attacking midfield", club: "Bayer Leverkusen", at2022: false, photo: "Malik Tillman 2022.jpg" },
     { num: 9, name: "Ricardo Pepi", short: "Pepi", line: "fwd", role: "Striker", club: "PSV", at2022: false, photo: "GAE - FC Groningen - 52877440992.jpg", start: { x: 50, y: 13 } },
     { num: 20, name: "Folarin Balogun", short: "Balogun", line: "fwd", role: "Striker", club: "Monaco", at2022: false, photo: "Arsenal v Everton - 52222904853 (cropped).jpg" },
 
@@ -265,15 +265,15 @@ const USA: TeamSquad = {
     { num: 1, name: "Matt Turner", short: "Turner", line: "gk", role: "Goalkeeper", club: "New England Revolution", at2022: true, start: { x: 50, y: 90 } },
     { num: 25, name: "Chris Brady", short: "Brady", line: "gk", role: "Goalkeeper", club: "Chicago Fire", at2022: false },
     { num: 6, name: "Auston Trusty", short: "Trusty", line: "def", role: "Centre-back", club: "Celtic", at2022: false, start: { x: 62, y: 73 } },
-    { num: 12, name: "Miles Robinson", short: "M. Robinson", line: "def", role: "Centre-back", club: "FC Cincinnati", at2022: false },
-    { num: 18, name: "Max Arfsten", short: "Arfsten", line: "def", role: "Left-back", club: "Columbus Crew", at2022: false, start: { x: 16, y: 70 } },
-    { num: 22, name: "Mark McKenzie", short: "McKenzie", line: "def", role: "Centre-back", club: "Toulouse", at2022: false, start: { x: 38, y: 73 } },
+    { num: 12, name: "Miles Robinson", short: "M. Robinson", line: "def", role: "Centre-back", club: "FC Cincinnati", at2022: false, start: { x: 38, y: 73 } },
+    { num: 18, name: "Max Arfsten", short: "Arfsten", line: "def", role: "Left-back", club: "Columbus Crew", at2022: false },
+    { num: 22, name: "Mark McKenzie", short: "McKenzie", line: "def", role: "Centre-back", club: "Toulouse", at2022: false, start: { x: 16, y: 70 } },
     { num: 23, name: "Joe Scally", short: "Scally", line: "def", role: "Right-back", club: "Mönchengladbach", at2022: true, start: { x: 84, y: 70 } },
     { num: 7, name: "Gio Reyna", short: "Reyna", line: "mid", role: "Attacking midfield", club: "Mönchengladbach", at2022: true, start: { x: 50, y: 31 } },
     { num: 14, name: "Sebastian Berhalter", short: "Berhalter", line: "mid", role: "Central midfield", club: "Vancouver Whitecaps", at2022: false, start: { x: 64, y: 50 } },
     { num: 15, name: "Cristian Roldan", short: "Roldan", line: "mid", role: "Central midfield", club: "Seattle Sounders", at2022: true },
-    { num: 11, name: "Brenden Aaronson", short: "Aaronson", line: "mid", role: "Attacking midfield", club: "Leeds United", at2022: true },
-    { num: 10, name: "Christian Pulisic", short: "Pulisic", line: "fwd", role: "Winger", club: "AC Milan", at2022: true, photo: "Christian Pulisic 2017 (cropped).jpg", captain: true, start: { x: 22, y: 29 } },
+    { num: 11, name: "Brenden Aaronson", short: "Aaronson", line: "mid", role: "Attacking midfield", club: "Leeds United", at2022: true, start: { x: 22, y: 29 } },
+    { num: 10, name: "Christian Pulisic", short: "Pulisic", line: "fwd", role: "Winger", club: "AC Milan", at2022: true, photo: "Christian Pulisic 2017 (cropped).jpg" },
     { num: 19, name: "Haji Wright", short: "H. Wright", line: "fwd", role: "Striker", club: "Coventry City", at2022: true },
     { num: 21, name: "Tim Weah", short: "Weah", line: "fwd", role: "Winger", club: "Marseille", at2022: true, start: { x: 78, y: 29 } },
     { num: 26, name: "Alex Zendejas", short: "Zendejas", line: "fwd", role: "Winger", club: "Club América", at2022: false },
