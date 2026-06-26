@@ -52,9 +52,17 @@ const curated: Record<string, number> = {
   "m-G-4": 52497, // New Zealand 1–3 Egypt — BC Place
   "m-I-3": 68234, // France 3–0 Iraq — Lincoln Financial Field (2hr storm delay)
   "m-J-4": 68371, // Jordan 1–2 Algeria — Levi's Stadium
+  // Matchday 3 (June 25 deciders)
+  "m-D-5": 70492, // Türkiye 3–2 United States — SoFi Stadium (USA rotated, lost)
+  "m-E-5": 68324, // Côte d'Ivoire 2–0 Curaçao — Lincoln Financial Field
+  "m-E-6": 80663, // Ecuador 2–1 Germany — MetLife Stadium (upset)
+  "m-F-5": 70137, // Japan 1–1 Sweden — AT&T Stadium
+  "m-F-6": 68391, // Netherlands 3–1 Tunisia — Arrowhead Stadium
   // Pending official figures: m-C-3 Scotland 0–1 Morocco (Gillette — only a
-  // figure matching capacity has surfaced, unverified) and m-L-3 England 0–0
-  // Ghana (Gillette — "over 63,000", exact TBC). Fill when confirmed.
+  // figure matching capacity has surfaced, unverified), m-L-3 England 0–0
+  // Ghana (Gillette — "over 63,000", exact TBC), m-D-6 Paraguay 0–0 Australia
+  // (Levi's — only a capacity-matching figure surfaced; a 0–0 dead rubber may
+  // not have sold out). Fill when confirmed.
 };
 
 const liveAttendance =
