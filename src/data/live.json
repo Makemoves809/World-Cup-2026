@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-27T22:13:18.270Z",
+  "updatedAt": "2026-06-27T22:26:20.386Z",
   "results": {
     "m-A-1": [
       2,
@@ -272,7 +272,7 @@
   "liveScores": {
     "m-L-5": {
       "home": 0,
-      "away": 0,
+      "away": 1,
       "minute": null
     },
     "m-L-6": {
