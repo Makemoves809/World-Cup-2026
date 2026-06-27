@@ -58,11 +58,18 @@ const curated: Record<string, number> = {
   "m-E-6": 80663, // Ecuador 2–1 Germany — MetLife Stadium (upset)
   "m-F-5": 70137, // Japan 1–1 Sweden — AT&T Stadium
   "m-F-6": 68391, // Netherlands 3–1 Tunisia — Arrowhead Stadium
+  // Groups G/H/I deciders (June 26)
+  "m-G-5": 66925, // Egypt 1–1 Iran — Lumen Field, Seattle
+  "m-G-6": 52497, // New Zealand 1–5 Belgium — BC Place, Vancouver
+  "m-H-5": 68278, // Cabo Verde 0–0 Saudi Arabia — NRG Stadium, Houston
+  "m-H-6": 45065, // Uruguay 0–1 Spain — Estadio Akron, Guadalajara (Uruguay out)
+  "m-I-5": 64146, // Norway 1–4 France — Gillette Stadium, Foxborough
   // Pending official figures: m-C-3 Scotland 0–1 Morocco (Gillette — only a
   // figure matching capacity has surfaced, unverified), m-L-3 England 0–0
   // Ghana (Gillette — "over 63,000", exact TBC), m-D-6 Paraguay 0–0 Australia
   // (Levi's — only a capacity-matching figure surfaced; a 0–0 dead rubber may
-  // not have sold out). Fill when confirmed.
+  // not have sold out), and m-I-6 Senegal 5–0 Iraq (BMO — only a figure
+  // matching another BMO game surfaced, single-sourced). Fill when confirmed.
 };
 
 const liveAttendance =
