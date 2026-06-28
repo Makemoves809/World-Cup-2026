@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-28T00:44:17.208Z",
+  "updatedAt": "2026-06-28T00:46:17.690Z",
   "results": {
     "m-A-1": [
       2,
@@ -281,6 +281,11 @@
     "m-K-5": {
       "home": 0,
       "away": 0,
+      "minute": null
+    },
+    "m-K-6": {
+      "home": 0,
+      "away": 1,
       "minute": null
     }
   },
