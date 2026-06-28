@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-28T04:04:20.762Z",
+  "updatedAt": "2026-06-28T21:02:16.647Z",
   "results": {
     "m-A-1": [
       2,
@@ -292,7 +292,16 @@
   },
   "redCards": [],
   "yellowCards": [],
-  "koResults": [],
+  "koResults": [
+    {
+      "stage": "LAST_32",
+      "homeId": "rsa",
+      "awayId": "can",
+      "homeScore": 0,
+      "awayScore": 1,
+      "winnerId": "can"
+    }
+  ],
   "liveScores": {},
   "attendance": {},
   "eventsChecked": [
