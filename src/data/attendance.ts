@@ -64,12 +64,17 @@ const curated: Record<string, number> = {
   "m-H-5": 68278, // Cabo Verde 0–0 Saudi Arabia — NRG Stadium, Houston
   "m-H-6": 45065, // Uruguay 0–1 Spain — Estadio Akron, Guadalajara (Uruguay out)
   "m-I-5": 64146, // Norway 1–4 France — Gillette Stadium, Foxborough
+  // Groups K/L deciders (June 27)
+  "m-K-5": 64478, // Colombia 0–0 Portugal — Hard Rock Stadium, Miami
+  "m-L-5": 80663, // Panama 0–2 England — MetLife Stadium, New York/New Jersey
+  "m-L-6": 68324, // Croatia 2–1 Ghana — Lincoln Financial Field, Philadelphia
   // Pending official figures: m-C-3 Scotland 0–1 Morocco (Gillette — only a
   // figure matching capacity has surfaced, unverified), m-L-3 England 0–0
   // Ghana (Gillette — "over 63,000", exact TBC), m-D-6 Paraguay 0–0 Australia
   // (Levi's — only a capacity-matching figure surfaced; a 0–0 dead rubber may
   // not have sold out), and m-I-6 Senegal 5–0 Iraq (BMO — only a figure
-  // matching another BMO game surfaced, single-sourced). Fill when confirmed.
+  // matching another BMO game surfaced, single-sourced), and m-K-6 DR Congo
+  // 3–1 Uzbekistan (Mercedes-Benz — no figure published yet). Fill when confirmed.
 };
 
 const liveAttendance =
