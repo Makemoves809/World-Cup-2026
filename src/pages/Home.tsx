@@ -15,9 +15,9 @@ const LINKS = [
     desc: "Round of 32 to the final — the road to MetLife.",
   },
   {
-    to: "/fixtures",
-    title: "Fixtures",
-    desc: "All 72 group-stage matches in your timezone.",
+    to: "/schedule",
+    title: "Match schedule",
+    desc: "Every match by date — group stage and knockouts.",
   },
   {
     to: "/qatar2022",

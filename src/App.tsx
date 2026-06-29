@@ -1,7 +1,7 @@
 import { Header } from "./components/Header";
 import { ProgressStrip } from "./components/ProgressStrip";
 import { Knockout } from "./components/Knockout";
-import { Fixtures } from "./components/Fixtures";
+import { Schedule } from "./components/Schedule";
 import { Home } from "./pages/Home";
 import { GroupsPage } from "./pages/GroupsPage";
 import { Qatar2022 } from "./pages/Qatar2022";
@@ -27,8 +27,9 @@ export function App() {
     case "/knockout":
       page = <Knockout />;
       break;
+    case "/schedule":
     case "/fixtures":
-      page = <Fixtures />;
+      page = <Schedule />;
       break;
     case "/form":
       page = <FormTable />;
@@ -68,7 +69,7 @@ export function App() {
             <button onClick={() => navigate("/")}>Home</button>
             <button onClick={() => navigate("/groups")}>Group standings</button>
             <button onClick={() => navigate("/knockout")}>Knockout</button>
-            <button onClick={() => navigate("/fixtures")}>Fixtures</button>
+            <button onClick={() => navigate("/schedule")}>Schedule</button>
             <button onClick={() => navigate("/form")}>Form table</button>
             <button onClick={() => navigate("/continuity")}>Squad turnover</button>
             <button onClick={() => navigate("/qatar2022")}>Qatar 2022</button>

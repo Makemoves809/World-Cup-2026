@@ -9,7 +9,7 @@ interface HeaderProps {
 const PRIMARY = [
   { to: "/groups", label: "Groups" },
   { to: "/knockout", label: "Knockout" },
-  { to: "/fixtures", label: "Fixtures" },
+  { to: "/schedule", label: "Schedule" },
 ];
 
 /** Analysis & archive — tucked under the "More" menu to keep the bar clean. */

@@ -2,7 +2,7 @@ import { useSyncExternalStore } from "react";
 
 /**
  * Minimal History-API router — no dependencies. Pages are plain pathnames
- * ("/", "/groups", "/knockout", "/fixtures"); `vercel.json` rewrites every
+ * ("/", "/groups", "/knockout", "/schedule"); `vercel.json` rewrites every
  * path to index.html so deep links and refreshes work.
  */
 const NAV_EVENT = "wc26:navigate";

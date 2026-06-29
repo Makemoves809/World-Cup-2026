@@ -175,7 +175,7 @@ export function Hero() {
               <button className="btn btn-primary" onClick={() => navigate("/groups")}>
                 Group standings
               </button>
-              <button className="btn btn-ghost" onClick={() => navigate("/fixtures")}>
+              <button className="btn btn-ghost" onClick={() => navigate("/schedule")}>
                 Match schedule
               </button>
             </>
