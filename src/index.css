@@ -705,7 +705,7 @@ img.flag {
   text-transform: uppercase;
   color: var(--chalk-faint);
 }
-@media (min-width: 700px) {
+@media (min-width: 600px) {
   .script-badge {
     position: absolute;
     top: 0;
@@ -1511,7 +1511,7 @@ img.flag {
 }
 
 /* ---------- Responsive ---------- */
-@media (max-width: 760px) {
+@media (max-width: 899px) {
   .footer-grid {
     grid-template-columns: 1fr;
     gap: 32px;
@@ -1787,7 +1787,7 @@ img.flag {
   max-width: 70ch;
 }
 
-@media (max-width: 720px) {
+@media (max-width: 899px) {
   .third-list { grid-template-columns: 1fr; }
   .third-row:nth-child(8) { margin-bottom: 8px; }
 }
@@ -1980,7 +1980,7 @@ img.flag {
   height: 100%;
   background: linear-gradient(90deg, var(--grass), var(--grass-bright));
 }
-@media (max-width: 460px) {
+@media (max-width: 599px) {
   .pstrip-inner { gap: 12px; padding: 8px 16px; }
   .pstrip-togo { display: none; }
 }
@@ -2749,7 +2749,7 @@ img.flag {
   background: var(--grass);
 }
 
-@media (max-width: 560px) {
+@media (max-width: 599px) {
   .archive {
     padding: 56px 16px;
   }
@@ -3366,7 +3366,7 @@ img.flag {
 }
 .back-link:hover { filter: none; color: var(--chalk); }
 
-@media (max-width: 560px) {
+@media (max-width: 599px) {
   .cont-highs { grid-template-columns: 1fr; }
   .cont-rowbtn { grid-template-columns: 120px 1fr 52px; gap: 8px; }
   .cont-name { font-size: 13px; }
@@ -3690,7 +3690,7 @@ img.flag {
 }
 tr.stat-out .team-name { color: var(--chalk-dim); }
 
-@media (max-width: 560px) {
+@media (max-width: 599px) {
   /* Show just the ✓/✗ mark on narrow screens to save room */
   .qb-text { display: none; }
   .qual-badge { padding: 2px 5px; }
