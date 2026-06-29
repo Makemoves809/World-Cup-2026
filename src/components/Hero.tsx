@@ -3,9 +3,17 @@ import type { Match } from "../data/types";
 import { matches } from "../data/fixtures";
 import { teamById } from "../data/teams";
 import { isLive, liveScore } from "../lib/live";
+import { resolveBracket, type ResolvedSeed } from "../lib/bracket";
 import { navigate } from "../router";
 import { Flag } from "./Flag";
 import { MatchDetail } from "./MatchDetail";
+
+const fmtKoDay = new Intl.DateTimeFormat("en-US", {
+  month: "short",
+  day: "numeric",
+  timeZone: "UTC",
+});
+const koDay = (iso: string) => fmtKoDay.format(new Date(`${iso}T12:00:00Z`));
 
 const TOURNAMENT_START = new Date("2026-06-11T19:00:00Z");
 const TOURNAMENT_END = new Date("2026-07-19T23:00:00Z");
@@ -60,6 +68,30 @@ export function Hero() {
   );
   const liveMatch = liveList[0];
 
+  // Once the group stage is done, the homepage pivots to the knockouts: the
+  // 72-match `matches` list has no KO games, so pull them from the resolved
+  // bracket instead.
+  const groupStageDone = useMemo(
+    () => matches.every((m) => m.status === "finished"),
+    []
+  );
+  const koMatches = useMemo(
+    () =>
+      resolveBracket().flatMap((r) =>
+        r.matches.map((m) => ({ ...m, round: r.name }))
+      ),
+    []
+  );
+  const koStarted = groupStageDone || koMatches.some((m) => m.finished);
+  const nextKo = useMemo(
+    () => koMatches.find((m) => !m.finished && m.home.firm && m.away.firm),
+    [koMatches]
+  );
+  const latestKo = useMemo(
+    () => koMatches.filter((m) => m.finished).slice(-1)[0],
+    [koMatches]
+  );
+
   const [selected, setSelected] = useState<Match | null>(null);
   const open = (match: Match) => ({
     role: "button" as const,
@@ -72,6 +104,18 @@ export function Hero() {
       }
     },
   });
+
+  const koOpen = {
+    role: "button" as const,
+    tabIndex: 0,
+    onClick: () => navigate("/knockout"),
+    onKeyDown: (e: KeyboardEvent) => {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        navigate("/knockout");
+      }
+    },
+  };
 
   const target = nextMatch ? new Date(nextMatch.kickoff) : TOURNAMENT_START;
   const { days, hours, mins, secs } = splitDuration(
@@ -101,7 +145,12 @@ export function Hero() {
       <div className="hero-inner">
         <p className="eyebrow">
           <span className="dot" />
-          {started && !ended ? "Live now" : status} · Canada · México · USA
+          {koStarted && !ended
+            ? "Round of 32 · Knockouts live"
+            : started && !ended
+            ? "Live now"
+            : status}{" "}
+          · Canada · México · USA
         </p>
 
         <h1 className="hero-title">
@@ -112,15 +161,60 @@ export function Hero() {
         </p>
 
         <div className="hero-actions">
-          <button className="btn btn-primary" onClick={() => navigate("/groups")}>
-            Group standings
-          </button>
-          <button className="btn btn-ghost" onClick={() => navigate("/fixtures")}>
-            Match schedule
-          </button>
+          {koStarted ? (
+            <>
+              <button className="btn btn-primary" onClick={() => navigate("/knockout")}>
+                Knockout bracket
+              </button>
+              <button className="btn btn-ghost" onClick={() => navigate("/groups")}>
+                Final group tables
+              </button>
+            </>
+          ) : (
+            <>
+              <button className="btn btn-primary" onClick={() => navigate("/groups")}>
+                Group standings
+              </button>
+              <button className="btn btn-ghost" onClick={() => navigate("/fixtures")}>
+                Match schedule
+              </button>
+            </>
+          )}
         </div>
 
         <div className="hero-row">
+          {koStarted ? (
+            <>
+              {nextKo && (
+                <div className="countdown ko-panel hero-open" {...koOpen}>
+                  <span className="panel-label">Up next · {nextKo.round}</span>
+                  <KoLine home={nextKo.home} away={nextKo.away} />
+                  <span className="next-venue">
+                    {nextKo.venue} · {koDay(nextKo.date)}
+                    <span className="hero-open-hint">Bracket ›</span>
+                  </span>
+                </div>
+              )}
+              {latestKo && (
+                <div className="latest-card hero-open" {...koOpen}>
+                  <span className="panel-label panel-label-gold">
+                    Latest · {latestKo.round}
+                  </span>
+                  <KoLine
+                    home={latestKo.home}
+                    away={latestKo.away}
+                    hs={latestKo.homeScore}
+                    as={latestKo.awayScore}
+                  />
+                  <span className="next-venue">
+                    {latestKo.venue}
+                    <span className="hero-open-hint">Bracket ›</span>
+                  </span>
+                </div>
+              )}
+            </>
+          ) : (
+          <>
           {liveMatch ? (
             <div className="countdown livepanel hero-open" aria-live="polite" {...open(liveMatch)}>
               <span className="panel-label panel-label-live">
@@ -172,6 +266,8 @@ export function Hero() {
               </span>
             </div>
           )}
+          </>
+          )}
         </div>
 
         <dl className="hero-stats">
@@ -188,6 +284,63 @@ export function Hero() {
         <MatchDetail match={selected} onClose={() => setSelected(null)} />
       )}
     </section>
+  );
+}
+
+function koCode(seed: ResolvedSeed): string {
+  if (seed.id) {
+    try {
+      return teamById(seed.id).code;
+    } catch {
+      /* fall through */
+    }
+  }
+  return seed.name;
+}
+
+function KoFlag({ seed }: { seed: ResolvedSeed }) {
+  if (!seed.flag) return <span className="nt-pip" aria-hidden="true" />;
+  return (
+    <img
+      className="flag"
+      src={`https://flagcdn.com/w40/${seed.flag}.png`}
+      srcSet={`https://flagcdn.com/w80/${seed.flag}.png 2x`}
+      width={18}
+      height={12}
+      loading="lazy"
+      alt=""
+      aria-hidden="true"
+      onError={(e) => {
+        (e.currentTarget as HTMLImageElement).style.display = "none";
+      }}
+    />
+  );
+}
+
+function KoLine({
+  home,
+  away,
+  hs,
+  as,
+}: {
+  home: ResolvedSeed;
+  away: ResolvedSeed;
+  hs?: number;
+  as?: number;
+}) {
+  const scored = hs != null && as != null;
+  return (
+    <div className="next-teams">
+      <span className="nt">
+        <KoFlag seed={home} /> {koCode(home)}
+      </span>
+      <span className={scored ? "nt-score" : "nt-v"}>
+        {scored ? `${hs}–${as}` : "vs"}
+      </span>
+      <span className="nt">
+        {koCode(away)} <KoFlag seed={away} />
+      </span>
+    </div>
   );
 }
 

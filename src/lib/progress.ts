@@ -26,8 +26,20 @@ export function tournamentProgress(now = Date.now()): Progress {
   const daysToFinal = Math.max(0, Math.ceil((FINAL - now) / DAY));
   const pct = Math.round((played / TOTAL) * 100);
   const inGroupStage = now < GROUP_END;
+  // Name the current knockout round from how many KO games have been played
+  // (R32 = 16 games, R16 = 8, QF = 4, SF = 2, then the final).
+  const koRound =
+    koPlayed < 16
+      ? "Round of 32"
+      : koPlayed < 24
+      ? "Round of 16"
+      : koPlayed < 28
+      ? "Quarter-finals"
+      : koPlayed < 30
+      ? "Semi-finals"
+      : "Final";
   const phase = inGroupStage
     ? `Group stage · ${Math.max(0, Math.ceil((GROUP_END - now) / DAY))} days left`
-    : "Knockout stage";
+    : koRound;
   return { total: TOTAL, played, remaining, daysToFinal, pct, inGroupStage, phase };
 }
