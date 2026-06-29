@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-28T21:02:16.647Z",
+  "updatedAt": "2026-06-29T19:08:13.559Z",
   "results": {
     "m-A-1": [
       2,
@@ -300,6 +300,14 @@
       "homeScore": 0,
       "awayScore": 1,
       "winnerId": "can"
+    },
+    {
+      "stage": "LAST_32",
+      "homeId": "bra",
+      "awayId": "jpn",
+      "homeScore": 2,
+      "awayScore": 1,
+      "winnerId": "bra"
     }
   ],
   "liveScores": {},
