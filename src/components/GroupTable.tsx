@@ -38,9 +38,9 @@ export function GroupTable({ group }: GroupTableProps) {
             <th className="c-pos">#</th>
             <th className="c-team">Team</th>
             <th>P</th>
-            <th>W</th>
-            <th>D</th>
-            <th>L</th>
+            <th className="col-secondary">W</th>
+            <th className="col-secondary">D</th>
+            <th className="col-secondary">L</th>
             <th className="c-gd">GD</th>
             <th className="c-pts">Pts</th>
           </tr>
@@ -72,9 +72,9 @@ export function GroupTable({ group }: GroupTableProps) {
                 </button>
               </td>
               <td>{r.played}</td>
-              <td>{r.won}</td>
-              <td>{r.drawn}</td>
-              <td>{r.lost}</td>
+              <td className="col-secondary">{r.won}</td>
+              <td className="col-secondary">{r.drawn}</td>
+              <td className="col-secondary">{r.lost}</td>
               <td className="c-gd">
                 {r.goalDiff > 0 ? `+${r.goalDiff}` : r.goalDiff}
               </td>

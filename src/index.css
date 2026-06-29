@@ -815,19 +815,23 @@ img.flag {
 .group-table th {
   font-family: var(--font-mono);
   font-weight: 500;
-  font-size: 10px;
+  font-size: var(--fs-2xs);
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--chalk-faint);
-  padding: 9px 6px;
+  padding: var(--sp-2) var(--sp-1);
   text-align: center;
+  position: sticky;
+  top: 0;
+  background: var(--pitch-2);
+  z-index: 1;
 }
 .group-table th.c-team {
   text-align: left;
-  padding-left: 16px;
+  padding-left: var(--sp-4);
 }
 .group-table td {
-  padding: 9px 6px;
+  padding: var(--sp-2) var(--sp-1);
   text-align: center;
   font-variant-numeric: tabular-nums;
   border-top: 1px solid var(--line-soft);
@@ -836,7 +840,12 @@ img.flag {
   transition: background 0.15s;
 }
 .group-table tbody tr:hover {
-  background: var(--line-soft);
+  background: var(--grass-soft);
+}
+/* Phones keep #, Team, P, GD, Pts; W/D/L reveal on larger screens */
+.group-table .col-secondary { display: none; }
+@media (min-width: 600px) {
+  .group-table .col-secondary { display: table-cell; }
 }
 .c-pos { width: 38px; }
 .pos-pip {
@@ -1585,28 +1594,42 @@ img.flag {
 
 .bracket-scroll {
   overflow-x: auto;
-  padding-bottom: 8px;
+  padding-bottom: var(--sp-2);
   -webkit-overflow-scrolling: touch;
+  scroll-snap-type: x proximity;
+  /* Fade the right edge to signal there's more bracket to swipe */
+  -webkit-mask-image: linear-gradient(to right, #000 calc(100% - 24px), transparent);
+  mask-image: linear-gradient(to right, #000 calc(100% - 24px), transparent);
 }
 .bracket {
   display: flex;
-  gap: 18px;
+  gap: var(--sp-5);
   min-width: 920px;
 }
 .bk-round {
   display: flex;
   flex-direction: column;
   flex: 1;
-  min-width: 168px;
+  min-width: 184px;
+  scroll-snap-align: start;
+}
+.bk-round[data-round="final"] {
+  scroll-snap-align: end;
 }
 .bk-round-head {
   font-family: var(--font-mono);
-  font-size: 11px;
+  font-size: var(--fs-xs);
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--grass);
-  padding-bottom: 12px;
+  padding-bottom: var(--sp-3);
   text-align: center;
+}
+.bk-round[data-round="final"] .bk-round-head {
+  color: var(--floodlight);
+}
+.bk-round[data-round="final"] .bk-round-head::before {
+  content: "🏆 ";
 }
 .bk-round-body {
   display: flex;
@@ -1623,8 +1646,12 @@ img.flag {
   overflow: hidden;
 }
 .bk-round[data-round="final"] .bk-match {
-  border-color: rgba(255, 194, 60, 0.4);
-  box-shadow: 0 0 0 1px rgba(255, 194, 60, 0.18), var(--shadow-card);
+  border-color: rgba(255, 194, 60, 0.55);
+  box-shadow: var(--glow-gold);
+}
+.bk-round[data-round="final"] .bk-seed-name {
+  font-size: var(--fs-sm);
+  font-weight: 600;
 }
 .bk-seed {
   display: flex;
@@ -2688,11 +2715,28 @@ img.flag {
 .form-row,
 .form-head {
   display: grid;
-  grid-template-columns: 28px 1fr 40px 48px 56px 52px 52px;
+  /* Phone: rank · team · Form · trend. Extra columns reveal at ≥600px. */
+  grid-template-columns: 24px 1fr 56px 48px;
   align-items: center;
-  gap: 8px;
-  padding: 9px 12px;
+  gap: var(--sp-2);
+  padding: var(--sp-2) var(--sp-3);
   border-radius: var(--radius-sm);
+}
+.form-col--extra,
+.form-fifa,
+.form-cont-col {
+  display: none;
+}
+@media (min-width: 600px) {
+  .form-row,
+  .form-head {
+    grid-template-columns: 28px 1fr 40px 48px 56px 52px 52px;
+  }
+  .form-col--extra,
+  .form-fifa,
+  .form-cont-col {
+    display: block;
+  }
 }
 .form-head {
   font-family: var(--font-mono);
@@ -2758,16 +2802,8 @@ img.flag {
   color: var(--chalk-faint);
 }
 
-@media (max-width: 560px) {
+@media (max-width: 599px) {
   .formpage { padding: 56px 16px; }
-  .form-row,
-  .form-head {
-    grid-template-columns: 24px 1fr 36px 52px 48px 46px;
-    gap: 6px;
-    padding: 9px 9px;
-  }
-  /* drop the FIFA column on narrow screens */
-  .form-fifa { display: none; }
 }
 
 /* ============================================================

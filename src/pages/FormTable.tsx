@@ -82,7 +82,7 @@ export function FormTable() {
         <li className="form-head" aria-hidden="true">
           <span className="form-rank">#</span>
           <span className="form-team">Team</span>
-          <span className="form-col">Pld</span>
+          <span className="form-col form-col--extra">Pld</span>
           <span className="form-col form-fifa">FIFA</span>
           <span className="form-col form-col-rating">Form</span>
           <span className="form-col">+/−</span>
@@ -101,7 +101,7 @@ export function FormTable() {
               <span className="form-grp">{r.team.group}</span>
               <span className="team-link-cue" aria-hidden="true">›</span>
             </button>
-            <span className="form-col">{r.f.played}</span>
+            <span className="form-col form-col--extra">{r.f.played}</span>
             <span className="form-col form-faint form-fifa">{r.f.base}</span>
             <span className="form-col form-col-rating">{r.f.rating}</span>
             <span className="form-col">
