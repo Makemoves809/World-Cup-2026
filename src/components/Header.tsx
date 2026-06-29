@@ -30,7 +30,10 @@ export function Header({ path }: HeaderProps) {
   const day = Math.min(TOTAL_DAYS, Math.floor((now - START) / DAY_MS) + 1);
 
   const [open, setOpen] = useState(false);
+  const [navOpen, setNavOpen] = useState(false);
   const moreRef = useRef<HTMLDivElement>(null);
+  const navRef = useRef<HTMLElement>(null);
+  const toggleRef = useRef<HTMLButtonElement>(null);
 
   // Close the menu on outside click or Escape.
   useEffect(() => {
@@ -49,12 +52,39 @@ export function Header({ path }: HeaderProps) {
     };
   }, [open]);
 
-  // Close the menu whenever the route changes.
-  useEffect(() => setOpen(false), [path]);
+  // Close the mobile nav on outside click or Escape.
+  useEffect(() => {
+    if (!navOpen) return;
+    const onDown = (e: MouseEvent) => {
+      const t = e.target as Node;
+      if (
+        navRef.current &&
+        !navRef.current.contains(t) &&
+        toggleRef.current &&
+        !toggleRef.current.contains(t)
+      ) {
+        setNavOpen(false);
+      }
+    };
+    const onKey = (e: KeyboardEvent) => e.key === "Escape" && setNavOpen(false);
+    document.addEventListener("mousedown", onDown);
+    document.addEventListener("keydown", onKey);
+    return () => {
+      document.removeEventListener("mousedown", onDown);
+      document.removeEventListener("keydown", onKey);
+    };
+  }, [navOpen]);
+
+  // Close both menus whenever the route changes.
+  useEffect(() => {
+    setOpen(false);
+    setNavOpen(false);
+  }, [path]);
 
   const go = (to: string) => {
     navigate(to);
     setOpen(false);
+    setNavOpen(false);
   };
 
   // "More" is active when viewing one of its pages, or any team squad map.
@@ -85,7 +115,24 @@ export function Header({ path }: HeaderProps) {
         </span>
       </a>
 
-      <nav className="site-nav" aria-label="Primary">
+      <button
+        type="button"
+        ref={toggleRef}
+        className={`nav-toggle${navOpen ? " is-open" : ""}`}
+        aria-label="Menu"
+        aria-expanded={navOpen}
+        onClick={() => setNavOpen((o) => !o)}
+      >
+        <span aria-hidden="true" />
+        <span aria-hidden="true" />
+        <span aria-hidden="true" />
+      </button>
+
+      <nav
+        className={`site-nav${navOpen ? " is-open" : ""}`}
+        aria-label="Primary"
+        ref={navRef}
+      >
         {PRIMARY.map((l) => (
           <a
             key={l.to}
@@ -131,6 +178,21 @@ export function Header({ path }: HeaderProps) {
             </div>
           )}
         </div>
+
+        {/* Flattened "More" links — shown only in the mobile nav panel */}
+        {MORE.map((l) => (
+          <a
+            key={l.to}
+            href={l.to}
+            className={`nav-link nav-link--more${path === l.to ? " is-active" : ""}`}
+            onClick={(e) => {
+              e.preventDefault();
+              go(l.to);
+            }}
+          >
+            {l.label}
+          </a>
+        ))}
       </nav>
 
       <span className="day-badge">
