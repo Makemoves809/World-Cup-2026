@@ -206,6 +206,24 @@ const seedFromTeamId = (id: string, label: string, firm: boolean): ResolvedSeed 
 
 const groupLabel = (groups: string[]) => `3rd ${groups.join("/")}`;
 
+/**
+ * Official FIFA allocation of the 8 best third-placed teams to their Round-of-32
+ * slots, keyed by match id → the group whose third-placed team fills that slot.
+ * Determined by the draw once the group stage finished (confirmed vs FIFA /
+ * Wikipedia): m74 1E–3D, m77 1I–3F, m79 1A–3E, m80 1L–3K, m81 1D–3B,
+ * m82 1G–3I, m85 1B–3J, m87 1K–3L.
+ */
+const THIRD_ALLOCATION: Record<string, string> = {
+  m74: "D",
+  m77: "F",
+  m79: "E",
+  m80: "K",
+  m81: "B",
+  m82: "I",
+  m85: "J",
+  m87: "L",
+};
+
 /** Resolve all rounds, projecting from standings and overlaying live results. */
 export function resolveBracket(): ResolvedRound[] {
   const outcomes = groupOutcomes();
@@ -216,7 +234,10 @@ export function resolveBracket(): ResolvedRound[] {
   const winners = new Map<string, string>();
 
   // The projected (or known) teamId for a deterministic seed, if any.
-  const projectedTeamId = (seed: Seed): { id?: string; label: string; firm: boolean } => {
+  const projectedTeamId = (
+    seed: Seed,
+    matchId: string
+  ): { id?: string; label: string; firm: boolean } => {
     switch (seed.kind) {
       case "winner": {
         const o = byGroup.get(seed.group)!;
@@ -226,8 +247,15 @@ export function resolveBracket(): ResolvedRound[] {
         const o = byGroup.get(seed.group)!;
         return { id: o.started ? o.runnerUp.team.id : undefined, label: `2${seed.group}`, firm: o.decided };
       }
-      case "third":
+      case "third": {
+        // Once the draw has allocated the best thirds, resolve the real team.
+        const grp = THIRD_ALLOCATION[matchId];
+        const o = grp ? byGroup.get(grp) : undefined;
+        if (o && o.decided) {
+          return { id: o.third.team.id, label: `3${grp}`, firm: true };
+        }
         return { id: undefined, label: groupLabel(seed.groups), firm: false };
+      }
       case "pending": {
         const id = winners.get(seed.from);
         const num = seed.from.replace("m", "");
@@ -241,8 +269,8 @@ export function resolveBracket(): ResolvedRound[] {
   for (const def of ROUND_DEFS) {
     const stageResults = koResults.filter((k) => k.stage === def.stage);
     const matches: ResolvedMatch[] = def.matches.map((m) => {
-      const h = projectedTeamId(m.home);
-      const a = projectedTeamId(m.away);
+      const h = projectedTeamId(m.home, m.id);
+      const a = projectedTeamId(m.away, m.id);
 
       // Find a finished result for this slot: match on whichever side(s) we
       // already know. Each team plays once per round, so a known id is unique.
