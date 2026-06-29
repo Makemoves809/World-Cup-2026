@@ -124,6 +124,7 @@ export function MatchCard({ match, onSelect, live = false }: MatchCardProps) {
           </span>
         </span>
 
+        <span className="mc-footer">
         {strength && (
           <span className="match-strength" title={`${strength.verdict} (strength rating)`}>
             <span className="ms-num">{strength.home.effective}</span>
@@ -183,6 +184,7 @@ export function MatchCard({ match, onSelect, live = false }: MatchCardProps) {
           <span className="match-more" aria-hidden="true">
             Details ›
           </span>
+        </span>
         </span>
       </button>
     </li>
