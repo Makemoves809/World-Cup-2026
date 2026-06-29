@@ -4,8 +4,23 @@ import { matches } from "../data/fixtures";
 import { GROUP_IDS } from "../data/teams";
 import { isLive } from "../lib/live";
 import { modelAccuracy } from "../lib/accuracy";
+import {
+  resolveBracket,
+  type ResolvedSeed,
+  type ResolvedMatch,
+} from "../lib/bracket";
+import { openRoster } from "../lib/roster";
+import { navigate } from "../router";
 import { MatchCard } from "./MatchCard";
 import { MatchDetail } from "./MatchDetail";
+
+const koDayFmt = new Intl.DateTimeFormat(undefined, {
+  weekday: "short",
+  month: "short",
+  day: "numeric",
+  timeZone: "UTC",
+});
+const koDay = (iso: string) => koDayFmt.format(new Date(`${iso}T12:00:00Z`));
 
 /** Current time, ticking so matches flip to "live" as kickoff passes. */
 function useNow(intervalMs: number) {
@@ -44,10 +59,50 @@ export function Fixtures() {
     [group]
   );
 
+  // Knockout fixtures (from the resolved bracket) — shown alongside the group
+  // schedule once the group stage is done, since the 72-match `matches` list
+  // has nothing left to come.
+  const koMatches = useMemo(
+    () =>
+      resolveBracket().flatMap((r) =>
+        r.matches.map((m) => ({ ...m, round: r.name }))
+      ),
+    []
+  );
+  const showKo = group === "all";
+
   const counts = useMemo(() => {
-    const results = groupList.filter((m) => m.status === "finished").length;
-    return { upcoming: groupList.length - results, results, all: groupList.length };
-  }, [groupList]);
+    const gResults = groupList.filter((m) => m.status === "finished").length;
+    const g = {
+      upcoming: groupList.length - gResults,
+      results: gResults,
+      all: groupList.length,
+    };
+    if (!showKo) return g;
+    const koResults = koMatches.filter((m) => m.finished).length;
+    return {
+      upcoming: g.upcoming + (koMatches.length - koResults),
+      results: g.results + koResults,
+      all: g.all + koMatches.length,
+    };
+  }, [groupList, koMatches, showKo]);
+
+  const koByRound = useMemo(() => {
+    if (!showKo) return [] as { name: string; matches: typeof koMatches }[];
+    let list = koMatches;
+    if (status === "upcoming") list = list.filter((m) => !m.finished);
+    else if (status === "results") list = list.filter((m) => m.finished);
+    const rounds: { name: string; matches: typeof koMatches }[] = [];
+    for (const m of list) {
+      let r = rounds.find((x) => x.name === m.round);
+      if (!r) {
+        r = { name: m.round, matches: [] };
+        rounds.push(r);
+      }
+      r.matches.push(m);
+    }
+    return rounds;
+  }, [koMatches, status, showKo]);
 
   const visible = useMemo(() => {
     let list = groupList;
@@ -78,9 +133,9 @@ export function Fixtures() {
         <span className="kicker">Official schedule · times shown in your timezone</span>
         <h2>Fixtures</h2>
         <p className="section-note">
-          All 72 group-stage matches — switch between what's still to come and
-          finished results. Click a match for the Script, red cards and
-          availability.
+          Every match — group stage and knockouts. Switch between what's still
+          to come and finished results; click a group match for the Script, red
+          cards and availability.
         </p>
         {acc.graded > 0 && (
           <span
@@ -147,7 +202,24 @@ export function Fixtures() {
         </div>
       )}
 
-      {byDay.length === 0 && liveMatches.length === 0 ? (
+      {koByRound.map((round) => (
+        <div className="day-block" key={round.name}>
+          <h4 className="day-label day-label-ko">
+            {round.name}
+            <span className="day-count">
+              {round.matches.length}{" "}
+              {round.matches.length === 1 ? "match" : "matches"}
+            </span>
+          </h4>
+          <ul className="ko-fx-list">
+            {round.matches.map((m) => (
+              <KoFixture key={m.id} m={m} />
+            ))}
+          </ul>
+        </div>
+      ))}
+
+      {byDay.length === 0 && liveMatches.length === 0 && koByRound.length === 0 ? (
         <p className="fixtures-empty">
           {status === "upcoming"
             ? "No upcoming matches — every game here has been played."
@@ -175,5 +247,64 @@ export function Fixtures() {
         <MatchDetail match={selected} onClose={() => setSelected(null)} />
       )}
     </section>
+  );
+}
+
+function KoSeed({ seed, won }: { seed: ResolvedSeed; won?: boolean }) {
+  const flag = seed.flag ? (
+    <img
+      className="flag"
+      src={`https://flagcdn.com/w40/${seed.flag}.png`}
+      srcSet={`https://flagcdn.com/w80/${seed.flag}.png 2x`}
+      width={20}
+      height={14}
+      loading="lazy"
+      alt=""
+      aria-hidden="true"
+      onError={(e) => {
+        (e.currentTarget as HTMLImageElement).style.display = "none";
+      }}
+    />
+  ) : (
+    <span className="ko-fx-pip" aria-hidden="true" />
+  );
+  const cls = `ko-fx-team${won ? " is-won" : ""}`;
+  if (seed.id) {
+    return (
+      <button
+        className={`team-link ${cls}`}
+        onClick={() => openRoster(seed.id!)}
+        title={`${seed.name} squad`}
+      >
+        {flag}
+        <span className="ko-fx-name">{seed.name}</span>
+      </button>
+    );
+  }
+  return (
+    <span className={`${cls} is-tbd`}>
+      {flag}
+      <span className="ko-fx-name">{seed.name}</span>
+    </span>
+  );
+}
+
+function KoFixture({ m }: { m: ResolvedMatch & { round: string } }) {
+  return (
+    <li className="ko-fx">
+      <span className="ko-fx-meta">
+        #{m.num} · {koDay(m.date)} · {m.venue}
+      </span>
+      <span className="ko-fx-body">
+        <KoSeed seed={m.home} won={m.finished && m.winner === "home"} />
+        <span className={m.finished ? "ko-fx-score is-final" : "ko-fx-score"}>
+          {m.finished ? `${m.homeScore}–${m.awayScore}` : "vs"}
+        </span>
+        <KoSeed seed={m.away} won={m.finished && m.winner === "away"} />
+      </span>
+      <button className="ko-fx-link" onClick={() => navigate("/knockout")}>
+        Bracket ›
+      </button>
+    </li>
   );
 }
