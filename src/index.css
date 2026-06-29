@@ -550,6 +550,14 @@ img.flag {
   text-transform: uppercase;
   color: var(--chalk-faint);
 }
+/* Knockout results stand out from group results in the ticker */
+.ticker-item.is-ko .ticker-meta {
+  color: var(--grass);
+}
+.ticker-score .tk-adv {
+  color: var(--chalk);
+  font-weight: 700;
+}
 .ticker-score {
   display: inline-flex;
   align-items: center;
