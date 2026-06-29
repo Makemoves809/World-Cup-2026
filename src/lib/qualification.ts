@@ -1,5 +1,11 @@
 import { matches } from "../data/fixtures";
 import { teamsInGroup } from "../data/teams";
+import { standingsForGroup } from "./standings";
+import { bestThirds } from "./bracket";
+
+/** True once every group-stage match has been played. */
+const groupStageComplete = (): boolean =>
+  matches.every((m) => m.stage !== "group" || m.status === "finished");
 
 /**
  * Mathematical group status for each team:
@@ -78,5 +84,26 @@ export function groupQualification(group: string): Record<string, GroupStatus> {
     else if (minStrictlyAbove[t] >= 3) status[t] = "out";
     else status[t] = "contention";
   }
+
+  // Once the whole group stage is done, the cross-group best-third race is
+  // settled — so resolve 3rd place definitively (1st/2nd through, 4th out, and
+  // 3rd through only if it's one of the 8 best thirds). The conservative
+  // per-group solver above can't see across groups, so it leaves these in
+  // "contention"; this lifts that once everything's known.
+  if (groupStageComplete()) {
+    const rows = standingsForGroup(group);
+    const thirdsThrough = new Set(
+      bestThirds()
+        .filter((t) => t.qualifies)
+        .map((t) => t.row.team.id)
+    );
+    rows.forEach((r, i) => {
+      if (i < 2) status[r.team.id] = "through";
+      else if (i === 2)
+        status[r.team.id] = thirdsThrough.has(r.team.id) ? "through" : "out";
+      else status[r.team.id] = "out";
+    });
+  }
+
   return status;
 }
