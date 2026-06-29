@@ -306,10 +306,15 @@ img.flag {
   position: absolute;
   inset: 0;
   background: radial-gradient(
-    50% 38% at 78% 12%,
-    rgba(255, 194, 60, 0.07),
-    transparent 75%
-  );
+      48% 42% at 80% 6%,
+      rgba(255, 194, 60, 0.16),
+      transparent 70%
+    ),
+    radial-gradient(
+      54% 50% at 8% 104%,
+      rgba(43, 212, 121, 0.12),
+      transparent 72%
+    );
   pointer-events: none;
 }
 .hero-inner {
@@ -682,18 +687,28 @@ img.flag {
   }
 }
 .kicker {
-  display: block;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2);
   font-family: var(--font-mono);
-  font-size: 11px;
+  font-size: var(--fs-xs);
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--grass);
-  margin-bottom: 10px;
+  margin-bottom: var(--sp-3);
+}
+.kicker::before {
+  content: "";
+  width: 18px;
+  height: 2px;
+  border-radius: var(--radius-pill);
+  background: linear-gradient(90deg, var(--grass), transparent);
 }
 .section-head h2 {
   font-size: clamp(30px, 4.5vw, 48px);
   text-transform: uppercase;
   letter-spacing: 0.02em;
+  line-height: 1.02;
 }
 .section-note {
   margin: 8px 0 0;
@@ -742,8 +757,7 @@ img.flag {
 .group-card:hover {
   transform: translateY(-3px);
   border-color: rgba(43, 212, 121, 0.3);
-  box-shadow: 0 1px 0 rgba(246, 244, 235, 0.05) inset,
-    0 18px 44px rgba(0, 0, 0, 0.45);
+  box-shadow: var(--shadow-2);
 }
 .group-watermark {
   position: absolute;
@@ -965,8 +979,8 @@ img.flag {
 }
 .match-card:hover {
   transform: translateY(-2px);
-  border-color: rgba(246, 244, 235, 0.22);
-  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.35);
+  border-color: rgba(43, 212, 121, 0.28);
+  box-shadow: var(--shadow-2);
 }
 .match-card.status-finished {
   border-color: rgba(43, 212, 121, 0.3);
@@ -985,14 +999,14 @@ img.flag {
 }
 .match-when { color: var(--chalk-dim); }
 .ft-badge {
-  font-weight: 600;
-  font-size: 9px;
+  font-weight: 700;
+  font-size: var(--fs-2xs);
   letter-spacing: 0.14em;
   color: var(--grass);
   background: var(--grass-soft);
   border: 1px solid rgba(43, 212, 121, 0.35);
   padding: 3px 8px;
-  border-radius: 999px;
+  border-radius: var(--radius-pill);
 }
 .match-body {
   display: grid;
@@ -1712,10 +1726,11 @@ img.flag {
 .home-link:hover {
   transform: translateY(-3px);
   border-color: rgba(43, 212, 121, 0.3);
+  box-shadow: var(--shadow-2);
 }
 .home-link-title {
   font-family: var(--font-display);
-  font-size: 22px;
+  font-size: var(--fs-lg);
   text-transform: uppercase;
   letter-spacing: 0.03em;
   color: var(--chalk);
