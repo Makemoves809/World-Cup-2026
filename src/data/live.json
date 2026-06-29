@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-29T23:32:15.204Z",
+  "updatedAt": "2026-06-29T23:35:21.598Z",
   "results": {
     "m-A-1": [
       2,
@@ -314,7 +314,7 @@
       "homeId": "ger",
       "awayId": "par",
       "homeScore": 5,
-      "awayScore": 5,
+      "awayScore": 6,
       "winnerId": null
     }
   ],
