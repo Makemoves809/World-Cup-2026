@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-30T06:14:13.722Z",
+  "updatedAt": "2026-06-30T19:03:13.947Z",
   "results": {
     "m-A-1": [
       2,
@@ -324,6 +324,14 @@
       "homeScore": 3,
       "awayScore": 4,
       "winnerId": "mar"
+    },
+    {
+      "stage": "LAST_32",
+      "homeId": "civ",
+      "awayId": "nor",
+      "homeScore": 1,
+      "awayScore": 2,
+      "winnerId": "nor"
     }
   ],
   "liveScores": {},
