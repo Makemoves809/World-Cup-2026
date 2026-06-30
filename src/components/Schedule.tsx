@@ -172,8 +172,6 @@ export function Schedule() {
                 <span className="live-dot" aria-hidden="true" />
                 {ls?.minute != null ? `${ls.minute}'` : "LIVE"}
               </span>
-            ) : done ? (
-              <span className="sch-grp">Grp {m.group}</span>
             ) : (
               timeFmt.format(new Date(m.kickoff))
             )}
