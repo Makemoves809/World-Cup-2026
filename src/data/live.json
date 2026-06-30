@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-30T06:08:16.151Z",
+  "updatedAt": "2026-06-30T06:09:28.702Z",
   "results": {
     "m-A-1": [
       2,
@@ -315,15 +315,15 @@
       "awayId": "par",
       "homeScore": 4,
       "awayScore": 5,
-      "winnerId": "par"
+      "winnerId": null
     },
     {
       "stage": "LAST_32",
       "homeId": "ned",
       "awayId": "mar",
-      "homeScore": 3,
+      "homeScore": 4,
       "awayScore": 4,
-      "winnerId": "mar"
+      "winnerId": null
     }
   ],
   "liveScores": {},
