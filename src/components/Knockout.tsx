@@ -7,6 +7,7 @@ import {
   type ResolvedSeed,
 } from "../lib/bracket";
 import { openRoster } from "../lib/roster";
+import { useLiveData } from "../lib/liveData";
 
 const fmtDate = new Intl.DateTimeFormat("en-US", {
   month: "short",
@@ -80,6 +81,7 @@ function SeedChip({
 }
 
 export function Knockout() {
+  useLiveData(); // fill the bracket in as knockout results land
   const outcomes = groupOutcomes();
   const thirds = bestThirds();
   const rounds = resolveBracket();

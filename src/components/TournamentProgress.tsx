@@ -1,6 +1,8 @@
 import { tournamentProgress } from "../lib/progress";
+import { useLiveData } from "../lib/liveData";
 
 export function TournamentProgress() {
+  useLiveData(); // refresh counts as results land
   const p = tournamentProgress();
 
   return (

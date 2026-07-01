@@ -1,7 +1,7 @@
 import type { StandingRow } from "../data/types";
 import { standingsForGroup } from "./standings";
 import { teamById, GROUP_IDS } from "../data/teams";
-import live from "../data/live.json";
+import { getLiveData } from "./liveData";
 
 /**
  * Knockout stage — the OFFICIAL 2026 World Cup bracket (matches 73–104).
@@ -232,7 +232,9 @@ const THIRD_ALLOCATION: Record<string, string> = {
 export function resolveBracket(): ResolvedRound[] {
   const outcomes = groupOutcomes();
   const byGroup = new Map(outcomes.map((o) => [o.group, o]));
-  const koResults = ((live as { koResults?: KoResult[] }).koResults ?? []).slice();
+  const koResults = (
+    (getLiveData() as { koResults?: KoResult[] }).koResults ?? []
+  ).slice();
 
   // teamId that advanced from each resolved knockout match.
   const winners = new Map<string, string>();

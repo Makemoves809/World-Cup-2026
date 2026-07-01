@@ -1,7 +1,9 @@
 import { tournamentProgress } from "../lib/progress";
+import { useLiveData } from "../lib/liveData";
 
 /** Slim sitewide progress bar shown under the header on every page. */
 export function ProgressStrip() {
+  useLiveData(); // keep the played/remaining counts current
   const p = tournamentProgress();
 
   return (

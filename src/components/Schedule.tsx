@@ -3,6 +3,7 @@ import type { Match } from "../data/types";
 import { matches } from "../data/fixtures";
 import { teamById } from "../data/teams";
 import { isLive, liveScore } from "../lib/live";
+import { useLiveData } from "../lib/liveData";
 import {
   resolveBracket,
   type ResolvedSeed,
@@ -88,13 +89,14 @@ export function Schedule() {
   const [selected, setSelected] = useState<Match | null>(null);
   const [selectedKo, setSelectedKo] = useState<KoItem | null>(null);
   const now = useNow(30_000);
+  const liveData = useLiveData();
 
   const koMatches = useMemo(
     () =>
       resolveBracket().flatMap((r) =>
         r.matches.map((m) => ({ ...m, round: r.name }))
       ),
-    []
+    [liveData]
   );
 
   const counts = useMemo(() => {

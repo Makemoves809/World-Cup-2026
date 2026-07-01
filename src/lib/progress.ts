@@ -1,5 +1,5 @@
 import { matches } from "../data/fixtures";
-import live from "../data/live.json";
+import { getLiveData } from "./liveData";
 
 /** Full tournament = 104 matches (72 group + 32 knockout). */
 const TOTAL = 104;
@@ -20,7 +20,8 @@ export interface Progress {
 /** Live tournament progress, derived from results + the calendar. */
 export function tournamentProgress(now = Date.now()): Progress {
   const groupPlayed = matches.filter((m) => m.status === "finished").length;
-  const koPlayed = ((live as { koResults?: unknown[] }).koResults ?? []).length;
+  const koPlayed = ((getLiveData() as { koResults?: unknown[] }).koResults ?? [])
+    .length;
   const played = Math.min(TOTAL, groupPlayed + koPlayed);
   const remaining = Math.max(0, TOTAL - played);
   const daysToFinal = Math.max(0, Math.ceil((FINAL - now) / DAY));

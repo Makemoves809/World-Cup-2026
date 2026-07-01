@@ -2,6 +2,7 @@ import type { Team } from "../data/types";
 import { matches } from "../data/fixtures";
 import { teamById } from "../data/teams";
 import { resolveBracket } from "../lib/bracket";
+import { useLiveData } from "../lib/liveData";
 import { Flag } from "./Flag";
 
 const fmtDay = new Intl.DateTimeFormat(undefined, {
@@ -75,6 +76,7 @@ function buildRows(): TickerRow[] {
 
 /** Horizontal strip of the most recent final scores, newest first (KO + group). */
 export function ResultsTicker() {
+  useLiveData(); // re-render when new results land
   const rows = buildRows();
   if (rows.length === 0) return null;
 

@@ -3,6 +3,7 @@ import type { Match } from "../data/types";
 import { matches } from "../data/fixtures";
 import { teamById } from "../data/teams";
 import { isLive, isKickoffLive, liveScore } from "../lib/live";
+import { useLiveData } from "../lib/liveData";
 import {
   resolveBracket,
   type ResolvedMatch,
@@ -57,6 +58,7 @@ const STATS = [
 
 export function Hero() {
   const now = useNow();
+  const liveData = useLiveData();
 
   const nextMatch = useMemo(
     () =>
@@ -92,7 +94,8 @@ export function Hero() {
       resolveBracket().flatMap((r) =>
         r.matches.map((m) => ({ ...m, round: r.name }))
       ),
-    []
+    // Recompute when the polled live data changes (results/scores land).
+    [liveData]
   );
   const koStarted = groupStageDone || koMatches.some((m) => m.finished);
   const koTs = (m: KoItem) => new Date(m.kickoff).getTime();

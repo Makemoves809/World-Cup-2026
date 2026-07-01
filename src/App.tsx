@@ -11,10 +11,17 @@ import { SquadPitch } from "./pages/SquadPitch";
 import { RosterModal } from "./components/RosterModal";
 import { navigate, useRoute } from "./router";
 import { useRoster } from "./lib/roster";
+import { startLivePolling } from "./lib/liveData";
+import { useEffect } from "react";
 
 export function App() {
   const path = useRoute();
   const roster = useRoster();
+
+  // Keep an open tab's scores fresh without a manual reload.
+  useEffect(() => {
+    startLivePolling();
+  }, []);
 
   let page;
   if (path.startsWith("/squad/")) {
