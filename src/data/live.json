@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-01T04:07:14.059Z",
+  "updatedAt": "2026-07-01T18:05:16.824Z",
   "results": {
     "m-A-1": [
       2,
@@ -348,6 +348,14 @@
       "homeScore": 2,
       "awayScore": 0,
       "winnerId": "mex"
+    },
+    {
+      "stage": "LAST_32",
+      "homeId": "eng",
+      "awayId": "cod",
+      "homeScore": 2,
+      "awayScore": 1,
+      "winnerId": "eng"
     }
   ],
   "liveScores": {},
