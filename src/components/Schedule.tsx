@@ -136,7 +136,9 @@ export function Schedule() {
     const liveItems: Item[] = [];
     const rest: Item[] = [];
     for (const it of items) {
-      if (it.kind === "group" && isLive(it.m, now)) liveItems.push(it);
+      const isLiveItem =
+        it.kind === "group" ? isLive(it.m, now) : Boolean(it.m.live);
+      if (isLiveItem) liveItems.push(it);
       else rest.push(it);
     }
     const days = new Map<string, Item[]>();
@@ -202,12 +204,13 @@ export function Schedule() {
     // knockout row
     const m = it.m;
     const toSide = (s: ResolvedSeed): Side => ({ name: s.name, flag: s.flag, id: s.id });
-    const hs = m.finished ? m.homeScore : undefined;
-    const as = m.finished ? m.awayScore : undefined;
+    const live = Boolean(m.live);
+    const hs = m.finished ? m.homeScore : live ? m.liveHome : undefined;
+    const as = m.finished ? m.awayScore : live ? m.liveAway : undefined;
     return (
       <li
         key={m.id}
-        className="sch-row is-ko"
+        className={`sch-row is-ko${live ? " is-live" : ""}`}
         role="button"
         tabIndex={0}
         onClick={() => setSelectedKo(m)}
@@ -219,8 +222,21 @@ export function Schedule() {
         }}
       >
         <span className="sch-when">
-          {m.kickoff && <span className="sch-time">{timeFmt.format(new Date(m.kickoff))}</span>}
-          <span className="sch-round">{ROUND_ABBR[m.round] ?? m.round}</span>
+          {live ? (
+            <span className="sch-livetag">
+              <span className="live-dot" aria-hidden="true" />
+              {m.liveMinute != null ? `${m.liveMinute}'` : "LIVE"}
+            </span>
+          ) : (
+            <>
+              {m.kickoff && (
+                <span className="sch-time">
+                  {timeFmt.format(new Date(m.kickoff))}
+                </span>
+              )}
+              <span className="sch-round">{ROUND_ABBR[m.round] ?? m.round}</span>
+            </>
+          )}
         </span>
         <span className="sch-teams">
           <SideView side={toSide(m.home)} />

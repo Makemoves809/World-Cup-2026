@@ -164,6 +164,15 @@ interface KoResult {
   winnerId: string | null;
 }
 
+interface LiveKo {
+  stage: string;
+  homeId: string;
+  awayId: string;
+  homeScore: number;
+  awayScore: number;
+  minute: number | null;
+}
+
 export interface ResolvedSeed {
   /** Slot label, e.g. "1A", "2B", "3rd C/E/F/H/I", or "Winner 74". */
   label: string;
@@ -191,6 +200,12 @@ export interface ResolvedMatch {
   finished: boolean;
   /** Side that advanced, when finished. */
   winner?: "home" | "away";
+  /** True while the tie is in play (the feed reports a running score). */
+  live?: boolean;
+  /** In-play score + minute, oriented to home/away, when live. */
+  liveHome?: number;
+  liveAway?: number;
+  liveMinute?: number | null;
 }
 
 export interface ResolvedRound {
@@ -232,9 +247,9 @@ const THIRD_ALLOCATION: Record<string, string> = {
 export function resolveBracket(): ResolvedRound[] {
   const outcomes = groupOutcomes();
   const byGroup = new Map(outcomes.map((o) => [o.group, o]));
-  const koResults = (
-    (getLiveData() as { koResults?: KoResult[] }).koResults ?? []
-  ).slice();
+  const data = getLiveData() as { koResults?: KoResult[]; liveKo?: LiveKo[] };
+  const koResults = (data.koResults ?? []).slice();
+  const liveKoAll = data.liveKo ?? [];
 
   // teamId that advanced from each resolved knockout match.
   const winners = new Map<string, string>();
@@ -274,6 +289,7 @@ export function resolveBracket(): ResolvedRound[] {
 
   for (const def of ROUND_DEFS) {
     const stageResults = koResults.filter((k) => k.stage === def.stage);
+    const stageLive = liveKoAll.filter((k) => k.stage === def.stage);
     const matches: ResolvedMatch[] = def.matches.map((m) => {
       const h = projectedTeamId(m.home, m.id);
       const a = projectedTeamId(m.away, m.id);
@@ -320,7 +336,43 @@ export function resolveBracket(): ResolvedRound[] {
           : { label: a.label, name: seedName(m.away, a.label), firm: false };
       }
 
-      return { id: m.id, num: m.num, date: m.date, kickoff: m.kickoff, venue: m.venue, home, away, homeScore, awayScore, finished, winner };
+      // Overlay an in-play score when the tie hasn't produced a result yet.
+      let live = false;
+      let liveHome: number | undefined;
+      let liveAway: number | undefined;
+      let liveMinute: number | null | undefined;
+      if (!finished && known.length > 0) {
+        const l = stageLive.find((k) => {
+          const ids = [k.homeId, k.awayId];
+          return known.every((id) => ids.includes(id));
+        });
+        if (l) {
+          const homeIsLiveHome =
+            h.id === l.homeId || (h.id == null && a.id === l.awayId);
+          liveHome = homeIsLiveHome ? l.homeScore : l.awayScore;
+          liveAway = homeIsLiveHome ? l.awayScore : l.homeScore;
+          liveMinute = l.minute;
+          live = true;
+        }
+      }
+
+      return {
+        id: m.id,
+        num: m.num,
+        date: m.date,
+        kickoff: m.kickoff,
+        venue: m.venue,
+        home,
+        away,
+        homeScore,
+        awayScore,
+        finished,
+        winner,
+        live,
+        liveHome,
+        liveAway,
+        liveMinute,
+      };
     });
 
     rounds.push({ id: def.id, name: def.name, matches });

@@ -135,7 +135,9 @@ export function Hero() {
         .slice(-1)[0],
     [koMatches]
   );
-  const koLs = liveKo ? liveScore(liveKo.id) : undefined;
+  const koLs = liveKo
+    ? { home: liveKo.liveHome, away: liveKo.liveAway, minute: liveKo.liveMinute }
+    : undefined;
 
   const [selected, setSelected] = useState<Match | null>(null);
   const [selectedKo, setSelectedKo] = useState<KoItem | null>(null);

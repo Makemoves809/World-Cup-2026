@@ -46,6 +46,15 @@ interface KoResult {
   winnerId: string | null;
 }
 
+interface LiveKo {
+  stage: string;
+  homeId: string;
+  awayId: string;
+  homeScore: number;
+  awayScore: number;
+  minute: number | null;
+}
+
 interface LiveData {
   updatedAt: string;
   results: Record<string, [number, number]>;
@@ -54,6 +63,8 @@ interface LiveData {
   yellowCards: LiveYellowCard[];
   /** Finished knockout matches — used to fill the bracket. */
   koResults: KoResult[];
+  /** In-play knockout scores by stage + teams (rebuilt each run). */
+  liveKo: LiveKo[];
   /** In-play group scores, keyed by match id (rebuilt each run). */
   liveScores: Record<string, { home: number; away: number; minute: number | null }>;
   /** Announced attendance, keyed by match id. */
@@ -66,6 +77,7 @@ const LIVE_PATH = new URL("../src/data/live.json", import.meta.url);
 const live: LiveData = JSON.parse(readFileSync(LIVE_PATH, "utf8"));
 live.yellowCards = live.yellowCards ?? [];
 live.koResults = live.koResults ?? [];
+live.liveKo = live.liveKo ?? [];
 live.liveScores = live.liveScores ?? {};
 live.attendance = live.attendance ?? {};
 const before = JSON.stringify({
@@ -73,6 +85,7 @@ const before = JSON.stringify({
   redCards: live.redCards,
   yellowCards: live.yellowCards,
   koResults: live.koResults,
+  liveKo: live.liveKo,
   liveScores: live.liveScores,
   attendance: live.attendance,
   eventsChecked: live.eventsChecked,
@@ -161,6 +174,8 @@ const liveScores: Record<
   string,
   { home: number; away: number; minute: number | null }
 > = {};
+/** In-play knockout scores, rebuilt fresh each run. */
+const liveKo: LiveKo[] = [];
 
 for (const f of fdMatches) {
   const homeId = mapTeam(f.homeTeam);
@@ -178,15 +193,20 @@ for (const f of fdMatches) {
     live.attendance[pair.id] = f.attendance;
   }
 
-  // In-play / half-time: record the running score (group matches only).
+  // In-play / half-time: record the running score.
   if (f.status === "IN_PLAY" || f.status === "PAUSED") {
-    if (!pair) continue;
     const sc = f.score?.fullTime ?? {};
     const h = sc.home ?? 0;
     const a = sc.away ?? 0;
-    liveScores[pair.id] = pair.reversed
-      ? { home: a, away: h, minute: f.minute ?? null }
-      : { home: h, away: a, minute: f.minute ?? null };
+    const minute = f.minute ?? null;
+    if (pair) {
+      liveScores[pair.id] = pair.reversed
+        ? { home: a, away: h, minute }
+        : { home: h, away: a, minute };
+    } else if (f.stage && f.stage !== "GROUP_STAGE") {
+      // Knockout tie in progress — key by stage + teams so the bracket matches.
+      liveKo.push({ stage: f.stage, homeId, awayId, homeScore: h, awayScore: a, minute });
+    }
     continue;
   }
 
@@ -221,6 +241,7 @@ for (const f of fdMatches) {
 }
 
 live.liveScores = liveScores;
+live.liveKo = liveKo;
 
 // Fetch bookings once per newly finished match (free tier: 10 requests/min).
 for (const [matchId, apiId] of finishedApi) {
@@ -263,6 +284,7 @@ const after = JSON.stringify({
   redCards: live.redCards,
   yellowCards: live.yellowCards,
   koResults: live.koResults,
+  liveKo: live.liveKo,
   liveScores: live.liveScores,
   attendance: live.attendance,
   eventsChecked: live.eventsChecked,
