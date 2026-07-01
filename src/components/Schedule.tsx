@@ -107,8 +107,11 @@ export function Schedule() {
     for (const m of matches)
       all.push({ kind: "group", ts: new Date(m.kickoff).getTime(), date: new Date(m.kickoff), m });
     for (const m of koMatches) {
-      const d = new Date(`${m.date}T12:00:00Z`);
-      all.push({ kind: "ko", ts: d.getTime(), date: d, m });
+      // Group by the official match day (noon-UTC) so day headers match the
+      // bracket, but sort by the real kick-off instant for same-day order.
+      const day = new Date(`${m.date}T12:00:00Z`);
+      const ts = m.kickoff ? new Date(m.kickoff).getTime() : day.getTime();
+      all.push({ kind: "ko", ts, date: day, m });
     }
     let list = all;
     if (status === "upcoming")
@@ -211,6 +214,7 @@ export function Schedule() {
         }}
       >
         <span className="sch-when">
+          {m.kickoff && <span className="sch-time">{timeFmt.format(new Date(m.kickoff))}</span>}
           <span className="sch-round">{ROUND_ABBR[m.round] ?? m.round}</span>
         </span>
         <span className="sch-teams">

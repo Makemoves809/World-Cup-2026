@@ -1047,10 +1047,18 @@ img.flag {
 .sch-win.home,
 .sch-win.away { background: var(--grass); }
 .sch-when {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 3px;
   font-family: var(--font-mono);
   font-size: var(--fs-xs);
   color: var(--chalk-dim);
   white-space: nowrap;
+}
+.sch-time {
+  color: var(--chalk);
+  font-weight: 600;
 }
 .sch-grp,
 .sch-round {
