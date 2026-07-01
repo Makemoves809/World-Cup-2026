@@ -16,6 +16,13 @@ import { KnockoutDetail } from "./KnockoutDetail";
 
 type KoItem = ResolvedMatch & { round: string };
 
+/** Feed phase codes → labels for the live panel. */
+const KO_PHASE_LABEL: Record<string, string> = {
+  HT: "Half-time",
+  ET: "Extra time",
+  PENS: "Penalties",
+};
+
 const fmtKoDay = new Intl.DateTimeFormat("en-US", {
   month: "short",
   day: "numeric",
@@ -145,6 +152,10 @@ export function Hero() {
   // Only show a minute when the feed reports a real one — never an estimate
   // (an approximation is wrong in extra time / stoppage).
   const koMinute = koLs?.minute ?? null;
+  // Accurate phase from the feed (half-time / extra time / penalties).
+  const koPhase = liveKo?.livePhase
+    ? KO_PHASE_LABEL[liveKo.livePhase] ?? liveKo.livePhase
+    : null;
 
   const [selected, setSelected] = useState<Match | null>(null);
   const [selectedKo, setSelectedKo] = useState<KoItem | null>(null);
@@ -241,6 +252,7 @@ export function Hero() {
                   <span className="panel-label panel-label-live">
                     <span className="live-dot" aria-hidden="true" /> Live now ·{" "}
                     {liveKo.round}
+                    {koPhase && <> · {koPhase}</>}
                   </span>
                   <KoLine
                     home={liveKo.home}

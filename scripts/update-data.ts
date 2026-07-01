@@ -53,6 +53,8 @@ interface LiveKo {
   homeScore: number;
   awayScore: number;
   minute: number | null;
+  /** "HT" | "ET" | "PENS" for a live tie, from status + score.duration. */
+  phase: string | null;
 }
 
 interface LiveData {
@@ -205,7 +207,15 @@ for (const f of fdMatches) {
         : { home: h, away: a, minute };
     } else if (f.stage && f.stage !== "GROUP_STAGE") {
       // Knockout tie in progress — key by stage + teams so the bracket matches.
-      liveKo.push({ stage: f.stage, homeId, awayId, homeScore: h, awayScore: a, minute });
+      const phase =
+        f.status === "PAUSED"
+          ? "HT"
+          : f.score?.duration === "PENALTY_SHOOTOUT"
+          ? "PENS"
+          : f.score?.duration === "EXTRA_TIME"
+          ? "ET"
+          : null;
+      liveKo.push({ stage: f.stage, homeId, awayId, homeScore: h, awayScore: a, minute, phase });
     }
     continue;
   }

@@ -171,6 +171,7 @@ interface LiveKo {
   homeScore: number;
   awayScore: number;
   minute: number | null;
+  phase?: string | null;
 }
 
 export interface ResolvedSeed {
@@ -206,6 +207,8 @@ export interface ResolvedMatch {
   liveHome?: number;
   liveAway?: number;
   liveMinute?: number | null;
+  /** Live phase from the feed: "HT" | "ET" | "PENS", when applicable. */
+  livePhase?: string | null;
 }
 
 export interface ResolvedRound {
@@ -341,6 +344,7 @@ export function resolveBracket(): ResolvedRound[] {
       let liveHome: number | undefined;
       let liveAway: number | undefined;
       let liveMinute: number | null | undefined;
+      let livePhase: string | null | undefined;
       if (!finished && known.length > 0) {
         const l = stageLive.find((k) => {
           const ids = [k.homeId, k.awayId];
@@ -352,6 +356,7 @@ export function resolveBracket(): ResolvedRound[] {
           liveHome = homeIsLiveHome ? l.homeScore : l.awayScore;
           liveAway = homeIsLiveHome ? l.awayScore : l.homeScore;
           liveMinute = l.minute;
+          livePhase = l.phase;
           live = true;
         }
       }
@@ -372,6 +377,7 @@ export function resolveBracket(): ResolvedRound[] {
         liveHome,
         liveAway,
         liveMinute,
+        livePhase,
       };
     });
 

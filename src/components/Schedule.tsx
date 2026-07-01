@@ -225,7 +225,9 @@ export function Schedule() {
           {live ? (
             <span className="sch-livetag">
               <span className="live-dot" aria-hidden="true" />
-              {m.liveMinute != null ? `${m.liveMinute}'` : "LIVE"}
+              {m.liveMinute != null
+                ? `${m.liveMinute}'`
+                : m.livePhase ?? "LIVE"}
             </span>
           ) : (
             <>

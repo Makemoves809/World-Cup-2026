@@ -55,6 +55,7 @@ export default async function handler(_req: unknown, res: Res): Promise<void> {
         awayTeam?: { name?: string; tla?: string };
         score?: {
           winner?: string | null;
+          duration?: string | null;
           fullTime?: { home?: number | null; away?: number | null };
         };
       };
@@ -67,6 +68,7 @@ export default async function handler(_req: unknown, res: Res): Promise<void> {
         awayTeam: { name: m.awayTeam?.name ?? null, tla: m.awayTeam?.tla ?? null },
         score: {
           winner: m.score?.winner ?? null,
+          duration: m.score?.duration ?? null,
           fullTime: {
             home: m.score?.fullTime?.home ?? null,
             away: m.score?.fullTime?.away ?? null,

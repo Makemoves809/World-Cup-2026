@@ -21,6 +21,8 @@ export interface FdKo {
   homeScore: number;
   awayScore: number;
   minute?: number | null;
+  /** Match phase for a live tie: "HT" | "ET" | "PENS" (else undefined). */
+  phase?: string | null;
   winnerId?: string | null;
 }
 export interface FdLive {
@@ -111,12 +113,21 @@ export function transformFdMatches(fdMatches: any[]): FdLive {
       const h = sc.home ?? 0;
       const a = sc.away ?? 0;
       const minute = f.minute ?? null;
+      // Accurate phase straight from the feed (no minute needed).
+      const phase =
+        f.status === "PAUSED"
+          ? "HT"
+          : f.score?.duration === "PENALTY_SHOOTOUT"
+          ? "PENS"
+          : f.score?.duration === "EXTRA_TIME"
+          ? "ET"
+          : null;
       if (pair) {
         liveScores[pair.id] = pair.reversed
           ? { home: a, away: h, minute }
           : { home: h, away: a, minute };
       } else if (f.stage && f.stage !== "GROUP_STAGE") {
-        liveKo.push({ stage: f.stage, homeId, awayId, homeScore: h, awayScore: a, minute });
+        liveKo.push({ stage: f.stage, homeId, awayId, homeScore: h, awayScore: a, minute, phase });
       }
       continue;
     }
