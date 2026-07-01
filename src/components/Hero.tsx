@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState, type KeyboardEvent } from "react";
 import type { Match } from "../data/types";
 import { matches } from "../data/fixtures";
 import { teamById } from "../data/teams";
-import { isLive, liveScore } from "../lib/live";
+import { isLive, isKickoffLive, liveScore } from "../lib/live";
 import {
   resolveBracket,
   type ResolvedMatch,
@@ -95,14 +95,44 @@ export function Hero() {
     []
   );
   const koStarted = groupStageDone || koMatches.some((m) => m.finished);
+  const koTs = (m: KoItem) => new Date(m.kickoff).getTime();
+  // A knockout tie in progress: kicked off, not yet marked finished, both teams
+  // known. Once its result lands it drops out of here and into "Latest".
+  const liveKo = useMemo(
+    () =>
+      koMatches
+        .filter(
+          (m) =>
+            m.home.firm &&
+            m.away.firm &&
+            isKickoffLive(m.kickoff, m.finished, now.getTime())
+        )
+        .sort((a, b) => koTs(a) - koTs(b))[0],
+    [koMatches, now]
+  );
+  // The soonest tie that hasn't kicked off yet.
   const nextKo = useMemo(
-    () => koMatches.find((m) => !m.finished && m.home.firm && m.away.firm),
-    [koMatches]
+    () =>
+      koMatches
+        .filter(
+          (m) =>
+            !m.finished &&
+            m.home.firm &&
+            m.away.firm &&
+            koTs(m) > now.getTime()
+        )
+        .sort((a, b) => koTs(a) - koTs(b))[0],
+    [koMatches, now]
   );
   const latestKo = useMemo(
-    () => koMatches.filter((m) => m.finished).slice(-1)[0],
+    () =>
+      koMatches
+        .filter((m) => m.finished)
+        .sort((a, b) => koTs(a) - koTs(b))
+        .slice(-1)[0],
     [koMatches]
   );
+  const koLs = liveKo ? liveScore(liveKo.id) : undefined;
 
   const [selected, setSelected] = useState<Match | null>(null);
   const [selectedKo, setSelectedKo] = useState<KoItem | null>(null);
@@ -190,15 +220,42 @@ export function Hero() {
         <div className="hero-row">
           {koStarted ? (
             <>
-              {nextKo && (
-                <div className="countdown ko-panel hero-open" {...koOpen(nextKo)}>
-                  <span className="panel-label">Up next · {nextKo.round}</span>
-                  <KoLine home={nextKo.home} away={nextKo.away} />
+              {liveKo ? (
+                <div
+                  className="countdown livepanel hero-open"
+                  aria-live="polite"
+                  {...koOpen(liveKo)}
+                >
+                  <span className="panel-label panel-label-live">
+                    <span className="live-dot" aria-hidden="true" /> Live now ·{" "}
+                    {liveKo.round}
+                  </span>
+                  <KoLine
+                    home={liveKo.home}
+                    away={liveKo.away}
+                    hs={koLs?.home}
+                    as={koLs?.away}
+                    live
+                  />
                   <span className="next-venue">
-                    {nextKo.venue} · {koDay(nextKo.date)} · {koTime(nextKo.kickoff)}
+                    {liveKo.venue}
+                    {koLs?.minute != null && (
+                      <span className="live-min"> · {koLs.minute}'</span>
+                    )}
                     <span className="hero-open-hint">Matchup ›</span>
                   </span>
                 </div>
+              ) : (
+                nextKo && (
+                  <div className="countdown ko-panel hero-open" {...koOpen(nextKo)}>
+                    <span className="panel-label">Up next · {nextKo.round}</span>
+                    <KoLine home={nextKo.home} away={nextKo.away} />
+                    <span className="next-venue">
+                      {nextKo.venue} · {koDay(nextKo.date)} · {koTime(nextKo.kickoff)}
+                      <span className="hero-open-hint">Matchup ›</span>
+                    </span>
+                  </div>
+                )
               )}
               {latestKo && (
                 <div className="latest-card hero-open" {...koOpen(latestKo)}>
@@ -355,11 +412,13 @@ function KoLine({
   away,
   hs,
   as,
+  live,
 }: {
   home: ResolvedSeed;
   away: ResolvedSeed;
   hs?: number;
   as?: number;
+  live?: boolean;
 }) {
   const scored = hs != null && as != null;
   return (
@@ -367,8 +426,8 @@ function KoLine({
       <span className="nt">
         <KoFlag seed={home} /> {koCode(home)}
       </span>
-      <span className={scored ? "nt-score" : "nt-v"}>
-        {scored ? `${hs}–${as}` : "vs"}
+      <span className={scored || live ? "nt-score" : "nt-v"}>
+        {scored ? `${hs}–${as}` : live ? "–" : "vs"}
       </span>
       <span className="nt">
         {koCode(away)} <KoFlag seed={away} />

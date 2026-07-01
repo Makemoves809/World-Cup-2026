@@ -25,7 +25,19 @@ export function liveScore(matchId: string): LiveScore | undefined {
  * the clock rather than stored.
  */
 export function isLive(match: Match, now: number): boolean {
-  if (match.status === "finished") return false;
-  const kickoff = new Date(match.kickoff).getTime();
+  return isKickoffLive(match.kickoff, match.status === "finished", now);
+}
+
+/**
+ * Same live check keyed by a kickoff instant + finished flag, so it also works
+ * for knockout ties (which aren't group `Match` records).
+ */
+export function isKickoffLive(
+  kickoffIso: string,
+  finished: boolean,
+  now: number
+): boolean {
+  if (finished) return false;
+  const kickoff = new Date(kickoffIso).getTime();
   return now >= kickoff && now < kickoff + LIVE_MS;
 }
