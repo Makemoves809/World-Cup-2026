@@ -1,5 +1,6 @@
 import { useSyncExternalStore } from "react";
 import bundled from "../data/live.json";
+import { transformFdMatches, upsertKo, type FdKo } from "./fdMap";
 
 /**
  * Live results/scores store.
@@ -19,6 +20,31 @@ export type LiveData = typeof bundled;
 
 let current: LiveData = bundled as LiveData;
 const listeners = new Set<() => void>();
+
+/**
+ * The `/api/live` proxy returns the raw football-data match list (`{matches}`);
+ * `/live.json` returns the app's live shape. Detect which we got: map the raw
+ * feed into the live shape (overlaying fresh scores/results onto the bundled
+ * snapshot's curated fields), or pass the live shape through unchanged.
+ */
+function normalize(parsed: unknown): LiveData {
+  const p = parsed as { matches?: unknown[] };
+  if (!p || !Array.isArray(p.matches)) return parsed as LiveData;
+  const fd = transformFdMatches(p.matches);
+  const base = bundled as unknown as {
+    results: Record<string, [number, number]>;
+    koResults: FdKo[];
+    attendance: Record<string, number>;
+  };
+  return {
+    ...(bundled as object),
+    results: { ...base.results, ...fd.results },
+    koResults: upsertKo(base.koResults ?? [], fd.koResults),
+    liveKo: fd.liveKo,
+    liveScores: fd.liveScores,
+    attendance: { ...base.attendance, ...fd.attendance },
+  } as unknown as LiveData;
+}
 
 export function getLiveData(): LiveData {
   return current;
@@ -70,9 +96,8 @@ export function startLivePolling(intervalMs = 15_000): void {
         text = await fetchFrom(fallback);
       }
       if (!text || text === lastText) return;
-      const data = JSON.parse(text) as LiveData;
       lastText = text;
-      current = data;
+      current = normalize(JSON.parse(text));
       for (const l of listeners) l();
     } catch {
       /* offline or a transient error — keep the last good snapshot */

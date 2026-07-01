@@ -1,18 +1,14 @@
-import committed from "../src/data/live.json";
-
 /**
- * /api/live — a thin, cached proxy over football-data.org so an open page can
- * refresh scores without waiting for the update-data commit + redeploy cycle.
+ * /api/live — a thin, cached proxy over football-data.org.
  *
- * The key stays server-side (FOOTBALL_API_KEY as a Vercel env var). Edge caching
- * (s-maxage) means upstream is hit at most a couple of times a minute no matter
- * how many visitors poll, staying inside the free tier's 10 req/min. Without the
- * key — or on ANY error (upstream, or loading the feed mapper) — it returns the
- * committed snapshot so the client always gets valid JSON and the function never
- * hard-fails. The mapper is imported lazily so a bundling hiccup degrades to the
- * snapshot rather than crashing the function.
+ * Deliberately self-contained: it imports NOTHING (no project modules, no JSON),
+ * so it can't fail to bundle/load on Vercel. It just forwards the competition's
+ * matches with the key kept server-side, trimmed to the fields the client needs.
+ * The client maps these into the app's live shape (it already bundles that code).
  *
- * Freshness is bounded by the free feed itself (~30–60s behind), not by this.
+ * Edge caching (s-maxage) keeps upstream calls within the free tier's 10 req/min
+ * regardless of traffic. Without a key, or on any error, it returns an empty
+ * match list so the client simply falls back to its bundled/static data.
  */
 
 const API = "https://api.football-data.org/v4";
@@ -24,51 +20,66 @@ type Res = {
   end: (body: string) => void;
 };
 
-function send(res: Res, body: unknown, cache: string): void {
-  try {
-    res.statusCode = 200;
-    res.setHeader("Content-Type", "application/json");
-    res.setHeader("Cache-Control", cache);
-    res.end(typeof body === "string" ? body : JSON.stringify(body));
-  } catch {
-    try {
-      res.end(JSON.stringify(committed ?? {}));
-    } catch {
-      /* nothing more we can do */
-    }
-  }
+function json(res: Res, body: string, cache: string): void {
+  res.statusCode = 200;
+  res.setHeader("Content-Type", "application/json");
+  res.setHeader("Cache-Control", cache);
+  res.end(body);
 }
 
-const FALLBACK_CACHE = "public, s-maxage=30, stale-while-revalidate=60";
-
 export default async function handler(_req: unknown, res: Res): Promise<void> {
+  const empty = '{"matches":[]}';
   const key = process.env.FOOTBALL_API_KEY;
   if (!key) {
-    send(res, committed, FALLBACK_CACHE);
+    json(res, empty, "public, s-maxage=30, stale-while-revalidate=60");
     return;
   }
 
   try {
-    const { transformFdMatches, upsertKo } = await import("../src/lib/fdMap");
     const r = await fetch(`${API}/competitions/${COMPETITION}/matches`, {
       headers: { "X-Auth-Token": key },
     });
-    if (!r.ok) throw new Error(`upstream HTTP ${r.status}`);
+    if (!r.ok) {
+      json(res, empty, "public, s-maxage=15, stale-while-revalidate=30");
+      return;
+    }
     const data = (await r.json()) as { matches?: unknown[] };
-    const fd = transformFdMatches(data.matches ?? []);
-
-    const merged = {
-      ...committed,
-      results: { ...committed.results, ...fd.results },
-      koResults: upsertKo(committed.koResults ?? [], fd.koResults),
-      liveKo: fd.liveKo,
-      liveScores: fd.liveScores,
-      attendance: { ...committed.attendance, ...fd.attendance },
-    };
-
-    send(res, merged, "public, s-maxage=20, stale-while-revalidate=40");
+    // Trim to the fields the client mapper uses, to keep the payload small.
+    const matches = (data.matches ?? []).map((raw) => {
+      const m = raw as {
+        status?: string;
+        minute?: number | null;
+        stage?: string;
+        attendance?: number;
+        homeTeam?: { name?: string; tla?: string };
+        awayTeam?: { name?: string; tla?: string };
+        score?: {
+          winner?: string | null;
+          fullTime?: { home?: number | null; away?: number | null };
+        };
+      };
+      return {
+        status: m.status ?? null,
+        minute: m.minute ?? null,
+        stage: m.stage ?? null,
+        attendance: typeof m.attendance === "number" ? m.attendance : null,
+        homeTeam: { name: m.homeTeam?.name ?? null, tla: m.homeTeam?.tla ?? null },
+        awayTeam: { name: m.awayTeam?.name ?? null, tla: m.awayTeam?.tla ?? null },
+        score: {
+          winner: m.score?.winner ?? null,
+          fullTime: {
+            home: m.score?.fullTime?.home ?? null,
+            away: m.score?.fullTime?.away ?? null,
+          },
+        },
+      };
+    });
+    json(
+      res,
+      JSON.stringify({ matches }),
+      "public, s-maxage=20, stale-while-revalidate=40"
+    );
   } catch {
-    // Upstream hiccup / rate limit / mapper load error — serve the snapshot.
-    send(res, committed, "public, s-maxage=15, stale-while-revalidate=30");
+    json(res, empty, "public, s-maxage=15, stale-while-revalidate=30");
   }
 }
