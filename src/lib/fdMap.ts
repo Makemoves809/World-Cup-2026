@@ -31,6 +31,19 @@ export interface FdLive {
   attendance: Record<string, number>;
 }
 
+/** Merge fresh knockout results over a base set, keyed by stage + teams. */
+export function upsertKo(base: FdKo[], fresh: FdKo[]): FdKo[] {
+  const out = base.map((k) => ({ ...k }));
+  for (const k of fresh) {
+    const i = out.findIndex(
+      (e) => e.stage === k.stage && e.homeId === k.homeId && e.awayId === k.awayId
+    );
+    if (i >= 0) out[i] = { ...out[i], ...k };
+    else out.push(k);
+  }
+  return out;
+}
+
 const norm = (s: string) =>
   s
     .normalize("NFD")
