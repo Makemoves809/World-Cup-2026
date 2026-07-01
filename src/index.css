@@ -1346,6 +1346,7 @@ img.flag {
   width: min(620px, 100%);
   max-height: min(82vh, 720px);
   overflow: hidden auto;
+  overscroll-behavior: contain;
   padding: 28px 28px 22px;
   background: linear-gradient(180deg, var(--pitch-2), var(--pitch));
   border: 1px solid var(--line);
@@ -1370,16 +1371,22 @@ img.flag {
     border-bottom: none;
     animation: sheet-up 0.26s var(--ease);
   }
+  /* Extra top padding gives the grab handle room and a comfortable drag zone */
+  .modal {
+    padding-top: 30px;
+    touch-action: pan-y;
+  }
   .modal::before {
     content: "";
     position: absolute;
     top: 9px;
     left: 50%;
     transform: translateX(-50%);
-    width: 40px;
-    height: 4px;
+    width: 44px;
+    height: 5px;
     border-radius: var(--radius-pill);
-    background: var(--line);
+    background: var(--chalk-faint);
+    opacity: 0.5;
   }
 }
 @keyframes sheet-up {

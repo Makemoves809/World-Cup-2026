@@ -4,6 +4,7 @@ import { teamById } from "../data/teams";
 import { IMPACT_LABELS, sentOffIn, unavailableFor } from "../data/discipline";
 import { matchupTeams } from "../lib/matchup";
 import { openRoster, isRosterOpen } from "../lib/roster";
+import { useSheetDismiss } from "../lib/useSheetDismiss";
 import { Flag } from "./Flag";
 import { MatchupPanel } from "./MatchupPanel";
 import type { ResolvedMatch, ResolvedSeed } from "../lib/bracket";
@@ -32,6 +33,7 @@ export function KnockoutDetail({ match, onClose }: KnockoutDetailProps) {
   const reds = sentOffIn(match.id);
   const out = unavailableFor(match.id);
   const m = bothFirm ? matchupTeams(home.id!, away.id!, match.id) : null;
+  const sheet = useSheetDismiss(onClose);
 
   const openSquad = (teamId: string) => openRoster(teamId);
 
@@ -55,6 +57,11 @@ export function KnockoutDetail({ match, onClose }: KnockoutDetailProps) {
         aria-modal="true"
         aria-label={`${home.name} vs ${away.name} match details`}
         onClick={(e) => e.stopPropagation()}
+        ref={sheet.ref}
+        style={sheet.style}
+        onTouchStart={sheet.onTouchStart}
+        onTouchMove={sheet.onTouchMove}
+        onTouchEnd={sheet.onTouchEnd}
       >
         <button className="modal-close" onClick={onClose} aria-label="Close">
           ×

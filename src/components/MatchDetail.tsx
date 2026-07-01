@@ -8,6 +8,7 @@ import { matchScript } from "../lib/script";
 import { gradeMatch, modelAccuracy } from "../lib/accuracy";
 import { matchNote } from "../data/matchNotes";
 import { openRoster, isRosterOpen } from "../lib/roster";
+import { useSheetDismiss } from "../lib/useSheetDismiss";
 import { Flag } from "./Flag";
 import { MatchupPanel } from "./MatchupPanel";
 
@@ -35,6 +36,7 @@ export function MatchDetail({ match, onClose }: MatchDetailProps) {
   const grade = gradeMatch(match);
   const acc = modelAccuracy();
   const note = matchNote(match.id);
+  const sheet = useSheetDismiss(onClose);
 
   // Open the roster as an overlay *on top of* this comparison (it sits at a
   // higher z-index) rather than closing it — so dismissing the roster returns
@@ -65,6 +67,11 @@ export function MatchDetail({ match, onClose }: MatchDetailProps) {
         aria-modal="true"
         aria-label={`${home.name} vs ${away.name} match details`}
         onClick={(e) => e.stopPropagation()}
+        ref={sheet.ref}
+        style={sheet.style}
+        onTouchStart={sheet.onTouchStart}
+        onTouchMove={sheet.onTouchMove}
+        onTouchEnd={sheet.onTouchEnd}
       >
         <button className="modal-close" onClick={onClose} aria-label="Close">
           ×
