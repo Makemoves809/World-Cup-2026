@@ -8,8 +8,10 @@ import {
   type ResolvedSeed,
   type ResolvedMatch,
 } from "../lib/bracket";
-import { navigate } from "../router";
 import { MatchDetail } from "./MatchDetail";
+import { KnockoutDetail } from "./KnockoutDetail";
+
+type KoItem = ResolvedMatch & { round: string };
 
 /** Ticks so matches flip to "live" as kickoff passes. */
 function useNow(intervalMs: number) {
@@ -84,6 +86,7 @@ function SideView({ side, away }: { side: Side; away?: boolean }) {
 export function Schedule() {
   const [status, setStatus] = useState<StatusFilter>("upcoming");
   const [selected, setSelected] = useState<Match | null>(null);
+  const [selectedKo, setSelectedKo] = useState<KoItem | null>(null);
   const now = useNow(30_000);
 
   const koMatches = useMemo(
@@ -205,11 +208,11 @@ export function Schedule() {
         className="sch-row is-ko"
         role="button"
         tabIndex={0}
-        onClick={() => navigate("/knockout")}
+        onClick={() => setSelectedKo(m)}
         onKeyDown={(e) => {
           if (e.key === "Enter" || e.key === " ") {
             e.preventDefault();
-            navigate("/knockout");
+            setSelectedKo(m);
           }
         }}
       >
@@ -247,7 +250,7 @@ export function Schedule() {
         <p className="section-note">
           Every match in date order with kick-off times in your timezone.
           Showing what's next by default — switch to Results or All for the
-          group stage. Tap a group match for its detail.
+          group stage. Tap any match for both line-ups and the read.
         </p>
       </div>
 
@@ -300,6 +303,9 @@ export function Schedule() {
 
       {selected && (
         <MatchDetail match={selected} onClose={() => setSelected(null)} />
+      )}
+      {selectedKo && (
+        <KnockoutDetail match={selectedKo} onClose={() => setSelectedKo(null)} />
       )}
     </section>
   );

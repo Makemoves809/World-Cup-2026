@@ -3,10 +3,17 @@ import type { Match } from "../data/types";
 import { matches } from "../data/fixtures";
 import { teamById } from "../data/teams";
 import { isLive, liveScore } from "../lib/live";
-import { resolveBracket, type ResolvedSeed } from "../lib/bracket";
+import {
+  resolveBracket,
+  type ResolvedMatch,
+  type ResolvedSeed,
+} from "../lib/bracket";
 import { navigate } from "../router";
 import { Flag } from "./Flag";
 import { MatchDetail } from "./MatchDetail";
+import { KnockoutDetail } from "./KnockoutDetail";
+
+type KoItem = ResolvedMatch & { round: string };
 
 const fmtKoDay = new Intl.DateTimeFormat("en-US", {
   month: "short",
@@ -93,6 +100,7 @@ export function Hero() {
   );
 
   const [selected, setSelected] = useState<Match | null>(null);
+  const [selectedKo, setSelectedKo] = useState<KoItem | null>(null);
   const open = (match: Match) => ({
     role: "button" as const,
     tabIndex: 0,
@@ -105,17 +113,17 @@ export function Hero() {
     },
   });
 
-  const koOpen = {
+  const koOpen = (match: KoItem) => ({
     role: "button" as const,
     tabIndex: 0,
-    onClick: () => navigate("/knockout"),
+    onClick: () => setSelectedKo(match),
     onKeyDown: (e: KeyboardEvent) => {
       if (e.key === "Enter" || e.key === " ") {
         e.preventDefault();
-        navigate("/knockout");
+        setSelectedKo(match);
       }
     },
-  };
+  });
 
   const target = nextMatch ? new Date(nextMatch.kickoff) : TOURNAMENT_START;
   const { days, hours, mins, secs } = splitDuration(
@@ -186,17 +194,17 @@ export function Hero() {
           {koStarted ? (
             <>
               {nextKo && (
-                <div className="countdown ko-panel hero-open" {...koOpen}>
+                <div className="countdown ko-panel hero-open" {...koOpen(nextKo)}>
                   <span className="panel-label">Up next · {nextKo.round}</span>
                   <KoLine home={nextKo.home} away={nextKo.away} />
                   <span className="next-venue">
                     {nextKo.venue} · {koDay(nextKo.date)}
-                    <span className="hero-open-hint">Bracket ›</span>
+                    <span className="hero-open-hint">Matchup ›</span>
                   </span>
                 </div>
               )}
               {latestKo && (
-                <div className="latest-card hero-open" {...koOpen}>
+                <div className="latest-card hero-open" {...koOpen(latestKo)}>
                   <span className="panel-label panel-label-gold">
                     Latest · {latestKo.round}
                   </span>
@@ -208,7 +216,7 @@ export function Hero() {
                   />
                   <span className="next-venue">
                     {latestKo.venue}
-                    <span className="hero-open-hint">Bracket ›</span>
+                    <span className="hero-open-hint">Matchup ›</span>
                   </span>
                 </div>
               )}
@@ -282,6 +290,12 @@ export function Hero() {
 
       {selected && (
         <MatchDetail match={selected} onClose={() => setSelected(null)} />
+      )}
+      {selectedKo && (
+        <KnockoutDetail
+          match={selectedKo}
+          onClose={() => setSelectedKo(null)}
+        />
       )}
     </section>
   );

@@ -94,8 +94,20 @@ function strengthFor(teamId: string, matchId: string): TeamStrength {
 }
 
 export function matchup(match: Match): Matchup {
-  const home = strengthFor(match.home, match.id);
-  const away = strengthFor(match.away, match.id);
+  return matchupTeams(match.home, match.away, match.id);
+}
+
+/**
+ * Same comparison keyed directly by team ids + a match id (for the discipline
+ * lookup). Used by knockout ties, which aren't full group `Match` records.
+ */
+export function matchupTeams(
+  homeId: string,
+  awayId: string,
+  matchId: string
+): Matchup {
+  const home = strengthFor(homeId, matchId);
+  const away = strengthFor(awayId, matchId);
 
   const total = home.effective + away.effective || 1;
   const homeShare = Math.round((home.effective / total) * 100);
