@@ -327,6 +327,40 @@ export function resolveBracket(): ResolvedRound[] {
   return rounds;
 }
 
+/**
+ * Display order for a true bracket tree. Each match is ranked by the index of
+ * its left-most Round-of-32 descendant — found by walking the pending feeders
+ * back from the final — so that within every round the two matches feeding a
+ * given next-round match sit directly above and below it. Returns id → rank;
+ * sort each round's matches ascending by it. Structure-only, so it never
+ * changes as results come in.
+ */
+export function bracketOrder(): Record<string, number> {
+  const byId = new Map<string, KoMatch>();
+  for (const def of ROUND_DEFS) for (const m of def.matches) byId.set(m.id, m);
+
+  const rank: Record<string, number> = {};
+  let leaf = 0;
+  const visit = (id: string): number => {
+    const m = byId.get(id);
+    if (!m) return leaf;
+    const feeders = [m.home, m.away].filter(
+      (s): s is Extract<Seed, { kind: "pending" }> => s.kind === "pending"
+    );
+    if (feeders.length === 0) {
+      const r = leaf++;
+      rank[id] = r;
+      return r;
+    }
+    const firstLeaf = visit(feeders[0].from);
+    for (let i = 1; i < feeders.length; i++) visit(feeders[i].from);
+    rank[id] = firstLeaf;
+    return firstLeaf;
+  };
+  visit("m104");
+  return rank;
+}
+
 /** Display name for an unresolved seed. */
 function seedName(seed: Seed, label: string): string {
   if (seed.kind === "third") return "Best third-placed";

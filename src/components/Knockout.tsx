@@ -1,5 +1,6 @@
 import {
   bestThirds,
+  bracketOrder,
   finalInfo,
   groupOutcomes,
   resolveBracket,
@@ -82,6 +83,7 @@ export function Knockout() {
   const outcomes = groupOutcomes();
   const thirds = bestThirds();
   const rounds = resolveBracket();
+  const order = bracketOrder();
   const anyPlayed = outcomes.some((o) => o.started);
 
   return (
@@ -103,32 +105,35 @@ export function Knockout() {
             <div className="bk-round" key={round.id} data-round={round.id}>
               <div className="bk-round-head">{round.name}</div>
               <div className="bk-round-body">
-                {round.matches.map((m) => (
-                  <div
-                    className="bk-match"
-                    key={m.id}
-                    title={`Match ${m.num} · ${m.venue}`}
-                  >
-                    <div className="bk-match-meta">
-                      <span>#{m.num}</span>
-                      <span>
-                        {dayLabel(m.date)} · {timeLabel(m.kickoff)}
-                      </span>
+                {[...round.matches]
+                  .sort((a, b) => (order[a.id] ?? 0) - (order[b.id] ?? 0))
+                  .map((m) => (
+                    <div className="bk-slot" key={m.id}>
+                      <div
+                        className="bk-match"
+                        title={`Match ${m.num} · ${m.venue}`}
+                      >
+                        <div className="bk-match-meta">
+                          <span>#{m.num}</span>
+                          <span>
+                            {dayLabel(m.date)} · {timeLabel(m.kickoff)}
+                          </span>
+                        </div>
+                        <SeedChip
+                          seed={m.home}
+                          score={m.homeScore}
+                          won={m.finished && m.winner === "home"}
+                          faded={m.finished && m.winner === "away"}
+                        />
+                        <SeedChip
+                          seed={m.away}
+                          score={m.awayScore}
+                          won={m.finished && m.winner === "away"}
+                          faded={m.finished && m.winner === "home"}
+                        />
+                      </div>
                     </div>
-                    <SeedChip
-                      seed={m.home}
-                      score={m.homeScore}
-                      won={m.finished && m.winner === "home"}
-                      faded={m.finished && m.winner === "away"}
-                    />
-                    <SeedChip
-                      seed={m.away}
-                      score={m.awayScore}
-                      won={m.finished && m.winner === "away"}
-                      faded={m.finished && m.winner === "home"}
-                    />
-                  </div>
-                ))}
+                  ))}
               </div>
             </div>
           ))}
