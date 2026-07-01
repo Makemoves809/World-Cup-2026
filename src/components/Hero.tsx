@@ -142,6 +142,9 @@ export function Hero() {
   const koLs = liveKo
     ? { home: liveKo.liveHome, away: liveKo.liveAway, minute: liveKo.liveMinute }
     : undefined;
+  // Only show a minute when the feed reports a real one — never an estimate
+  // (an approximation is wrong in extra time / stoppage).
+  const koMinute = koLs?.minute ?? null;
 
   const [selected, setSelected] = useState<Match | null>(null);
   const [selectedKo, setSelectedKo] = useState<KoItem | null>(null);
@@ -248,8 +251,8 @@ export function Hero() {
                   />
                   <span className="next-venue">
                     {liveKo.venue}
-                    {koLs?.minute != null && (
-                      <span className="live-min"> · {koLs.minute}'</span>
+                    {koMinute != null && (
+                      <span className="live-min"> · {koMinute}'</span>
                     )}
                     <span className="hero-open-hint">Matchup ›</span>
                   </span>
