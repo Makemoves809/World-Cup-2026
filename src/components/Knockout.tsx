@@ -91,51 +91,6 @@ export function Knockout() {
         </p>
       </div>
 
-      <div className="third-race">
-        <div className="third-head">
-          <h3>Best third-placed race</h3>
-          <span className="third-note">Top 8 reach the Round of 32</span>
-        </div>
-        <ol className="third-list">
-          {thirds.map((t) => (
-            <li
-              key={t.row.team.id}
-              className={t.qualifies ? "third-row is-in" : "third-row is-out"}
-            >
-              <span className="third-rank">{t.rank}</span>
-              <button
-                className="team-link third-team-link"
-                onClick={() => openRoster(t.row.team.id)}
-                title={`${t.row.team.name} squad`}
-              >
-                <img
-                  className="flag"
-                  src={`https://flagcdn.com/w40/${t.row.team.flag}.png`}
-                  srcSet={`https://flagcdn.com/w80/${t.row.team.flag}.png 2x`}
-                  width={24}
-                  height={16}
-                  loading="lazy"
-                  alt=""
-                  aria-hidden="true"
-                  onError={(e) => {
-                    (e.currentTarget as HTMLImageElement).style.display = "none";
-                  }}
-                />
-                <span className="third-team">{t.row.team.name}</span>
-              </button>
-              <span className="third-grp">3{t.row.team.group}</span>
-              <span className="third-stat">{t.row.points} pts</span>
-              <span className="third-stat third-gd">
-                {t.row.goalDiff > 0 ? `+${t.row.goalDiff}` : t.row.goalDiff} GD
-              </span>
-            </li>
-          ))}
-        </ol>
-        <p className="third-foot">
-          Dashed line marks the qualification cut-off (8th vs 9th).
-        </p>
-      </div>
-
       <div className="bracket-scroll">
         <div className="bracket" role="group" aria-label="Knockout bracket">
           {rounds.map((round) => (
@@ -178,6 +133,51 @@ export function Knockout() {
         after the group stage, and live results fill the bracket as the
         knockouts are played.
       </p>
+
+      <div className="third-race">
+        <div className="third-head">
+          <h3>Best third-placed teams</h3>
+          <span className="third-note">The 8 who reached the Round of 32</span>
+        </div>
+        <ol className="third-list">
+          {thirds.map((t) => (
+            <li
+              key={t.row.team.id}
+              className={t.qualifies ? "third-row is-in" : "third-row is-out"}
+            >
+              <span className="third-rank">{t.rank}</span>
+              <button
+                className="team-link third-team-link"
+                onClick={() => openRoster(t.row.team.id)}
+                title={`${t.row.team.name} squad`}
+              >
+                <img
+                  className="flag"
+                  src={`https://flagcdn.com/w40/${t.row.team.flag}.png`}
+                  srcSet={`https://flagcdn.com/w80/${t.row.team.flag}.png 2x`}
+                  width={24}
+                  height={16}
+                  loading="lazy"
+                  alt=""
+                  aria-hidden="true"
+                  onError={(e) => {
+                    (e.currentTarget as HTMLImageElement).style.display = "none";
+                  }}
+                />
+                <span className="third-team">{t.row.team.name}</span>
+              </button>
+              <span className="third-grp">3{t.row.team.group}</span>
+              <span className="third-stat">{t.row.points} pts</span>
+              <span className="third-stat third-gd">
+                {t.row.goalDiff > 0 ? `+${t.row.goalDiff}` : t.row.goalDiff} GD
+              </span>
+            </li>
+          ))}
+        </ol>
+        <p className="third-foot">
+          Dashed line marks the qualification cut-off (8th vs 9th).
+        </p>
+      </div>
     </section>
   );
 }
