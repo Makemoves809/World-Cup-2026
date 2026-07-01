@@ -14,6 +14,12 @@ const fmtDate = new Intl.DateTimeFormat("en-US", {
 });
 const dayLabel = (iso: string) => fmtDate.format(new Date(`${iso}T12:00:00Z`));
 
+const fmtTime = new Intl.DateTimeFormat(undefined, {
+  hour: "numeric",
+  minute: "2-digit",
+});
+const timeLabel = (iso: string) => fmtTime.format(new Date(iso));
+
 function SeedChip({
   seed,
   score,
@@ -105,7 +111,9 @@ export function Knockout() {
                   >
                     <div className="bk-match-meta">
                       <span>#{m.num}</span>
-                      <span>{dayLabel(m.date)}</span>
+                      <span>
+                        {dayLabel(m.date)} · {timeLabel(m.kickoff)}
+                      </span>
                     </div>
                     <SeedChip
                       seed={m.home}

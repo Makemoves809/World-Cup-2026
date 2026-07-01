@@ -21,6 +21,11 @@ const fmtKoDay = new Intl.DateTimeFormat("en-US", {
   timeZone: "UTC",
 });
 const koDay = (iso: string) => fmtKoDay.format(new Date(`${iso}T12:00:00Z`));
+const fmtKoTime = new Intl.DateTimeFormat(undefined, {
+  hour: "numeric",
+  minute: "2-digit",
+});
+const koTime = (iso: string) => fmtKoTime.format(new Date(iso));
 
 const TOURNAMENT_START = new Date("2026-06-11T19:00:00Z");
 const TOURNAMENT_END = new Date("2026-07-19T23:00:00Z");
@@ -198,7 +203,7 @@ export function Hero() {
                   <span className="panel-label">Up next · {nextKo.round}</span>
                   <KoLine home={nextKo.home} away={nextKo.away} />
                   <span className="next-venue">
-                    {nextKo.venue} · {koDay(nextKo.date)}
+                    {nextKo.venue} · {koDay(nextKo.date)} · {koTime(nextKo.kickoff)}
                     <span className="hero-open-hint">Matchup ›</span>
                   </span>
                 </div>
