@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-01T22:50:21.550Z",
+  "updatedAt": "2026-07-01T22:55:23.672Z",
   "results": {
     "m-A-1": [
       2,
@@ -356,19 +356,17 @@
       "homeScore": 2,
       "awayScore": 1,
       "winnerId": "eng"
-    }
-  ],
-  "liveKo": [
+    },
     {
       "stage": "LAST_32",
       "homeId": "bel",
       "awayId": "sen",
       "homeScore": 3,
       "awayScore": 2,
-      "minute": null,
-      "phase": "HT"
+      "winnerId": "bel"
     }
   ],
+  "liveKo": [],
   "liveScores": {},
   "attendance": {},
   "eventsChecked": [
