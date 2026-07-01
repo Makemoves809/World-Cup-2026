@@ -208,12 +208,12 @@ for (const f of fdMatches) {
     } else if (f.stage && f.stage !== "GROUP_STAGE") {
       // Knockout tie in progress — key by stage + teams so the bracket matches.
       const phase =
-        f.score?.duration === "PENALTY_SHOOTOUT"
+        f.status === "PAUSED"
+          ? "PAUSED"
+          : f.score?.duration === "PENALTY_SHOOTOUT"
           ? "PENS"
           : f.score?.duration === "EXTRA_TIME"
           ? "ET"
-          : f.status === "PAUSED"
-          ? "HT"
           : null;
       liveKo.push({ stage: f.stage, homeId, awayId, homeScore: h, awayScore: a, minute, phase });
     }

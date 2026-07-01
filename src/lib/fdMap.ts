@@ -113,15 +113,16 @@ export function transformFdMatches(fdMatches: any[]): FdLive {
       const h = sc.home ?? 0;
       const a = sc.away ?? 0;
       const minute = f.minute ?? null;
-      // Accurate phase straight from the feed (no minute needed). Duration wins
-      // over a pause, so a stoppage during extra time reads "ET", not "HT".
+      // Accurate phase straight from the feed. A pause just reads "Paused"
+      // (we don't guess half-time vs an extra-time break); ET/PENS show only
+      // while actually being played.
       const phase =
-        f.score?.duration === "PENALTY_SHOOTOUT"
+        f.status === "PAUSED"
+          ? "PAUSED"
+          : f.score?.duration === "PENALTY_SHOOTOUT"
           ? "PENS"
           : f.score?.duration === "EXTRA_TIME"
           ? "ET"
-          : f.status === "PAUSED"
-          ? "HT"
           : null;
       if (pair) {
         liveScores[pair.id] = pair.reversed

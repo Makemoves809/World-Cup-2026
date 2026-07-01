@@ -18,7 +18,7 @@ type KoItem = ResolvedMatch & { round: string };
 
 /** Feed phase codes → labels for the live panel. */
 const KO_PHASE_LABEL: Record<string, string> = {
-  HT: "Half-time",
+  PAUSED: "Paused",
   ET: "Extra time",
   PENS: "Penalties",
 };
