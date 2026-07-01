@@ -5,12 +5,13 @@ export function GroupsPage() {
   return (
     <section className="groups" id="groups">
       <div className="section-head">
-        <span className="kicker">12 groups · 48 nations</span>
-        <h2>Group standings</h2>
+        <span className="kicker">12 groups · 48 nations · final</span>
+        <h2>Final group tables</h2>
         <p className="section-note">
-          Top two advance, third place enters the best-third race. Coloured rows
-          show the live standing; badges mark teams already <strong>through</strong>{" "}
-          (✓) or <strong>eliminated</strong> (✗).
+          The group stage is complete — this is how all 12 groups finished. Top
+          two advanced, and the eight best third-placed teams joined them in the
+          Round of 32. Coloured rows show who went <strong>through</strong> (✓)
+          and who went <strong>out</strong> (✗).
         </p>
       </div>
 
@@ -19,7 +20,7 @@ export function GroupsPage() {
           <i className="swatch sw-qualified" /> Top 2
         </span>
         <span className="legend-item">
-          <i className="swatch sw-playoff" /> Best-third race
+          <i className="swatch sw-playoff" /> Best thirds
         </span>
         <span className="legend-item">
           <i className="swatch sw-out" /> Bottom

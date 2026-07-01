@@ -5,15 +5,18 @@ interface HeaderProps {
   path: string;
 }
 
-/** Core tournament navigation — always visible. */
+/**
+ * Core tournament navigation — always visible. The group stage is over, so the
+ * bar leads with the knockouts; the final group tables live under "More".
+ */
 const PRIMARY = [
-  { to: "/groups", label: "Groups" },
   { to: "/knockout", label: "Knockout" },
   { to: "/schedule", label: "Schedule" },
 ];
 
-/** Analysis & archive — tucked under the "More" menu to keep the bar clean. */
+/** Records & archive — tucked under the "More" menu to keep the bar clean. */
 const MORE = [
+  { to: "/groups", label: "Group tables" },
   { to: "/form", label: "Form table" },
   { to: "/continuity", label: "Squad turnover" },
   { to: "/qatar2022", label: "Qatar 2022" },

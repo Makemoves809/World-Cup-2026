@@ -5,11 +5,6 @@ import { navigate } from "../router";
 
 const LINKS = [
   {
-    to: "/groups",
-    title: "Group standings",
-    desc: "Live tables for all 12 groups, A–L.",
-  },
-  {
     to: "/knockout",
     title: "Knockout bracket",
     desc: "Round of 32 to the final — the road to MetLife.",
@@ -17,7 +12,12 @@ const LINKS = [
   {
     to: "/schedule",
     title: "Match schedule",
-    desc: "Every match by date — group stage and knockouts.",
+    desc: "Every knockout tie by date, with kick-off times.",
+  },
+  {
+    to: "/groups",
+    title: "Final group tables",
+    desc: "How all 12 groups finished, A–L.",
   },
   {
     to: "/qatar2022",

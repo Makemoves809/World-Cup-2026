@@ -82,7 +82,7 @@ function SideView({ side, away }: { side: Side; away?: boolean }) {
 }
 
 export function Schedule() {
-  const [status, setStatus] = useState<StatusFilter>("all");
+  const [status, setStatus] = useState<StatusFilter>("upcoming");
   const [selected, setSelected] = useState<Match | null>(null);
   const now = useNow(30_000);
 
@@ -245,8 +245,9 @@ export function Schedule() {
         <span className="kicker">Every match · times in your timezone</span>
         <h2>Schedule</h2>
         <p className="section-note">
-          The full fixture list in date order — group stage and knockouts.
-          Tap a group match for its detail.
+          Every match in date order with kick-off times in your timezone.
+          Showing what's next by default — switch to Results or All for the
+          group stage. Tap a group match for its detail.
         </p>
       </div>
 

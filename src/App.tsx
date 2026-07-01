@@ -67,9 +67,9 @@ export function App() {
           <nav className="footer-nav" aria-label="Footer">
             <span className="footer-head">Explore</span>
             <button onClick={() => navigate("/")}>Home</button>
-            <button onClick={() => navigate("/groups")}>Group standings</button>
             <button onClick={() => navigate("/knockout")}>Knockout</button>
             <button onClick={() => navigate("/schedule")}>Schedule</button>
+            <button onClick={() => navigate("/groups")}>Final group tables</button>
             <button onClick={() => navigate("/form")}>Form table</button>
             <button onClick={() => navigate("/continuity")}>Squad turnover</button>
             <button onClick={() => navigate("/qatar2022")}>Qatar 2022</button>
