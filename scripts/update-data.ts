@@ -207,14 +207,18 @@ for (const f of fdMatches) {
         : { home: h, away: a, minute };
     } else if (f.stage && f.stage !== "GROUP_STAGE") {
       // Knockout tie in progress — key by stage + teams so the bracket matches.
+      const dur = f.score?.duration;
+      const htPlayed = f.score?.halfTime?.home != null;
       const phase =
-        f.status === "PAUSED"
-          ? "PAUSED"
-          : f.score?.duration === "PENALTY_SHOOTOUT"
+        dur === "PENALTY_SHOOTOUT"
           ? "PENS"
-          : f.score?.duration === "EXTRA_TIME"
+          : dur === "EXTRA_TIME"
           ? "ET"
-          : null;
+          : f.status === "PAUSED"
+          ? "HT"
+          : htPlayed
+          ? "2H"
+          : "1H";
       liveKo.push({ stage: f.stage, homeId, awayId, homeScore: h, awayScore: a, minute, phase });
     }
     continue;

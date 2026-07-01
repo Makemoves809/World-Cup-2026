@@ -113,17 +113,21 @@ export function transformFdMatches(fdMatches: any[]): FdLive {
       const h = sc.home ?? 0;
       const a = sc.away ?? 0;
       const minute = f.minute ?? null;
-      // Accurate phase straight from the feed. A pause just reads "Paused"
-      // (we don't guess half-time vs an extra-time break); ET/PENS show only
-      // while actually being played.
+      // Period marker from the feed. Regulation splits into 1st/2nd half via
+      // whether the half-time score has been recorded yet. Extra time can't be
+      // split into halves (the free feed has no live minute), so it's one label.
+      const dur = f.score?.duration;
+      const htPlayed = f.score?.halfTime?.home != null;
       const phase =
-        f.status === "PAUSED"
-          ? "PAUSED"
-          : f.score?.duration === "PENALTY_SHOOTOUT"
+        dur === "PENALTY_SHOOTOUT"
           ? "PENS"
-          : f.score?.duration === "EXTRA_TIME"
+          : dur === "EXTRA_TIME"
           ? "ET"
-          : null;
+          : f.status === "PAUSED"
+          ? "HT"
+          : htPlayed
+          ? "2H"
+          : "1H";
       if (pair) {
         liveScores[pair.id] = pair.reversed
           ? { home: a, away: h, minute }
