@@ -36,19 +36,39 @@ export function useLiveData(): LiveData {
 
 let started = false;
 
-/** Begin polling the served live.json. Safe to call more than once. */
-export function startLivePolling(intervalMs = 30_000): void {
+/**
+ * Begin polling for fresh live data. Prefers the cached `/api/live` proxy (which
+ * reads the feed directly, so scores refresh within its cache window) and falls
+ * back to the statically served `/live.json` when the proxy isn't available
+ * (e.g. no API key configured). Safe to call more than once.
+ */
+export function startLivePolling(intervalMs = 15_000): void {
   if (started || typeof window === "undefined") return;
   started = true;
 
-  const url = `${import.meta.env.BASE_URL}live.json`;
+  const base = import.meta.env.BASE_URL;
+  const primary = `${base}api/live`;
+  const fallback = `${base}live.json`;
   let lastText = JSON.stringify(current);
+  let useFallback = false;
+
+  const fetchFrom = async (url: string) => {
+    const res = await fetch(`${url}?_=${Date.now()}`, { cache: "no-store" });
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    return res.text();
+  };
 
   const tick = async () => {
     try {
-      const res = await fetch(`${url}?_=${Date.now()}`, { cache: "no-store" });
-      if (!res.ok) return;
-      const text = await res.text();
+      let text: string;
+      try {
+        text = await fetchFrom(useFallback ? fallback : primary);
+      } catch {
+        // Proxy missing/erroring — drop to the static file for the rest of the
+        // session so we don't spend every tick on a 404.
+        useFallback = true;
+        text = await fetchFrom(fallback);
+      }
       if (!text || text === lastText) return;
       const data = JSON.parse(text) as LiveData;
       lastText = text;
