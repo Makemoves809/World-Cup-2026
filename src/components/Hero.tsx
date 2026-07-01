@@ -178,18 +178,22 @@ export function Hero() {
             <>
               <button className="btn btn-primary" onClick={() => navigate("/knockout")}>
                 Knockout bracket
+                <span className="btn-arrow" aria-hidden="true">→</span>
               </button>
               <button className="btn btn-ghost" onClick={() => navigate("/schedule")}>
                 Schedule
+                <span className="btn-arrow" aria-hidden="true">→</span>
               </button>
             </>
           ) : (
             <>
               <button className="btn btn-primary" onClick={() => navigate("/groups")}>
                 Group standings
+                <span className="btn-arrow" aria-hidden="true">→</span>
               </button>
               <button className="btn btn-ghost" onClick={() => navigate("/schedule")}>
                 Match schedule
+                <span className="btn-arrow" aria-hidden="true">→</span>
               </button>
             </>
           )}

@@ -228,9 +228,18 @@ img.flag {
   color: var(--chalk);
   background: var(--line-soft);
 }
+.nav-link:active {
+  transform: scale(0.95);
+}
+/* "You are here" — the current tab wears the solid-green pill */
 .nav-link.is-active {
   color: var(--grass-ink);
   background: var(--grass);
+  box-shadow: 0 2px 12px rgba(43, 212, 121, 0.32);
+}
+.nav-link.is-active:hover {
+  color: var(--grass-ink);
+  background: var(--grass-bright, var(--grass));
 }
 
 /* Hamburger toggle + flat "More" links: desktop hides them (dropdown handles
@@ -411,6 +420,10 @@ img.flag {
   margin-bottom: 38px;
 }
 .btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
   font-family: var(--font-display);
   text-transform: uppercase;
   letter-spacing: 0.09em;
@@ -419,14 +432,24 @@ img.flag {
   padding: 13px 26px;
   border-radius: 999px;
   border: 1px solid transparent;
-  transition: transform 0.2s var(--ease), box-shadow 0.2s, background 0.15s,
-    color 0.15s, border-color 0.15s;
+  transition: transform 0.12s var(--ease), box-shadow 0.2s, background 0.15s,
+    color 0.15s, border-color 0.15s, filter 0.12s;
+}
+.btn-arrow {
+  font-size: 1.05em;
+  line-height: 1;
+  transition: transform 0.16s var(--ease);
+}
+.btn:hover .btn-arrow {
+  transform: translateX(3px);
 }
 .btn:hover {
   transform: translateY(-1px);
 }
+/* Tactile press — the button clearly reacts to the tap before navigating */
 .btn:active {
-  transform: translateY(0);
+  transform: scale(0.95);
+  filter: brightness(0.9);
 }
 .btn-primary {
   background: var(--grass);
@@ -2025,6 +2048,10 @@ img.flag {
   border-color: rgba(43, 212, 121, 0.3);
   box-shadow: var(--shadow-2);
 }
+.home-link:active {
+  transform: scale(0.98);
+  border-color: rgba(43, 212, 121, 0.45);
+}
 .home-link-title {
   font-family: var(--font-display);
   font-size: var(--fs-lg);
@@ -2186,6 +2213,9 @@ img.flag {
 }
 .seg-btn:hover {
   color: var(--chalk);
+}
+.seg-btn:active {
+  transform: scale(0.95);
 }
 .seg-btn.is-active {
   background: var(--grass);
@@ -2755,6 +2785,10 @@ img.flag {
 .hero-open:hover {
   border-color: rgba(43, 212, 121, 0.4);
   transform: translateY(-2px);
+}
+.hero-open:active {
+  transform: scale(0.99);
+  border-color: rgba(43, 212, 121, 0.55);
 }
 .hero-open:focus-visible {
   outline: 2px solid var(--floodlight);
