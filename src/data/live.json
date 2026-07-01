@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-01T21:56:22.343Z",
+  "updatedAt": "2026-07-01T22:41:10.934Z",
   "results": {
     "m-A-1": [
       2,
@@ -365,7 +365,8 @@
       "awayId": "sen",
       "homeScore": 2,
       "awayScore": 2,
-      "minute": null
+      "minute": null,
+      "phase": "HT"
     }
   ],
   "liveScores": {},
