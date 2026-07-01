@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState, type KeyboardEvent } from "react";
 import type { Match } from "../data/types";
 import { matches } from "../data/fixtures";
 import { teamById } from "../data/teams";
-import { isLive, isKickoffLive, liveScore } from "../lib/live";
+import { isLive, isKickoffLive, KO_LIVE_MS, liveScore } from "../lib/live";
 import { useLiveData } from "../lib/liveData";
 import {
   resolveBracket,
@@ -108,7 +108,11 @@ export function Hero() {
           (m) =>
             m.home.firm &&
             m.away.firm &&
-            isKickoffLive(m.kickoff, m.finished, now.getTime())
+            !m.finished &&
+            // Feed says it's in play (survives extra time / penalties), or the
+            // clock still puts it inside the extended knockout window.
+            (m.live ||
+              isKickoffLive(m.kickoff, m.finished, now.getTime(), KO_LIVE_MS))
         )
         .sort((a, b) => koTs(a) - koTs(b))[0],
     [koMatches, now]

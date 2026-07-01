@@ -1,8 +1,10 @@
 import type { Match } from "../data/types";
 import { getLiveData } from "./liveData";
 
-/** Rough in-play window: 90' + half-time + stoppage/VAR. */
+/** Rough in-play window for a group game: 90' + half-time + stoppage/VAR. */
 const LIVE_MS = 135 * 60 * 1000;
+/** Knockout ties can go to extra time + penalties, so allow a longer window. */
+export const KO_LIVE_MS = 200 * 60 * 1000;
 
 export interface LiveScore {
   home: number;
@@ -35,9 +37,10 @@ export function isLive(match: Match, now: number): boolean {
 export function isKickoffLive(
   kickoffIso: string,
   finished: boolean,
-  now: number
+  now: number,
+  windowMs: number = LIVE_MS
 ): boolean {
   if (finished) return false;
   const kickoff = new Date(kickoffIso).getTime();
-  return now >= kickoff && now < kickoff + LIVE_MS;
+  return now >= kickoff && now < kickoff + windowMs;
 }
