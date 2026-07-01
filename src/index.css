@@ -1922,13 +1922,16 @@ img.flag {
    what lines a next-round match up with the midpoint of its two feeders. */
 .bk-slot {
   flex: 1 1 0;
-  min-height: 66px;
+  /* Tall enough for a full two-team card (meta + two seeds) so the card is
+     never shrunk into itself — the densest round (R32) sets the column height. */
+  min-height: 100px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   position: relative;
 }
 .bk-match {
+  flex: none;
   width: 100%;
   background: var(--surface-card);
   border: 1px solid var(--line);
