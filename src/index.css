@@ -469,6 +469,31 @@ img.flag {
   background: var(--line-soft);
 }
 
+/* Uniform Hero CTAs — same neutral look, so neither reads as a selected tab.
+   Green appears only as the on-tap "selected" flash (via .is-active/.is-selected). */
+.btn-cta {
+  background: transparent;
+  color: var(--chalk);
+  border-color: var(--line);
+}
+.btn-cta:hover {
+  border-color: var(--grass);
+  background: var(--grass-soft);
+}
+.btn-cta:active,
+.btn-cta.is-selected {
+  background: var(--grass);
+  color: var(--grass-ink);
+  border-color: var(--grass);
+  box-shadow: 0 6px 24px rgba(43, 212, 121, 0.32);
+}
+.btn-cta.is-selected {
+  transform: scale(0.97);
+}
+.btn-cta.is-selected .btn-arrow {
+  transform: translateX(3px);
+}
+
 /* Countdown + latest result panels */
 .hero-row {
   display: flex;

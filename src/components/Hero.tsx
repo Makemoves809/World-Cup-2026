@@ -176,25 +176,13 @@ export function Hero() {
         <div className="hero-actions">
           {koStarted ? (
             <>
-              <button className="btn btn-primary" onClick={() => navigate("/knockout")}>
-                Knockout bracket
-                <span className="btn-arrow" aria-hidden="true">→</span>
-              </button>
-              <button className="btn btn-ghost" onClick={() => navigate("/schedule")}>
-                Schedule
-                <span className="btn-arrow" aria-hidden="true">→</span>
-              </button>
+              <CtaButton to="/knockout" label="Knockout bracket" />
+              <CtaButton to="/schedule" label="Schedule" />
             </>
           ) : (
             <>
-              <button className="btn btn-primary" onClick={() => navigate("/groups")}>
-                Group standings
-                <span className="btn-arrow" aria-hidden="true">→</span>
-              </button>
-              <button className="btn btn-ghost" onClick={() => navigate("/schedule")}>
-                Match schedule
-                <span className="btn-arrow" aria-hidden="true">→</span>
-              </button>
+              <CtaButton to="/groups" label="Group standings" />
+              <CtaButton to="/schedule" label="Match schedule" />
             </>
           )}
         </div>
@@ -307,6 +295,28 @@ export function Hero() {
         />
       )}
     </section>
+  );
+}
+
+/**
+ * The two Hero calls-to-action. Both share one look (so neither reads as a
+ * pre-selected tab); tapping flashes the button green — the "selected" cue —
+ * then navigates.
+ */
+function CtaButton({ to, label }: { to: string; label: string }) {
+  const [selected, setSelected] = useState(false);
+  const go = () => {
+    setSelected(true);
+    window.setTimeout(() => navigate(to), 170);
+  };
+  return (
+    <button
+      className={`btn btn-cta${selected ? " is-selected" : ""}`}
+      onClick={go}
+    >
+      {label}
+      <span className="btn-arrow" aria-hidden="true">→</span>
+    </button>
   );
 }
 
