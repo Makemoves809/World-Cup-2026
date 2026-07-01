@@ -62,10 +62,10 @@ function SideView({ side, away }: { side: Side; away?: boolean }) {
   const flag = side.flag ? (
     <img
       className="flag"
-      src={`https://flagcdn.com/w40/${side.flag}.png`}
-      srcSet={`https://flagcdn.com/w80/${side.flag}.png 2x`}
-      width={20}
-      height={14}
+      src={`https://flagcdn.com/w48/${side.flag}.png`}
+      srcSet={`https://flagcdn.com/w96/${side.flag}.png 2x`}
+      width={24}
+      height={16}
       loading="lazy"
       alt=""
       aria-hidden="true"

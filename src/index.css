@@ -1026,7 +1026,7 @@ img.flag {
 }
 
 .day-block {
-  margin-bottom: 34px;
+  margin-bottom: 22px;
 }
 .day-label {
   display: flex;
@@ -1098,15 +1098,16 @@ img.flag {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 3px;
+  gap: 4px;
   font-family: var(--font-mono);
-  font-size: var(--fs-xs);
+  font-size: var(--fs-sm);
   color: var(--chalk-dim);
   white-space: nowrap;
 }
 .sch-time {
   color: var(--chalk);
-  font-weight: 600;
+  font-weight: 700;
+  font-size: var(--fs-base);
 }
 .sch-grp,
 .sch-round {
@@ -1138,7 +1139,8 @@ img.flag {
   align-items: center;
   gap: var(--sp-2);
   min-width: 0;
-  font-size: var(--fs-sm);
+  font-size: var(--fs-base);
+  font-weight: 500;
   color: var(--chalk);
 }
 .sch-side-away { flex-direction: row-reverse; text-align: right; }
@@ -1148,8 +1150,8 @@ img.flag {
   white-space: nowrap;
 }
 .sch-pip {
-  width: 20px;
-  height: 14px;
+  width: 24px;
+  height: 16px;
   border-radius: 3px;
   background: var(--line-soft);
   flex-shrink: 0;
@@ -1157,29 +1159,31 @@ img.flag {
 .sch-score {
   font-family: var(--font-mono);
   font-weight: 700;
-  font-size: var(--fs-sm);
+  font-size: var(--fs-lg);
   color: var(--chalk-faint);
-  min-width: 38px;
+  min-width: 44px;
   text-align: center;
 }
 .sch-score.is-final { color: var(--chalk); }
 .sch-venue {
   font-family: var(--font-mono);
-  font-size: var(--fs-2xs);
+  font-size: var(--fs-xs);
   color: var(--chalk-faint);
   text-align: right;
   white-space: nowrap;
 }
 @media (max-width: 599px) {
   .sch-row {
-    grid-template-columns: 52px 1fr;
-    gap: var(--sp-2) var(--sp-3);
+    grid-template-columns: 58px 1fr;
+    gap: var(--sp-1) var(--sp-3);
+    padding: var(--sp-3) var(--sp-3) var(--sp-3) var(--sp-4);
   }
   .sch-venue {
     grid-column: 2;
     text-align: left;
+    white-space: normal;
   }
-  .sch-name { font-size: var(--fs-xs); }
+  .sch-score { font-size: var(--fs-base); }
 }
 .match-card {
   background: var(--surface-card);
