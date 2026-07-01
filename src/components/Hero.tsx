@@ -179,8 +179,8 @@ export function Hero() {
               <button className="btn btn-primary" onClick={() => navigate("/knockout")}>
                 Knockout bracket
               </button>
-              <button className="btn btn-ghost" onClick={() => navigate("/groups")}>
-                Final group tables
+              <button className="btn btn-ghost" onClick={() => navigate("/schedule")}>
+                Schedule
               </button>
             </>
           ) : (
