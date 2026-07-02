@@ -266,9 +266,11 @@ for (const f of fdMatches) {
   }
 
   if (f.status !== "FINISHED") continue;
-  // Regulation/extra-time score (NOT the shootout) decides homeScore/awayScore;
-  // a penalty shootout only decides the winner, tracked separately below.
-  const ft = f.score?.regularTime ?? f.score?.fullTime;
+  // fullTime already covers regulation + extra time and excludes the penalty
+  // shootout (that's `score.regularTime`, the 90-minutes-only score — NOT
+  // what we want here, it would drop a match-winning extra-time goal). A
+  // shootout only decides the winner, tracked separately via `penalties` below.
+  const ft = f.score?.fullTime;
   if (ft?.home == null || ft?.away == null) continue;
 
   if (pair) {
