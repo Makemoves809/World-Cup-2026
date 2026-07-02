@@ -266,11 +266,18 @@ for (const f of fdMatches) {
   }
 
   if (f.status !== "FINISHED") continue;
-  // fullTime already covers regulation + extra time and excludes the penalty
-  // shootout (that's `score.regularTime`, the 90-minutes-only score — NOT
-  // what we want here, it would drop a match-winning extra-time goal). A
-  // shootout only decides the winner, tracked separately via `penalties` below.
-  const ft = f.score?.fullTime;
+  // For a normal (non-shootout) result, `fullTime` already covers regulation
+  // + extra time — that's what we want. But for a match that WENT to
+  // penalties, football-data's `fullTime` is observed to fold the shootout
+  // score into the total (e.g. a 1–1 draw that went 3–4 on kicks is reported
+  // as fullTime 4–5 = 1+3, 1+4) — confirmed by comparing several shootout
+  // results against real scorelines, not documented behavior. So for those,
+  // use `regularTime`/`extraTime` (pre-shootout) instead, and track the
+  // shootout separately via `penalties` below.
+  const wentToPens = f.score?.duration === "PENALTY_SHOOTOUT";
+  const ft = wentToPens
+    ? f.score?.extraTime ?? f.score?.regularTime
+    : f.score?.fullTime;
   if (ft?.home == null || ft?.away == null) continue;
 
   if (pair) {
