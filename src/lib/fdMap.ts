@@ -4,9 +4,8 @@ import { teams } from "../data/teams";
 /**
  * Maps a football-data.org `/competitions/{id}/matches` payload into the
  * live.json shape (results, in-play scores, knockout results). Shared by the
- * scheduled update job's live view and the runtime `/api/live` proxy so the two
- * can't diverge. Post-match bookings/attendance detail stays in the job (it
- * needs extra per-match requests); this only covers what the list endpoint has.
+ * scheduled update job's live view and the runtime `/api/live` proxy so the
+ * two can't diverge.
  */
 
 export interface FdScore {

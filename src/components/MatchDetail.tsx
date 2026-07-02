@@ -3,8 +3,6 @@ import type { Match, PlayerAbsence } from "../data/types";
 import { teamById } from "../data/teams";
 import { IMPACT_LABELS, sentOffIn, unavailableFor } from "../data/discipline";
 import { attendanceFor } from "../data/attendance";
-import { goalsFor, minuteLabel, type Goal } from "../data/goals";
-import { substitutionsFor, type Substitution } from "../data/substitutions";
 import { matchup } from "../lib/matchup";
 import { matchScript } from "../lib/script";
 import { gradeMatch, modelAccuracy } from "../lib/accuracy";
@@ -33,8 +31,6 @@ export function MatchDetail({ match, onClose }: MatchDetailProps) {
   const done = match.status === "finished";
   const reds = sentOffIn(match.id);
   const out = unavailableFor(match.id, [match.home, match.away]);
-  const goals = goalsFor(match.id);
-  const subs = substitutionsFor(match.id);
   const m = matchup(match);
   const script = matchScript(match);
   const grade = gradeMatch(match);
@@ -131,11 +127,6 @@ export function MatchDetail({ match, onClose }: MatchDetailProps) {
               {line}
             </p>
           ))}
-          {done && goals.length > 0 && (
-            <p className="script-line">
-              Scorers: {goals.map((g, i) => <GoalMention key={i} g={g} first={i === 0} />)}
-            </p>
-          )}
           {script.projection && (
             <p className="script-projection">
               Model lean
@@ -202,19 +193,6 @@ export function MatchDetail({ match, onClose }: MatchDetailProps) {
           </p>
         )}
 
-        {subs.length > 0 && (
-          <section className="modal-section">
-            <h4 className="modal-head">
-              <i className="sub-dot" aria-hidden="true" /> Substitutions
-            </h4>
-            <ul className="player-list">
-              {subs.map((s, i) => (
-                <SubRow key={i} s={s} />
-              ))}
-            </ul>
-          </section>
-        )}
-
         <p className="modal-foot">
           Impact gauges how big a loss each absent player is to their side,
           from fringe player to star.
@@ -263,31 +241,6 @@ function Attendance({ match }: { match: Match }) {
         <p className="att-note">Attendance reported after kickoff.</p>
       )}
     </div>
-  );
-}
-
-function GoalMention({ g, first }: { g: Goal; first: boolean }) {
-  const team = teamById(g.team);
-  return (
-    <span>
-      {!first && ", "}
-      {minuteLabel(g.minute, g.extra)} {g.scorer}
-      {g.type === "OWN" ? " (OG)" : g.type === "PENALTY" ? " (pen)" : ""} ({team.code})
-    </span>
-  );
-}
-
-function SubRow({ s }: { s: Substitution }) {
-  const team = teamById(s.team);
-  return (
-    <li className="player-row">
-      <div className="player-main">
-        <span className="player-name">
-          <Flag team={team} size={14} /> {s.playerOut} → {s.playerIn}
-        </span>
-        <span className="player-reason">{minuteLabel(s.minute)} substitution</span>
-      </div>
-    </li>
   );
 }
 
