@@ -17,6 +17,7 @@ export function GroupTable({ group }: GroupTableProps) {
   const rows = standingsForGroup(group);
   const qual = groupQualification(group);
   const anyPlayed = rows.some((r) => r.played > 0);
+  const decided = rows.every((r) => r.played === 3);
 
   return (
     <article className="group-card">
@@ -27,8 +28,10 @@ export function GroupTable({ group }: GroupTableProps) {
         <h3>
           Group <span className="group-letter">{group}</span>
         </h3>
-        <span className={anyPlayed ? "group-tag is-live" : "group-tag"}>
-          {anyPlayed ? "In play" : "Not started"}
+        <span
+          className={`group-tag${decided ? " is-final" : anyPlayed ? " is-live" : ""}`}
+        >
+          {decided ? "Final" : anyPlayed ? "In play" : "Not started"}
         </span>
       </div>
 

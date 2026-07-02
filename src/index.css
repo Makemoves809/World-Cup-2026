@@ -882,6 +882,11 @@ img.flag {
   border-color: rgba(43, 212, 121, 0.35);
   background: var(--grass-soft);
 }
+.group-tag.is-final {
+  color: var(--chalk-dim);
+  border-color: var(--line);
+  background: var(--line-soft);
+}
 
 .group-table {
   position: relative;
