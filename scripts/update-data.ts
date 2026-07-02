@@ -239,14 +239,15 @@ for (const f of fdMatches) {
   // In-play / half-time: record the running score.
   if (f.status === "IN_PLAY" || f.status === "PAUSED") {
     const dur = f.score?.duration;
+    const rawSc = f.score?.fullTime ?? {};
+    const livePens = f.score?.penalties;
     // Same fullTime-folds-in-penalties quirk as finished matches (see below)
-    // seems to kick in as soon as the shootout starts, not just once it's
-    // over — freeze the score at the pre-shootout tally rather than risk
-    // showing a running "goal" count that's actually penalty kicks.
+    // seems to kick in as soon as the shootout starts — subtract the running
+    // penalty tally back out so this doesn't show a scored penalty as a goal.
     const sc =
-      dur === "PENALTY_SHOOTOUT"
-        ? f.score?.extraTime ?? f.score?.regularTime ?? {}
-        : f.score?.fullTime ?? {};
+      dur === "PENALTY_SHOOTOUT" && livePens?.home != null && livePens?.away != null
+        ? { home: (rawSc.home ?? 0) - livePens.home, away: (rawSc.away ?? 0) - livePens.away }
+        : rawSc;
     const h = sc.home ?? 0;
     const a = sc.away ?? 0;
     const minute = f.minute ?? null;
@@ -277,14 +278,18 @@ for (const f of fdMatches) {
   // + extra time — that's what we want. But for a match that WENT to
   // penalties, football-data's `fullTime` is observed to fold the shootout
   // score into the total (e.g. a 1–1 draw that went 3–4 on kicks is reported
-  // as fullTime 4–5 = 1+3, 1+4) — confirmed by comparing several shootout
-  // results against real scorelines, not documented behavior. So for those,
-  // use `regularTime`/`extraTime` (pre-shootout) instead, and track the
-  // shootout separately via `penalties` below.
-  const wentToPens = f.score?.duration === "PENALTY_SHOOTOUT";
+  // as fullTime 4–5 = 1+3, 1+4) — confirmed against real scorelines, and NOT
+  // fixed by any other score.* field (tried regularTime, extraTime — both
+  // gave wrong values too, likely different undocumented semantics). Since
+  // the fold-in is exactly "+ the penalty score", subtract it back out
+  // rather than lean on an unverified field.
+  const pens = f.score?.penalties;
+  const wentToPens =
+    f.score?.duration === "PENALTY_SHOOTOUT" && pens?.home != null && pens?.away != null;
+  const rawFt = f.score?.fullTime;
   const ft = wentToPens
-    ? f.score?.extraTime ?? f.score?.regularTime
-    : f.score?.fullTime;
+    ? { home: rawFt.home - pens.home, away: rawFt.away - pens.away }
+    : rawFt;
   if (ft?.home == null || ft?.away == null) continue;
 
   if (pair) {
@@ -297,7 +302,6 @@ for (const f of fdMatches) {
     const w = f.score?.winner;
     const winnerId =
       w === "HOME_TEAM" ? homeId : w === "AWAY_TEAM" ? awayId : null;
-    const pens = f.score?.penalties;
     const rec: KoResult = {
       stage: f.stage,
       homeId,

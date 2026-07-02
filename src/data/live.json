@@ -313,8 +313,8 @@
       "stage": "LAST_32",
       "homeId": "ger",
       "awayId": "par",
-      "homeScore": 0,
-      "awayScore": 0,
+      "homeScore": 1,
+      "awayScore": 1,
       "winnerId": "par",
       "penaltiesHome": 3,
       "penaltiesAway": 4
@@ -323,8 +323,8 @@
       "stage": "LAST_32",
       "homeId": "ned",
       "awayId": "mar",
-      "homeScore": 0,
-      "awayScore": 0,
+      "homeScore": 1,
+      "awayScore": 1,
       "winnerId": "mar",
       "penaltiesHome": 2,
       "penaltiesAway": 3
