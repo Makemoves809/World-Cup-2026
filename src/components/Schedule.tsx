@@ -59,6 +59,9 @@ interface Side {
 }
 
 function SideView({ side, away }: { side: Side; away?: boolean }) {
+  // Eager (not lazy) — these are small icons in a short list, and lazy
+  // loading was making them sit blank on slower connections since they never
+  // got a chance to start fetching until scrolled fully into view.
   const flag = side.flag ? (
     <img
       className="flag"
@@ -66,7 +69,6 @@ function SideView({ side, away }: { side: Side; away?: boolean }) {
       srcSet={`https://flagcdn.com/w96/${side.flag}.png 2x`}
       width={24}
       height={16}
-      loading="lazy"
       alt=""
       aria-hidden="true"
       onError={(e) => {
