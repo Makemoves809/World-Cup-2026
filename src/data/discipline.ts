@@ -1,6 +1,7 @@
 import type { ImpactLevel, PlayerAbsence } from "./types";
 import { matches } from "./fixtures";
 import live from "./live.json";
+import { koKey } from "../lib/koKey";
 
 /** All match ids a team plays in — used for tournament-long absences. */
 const teamMatchIds = (teamId: string): string[] =>
@@ -487,6 +488,14 @@ export function cardStatus(teamId: string, playerName: string): CardStatus {
 /** Players shown a red card during the given match. */
 export const sentOffIn = (matchId: string): PlayerAbsence[] =>
   absences.filter((a) => a.type === "red" && a.sourceMatchId === matchId);
+
+/**
+ * Same as `sentOffIn`, but for a knockout tie — those have no fixed match id
+ * until the bracket resolves, so live-captured cards for them are keyed by
+ * the team-id pair instead (see scripts/update-data.ts + lib/koKey.ts).
+ */
+export const sentOffInTie = (homeId: string, awayId: string): PlayerAbsence[] =>
+  sentOffIn(koKey(homeId, awayId));
 
 /** Players unavailable (suspended/injured) for the given match. */
 export const unavailableFor = (matchId: string): PlayerAbsence[] =>

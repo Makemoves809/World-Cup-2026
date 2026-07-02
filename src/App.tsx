@@ -86,7 +86,7 @@ export function App() {
             <span className="footer-head">Data</span>
             <p>
               Schedule per the official match calendar · kickoffs shown in your
-              local time · flags via flagcdn.com.
+              local time · flags from the flag-icons project (MIT).
             </p>
             <p>Not affiliated with FIFA. MIT licensed.</p>
           </div>

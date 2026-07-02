@@ -7,6 +7,7 @@ import { useLiveData } from "../lib/liveData";
 import { flagUrl } from "../lib/flags";
 import {
   resolveBracket,
+  resolveThirdPlace,
   type ResolvedSeed,
   type ResolvedMatch,
 } from "../lib/bracket";
@@ -39,6 +40,7 @@ const ROUND_ABBR: Record<string, string> = {
   "Round of 16": "R16",
   "Quarter-finals": "QF",
   "Semi-finals": "SF",
+  "Third-place play-off": "3rd Place",
   Final: "Final",
 };
 
@@ -81,13 +83,16 @@ export function Schedule() {
   const now = useNow(30_000);
   const liveData = useLiveData();
 
-  const koMatches = useMemo(
-    () =>
-      resolveBracket().flatMap((r) =>
-        r.matches.map((m) => ({ ...m, round: r.name }))
-      ),
-    [liveData]
-  );
+  const koMatches = useMemo(() => {
+    const treeMatches = resolveBracket().flatMap((r) =>
+      r.matches.map((m) => ({ ...m, round: r.name }))
+    );
+    // Not part of the elimination tree (see resolveThirdPlace), so it isn't
+    // in resolveBracket()'s output — add it here so it still shows up as a
+    // real, trackable match rather than only a footnote on the bracket page.
+    const thirdPlace = { ...resolveThirdPlace(), round: "Third-place play-off" };
+    return [...treeMatches, thirdPlace];
+  }, [liveData]);
 
   const counts = useMemo(() => {
     const total = matches.length + koMatches.length;

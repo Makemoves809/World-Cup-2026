@@ -447,3 +447,104 @@ export const finalInfo = {
   thirdPlace: "Third-place play-off · July 18 · Hard Rock Stadium, Miami",
   final: "Final · July 19 · MetLife Stadium, New York/New Jersey",
 };
+
+/**
+ * The third-place play-off (match 103) — the two semi-final losers. It isn't
+ * part of the elimination tree (nothing "pends" on it the way every other
+ * match feeds the next round), so it can't reuse the winner-only pending-seed
+ * projection in resolveBracket(); resolved separately here instead. Kept out
+ * of ROUND_DEFS/resolveBracket()'s output entirely so the bracket tree
+ * visualization (built around a strict binary elimination structure) is
+ * unaffected — this match is surfaced in the Schedule list instead.
+ */
+export function resolveThirdPlace(): ResolvedMatch {
+  const sfRound = resolveBracket().find((r) => r.id === "sf")!;
+  const [sf1, sf2] = sfRound.matches;
+
+  const loserOf = (m: ResolvedMatch): { id?: string; label: string; firm: boolean } => {
+    if (!m.finished || !m.winner) return { label: `Loser ${m.num}`, firm: false };
+    const loser = m.winner === "home" ? m.away : m.home;
+    return { id: loser.id, label: `Loser ${m.num}`, firm: true };
+  };
+  const h = loserOf(sf1);
+  const a = loserOf(sf2);
+
+  const data = getLiveData() as { koResults?: KoResult[]; liveKo?: LiveKo[] };
+  const stageResults = (data.koResults ?? []).filter((k) => k.stage === "THIRD_PLACE");
+  const stageLive = (data.liveKo ?? []).filter((k) => k.stage === "THIRD_PLACE");
+  const known = [h.id, a.id].filter(Boolean) as string[];
+
+  const matchResult = (pool: { homeId: string; awayId: string }[]) =>
+    known.length > 0
+      ? pool.find((k) => known.every((id) => [k.homeId, k.awayId].includes(id)))
+      : undefined;
+  const result = matchResult(stageResults) as KoResult | undefined;
+
+  let home: ResolvedSeed;
+  let away: ResolvedSeed;
+  let homeScore: number | undefined;
+  let awayScore: number | undefined;
+  let penaltiesHome: number | undefined;
+  let penaltiesAway: number | undefined;
+  let finished = false;
+  let winner: "home" | "away" | undefined;
+
+  if (result) {
+    const homeIsResultHome = h.id === result.homeId || (h.id == null && a.id === result.awayId);
+    const hId = homeIsResultHome ? result.homeId : result.awayId;
+    const aId = homeIsResultHome ? result.awayId : result.homeId;
+    home = seedFromTeamId(hId, h.label, true);
+    away = seedFromTeamId(aId, a.label, true);
+    homeScore = homeIsResultHome ? result.homeScore : result.awayScore;
+    awayScore = homeIsResultHome ? result.awayScore : result.homeScore;
+    if (result.penaltiesHome != null && result.penaltiesAway != null) {
+      penaltiesHome = homeIsResultHome ? result.penaltiesHome : result.penaltiesAway;
+      penaltiesAway = homeIsResultHome ? result.penaltiesAway : result.penaltiesHome;
+    }
+    finished = true;
+    if (result.winnerId) {
+      winner = result.winnerId === hId ? "home" : result.winnerId === aId ? "away" : undefined;
+    }
+  } else {
+    home = h.id ? seedFromTeamId(h.id, h.label, h.firm) : { label: h.label, name: h.label, firm: false };
+    away = a.id ? seedFromTeamId(a.id, a.label, a.firm) : { label: a.label, name: a.label, firm: false };
+  }
+
+  let live = false;
+  let liveHome: number | undefined;
+  let liveAway: number | undefined;
+  let liveMinute: number | null | undefined;
+  let livePhase: string | null | undefined;
+  if (!finished) {
+    const l = matchResult(stageLive) as LiveKo | undefined;
+    if (l) {
+      const homeIsLiveHome = h.id === l.homeId || (h.id == null && a.id === l.awayId);
+      liveHome = homeIsLiveHome ? l.homeScore : l.awayScore;
+      liveAway = homeIsLiveHome ? l.awayScore : l.homeScore;
+      liveMinute = l.minute;
+      livePhase = l.phase;
+      live = true;
+    }
+  }
+
+  return {
+    id: "m103",
+    num: 103,
+    date: "2026-07-18",
+    kickoff: "2026-07-18T19:00:00Z",
+    venue: "Hard Rock Stadium · Miami",
+    home,
+    away,
+    homeScore,
+    awayScore,
+    penaltiesHome,
+    penaltiesAway,
+    finished,
+    winner,
+    live,
+    liveHome,
+    liveAway,
+    liveMinute,
+    livePhase,
+  };
+}

@@ -10,6 +10,7 @@ import {
   type ResolvedSeed,
 } from "../lib/bracket";
 import { navigate } from "../router";
+import { flagUrl } from "../lib/flags";
 import { Flag } from "./Flag";
 import { MatchDetail } from "./MatchDetail";
 import { KnockoutDetail } from "./KnockoutDetail";
@@ -415,22 +416,9 @@ function koCode(seed: ResolvedSeed): string {
 }
 
 function KoFlag({ seed }: { seed: ResolvedSeed }) {
-  if (!seed.flag) return <span className="nt-pip" aria-hidden="true" />;
-  return (
-    <img
-      className="flag"
-      src={`https://flagcdn.com/w40/${seed.flag}.png`}
-      srcSet={`https://flagcdn.com/w80/${seed.flag}.png 2x`}
-      width={18}
-      height={12}
-      loading="lazy"
-      alt=""
-      aria-hidden="true"
-      onError={(e) => {
-        (e.currentTarget as HTMLImageElement).style.display = "none";
-      }}
-    />
-  );
+  const src = flagUrl(seed.flag);
+  if (!src) return <span className="nt-pip" aria-hidden="true" />;
+  return <img className="flag" src={src} width={18} height={12} alt="" aria-hidden="true" />;
 }
 
 function KoLine({

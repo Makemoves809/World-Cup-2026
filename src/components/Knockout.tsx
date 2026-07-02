@@ -8,6 +8,8 @@ import {
 } from "../lib/bracket";
 import { openRoster } from "../lib/roster";
 import { useLiveData } from "../lib/liveData";
+import { flagUrl } from "../lib/flags";
+import { Flag } from "./Flag";
 
 const fmtDate = new Intl.DateTimeFormat("en-US", {
   month: "short",
@@ -38,20 +40,9 @@ function SeedChip({
   if (won) cls.push("is-won");
   if (faded) cls.push("is-faded");
 
-  const flagEl = seed.flag ? (
-    <img
-      className="flag"
-      src={`https://flagcdn.com/w40/${seed.flag}.png`}
-      srcSet={`https://flagcdn.com/w80/${seed.flag}.png 2x`}
-      width={24}
-      height={16}
-      loading="lazy"
-      alt=""
-      aria-hidden="true"
-      onError={(e) => {
-        (e.currentTarget as HTMLImageElement).style.display = "none";
-      }}
-    />
+  const seedFlagSrc = flagUrl(seed.flag);
+  const flagEl = seedFlagSrc ? (
+    <img className="flag" src={seedFlagSrc} width={24} height={16} alt="" aria-hidden="true" />
   ) : (
     <span className="bk-seed-pip" aria-hidden="true" />
   );
@@ -166,19 +157,7 @@ export function Knockout() {
                 onClick={() => openRoster(t.row.team.id)}
                 title={`${t.row.team.name} squad`}
               >
-                <img
-                  className="flag"
-                  src={`https://flagcdn.com/w40/${t.row.team.flag}.png`}
-                  srcSet={`https://flagcdn.com/w80/${t.row.team.flag}.png 2x`}
-                  width={24}
-                  height={16}
-                  loading="lazy"
-                  alt=""
-                  aria-hidden="true"
-                  onError={(e) => {
-                    (e.currentTarget as HTMLImageElement).style.display = "none";
-                  }}
-                />
+                <Flag team={t.row.team} size={16} />
                 <span className="third-team">{t.row.team.name}</span>
               </button>
               <span className="third-grp">3{t.row.team.group}</span>

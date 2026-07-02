@@ -1,12 +1,13 @@
 import { useEffect } from "react";
 import type { PlayerAbsence } from "../data/types";
 import { teamById } from "../data/teams";
-import { IMPACT_LABELS, sentOffIn, unavailableFor } from "../data/discipline";
+import { IMPACT_LABELS, sentOffInTie, unavailableFor } from "../data/discipline";
 import { goalsForTie, minuteLabel, type Goal } from "../data/goals";
 import { substitutionsForTie, type Substitution } from "../data/substitutions";
 import { matchupTeams } from "../lib/matchup";
 import { openRoster, isRosterOpen } from "../lib/roster";
 import { useSheetDismiss } from "../lib/useSheetDismiss";
+import { flagUrl } from "../lib/flags";
 import { Flag } from "./Flag";
 import { MatchupPanel } from "./MatchupPanel";
 import type { ResolvedMatch, ResolvedSeed } from "../lib/bracket";
@@ -32,7 +33,7 @@ interface KnockoutDetailProps {
 export function KnockoutDetail({ match, onClose }: KnockoutDetailProps) {
   const { home, away } = match;
   const bothFirm = Boolean(home.id && away.id);
-  const reds = sentOffIn(match.id);
+  const reds = bothFirm ? sentOffInTie(home.id!, away.id!) : [];
   const out = unavailableFor(match.id);
   const goals = bothFirm ? goalsForTie(home.id!, away.id!) : [];
   const subs = bothFirm ? substitutionsForTie(home.id!, away.id!) : [];
@@ -166,20 +167,16 @@ function SeedFlag({ seed, size }: { seed: ResolvedSeed; size: number }) {
       /* fall through to slug/pip */
     }
   }
-  if (!seed.flag) return <span className="bk-seed-pip" aria-hidden="true" />;
+  const src = flagUrl(seed.flag);
+  if (!src) return <span className="bk-seed-pip" aria-hidden="true" />;
   return (
     <img
       className="flag"
-      src={`https://flagcdn.com/w40/${seed.flag}.png`}
-      srcSet={`https://flagcdn.com/w80/${seed.flag}.png 2x`}
+      src={src}
       width={size}
       height={Math.round(size * 0.68)}
-      loading="lazy"
       alt=""
       aria-hidden="true"
-      onError={(e) => {
-        (e.currentTarget as HTMLImageElement).style.display = "none";
-      }}
     />
   );
 }
