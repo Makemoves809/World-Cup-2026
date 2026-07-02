@@ -104,7 +104,7 @@ const R32: KoMatch[] = [
   { id: "m82", num: 82, home: W("G"), away: T("AEHIJ"), date: "2026-07-01", kickoff: "2026-07-01T20:00:00Z", venue: "Lumen Field · Seattle" },
   { id: "m83", num: 83, home: R("K"), away: R("L"), date: "2026-07-02", kickoff: "2026-07-02T23:00:00Z", venue: "BMO Field · Toronto" },
   { id: "m84", num: 84, home: W("H"), away: R("J"), date: "2026-07-02", kickoff: "2026-07-02T19:00:00Z", venue: "SoFi Stadium · Los Angeles" },
-  { id: "m85", num: 85, home: W("B"), away: T("EFGIJ"), date: "2026-07-03", kickoff: "2026-07-04T03:00:00Z", venue: "BC Place · Vancouver" },
+  { id: "m85", num: 85, home: W("B"), away: T("EFGIJ"), date: "2026-07-02", kickoff: "2026-07-03T03:00:00Z", venue: "BC Place · Vancouver" },
   { id: "m86", num: 86, home: W("J"), away: R("H"), date: "2026-07-03", kickoff: "2026-07-03T22:00:00Z", venue: "Hard Rock Stadium · Miami" },
   { id: "m87", num: 87, home: W("K"), away: T("DEIJL"), date: "2026-07-03", kickoff: "2026-07-04T01:30:00Z", venue: "Arrowhead Stadium · Kansas City" },
   { id: "m88", num: 88, home: R("D"), away: R("G"), date: "2026-07-03", kickoff: "2026-07-03T18:00:00Z", venue: "AT&T Stadium · Dallas" },
