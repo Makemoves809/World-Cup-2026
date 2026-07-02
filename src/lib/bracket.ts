@@ -162,6 +162,9 @@ interface KoResult {
   homeScore: number;
   awayScore: number;
   winnerId: string | null;
+  /** Penalty-shootout score, oriented home/away, when the tie went to kicks. */
+  penaltiesHome?: number;
+  penaltiesAway?: number;
 }
 
 interface LiveKo {
@@ -201,6 +204,9 @@ export interface ResolvedMatch {
   finished: boolean;
   /** Side that advanced, when finished. */
   winner?: "home" | "away";
+  /** Penalty-shootout score, oriented to home/away, when the tie went to kicks. */
+  penaltiesHome?: number;
+  penaltiesAway?: number;
   /** True while the tie is in play (the feed reports a running score). */
   live?: boolean;
   /** In-play score + minute, oriented to home/away, when live. */
@@ -312,6 +318,8 @@ export function resolveBracket(): ResolvedRound[] {
       let away: ResolvedSeed;
       let homeScore: number | undefined;
       let awayScore: number | undefined;
+      let penaltiesHome: number | undefined;
+      let penaltiesAway: number | undefined;
       let finished = false;
       let winner: "home" | "away" | undefined;
 
@@ -325,6 +333,10 @@ export function resolveBracket(): ResolvedRound[] {
         away = seedFromTeamId(aId, a.label, true);
         homeScore = homeIsResultHome ? result.homeScore : result.awayScore;
         awayScore = homeIsResultHome ? result.awayScore : result.homeScore;
+        if (result.penaltiesHome != null && result.penaltiesAway != null) {
+          penaltiesHome = homeIsResultHome ? result.penaltiesHome : result.penaltiesAway;
+          penaltiesAway = homeIsResultHome ? result.penaltiesAway : result.penaltiesHome;
+        }
         finished = true;
         if (result.winnerId) {
           winners.set(m.id, result.winnerId);
@@ -371,6 +383,8 @@ export function resolveBracket(): ResolvedRound[] {
         away,
         homeScore,
         awayScore,
+        penaltiesHome,
+        penaltiesAway,
         finished,
         winner,
         live,

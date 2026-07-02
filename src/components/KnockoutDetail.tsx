@@ -2,6 +2,8 @@ import { useEffect } from "react";
 import type { PlayerAbsence } from "../data/types";
 import { teamById } from "../data/teams";
 import { IMPACT_LABELS, sentOffIn, unavailableFor } from "../data/discipline";
+import { goalsForTie, minuteLabel, type Goal } from "../data/goals";
+import { substitutionsForTie, type Substitution } from "../data/substitutions";
 import { matchupTeams } from "../lib/matchup";
 import { openRoster, isRosterOpen } from "../lib/roster";
 import { useSheetDismiss } from "../lib/useSheetDismiss";
@@ -32,6 +34,8 @@ export function KnockoutDetail({ match, onClose }: KnockoutDetailProps) {
   const bothFirm = Boolean(home.id && away.id);
   const reds = sentOffIn(match.id);
   const out = unavailableFor(match.id);
+  const goals = bothFirm ? goalsForTie(home.id!, away.id!) : [];
+  const subs = bothFirm ? substitutionsForTie(home.id!, away.id!) : [];
   const m = bothFirm ? matchupTeams(home.id!, away.id!, match.id) : null;
   const sheet = useSheetDismiss(onClose);
 
@@ -81,6 +85,18 @@ export function KnockoutDetail({ match, onClose }: KnockoutDetailProps) {
           <TeamSide seed={away} onOpen={openSquad} away />
         </div>
 
+        {match.penaltiesHome != null && match.penaltiesAway != null && (
+          <p className="modal-venue">
+            {match.penaltiesHome}–{match.penaltiesAway} on penalties
+          </p>
+        )}
+
+        {match.finished && goals.length > 0 && (
+          <p className="modal-venue">
+            Scorers: {goals.map((g, i) => <GoalMention key={i} g={g} first={i === 0} />)}
+          </p>
+        )}
+
         <p className="modal-venue">{match.venue}</p>
 
         {m ? (
@@ -123,6 +139,19 @@ export function KnockoutDetail({ match, onClose }: KnockoutDetailProps) {
             No red cards or suspensions affect this match — both squads at full
             strength.
           </p>
+        )}
+
+        {subs.length > 0 && (
+          <section className="modal-section">
+            <h4 className="modal-head">
+              <i className="sub-dot" aria-hidden="true" /> Substitutions
+            </h4>
+            <ul className="player-list">
+              {subs.map((s, i) => (
+                <SubRow key={i} s={s} />
+              ))}
+            </ul>
+          </section>
         )}
       </div>
     </div>
@@ -198,6 +227,31 @@ function TeamSide({
         </>
       )}
     </span>
+  );
+}
+
+function GoalMention({ g, first }: { g: Goal; first: boolean }) {
+  const team = teamById(g.team);
+  return (
+    <span>
+      {!first && ", "}
+      {minuteLabel(g.minute, g.extra)} {g.scorer}
+      {g.type === "OWN" ? " (OG)" : g.type === "PENALTY" ? " (pen)" : ""} ({team.code})
+    </span>
+  );
+}
+
+function SubRow({ s }: { s: Substitution }) {
+  const team = teamById(s.team);
+  return (
+    <li className="player-row">
+      <div className="player-main">
+        <span className="player-name">
+          <Flag team={team} size={14} /> {s.playerOut} → {s.playerIn}
+        </span>
+        <span className="player-reason">{minuteLabel(s.minute)} substitution</span>
+      </div>
+    </li>
   );
 }
 

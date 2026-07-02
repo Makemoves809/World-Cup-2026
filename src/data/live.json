@@ -313,17 +313,21 @@
       "stage": "LAST_32",
       "homeId": "ger",
       "awayId": "par",
-      "homeScore": 4,
-      "awayScore": 5,
-      "winnerId": "par"
+      "homeScore": 1,
+      "awayScore": 1,
+      "winnerId": "par",
+      "penaltiesHome": 3,
+      "penaltiesAway": 4
     },
     {
       "stage": "LAST_32",
       "homeId": "ned",
       "awayId": "mar",
-      "homeScore": 3,
-      "awayScore": 4,
-      "winnerId": "mar"
+      "homeScore": 1,
+      "awayScore": 1,
+      "winnerId": "mar",
+      "penaltiesHome": 2,
+      "penaltiesAway": 3
     },
     {
       "stage": "LAST_32",
@@ -376,6 +380,8 @@
   ],
   "liveKo": [],
   "liveScores": {},
+  "goals": [],
+  "substitutions": [],
   "attendance": {},
   "eventsChecked": [
     "m-A-1",

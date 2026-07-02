@@ -1,7 +1,7 @@
 /**
- * Pulls finished results and red cards for the 2026 World Cup from
- * football-data.org (v4) and writes them to src/data/live.json. Run by
- * .github/workflows/update-data.yml on a schedule; the app merges
+ * Pulls finished results, cards, goals, and substitutions for the 2026 World
+ * Cup from football-data.org (v4) and writes them to src/data/live.json. Run
+ * by .github/workflows/update-data.yml on a schedule; the app merges
  * live.json with the manually curated data.
  *
  * Usage: FOOTBALL_API_KEY=... npx tsx scripts/update-data.ts
@@ -35,6 +35,33 @@ interface LiveYellowCard {
   minute: number | null;
 }
 
+/** A goal, keyed the same way as substitutions (see `matchId` below). */
+interface LiveGoal {
+  matchId: string;
+  team: string;
+  scorer: string;
+  assist: string | null;
+  minute: number | null;
+  extra: number | null;
+  /** "REGULAR" | "OWN" | "PENALTY". */
+  type: string;
+}
+
+/**
+ * A substitution. `matchId` is our fixtures.ts id for group matches, or a
+ * synthetic `ko:<idA>-<idB>` key (see `koKey`) for knockout ties, which have
+ * no fixed id until the bracket resolves — but any two teams meet at most
+ * once across the whole knockout stage, so the team-id pair alone is a safe,
+ * stage-free lookup key.
+ */
+interface LiveSubstitution {
+  matchId: string;
+  team: string;
+  playerOut: string;
+  playerIn: string;
+  minute: number | null;
+}
+
 interface KoResult {
   /** API stage, e.g. "LAST_32", "LAST_16", "QUARTER_FINALS", "FINAL". */
   stage: string;
@@ -44,6 +71,9 @@ interface KoResult {
   awayScore: number;
   /** Team id that advanced (after extra time / penalties), if known. */
   winnerId: string | null;
+  /** Penalty-shootout score, oriented home/away, when the tie went to kicks. */
+  penaltiesHome?: number;
+  penaltiesAway?: number;
 }
 
 interface LiveKo {
@@ -63,6 +93,8 @@ interface LiveData {
   redCards: LiveRedCard[];
   /** Straight yellow cards — used to compute two-yellow suspensions. */
   yellowCards: LiveYellowCard[];
+  goals: LiveGoal[];
+  substitutions: LiveSubstitution[];
   /** Finished knockout matches — used to fill the bracket. */
   koResults: KoResult[];
   /** In-play knockout scores by stage + teams (rebuilt each run). */
@@ -71,13 +103,18 @@ interface LiveData {
   liveScores: Record<string, { home: number; away: number; minute: number | null }>;
   /** Announced attendance, keyed by match id. */
   attendance: Record<string, number>;
-  /** Match ids whose post-match events were already fetched. */
+  /** Match ids (or `ko:` keys) whose post-match events were already fetched. */
   eventsChecked: string[];
 }
+
+/** Order-free lookup key for a knockout tie — any two teams meet at most once. */
+const koKey = (a: string, b: string) => `ko:${[a, b].sort().join("-")}`;
 
 const LIVE_PATH = new URL("../src/data/live.json", import.meta.url);
 const live: LiveData = JSON.parse(readFileSync(LIVE_PATH, "utf8"));
 live.yellowCards = live.yellowCards ?? [];
+live.goals = live.goals ?? [];
+live.substitutions = live.substitutions ?? [];
 live.koResults = live.koResults ?? [];
 live.liveKo = live.liveKo ?? [];
 live.liveScores = live.liveScores ?? {};
@@ -86,6 +123,8 @@ const before = JSON.stringify({
   results: live.results,
   redCards: live.redCards,
   yellowCards: live.yellowCards,
+  goals: live.goals,
+  substitutions: live.substitutions,
   koResults: live.koResults,
   liveKo: live.liveKo,
   liveScores: live.liveScores,
@@ -171,6 +210,8 @@ console.log(`API returned ${fdMatches.length} fixtures`);
 
 /** Our match id → football-data match id, for finished matches we can map. */
 const finishedApi = new Map<string, number>();
+/** `ko:` key → football-data match id, for finished knockout ties. */
+const finishedKoApi = new Map<string, number>();
 /** In-play group-stage scores, rebuilt fresh each run. */
 const liveScores: Record<
   string,
@@ -225,7 +266,9 @@ for (const f of fdMatches) {
   }
 
   if (f.status !== "FINISHED") continue;
-  const ft = f.score?.fullTime;
+  // Regulation/extra-time score (NOT the shootout) decides homeScore/awayScore;
+  // a penalty shootout only decides the winner, tracked separately below.
+  const ft = f.score?.regularTime ?? f.score?.fullTime;
   if (ft?.home == null || ft?.away == null) continue;
 
   if (pair) {
@@ -238,9 +281,7 @@ for (const f of fdMatches) {
     const w = f.score?.winner;
     const winnerId =
       w === "HOME_TEAM" ? homeId : w === "AWAY_TEAM" ? awayId : null;
-    const existing = live.koResults.find(
-      (k) => k.homeId === homeId && k.awayId === awayId && k.stage === f.stage
-    );
+    const pens = f.score?.penalties;
     const rec: KoResult = {
       stage: f.stage,
       homeId,
@@ -248,23 +289,26 @@ for (const f of fdMatches) {
       homeScore: ft.home,
       awayScore: ft.away,
       winnerId,
+      penaltiesHome: pens?.home ?? undefined,
+      penaltiesAway: pens?.away ?? undefined,
     };
+    const existing = live.koResults.find(
+      (k) => k.homeId === homeId && k.awayId === awayId && k.stage === f.stage
+    );
     if (existing) Object.assign(existing, rec);
     else live.koResults.push(rec);
+    finishedKoApi.set(koKey(homeId, awayId), f.id);
   }
 }
 
 live.liveScores = liveScores;
 live.liveKo = liveKo;
 
-// Fetch bookings once per newly finished match (free tier: 10 requests/min).
-for (const [matchId, apiId] of finishedApi) {
-  if (live.eventsChecked.includes(matchId)) continue;
-  console.log(`Fetching events for ${matchId} (fd match ${apiId})`);
-  await sleep(6500);
-  const detail = await get(`/matches/${apiId}`);
+/** Pull bookings/goals/substitutions out of a `/matches/{id}` detail payload. */
+function extractEvents(detail: any, matchId: string) {
   const att = detail.attendance ?? detail.match?.attendance;
   if (typeof att === "number" && att > 0) live.attendance[matchId] = att;
+
   const bookings: any[] = detail.bookings ?? detail.match?.bookings ?? [];
   for (const b of bookings) {
     const card: string = b.card ?? "";
@@ -290,6 +334,49 @@ for (const [matchId, apiId] of finishedApi) {
       });
     }
   }
+
+  const goals: any[] = detail.goals ?? detail.match?.goals ?? [];
+  for (const g of goals) {
+    const teamId = mapTeam(g.team);
+    if (!teamId || !g.scorer?.name) continue;
+    live.goals.push({
+      matchId,
+      team: teamId,
+      scorer: g.scorer.name,
+      assist: g.assist?.name ?? null,
+      minute: g.minute ?? null,
+      extra: g.injuryTime ?? null,
+      type: g.type ?? "REGULAR",
+    });
+  }
+
+  const subs: any[] = detail.substitutions ?? detail.match?.substitutions ?? [];
+  for (const s of subs) {
+    const teamId = mapTeam(s.team);
+    if (!teamId || !s.playerOut?.name || !s.playerIn?.name) continue;
+    live.substitutions.push({
+      matchId,
+      team: teamId,
+      playerOut: s.playerOut.name,
+      playerIn: s.playerIn.name,
+      minute: s.minute ?? null,
+    });
+  }
+}
+
+// Fetch full match details once per newly finished match (free tier: 10
+// requests/min) — bookings, goals, and substitutions all come from the same
+// response, so this covers all three at no extra request cost.
+const toFetch: Array<[string, number]> = [
+  ...finishedApi.entries(),
+  ...finishedKoApi.entries(),
+];
+for (const [matchId, apiId] of toFetch) {
+  if (live.eventsChecked.includes(matchId)) continue;
+  console.log(`Fetching events for ${matchId} (fd match ${apiId})`);
+  await sleep(6500);
+  const detail = await get(`/matches/${apiId}`);
+  extractEvents(detail, matchId);
   live.eventsChecked.push(matchId);
 }
 
@@ -297,6 +384,8 @@ const after = JSON.stringify({
   results: live.results,
   redCards: live.redCards,
   yellowCards: live.yellowCards,
+  goals: live.goals,
+  substitutions: live.substitutions,
   koResults: live.koResults,
   liveKo: live.liveKo,
   liveScores: live.liveScores,
@@ -310,6 +399,7 @@ if (after === before) {
   live.updatedAt = new Date().toISOString();
   writeFileSync(LIVE_PATH, JSON.stringify(live, null, 2) + "\n");
   console.log(
-    `Updated: ${Object.keys(live.results).length} results, ${live.redCards.length} red cards, ${live.yellowCards.length} yellow cards.`
+    `Updated: ${Object.keys(live.results).length} results, ${live.redCards.length} red cards, ` +
+      `${live.yellowCards.length} yellow cards, ${live.goals.length} goals, ${live.substitutions.length} substitutions.`
   );
 }
