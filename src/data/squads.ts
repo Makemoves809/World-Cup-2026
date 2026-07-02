@@ -132,21 +132,23 @@ const ARGENTINA: TeamSquad = {
 
 const SPAIN: TeamSquad = {
   teamId: "esp",
-  // Actual opener vs Cabo Verde (0–0): a 4-2-3-1, Yamal & Nico Williams rested.
-  formation: "4-2-3-1",
+  // Most recent: R32 vs Austria (3–0). Shifted from the opener's 4-2-3-1 to a
+  // 4-3-3 — Porro in for Llorente at right-back, Olmo and Baena in for Fabián
+  // Ruiz and Ferran Torres, Yamal in for Gavi on the right.
+  formation: "4-3-3",
   players: [
     // ---- Starting XI ----
     { num: 23, name: "Unai Simón", short: "U. Simón", line: "gk", role: "Goalkeeper", club: "Athletic Club", at2022: true, start: { x: 50, y: 90 } },
-    { num: 5, name: "Marcos Llorente", short: "Llorente", line: "def", role: "Right-back", club: "Atlético Madrid", at2022: true, photo: "Marcos Llorente.JPG", start: { x: 84, y: 70 } },
+    { num: 12, name: "Pedro Porro", short: "Porro", line: "def", role: "Right-back", club: "Tottenham", at2022: false, start: { x: 84, y: 70 } },
     { num: 22, name: "Pau Cubarsí", short: "Cubarsí", line: "def", role: "Centre-back", club: "Barcelona", at2022: false, start: { x: 62, y: 73 } },
     { num: 14, name: "Aymeric Laporte", short: "Laporte", line: "def", role: "Centre-back", club: "Athletic Club", at2022: true, photo: "Aymeric Laporte 2023 (cropped).jpg", start: { x: 38, y: 73 } },
     { num: 24, name: "Marc Cucurella", short: "Cucurella", line: "def", role: "Left-back", club: "Chelsea", at2022: false, photo: "Marc Cucurella (cropped).jpg", start: { x: 16, y: 70 } },
-    { num: 16, name: "Rodri", short: "Rodri", line: "mid", role: "Defensive midfield", club: "Manchester City", at2022: true, captain: true, photo: "Yokohama F. Marinos - Manchester City (3-5) - 53075487835 (Rodri) (cropped).jpg", start: { x: 64, y: 50 } },
-    { num: 8, name: "Fabián Ruiz", short: "Fabián", line: "mid", role: "Central midfield", club: "PSG", at2022: false, photo: "UEFA EURO qualifiers Sweden vs Spain 20191015 Fabian Ruiz.jpg", start: { x: 36, y: 50 } },
-    { num: 7, name: "Ferran Torres", short: "Ferran", line: "fwd", role: "Right winger", club: "Barcelona", at2022: true, start: { x: 78, y: 29 } },
-    { num: 20, name: "Pedri", short: "Pedri", line: "mid", role: "Attacking midfield", club: "Barcelona", at2022: true, photo: "Pedri.jpg", start: { x: 50, y: 31 } },
-    { num: 9, name: "Gavi", short: "Gavi", line: "mid", role: "Left winger", club: "Barcelona", at2022: true, photo: "Gavi (footballer).jpg", start: { x: 22, y: 29 } },
+    { num: 16, name: "Rodri", short: "Rodri", line: "mid", role: "Defensive midfield", club: "Manchester City", at2022: true, captain: true, photo: "Yokohama F. Marinos - Manchester City (3-5) - 53075487835 (Rodri) (cropped).jpg", start: { x: 50, y: 52 } },
+    { num: 10, name: "Dani Olmo", short: "Olmo", line: "mid", role: "Central midfield", club: "Barcelona", at2022: true, start: { x: 72, y: 46 } },
+    { num: 20, name: "Pedri", short: "Pedri", line: "mid", role: "Central midfield", club: "Barcelona", at2022: true, photo: "Pedri.jpg", start: { x: 28, y: 46 } },
+    { num: 19, name: "Lamine Yamal", short: "Yamal", line: "fwd", role: "Right winger", club: "Barcelona", at2022: false, photo: "Lamine Yamal in 2025 (cropped).jpg", start: { x: 80, y: 18 } },
     { num: 21, name: "Mikel Oyarzabal", short: "Oyarzabal", line: "fwd", role: "Striker", club: "Real Sociedad", at2022: false, photo: "Mikel Oyarzabal.jpg", start: { x: 50, y: 13 } },
+    { num: 15, name: "Álex Baena", short: "Baena", line: "fwd", role: "Left winger", club: "Atlético Madrid", at2022: false, start: { x: 20, y: 18 } },
 
     // ---- Bench ----
     { num: 1, name: "David Raya", short: "Raya", line: "gk", role: "Goalkeeper", club: "Arsenal", at2022: true },
@@ -154,15 +156,15 @@ const SPAIN: TeamSquad = {
     { num: 2, name: "Marc Pubill", short: "Pubill", line: "def", role: "Right-back", club: "Atlético Madrid", at2022: false },
     { num: 3, name: "Alejandro Grimaldo", short: "Grimaldo", line: "def", role: "Left-back", club: "Bayer Leverkusen", at2022: false },
     { num: 4, name: "Eric García", short: "E. García", line: "def", role: "Centre-back", club: "Barcelona", at2022: true },
-    { num: 12, name: "Pedro Porro", short: "Porro", line: "def", role: "Right-back", club: "Tottenham", at2022: false },
+    { num: 5, name: "Marcos Llorente", short: "Llorente", line: "def", role: "Right-back", club: "Atlético Madrid", at2022: true, photo: "Marcos Llorente.JPG" },
     { num: 6, name: "Mikel Merino", short: "Merino", line: "mid", role: "Central midfield", club: "Arsenal", at2022: false },
-    { num: 10, name: "Dani Olmo", short: "Olmo", line: "mid", role: "Attacking midfield", club: "Barcelona", at2022: true },
-    { num: 15, name: "Álex Baena", short: "Baena", line: "mid", role: "Attacking midfield", club: "Atlético Madrid", at2022: false },
+    { num: 8, name: "Fabián Ruiz", short: "Fabián", line: "mid", role: "Central midfield", club: "PSG", at2022: false, photo: "UEFA EURO qualifiers Sweden vs Spain 20191015 Fabian Ruiz.jpg" },
     { num: 18, name: "Martín Zubimendi", short: "Zubimendi", line: "mid", role: "Defensive midfield", club: "Arsenal", at2022: false },
     { num: 25, name: "Víctor Muñoz", short: "V. Muñoz", line: "mid", role: "Central midfield", club: "Girona", at2022: false },
+    { num: 7, name: "Ferran Torres", short: "Ferran", line: "fwd", role: "Right winger", club: "Barcelona", at2022: true },
+    { num: 9, name: "Gavi", short: "Gavi", line: "fwd", role: "Left winger", club: "Barcelona", at2022: true, photo: "Gavi (footballer).jpg" },
     { num: 11, name: "Yeremy Pino", short: "Y. Pino", line: "fwd", role: "Winger", club: "Crystal Palace", at2022: true },
     { num: 17, name: "Nico Williams", short: "N. Williams", line: "fwd", role: "Left winger", club: "Athletic Club", at2022: true },
-    { num: 19, name: "Lamine Yamal", short: "Yamal", line: "fwd", role: "Right winger", club: "Barcelona", at2022: false, photo: "Lamine Yamal in 2025 (cropped).jpg" },
     { num: 26, name: "Borja Iglesias", short: "B. Iglesias", line: "fwd", role: "Striker", club: "Celta Vigo", at2022: false },
   ],
 };
@@ -832,34 +834,39 @@ const CABO_VERDE: TeamSquad = {
 
 const AUSTRIA: TeamSquad = {
   teamId: "aut",
-  // Opener vs Jordan (3–1): a 4-2-3-1. Some shirt numbers best-effort.
+  // Most recent: R32 vs Spain (0–3, eliminated). Still a 4-2-3-1, but Danso in
+  // for Lienhart and Posch in for Mwene at the back, Wanner in for the
+  // injured Baumgartner (thigh — out of the tournament), and Gregoritsch
+  // pushed up as the lone striker for Arnautović. Best-effort on the exact
+  // left-back/winger slotting — reported as personnel changes, not a shape
+  // change, but not confirmed against an official lineup graphic.
   formation: "4-2-3-1",
   players: [
     { num: 1, name: "Alexander Schlager", short: "A. Schlager", line: "gk", role: "Goalkeeper", club: "Red Bull Salzburg", at2022: false, start: { x: 50, y: 90 } },
     { num: 6, name: "Konrad Laimer", short: "Laimer", line: "def", role: "Right-back", club: "Bayern Munich", at2022: false, start: { x: 84, y: 70 } },
-    { num: 4, name: "Philipp Lienhart", short: "Lienhart", line: "def", role: "Centre-back", club: "Freiburg", at2022: false, start: { x: 62, y: 73 } },
+    { num: 15, name: "Kevin Danso", short: "Danso", line: "def", role: "Centre-back", club: "Tottenham", at2022: false, start: { x: 62, y: 73 } },
     { num: 8, name: "David Alaba", short: "Alaba", line: "def", role: "Centre-back", club: "Real Madrid", at2022: false, captain: true, photo: "David Alaba 2013.JPG", start: { x: 38, y: 73 } },
-    { num: 3, name: "Phillipp Mwene", short: "Mwene", line: "def", role: "Left-back", club: "Mainz", at2022: false, start: { x: 16, y: 70 } },
+    { num: 2, name: "Stefan Posch", short: "Posch", line: "def", role: "Left-back", club: "Mainz", at2022: false, start: { x: 16, y: 70 } },
     { num: 14, name: "Xaver Schlager", short: "X. Schlager", line: "mid", role: "Defensive midfield", club: "RB Leipzig", at2022: false, start: { x: 64, y: 50 } },
     { num: 13, name: "Nicolas Seiwald", short: "Seiwald", line: "mid", role: "Defensive midfield", club: "RB Leipzig", at2022: false, start: { x: 36, y: 50 } },
     { num: 20, name: "Romano Schmid", short: "Schmid", line: "fwd", role: "Right winger", club: "Werder Bremen", at2022: false, start: { x: 78, y: 29 } },
     { num: 7, name: "Marcel Sabitzer", short: "Sabitzer", line: "mid", role: "Attacking midfield", club: "Borussia Dortmund", at2022: false, start: { x: 50, y: 31 } },
-    { num: 11, name: "Michael Gregoritsch", short: "Gregoritsch", line: "fwd", role: "Left winger", club: "Augsburg", at2022: false, start: { x: 22, y: 29 } },
-    { num: 9, name: "Marko Arnautović", short: "Arnautović", line: "fwd", role: "Striker", club: "Red Star Belgrade", at2022: false, start: { x: 50, y: 13 } },
+    { num: 17, name: "Paul Wanner", short: "Wanner", line: "fwd", role: "Left winger", club: "PSV", at2022: false, start: { x: 22, y: 29 } },
+    { num: 11, name: "Michael Gregoritsch", short: "Gregoritsch", line: "fwd", role: "Striker", club: "Augsburg", at2022: false, start: { x: 50, y: 13 } },
 
     { num: 12, name: "Patrick Pentz", short: "Pentz", line: "gk", role: "Goalkeeper", club: "Brøndby", at2022: false },
     { num: 23, name: "Niklas Hedl", short: "Hedl", line: "gk", role: "Goalkeeper", club: "Rapid Wien", at2022: false },
-    { num: 2, name: "Stefan Posch", short: "Posch", line: "def", role: "Right-back", club: "Mainz", at2022: false },
-    { num: 15, name: "Kevin Danso", short: "Danso", line: "def", role: "Centre-back", club: "Tottenham", at2022: false },
+    { num: 3, name: "Phillipp Mwene", short: "Mwene", line: "def", role: "Left-back", club: "Mainz", at2022: false },
+    { num: 4, name: "Philipp Lienhart", short: "Lienhart", line: "def", role: "Centre-back", club: "Freiburg", at2022: false },
     { num: 5, name: "David Affengruber", short: "Affengruber", line: "def", role: "Centre-back", club: "Elche", at2022: false },
     { num: 16, name: "Marco Friedl", short: "Friedl", line: "def", role: "Centre-back", club: "Werder Bremen", at2022: false },
     { num: 22, name: "Michael Svoboda", short: "Svoboda", line: "def", role: "Centre-back", club: "Venezia", at2022: false },
     { num: 24, name: "Alexander Prass", short: "Prass", line: "def", role: "Left-back", club: "Hoffenheim", at2022: false },
+    { num: 9, name: "Marko Arnautović", short: "Arnautović", line: "fwd", role: "Striker", club: "Red Star Belgrade", at2022: false },
     { num: 10, name: "Florian Grillitsch", short: "Grillitsch", line: "mid", role: "Central midfield", club: "Braga", at2022: false },
     { num: 18, name: "Carney Chukwuemeka", short: "Chukwuemeka", line: "mid", role: "Central midfield", club: "Borussia Dortmund", at2022: false },
     { num: 19, name: "Christoph Baumgartner", short: "Baumgartner", line: "mid", role: "Attacking midfield", club: "RB Leipzig", at2022: false },
     { num: 21, name: "Patrick Wimmer", short: "Wimmer", line: "mid", role: "Winger", club: "Wolfsburg", at2022: false },
-    { num: 17, name: "Paul Wanner", short: "Wanner", line: "mid", role: "Attacking midfield", club: "PSV", at2022: false },
     { num: 25, name: "Alessandro Schöpf", short: "Schöpf", line: "mid", role: "Central midfield", club: "Wolfsberger AC", at2022: false },
     { num: 26, name: "Saša Kalajdžić", short: "Kalajdžić", line: "fwd", role: "Striker", club: "LASK", at2022: false },
   ],
