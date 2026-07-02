@@ -1056,13 +1056,14 @@ img.flag {
   gap: 12px;
 }
 
-/* Clean schedule rows */
+/* Schedule rows — each match reads as its own contained card */
 .sch-list {
   list-style: none;
   margin: 0;
   padding: 0;
   display: flex;
   flex-direction: column;
+  gap: var(--sp-3);
 }
 .sch-row {
   position: relative;
@@ -1071,25 +1072,29 @@ img.flag {
   align-items: center;
   gap: var(--sp-4);
   padding: var(--sp-3) var(--sp-4) var(--sp-3) var(--sp-5);
-  border-radius: var(--radius-sm);
-  border: 1px solid transparent;
-  transition: background 0.14s, border-color 0.14s;
+  border-radius: var(--radius);
+  background: var(--surface-card);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow-card);
+  transition: background 0.14s, border-color 0.14s, transform 0.14s, box-shadow 0.14s;
 }
-.sch-row + .sch-row { border-top: 1px solid var(--line-soft); }
 .sch-row:hover,
 .sch-row:focus-visible {
-  background: var(--grass-soft);
-  border-color: rgba(43, 212, 121, 0.22);
+  background: var(--surface-card-hover);
+  border-color: rgba(43, 212, 121, 0.35);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-2);
   outline: none;
 }
-/* Left accent marks the winning side (knockouts + finished group games) */
+/* Left accent marks the winning side (knockouts + finished group games) — a
+   full-height stripe flush with the card's rounded corner. */
 .sch-win {
   position: absolute;
   left: 0;
-  top: 8px;
-  bottom: 8px;
-  width: 3px;
-  border-radius: var(--radius-pill);
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  border-radius: var(--radius) 0 0 var(--radius);
   background: transparent;
 }
 .sch-win.home,
