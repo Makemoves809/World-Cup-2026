@@ -8,6 +8,7 @@ import {
 } from "../data/squads";
 import { cardStatus, type CardStatus } from "../data/discipline";
 import { playerRating, type PlayerRating } from "../lib/playerRating";
+import { useSheetDismiss } from "../lib/useSheetDismiss";
 
 /** Which coloured ring/badge a player's status warrants (most severe first). */
 function statusKind(cs: CardStatus): "red" | "yellow" | "out" | null {
@@ -109,6 +110,8 @@ function PlayerModal({
   rating: PlayerRating | null;
   onClose: () => void;
 }) {
+  const sheet = useSheetDismiss(onClose);
+
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => e.key === "Escape" && onClose();
     window.addEventListener("keydown", onKey);
@@ -117,7 +120,15 @@ function PlayerModal({
 
   return (
     <div className="modal-backdrop player-backdrop" onClick={onClose}>
-      <div className="modal pl-modal" onClick={(e) => e.stopPropagation()}>
+      <div
+        className="modal pl-modal"
+        onClick={(e) => e.stopPropagation()}
+        ref={sheet.ref}
+        style={sheet.style}
+        onTouchStart={sheet.onTouchStart}
+        onTouchMove={sheet.onTouchMove}
+        onTouchEnd={sheet.onTouchEnd}
+      >
         <button className="modal-close" onClick={onClose} aria-label="Close">
           ×
         </button>

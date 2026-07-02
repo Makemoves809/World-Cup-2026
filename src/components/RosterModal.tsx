@@ -2,11 +2,14 @@ import { useEffect } from "react";
 import { SQUADS } from "../data/squads";
 import { teamById } from "../data/teams";
 import { closeRoster } from "../lib/roster";
+import { useSheetDismiss } from "../lib/useSheetDismiss";
 import { SquadView } from "./SquadView";
 import { TeamResults } from "./TeamResults";
 
 /** In-place team-roster overlay — opens over the current tab without navigating. */
 export function RosterModal({ teamId }: { teamId: string }) {
+  const sheet = useSheetDismiss(closeRoster);
+
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => e.key === "Escape" && closeRoster();
     document.addEventListener("keydown", onKey);
@@ -31,7 +34,15 @@ export function RosterModal({ teamId }: { teamId: string }) {
 
   return (
     <div className="modal-backdrop roster-backdrop" onClick={closeRoster}>
-      <div className="modal roster-modal" onClick={(e) => e.stopPropagation()}>
+      <div
+        className="modal roster-modal"
+        onClick={(e) => e.stopPropagation()}
+        ref={sheet.ref}
+        style={sheet.style}
+        onTouchStart={sheet.onTouchStart}
+        onTouchMove={sheet.onTouchMove}
+        onTouchEnd={sheet.onTouchEnd}
+      >
         <button className="modal-close" onClick={closeRoster} aria-label="Close">
           ×
         </button>
