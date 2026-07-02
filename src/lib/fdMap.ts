@@ -24,6 +24,9 @@ export interface FdKo {
   /** Match phase for a live tie: "HT" | "ET" | "PENS" (else undefined). */
   phase?: string | null;
   winnerId?: string | null;
+  /** Penalty-shootout score, oriented home/away, when the tie went to kicks. */
+  penaltiesHome?: number;
+  penaltiesAway?: number;
 }
 export interface FdLive {
   results: Record<string, [number, number]>;
@@ -108,15 +111,24 @@ export function transformFdMatches(fdMatches: any[]): FdLive {
       attendance[pair.id] = f.attendance;
     }
 
+    const dur = f.score?.duration;
+    const pens = f.score?.penalties;
+    const wentToPens = dur === "PENALTY_SHOOTOUT" && pens?.home != null && pens?.away != null;
+
     if (f.status === "IN_PLAY" || f.status === "PAUSED") {
-      const sc = f.score?.fullTime ?? {};
+      const rawSc = f.score?.fullTime ?? {};
+      // fullTime is observed to fold the penalty score into the total once a
+      // shootout starts (see the FINISHED branch below) — subtract it back
+      // out so a scored penalty doesn't render as a live goal.
+      const sc = wentToPens
+        ? { home: (rawSc.home ?? 0) - pens!.home!, away: (rawSc.away ?? 0) - pens!.away! }
+        : rawSc;
       const h = sc.home ?? 0;
       const a = sc.away ?? 0;
       const minute = f.minute ?? null;
       // Period marker from the feed. Regulation splits into 1st/2nd half via
       // whether the half-time score has been recorded yet. Extra time can't be
       // split into halves (the free feed has no live minute), so it's one label.
-      const dur = f.score?.duration;
       const htPlayed = f.score?.halfTime?.home != null;
       const phase =
         dur === "PENALTY_SHOOTOUT"
@@ -139,7 +151,14 @@ export function transformFdMatches(fdMatches: any[]): FdLive {
     }
 
     if (f.status !== "FINISHED") continue;
-    const ft = f.score?.fullTime;
+    const rawFt = f.score?.fullTime;
+    // Same fold-in as above, but for the final score: fullTime for a match
+    // that went to penalties is (real score + penalty score) summed per
+    // side — subtract the penalty score (which we capture separately) to
+    // recover the real one, rather than trust it directly.
+    const ft = wentToPens
+      ? { home: rawFt!.home! - pens!.home!, away: rawFt!.away! - pens!.away! }
+      : rawFt;
     if (ft?.home == null || ft?.away == null) continue;
 
     if (pair) {
@@ -155,6 +174,8 @@ export function transformFdMatches(fdMatches: any[]): FdLive {
         homeScore: ft.home,
         awayScore: ft.away,
         winnerId,
+        penaltiesHome: wentToPens ? pens!.home! : undefined,
+        penaltiesAway: wentToPens ? pens!.away! : undefined,
       });
     }
   }

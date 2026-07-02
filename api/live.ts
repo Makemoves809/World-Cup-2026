@@ -58,6 +58,7 @@ export default async function handler(_req: unknown, res: Res): Promise<void> {
           duration?: string | null;
           fullTime?: { home?: number | null; away?: number | null };
           halfTime?: { home?: number | null; away?: number | null };
+          penalties?: { home?: number | null; away?: number | null };
         };
       };
       return {
@@ -78,6 +79,13 @@ export default async function handler(_req: unknown, res: Res): Promise<void> {
             home: m.score?.halfTime?.home ?? null,
             away: m.score?.halfTime?.away ?? null,
           },
+          // Needed to recover the real score for a shootout match — fullTime
+          // is observed to fold the penalty score into the total for those
+          // (see src/lib/fdMap.ts), so the client subtracts this back out.
+          penalties:
+            m.score?.penalties?.home != null && m.score?.penalties?.away != null
+              ? { home: m.score.penalties.home, away: m.score.penalties.away }
+              : null,
         },
       };
     });
