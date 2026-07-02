@@ -68,13 +68,19 @@ const curated: Record<string, number> = {
   "m-K-5": 64478, // Colombia 0–0 Portugal — Hard Rock Stadium, Miami
   "m-L-5": 80663, // Panama 0–2 England — MetLife Stadium, New York/New Jersey
   "m-L-6": 68324, // Croatia 2–1 Ghana — Lincoln Financial Field, Philadelphia
-  // Pending official figures: m-C-3 Scotland 0–1 Morocco (Gillette — only a
-  // figure matching capacity has surfaced, unverified), m-L-3 England 0–0
-  // Ghana (Gillette — "over 63,000", exact TBC), m-D-6 Paraguay 0–0 Australia
-  // (Levi's — only a capacity-matching figure surfaced; a 0–0 dead rubber may
-  // not have sold out), and m-I-6 Senegal 5–0 Iraq (BMO — only a figure
-  // matching another BMO game surfaced, single-sourced), and m-K-6 DR Congo
-  // 3–1 Uzbekistan (Mercedes-Benz — no figure published yet). Fill when confirmed.
+  // Pending official figures — every search attempt so far has returned a
+  // number that's an exact duplicate of a *different* match's already-curated
+  // attendance at the same venue (a search-tool artifact, not a real repeat
+  // sellout), so nothing below is trustworthy enough to add yet:
+  //   m-C-3 Scotland 0–1 Morocco (Gillette), m-L-3 England 0–0 Ghana (Gillette),
+  //   m-L-4 Panama 0–1 Croatia (BMO Field), m-K-4 Colombia 1–0 DR Congo (Akron),
+  //   m-B-5 Switzerland 2–1 Canada (BC Place), m-B-6 Bosnia 3–1 Qatar (Lumen),
+  //   m-C-5 Scotland 0–3 Brazil (Hard Rock), m-C-6 Morocco 4–2 Haiti (Mercedes-Benz),
+  //   m-A-5 Czechia 0–3 Mexico (Azteca), m-A-6 South Africa 1–0 Korea Republic (BBVA),
+  //   m-D-6 Paraguay 0–0 Australia (Levi's), m-I-6 Senegal 5–0 Iraq (BMO Field),
+  //   m-K-6 DR Congo 3–1 Uzbekistan (Mercedes-Benz), m-J-5 Jordan 1–3 Argentina
+  //   (AT&T Stadium), m-J-6 Algeria 3–3 Austria (Arrowhead). Fill when a genuine
+  //   per-match figure (not a venue-pattern guess) is confirmed.
 };
 
 const liveAttendance =
