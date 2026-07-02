@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-02T02:12:13.215Z",
+  "updatedAt": "2026-07-02T14:46:35.393Z",
   "results": {
     "m-A-1": [
       2,
@@ -365,7 +365,7 @@
       "stage": "LAST_32",
       "homeId": "bel",
       "awayId": "sen",
-      "homeScore": 3,
+      "homeScore": 2,
       "awayScore": 2,
       "winnerId": "bel"
     },
@@ -455,6 +455,16 @@
     "m-K-5",
     "m-K-6",
     "m-J-5",
-    "m-J-6"
+    "m-J-6",
+    "ko:can-rsa",
+    "ko:bra-jpn",
+    "ko:ger-par",
+    "ko:mar-ned",
+    "ko:civ-nor",
+    "ko:fra-swe",
+    "ko:ecu-mex",
+    "ko:cod-eng",
+    "ko:bel-sen",
+    "ko:bih-usa"
   ]
 }
