@@ -4,6 +4,7 @@ import { matches } from "../data/fixtures";
 import { teamById } from "../data/teams";
 import { isLive, liveScore } from "../lib/live";
 import { useLiveData } from "../lib/liveData";
+import { flagUrl } from "../lib/flags";
 import {
   resolveBracket,
   type ResolvedSeed,
@@ -59,22 +60,9 @@ interface Side {
 }
 
 function SideView({ side, away }: { side: Side; away?: boolean }) {
-  // Eager (not lazy) — these are small icons in a short list, and lazy
-  // loading was making them sit blank on slower connections since they never
-  // got a chance to start fetching until scrolled fully into view.
-  const flag = side.flag ? (
-    <img
-      className="flag"
-      src={`https://flagcdn.com/w48/${side.flag}.png`}
-      srcSet={`https://flagcdn.com/w96/${side.flag}.png 2x`}
-      width={24}
-      height={16}
-      alt=""
-      aria-hidden="true"
-      onError={(e) => {
-        (e.currentTarget as HTMLImageElement).style.display = "none";
-      }}
-    />
+  const src = flagUrl(side.flag);
+  const flag = src ? (
+    <img className="flag" src={src} width={24} height={16} alt="" aria-hidden="true" />
   ) : (
     <span className="sch-pip" aria-hidden="true" />
   );

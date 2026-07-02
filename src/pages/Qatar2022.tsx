@@ -6,23 +6,12 @@ import {
   type ArchiveMatch,
   type ArchiveRow,
 } from "../data/qatar2022";
+import { flagUrl } from "../lib/flags";
 
 function AFlag({ slug }: { slug: string }) {
-  return (
-    <img
-      className="flag"
-      src={`https://flagcdn.com/w40/${slug}.png`}
-      srcSet={`https://flagcdn.com/w80/${slug}.png 2x`}
-      width={24}
-      height={16}
-      loading="lazy"
-      alt=""
-      aria-hidden="true"
-      onError={(e) => {
-        (e.currentTarget as HTMLImageElement).style.display = "none";
-      }}
-    />
-  );
+  const src = flagUrl(slug);
+  if (!src) return null;
+  return <img className="flag" src={src} width={24} height={16} alt="" aria-hidden="true" />;
 }
 
 function gd(row: ArchiveRow) {
