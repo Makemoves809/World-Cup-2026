@@ -238,7 +238,15 @@ for (const f of fdMatches) {
 
   // In-play / half-time: record the running score.
   if (f.status === "IN_PLAY" || f.status === "PAUSED") {
-    const sc = f.score?.fullTime ?? {};
+    const dur = f.score?.duration;
+    // Same fullTime-folds-in-penalties quirk as finished matches (see below)
+    // seems to kick in as soon as the shootout starts, not just once it's
+    // over — freeze the score at the pre-shootout tally rather than risk
+    // showing a running "goal" count that's actually penalty kicks.
+    const sc =
+      dur === "PENALTY_SHOOTOUT"
+        ? f.score?.extraTime ?? f.score?.regularTime ?? {}
+        : f.score?.fullTime ?? {};
     const h = sc.home ?? 0;
     const a = sc.away ?? 0;
     const minute = f.minute ?? null;
@@ -248,7 +256,6 @@ for (const f of fdMatches) {
         : { home: h, away: a, minute };
     } else if (f.stage && f.stage !== "GROUP_STAGE") {
       // Knockout tie in progress — key by stage + teams so the bracket matches.
-      const dur = f.score?.duration;
       const htPlayed = f.score?.halfTime?.home != null;
       const phase =
         dur === "PENALTY_SHOOTOUT"
