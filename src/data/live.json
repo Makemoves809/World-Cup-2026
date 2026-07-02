@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-02T16:10:25.960Z",
+  "updatedAt": "2026-07-02T16:24:18.064Z",
   "results": {
     "m-A-1": [
       2,
@@ -313,8 +313,8 @@
       "stage": "LAST_32",
       "homeId": "ger",
       "awayId": "par",
-      "homeScore": 1,
-      "awayScore": 1,
+      "homeScore": 0,
+      "awayScore": 0,
       "winnerId": "par",
       "penaltiesHome": 3,
       "penaltiesAway": 4
@@ -323,8 +323,8 @@
       "stage": "LAST_32",
       "homeId": "ned",
       "awayId": "mar",
-      "homeScore": 1,
-      "awayScore": 1,
+      "homeScore": 0,
+      "awayScore": 0,
       "winnerId": "mar",
       "penaltiesHome": 2,
       "penaltiesAway": 3
