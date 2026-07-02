@@ -34,7 +34,7 @@ export function KnockoutDetail({ match, onClose }: KnockoutDetailProps) {
   const { home, away } = match;
   const bothFirm = Boolean(home.id && away.id);
   const reds = bothFirm ? sentOffInTie(home.id!, away.id!) : [];
-  const out = unavailableFor(match.id);
+  const out = unavailableFor(match.id, bothFirm ? [home.id!, away.id!] : []);
   const goals = bothFirm ? goalsForTie(home.id!, away.id!) : [];
   const subs = bothFirm ? substitutionsForTie(home.id!, away.id!) : [];
   const m = bothFirm ? matchupTeams(home.id!, away.id!, match.id) : null;

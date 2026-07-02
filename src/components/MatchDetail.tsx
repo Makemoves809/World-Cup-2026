@@ -32,7 +32,7 @@ export function MatchDetail({ match, onClose }: MatchDetailProps) {
   const away = teamById(match.away);
   const done = match.status === "finished";
   const reds = sentOffIn(match.id);
-  const out = unavailableFor(match.id);
+  const out = unavailableFor(match.id, [match.home, match.away]);
   const goals = goalsFor(match.id);
   const subs = substitutionsFor(match.id);
   const m = matchup(match);

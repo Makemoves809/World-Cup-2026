@@ -76,6 +76,13 @@ export interface PlayerAbsence {
   sourceMatchId?: string;
   /** Match ids the player is unavailable for */
   missesMatchIds: string[];
+  /**
+   * Ruled out for the rest of the tournament (season-ending injury, cut from
+   * squad), not just the group-stage matches listed in `missesMatchIds` —
+   * knockout match ids aren't known ahead of the bracket resolving, so this
+   * keeps the player flagged unavailable through the knockouts too.
+   */
+  outForTournament?: boolean;
   impact: ImpactLevel;
   note?: string;
 }

@@ -58,6 +58,7 @@ const curated: PlayerAbsence[] = [
     type: "injury",
     reason: "Torn ACL & meniscus (right knee)",
     missesMatchIds: teamMatchIds("bra"),
+    outForTournament: true,
     impact: 5,
     note: "Ruled out of the tournament.",
   },
@@ -68,6 +69,7 @@ const curated: PlayerAbsence[] = [
     type: "injury",
     reason: "Ruptured thigh tendon — surgery",
     missesMatchIds: teamMatchIds("bra"),
+    outForTournament: true,
     impact: 4,
     note: "Ruled out of the tournament.",
   },
@@ -78,6 +80,7 @@ const curated: PlayerAbsence[] = [
     type: "injury",
     reason: "Hamstring tear (right leg)",
     missesMatchIds: teamMatchIds("bra"),
+    outForTournament: true,
     impact: 3,
     note: "Left out of Brazil's squad.",
   },
@@ -98,6 +101,7 @@ const curated: PlayerAbsence[] = [
     type: "injury",
     reason: "Ruptured Achilles tendon",
     missesMatchIds: teamMatchIds("fra"),
+    outForTournament: true,
     impact: 3,
     note: "Ruled out of the tournament.",
   },
@@ -108,6 +112,7 @@ const curated: PlayerAbsence[] = [
     type: "injury",
     reason: "Adductor tear (right thigh)",
     missesMatchIds: teamMatchIds("ger"),
+    outForTournament: true,
     impact: 4,
     note: "Ruled out of the tournament.",
   },
@@ -118,6 +123,7 @@ const curated: PlayerAbsence[] = [
     type: "injury",
     reason: "Torn ACL (right knee)",
     missesMatchIds: teamMatchIds("ned"),
+    outForTournament: true,
     impact: 4,
     note: "Ruled out of the tournament.",
   },
@@ -128,6 +134,7 @@ const curated: PlayerAbsence[] = [
     type: "injury",
     reason: "Groin injury",
     missesMatchIds: teamMatchIds("ned"),
+    outForTournament: true,
     impact: 4,
     note: "Ruled out of the tournament.",
   },
@@ -138,6 +145,7 @@ const curated: PlayerAbsence[] = [
     type: "injury",
     reason: "Ruptured Achilles tendon (left)",
     missesMatchIds: teamMatchIds("arg"),
+    outForTournament: true,
     impact: 3,
     note: "Ruled out of the tournament.",
   },
@@ -148,6 +156,7 @@ const curated: PlayerAbsence[] = [
     type: "injury",
     reason: "Ankle ligament tear",
     missesMatchIds: teamMatchIds("jpn"),
+    outForTournament: true,
     impact: 4,
     note: "Captain; ruled out of the tournament.",
   },
@@ -158,6 +167,7 @@ const curated: PlayerAbsence[] = [
     type: "injury",
     reason: "Thigh muscle injury",
     missesMatchIds: teamMatchIds("aut"),
+    outForTournament: true,
     impact: 4,
     note: "Ruled out of the tournament.",
   },
@@ -178,6 +188,7 @@ const curated: PlayerAbsence[] = [
     type: "injury",
     reason: "Knee injury",
     missesMatchIds: teamMatchIds("sco"),
+    outForTournament: true,
     impact: 4,
     note: "Ruled out of the tournament.",
   },
@@ -188,6 +199,7 @@ const curated: PlayerAbsence[] = [
     type: "injury",
     reason: "Plantar fascia tear (right foot)",
     missesMatchIds: teamMatchIds("kor"),
+    outForTournament: true,
     impact: 3,
     note: "Ruled out of the tournament.",
   },
@@ -208,6 +220,7 @@ const curated: PlayerAbsence[] = [
     type: "injury",
     reason: "Groin injury (pubalgia)",
     missesMatchIds: teamMatchIds("mar"),
+    outForTournament: true,
     impact: 4,
     note: "Cut from Morocco's squad — out of the tournament.",
   },
@@ -218,6 +231,7 @@ const curated: PlayerAbsence[] = [
     type: "injury",
     reason: "Knee injury",
     missesMatchIds: teamMatchIds("mar"),
+    outForTournament: true,
     impact: 4,
     note: "Cut from Morocco's squad — out of the tournament.",
   },
@@ -228,6 +242,7 @@ const curated: PlayerAbsence[] = [
     type: "injury",
     reason: "Injury — unavailable",
     missesMatchIds: teamMatchIds("sui"),
+    outForTournament: true,
     impact: 2,
   },
   {
@@ -458,7 +473,7 @@ const matchPlayed = (matchId: string): boolean =>
 
 /** True while an absence still rules the player out of a match yet to be played. */
 const banStillActive = (a: PlayerAbsence): boolean =>
-  a.missesMatchIds.some((id) => !matchPlayed(id));
+  a.outForTournament || a.missesMatchIds.some((id) => !matchPlayed(id));
 
 /** Card / availability status for a named player on a team. */
 export function cardStatus(teamId: string, playerName: string): CardStatus {
@@ -497,6 +512,15 @@ export const sentOffIn = (matchId: string): PlayerAbsence[] =>
 export const sentOffInTie = (homeId: string, awayId: string): PlayerAbsence[] =>
   sentOffIn(koKey(homeId, awayId));
 
-/** Players unavailable (suspended/injured) for the given match. */
-export const unavailableFor = (matchId: string): PlayerAbsence[] =>
-  absences.filter((a) => a.missesMatchIds.includes(matchId));
+/**
+ * Players unavailable (suspended/injured) for the given match. `teamIds`
+ * should be the two sides playing — needed to catch tournament-long
+ * absences (`outForTournament`) for knockout ties, whose match id was never
+ * a fixed group-stage id and so can't appear in `missesMatchIds`.
+ */
+export const unavailableFor = (matchId: string, teamIds?: string[]): PlayerAbsence[] =>
+  absences.filter(
+    (a) =>
+      a.missesMatchIds.includes(matchId) ||
+      (a.outForTournament && teamIds?.includes(a.team))
+  );

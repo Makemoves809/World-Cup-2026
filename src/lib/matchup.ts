@@ -73,7 +73,7 @@ function strengthFor(teamId: string, matchId: string): TeamStrength {
   const team = teamById(teamId);
   const fr = formRating(teamId);
   const base = fr.rating;
-  const outs = unavailableFor(matchId).filter((a) => a.team === teamId);
+  const outs = unavailableFor(matchId, [teamId]).filter((a) => a.team === teamId);
   const df = depthFactor(base);
   const breakdown: AbsenceHit[] = outs.map((a) => ({
     absence: a,
