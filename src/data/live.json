@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-02T19:55:15.519Z",
+  "updatedAt": "2026-07-02T20:12:17.503Z",
   "results": {
     "m-A-1": [
       2,
@@ -376,17 +376,7 @@
       "winnerId": "usa"
     }
   ],
-  "liveKo": [
-    {
-      "stage": "LAST_32",
-      "homeId": "esp",
-      "awayId": "aut",
-      "homeScore": 1,
-      "awayScore": 0,
-      "minute": null,
-      "phase": "HT"
-    }
-  ],
+  "liveKo": [],
   "liveScores": {},
   "attendance": {}
 }
