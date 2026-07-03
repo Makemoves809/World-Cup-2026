@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-03T04:58:13.641Z",
+  "updatedAt": "2026-07-03T05:02:14.069Z",
   "results": {
     "m-A-1": [
       2,
@@ -390,24 +390,22 @@
       "homeScore": 2,
       "awayScore": 1,
       "winnerId": "por"
-    }
-  ],
-  "liveKo": [
+    },
     {
       "stage": "LAST_32",
       "homeId": "sui",
       "awayId": "alg",
       "homeScore": 2,
       "awayScore": 0,
-      "minute": null,
-      "phase": "2H"
+      "winnerId": "sui"
     }
   ],
+  "liveKo": [],
   "liveScores": {},
   "attendance": {},
   "goals": [],
   "lastEventsCheck": {
-    "ko:alg-sui": "2026-07-03T04:58:13.641Z"
+    "ko:alg-sui": "2026-07-03T05:02:14.069Z"
   },
   "eventLookup": {
     "ko:alg-sui": {}
