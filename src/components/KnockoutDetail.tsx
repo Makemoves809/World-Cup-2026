@@ -18,6 +18,15 @@ const fmtFull = new Intl.DateTimeFormat(undefined, {
   minute: "2-digit",
 });
 
+/** Feed phase codes → labels, matching the Hero live panel. */
+const PHASE_LABEL: Record<string, string> = {
+  "1H": "1st half",
+  HT: "Half-time",
+  "2H": "2nd half",
+  ET: "Extra time",
+  PENS: "Penalties",
+};
+
 interface KnockoutDetailProps {
   match: ResolvedMatch & { round: string };
   onClose: () => void;
@@ -30,6 +39,10 @@ interface KnockoutDetailProps {
  */
 export function KnockoutDetail({ match, onClose }: KnockoutDetailProps) {
   const { home, away } = match;
+  const isLiveNow = match.live && !match.finished;
+  const phaseLabel = isLiveNow && match.livePhase
+    ? PHASE_LABEL[match.livePhase] ?? match.livePhase
+    : null;
   const bothFirm = Boolean(home.id && away.id);
   const reds = bothFirm ? sentOffInTie(home.id!, away.id!) : [];
   const out = unavailableFor(match.id, bothFirm ? [home.id!, away.id!] : []);
@@ -72,15 +85,40 @@ export function KnockoutDetail({ match, onClose }: KnockoutDetailProps) {
           {match.round} · Match {match.num} ·{" "}
           {fmtFull.format(new Date(match.kickoff))}
           {match.finished && <span className="ft-badge">FT</span>}
+          {isLiveNow && (
+            <span className="live-badge">
+              <span className="live-dot" aria-hidden="true" /> LIVE
+            </span>
+          )}
         </p>
 
         <div className="modal-tie">
           <TeamSide seed={home} onOpen={openSquad} />
-          <span className={match.finished ? "modal-score is-final" : "modal-score"}>
-            {match.finished ? `${match.homeScore}–${match.awayScore}` : "vs"}
+          <span
+            className={
+              match.finished
+                ? "modal-score is-final"
+                : isLiveNow
+                ? "modal-score is-live"
+                : "modal-score"
+            }
+          >
+            {match.finished
+              ? `${match.homeScore}–${match.awayScore}`
+              : isLiveNow
+              ? `${match.liveHome ?? 0}–${match.liveAway ?? 0}`
+              : "vs"}
           </span>
           <TeamSide seed={away} onOpen={openSquad} away />
         </div>
+
+        {isLiveNow && (phaseLabel || match.liveMinute != null) && (
+          <p className="modal-venue live-status">
+            {phaseLabel}
+            {phaseLabel && match.liveMinute != null && " · "}
+            {match.liveMinute != null && <span className="live-min">{match.liveMinute}'</span>}
+          </p>
+        )}
 
         {match.penaltiesHome != null && match.penaltiesAway != null && (
           <p className="modal-venue">

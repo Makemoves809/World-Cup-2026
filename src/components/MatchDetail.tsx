@@ -3,6 +3,7 @@ import type { Match, PlayerAbsence } from "../data/types";
 import { teamById } from "../data/teams";
 import { IMPACT_LABELS, sentOffIn, unavailableFor } from "../data/discipline";
 import { attendanceFor } from "../data/attendance";
+import { isLive, liveScore } from "../lib/live";
 import { matchup } from "../lib/matchup";
 import { matchScript } from "../lib/script";
 import { gradeMatch, modelAccuracy } from "../lib/accuracy";
@@ -29,6 +30,8 @@ export function MatchDetail({ match, onClose }: MatchDetailProps) {
   const home = teamById(match.home);
   const away = teamById(match.away);
   const done = match.status === "finished";
+  const isLiveNow = isLive(match, Date.now());
+  const ls = isLiveNow ? liveScore(match.id) : undefined;
   const reds = sentOffIn(match.id);
   const out = unavailableFor(match.id, [match.home, match.away]);
   const m = matchup(match);
@@ -80,6 +83,11 @@ export function MatchDetail({ match, onClose }: MatchDetailProps) {
         <p className="modal-kicker">
           Group {match.group} · {fmtFull.format(new Date(match.kickoff))}
           {done && <span className="ft-badge">FT</span>}
+          {isLiveNow && (
+            <span className="live-badge">
+              <span className="live-dot" aria-hidden="true" /> LIVE
+            </span>
+          )}
         </p>
 
         <div className="modal-tie">
@@ -91,8 +99,12 @@ export function MatchDetail({ match, onClose }: MatchDetailProps) {
           >
             <Flag team={home} size={22} /> {home.name}
           </button>
-          <span className={done ? "modal-score is-final" : "modal-score"}>
-            {done ? `${match.homeScore}–${match.awayScore}` : "vs"}
+          <span
+            className={
+              done ? "modal-score is-final" : isLiveNow ? "modal-score is-live" : "modal-score"
+            }
+          >
+            {done ? `${match.homeScore}–${match.awayScore}` : isLiveNow ? `${ls?.home ?? 0}–${ls?.away ?? 0}` : "vs"}
           </span>
           <button
             type="button"
@@ -103,6 +115,12 @@ export function MatchDetail({ match, onClose }: MatchDetailProps) {
             {away.name} <Flag team={away} size={22} />
           </button>
         </div>
+
+        {isLiveNow && ls?.minute != null && (
+          <p className="modal-venue live-status">
+            <span className="live-min">{ls.minute}'</span>
+          </p>
+        )}
 
         <p className="modal-venue">
           {match.venue.stadium} · {match.venue.city}, {match.venue.country}
