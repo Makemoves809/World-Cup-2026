@@ -32,6 +32,9 @@ jobs:
       - run: npx tsx scripts/update-data.ts
         env:
           FOOTBALL_API_KEY: ${{ secrets.FOOTBALL_API_KEY }}
+          # Optional — goal-scorer lookups (scripts/liveEvents.ts) use this
+          # when set and fall back to ESPN's unofficial API when it's not.
+          API_FOOTBALL_KEY: ${{ secrets.API_FOOTBALL_KEY }}
       - name: Commit any data changes
         run: |
           if git diff --quiet; then

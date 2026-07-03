@@ -9,14 +9,22 @@
  * Data" add-on — the free tier this key is on returns none of it (confirmed
  * by running the fetch loop against 10 real finished matches: 0 cards, 0
  * goals, 0 substitutions back every time). So this script doesn't bother
- * fetching match detail at all; those stay hand-curated in discipline.ts /
- * attendance.ts.
+ * fetching match detail from football-data.org at all; cards/substitutions/
+ * attendance stay hand-curated in discipline.ts / attendance.ts.
  *
- * Usage: FOOTBALL_API_KEY=... npx tsx scripts/update-data.ts
+ * Goal scorers are a partial exception: while a match is actually in play (or
+ * right as it finishes), see liveEvents.ts for a best-effort lookup against
+ * two free sources (API-Football, ESPN's unofficial API). That's throttled
+ * and scoped to "game time" only — see fetchGoalsForLiveMatches() below — so
+ * it never runs as a backfill sweep over old matches.
+ *
+ * Usage: FOOTBALL_API_KEY=... [API_FOOTBALL_KEY=...] npx tsx scripts/update-data.ts
  */
 import { readFileSync, writeFileSync } from "node:fs";
 import { matches } from "../src/data/fixtures";
 import { teams } from "../src/data/teams";
+import { koKey } from "../src/lib/koKey";
+import { fetchLiveGoals, namesMatch, type EventLookupCache } from "./liveEvents";
 
 const API = "https://api.football-data.org/v4";
 const COMPETITION = process.env.COMPETITION ?? "WC"; // FIFA World Cup
@@ -52,6 +60,18 @@ interface LiveKo {
   phase: string | null;
 }
 
+/** A goal, keyed the same way as `lastEventsCheck`/`eventLookup` (see below). */
+interface LiveGoal {
+  matchId: string;
+  team: string;
+  scorer: string;
+  assist: string | null;
+  minute: number | null;
+  extra: number | null;
+  /** "REGULAR" | "OWN" | "PENALTY" */
+  type: string;
+}
+
 interface LiveData {
   updatedAt: string;
   results: Record<string, [number, number]>;
@@ -63,6 +83,12 @@ interface LiveData {
   liveScores: Record<string, { home: number; away: number; minute: number | null }>;
   /** Announced attendance, keyed by match id (rarely present on the free tier). */
   attendance: Record<string, number>;
+  /** Best-effort scorers, from liveEvents.ts, for matches that were live. */
+  goals: LiveGoal[];
+  /** matchId (our id, or `ko:` key) → ISO time of the last goal-events check. */
+  lastEventsCheck: Record<string, string>;
+  /** matchId → cached fixture/event ids so repeat checks skip the lookup call. */
+  eventLookup: Record<string, EventLookupCache>;
 }
 
 const LIVE_PATH = new URL("../src/data/live.json", import.meta.url);
@@ -71,12 +97,18 @@ live.koResults = live.koResults ?? [];
 live.liveKo = live.liveKo ?? [];
 live.liveScores = live.liveScores ?? {};
 live.attendance = live.attendance ?? {};
+live.goals = live.goals ?? [];
+live.lastEventsCheck = live.lastEventsCheck ?? {};
+live.eventLookup = live.eventLookup ?? {};
 const before = JSON.stringify({
   results: live.results,
   koResults: live.koResults,
   liveKo: live.liveKo,
   liveScores: live.liveScores,
   attendance: live.attendance,
+  goals: live.goals,
+  lastEventsCheck: live.lastEventsCheck,
+  eventLookup: live.eventLookup,
 });
 
 /** Normalize a team/player name for matching: lowercase, no accents/symbols. */
@@ -163,6 +195,27 @@ const liveScores: Record<
 /** In-play knockout scores, rebuilt fresh each run. */
 const liveKo: LiveKo[] = [];
 
+/** Matches already on record as finished before this run touches anything —
+ * used below to tell a freshly-finished match (worth one goal-events check)
+ * from one that's been finished for a while (never re-checked). */
+const alreadyFinished = new Set<string>([
+  ...Object.keys(live.results),
+  ...live.koResults.map((k) => koKey(k.homeId, k.awayId)),
+]);
+
+interface GoalCandidate {
+  matchId: string;
+  homeId: string;
+  awayId: string;
+  homeName: string;
+  awayName: string;
+  dateISO: string;
+  /** Bypasses the throttle — always checked once right as a match finishes. */
+  justFinished: boolean;
+}
+/** Live-or-just-finished matches to check for goal events — "game time" only. */
+const goalCandidates: GoalCandidate[] = [];
+
 for (const f of fdMatches) {
   const homeId = mapTeam(f.homeTeam);
   const awayId = mapTeam(f.awayTeam);
@@ -213,6 +266,15 @@ for (const f of fdMatches) {
           : "1H";
       liveKo.push({ stage: f.stage, homeId, awayId, homeScore: h, awayScore: a, minute, phase });
     }
+    goalCandidates.push({
+      matchId: pair ? pair.id : koKey(homeId, awayId),
+      homeId,
+      awayId,
+      homeName: f.homeTeam?.name ?? "",
+      awayName: f.awayTeam?.name ?? "",
+      dateISO: f.utcDate ?? new Date().toISOString(),
+      justFinished: false,
+    });
     continue;
   }
 
@@ -234,6 +296,21 @@ for (const f of fdMatches) {
     ? { home: rawFt.home - pens.home, away: rawFt.away - pens.away }
     : rawFt;
   if (ft?.home == null || ft?.away == null) continue;
+
+  const finishedMatchId = pair ? pair.id : koKey(homeId, awayId);
+  if (!alreadyFinished.has(finishedMatchId)) {
+    // Newly finished this run — one last check to catch a stoppage-time goal
+    // the live polling window might have just missed.
+    goalCandidates.push({
+      matchId: finishedMatchId,
+      homeId,
+      awayId,
+      homeName: f.homeTeam?.name ?? "",
+      awayName: f.awayTeam?.name ?? "",
+      dateISO: f.utcDate ?? new Date().toISOString(),
+      justFinished: true,
+    });
+  }
 
   if (pair) {
     live.results[pair.id] = pair.reversed
@@ -265,12 +342,69 @@ for (const f of fdMatches) {
 live.liveScores = liveScores;
 live.liveKo = liveKo;
 
+/** Minimum gap between goal-events checks for the same still-live match. */
+const EVENTS_THROTTLE_MS = 8 * 60 * 1000;
+
+for (const c of goalCandidates) {
+  const last = live.lastEventsCheck[c.matchId];
+  const due =
+    c.justFinished || !last || Date.now() - new Date(last).getTime() > EVENTS_THROTTLE_MS;
+  if (!due) continue;
+
+  try {
+    const cache = live.eventLookup[c.matchId] ?? {};
+    const { goals: raw, cache: newCache } = await fetchLiveGoals(
+      c.homeName,
+      c.awayName,
+      c.dateISO,
+      cache
+    );
+    live.eventLookup[c.matchId] = newCache;
+    live.lastEventsCheck[c.matchId] = new Date().toISOString();
+
+    for (const g of raw) {
+      const teamId = namesMatch(g.teamName, c.homeName)
+        ? c.homeId
+        : namesMatch(g.teamName, c.awayName)
+        ? c.awayId
+        : undefined;
+      if (!teamId) continue;
+      const exists = live.goals.some(
+        (x) =>
+          x.matchId === c.matchId &&
+          x.team === teamId &&
+          x.scorer === g.scorer &&
+          x.minute === g.minute
+      );
+      if (!exists) {
+        live.goals.push({
+          matchId: c.matchId,
+          team: teamId,
+          scorer: g.scorer,
+          assist: g.assist,
+          minute: g.minute,
+          extra: g.extra,
+          type: g.type,
+        });
+      }
+    }
+    if (raw.length > 0) {
+      console.log(`Goal events: ${c.homeName} v ${c.awayName} — ${raw.length} found`);
+    }
+  } catch (err) {
+    console.warn(`Goal-events check failed for ${c.homeName} v ${c.awayName}: ${err}`);
+  }
+}
+
 const after = JSON.stringify({
   results: live.results,
   koResults: live.koResults,
   liveKo: live.liveKo,
   liveScores: live.liveScores,
   attendance: live.attendance,
+  goals: live.goals,
+  lastEventsCheck: live.lastEventsCheck,
+  eventLookup: live.eventLookup,
 });
 
 if (after === before) {
@@ -278,5 +412,7 @@ if (after === before) {
 } else {
   live.updatedAt = new Date().toISOString();
   writeFileSync(LIVE_PATH, JSON.stringify(live, null, 2) + "\n");
-  console.log(`Updated: ${Object.keys(live.results).length} results.`);
+  console.log(
+    `Updated: ${Object.keys(live.results).length} results, ${live.goals.length} goals tracked.`
+  );
 }

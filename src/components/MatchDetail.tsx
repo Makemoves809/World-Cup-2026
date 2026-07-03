@@ -4,6 +4,7 @@ import { teamById } from "../data/teams";
 import { IMPACT_LABELS, sentOffIn, unavailableFor } from "../data/discipline";
 import { attendanceFor } from "../data/attendance";
 import { isLive, liveScore } from "../lib/live";
+import { goalsFor, minuteLabel, type Goal } from "../data/goals";
 import { matchup } from "../lib/matchup";
 import { matchScript } from "../lib/script";
 import { gradeMatch, modelAccuracy } from "../lib/accuracy";
@@ -32,6 +33,7 @@ export function MatchDetail({ match, onClose }: MatchDetailProps) {
   const done = match.status === "finished";
   const isLiveNow = isLive(match, Date.now());
   const ls = isLiveNow ? liveScore(match.id) : undefined;
+  const goals = goalsFor(match.id);
   const reds = sentOffIn(match.id);
   const out = unavailableFor(match.id, [match.home, match.away]);
   const m = matchup(match);
@@ -145,6 +147,11 @@ export function MatchDetail({ match, onClose }: MatchDetailProps) {
               {line}
             </p>
           ))}
+          {goals.length > 0 && (
+            <p className="script-line">
+              Scorers: {goals.map((g, i) => <GoalMention key={i} g={g} first={i === 0} />)}
+            </p>
+          )}
           {script.projection && (
             <p className="script-projection">
               Model lean
@@ -259,6 +266,17 @@ function Attendance({ match }: { match: Match }) {
         <p className="att-note">Attendance reported after kickoff.</p>
       )}
     </div>
+  );
+}
+
+function GoalMention({ g, first }: { g: Goal; first: boolean }) {
+  const team = teamById(g.team);
+  return (
+    <span>
+      {!first && ", "}
+      {minuteLabel(g.minute, g.extra)} {g.scorer}
+      {g.type === "OWN" ? " (OG)" : g.type === "PENALTY" ? " (pen)" : ""} ({team.code})
+    </span>
   );
 }
 

@@ -404,5 +404,8 @@
     }
   ],
   "liveScores": {},
-  "attendance": {}
+  "attendance": {},
+  "goals": [],
+  "lastEventsCheck": {},
+  "eventLookup": {}
 }

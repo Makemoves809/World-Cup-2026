@@ -39,13 +39,20 @@ you're already making a change — proactively check whether the hand-curated
 match data is current, and update it yourself (with web sources) before
 finishing.** Don't wait to be told.
 
-The free football-data feed auto-updates **scores, live in-play scores, cards,
-and standings** — but several things are **manual / curated** and must be kept
-current by hand:
+The free football-data feed auto-updates **scores, live in-play scores, and
+standings**. Cards/lineups/substitutions are NOT on the free tier (confirmed
+by actually running the fetch against real finished matches — 0 back every
+time; that's gated behind football-data.org's paid "Deep Data" add-on), so
+those stay hand-curated. Goal scorers are a partial exception — see below.
+Several things are **manual / curated** and must be kept current by hand:
 
 - **Attendance** (`src/data/attendance.ts`) — the free feed does NOT provide
   it. Add each newly-finished match's official attendance figure (researched
-  and cross-checked). This is the main one to keep on top of.
+  and cross-checked). This is the main one to keep on top of. Note: web search
+  results for this have repeatedly come back as exact duplicates of a
+  *different* match's already-curated figure at the same venue — a
+  search-tool artifact, not a real repeat sellout. Don't trust a number that
+  matches another match's figure exactly; leave it pending instead.
 - **Injuries & suspensions** (`src/data/discipline.ts`) — add red cards / new
   injuries for recent matches, and move/retire entries whose match has passed.
   Confirm **suspension length** (violent-conduct reds can be more than one
@@ -76,6 +83,20 @@ current by hand:
   starter's `start` coordinates (and bench membership) to match. Also fill any
   missing player **photos** (Wikimedia Commons file names) and verify the eleven
   flagged with a `start` are the real most-recent XI, not the whole squad.
+- **Goal scorers** (`scripts/liveEvents.ts`, feeds `src/data/goals.ts`) —
+  best-effort, NOT football-data.org (confirmed dead on the free tier, see
+  above). Tries API-Football (needs an `API_FOOTBALL_KEY` repo secret; free
+  tier, 100 requests/day) first, falls back to ESPN's unofficial API (no key,
+  no documented limit, but can change shape or block without notice at any
+  time). Both are only ever called while a match is actually live or right as
+  it finishes (throttled ~8 min while live) — never a backfill sweep — so the
+  100/day budget is never at risk. Neither source's response shape was
+  verified against a real live match before shipping (this sandbox's network
+  is proxied/blocked from reaching either), so if scorers stop appearing after
+  a match, the parsing in `liveEvents.ts` almost certainly needs adjusting to
+  match what the API actually returns — check the Action logs for `Goal
+  events:` / `lookup failed` lines first. Missing/wrong scorers fail silently
+  by design (never breaks the results/score pipeline); nothing to hand-edit.
 - **Match "Script" & model accuracy** (`src/lib/script.ts`,
   `src/lib/accuracy.ts`) — the per-match written read, lean scoreline, the
   ✓/✗ "called it / missed" grade on played games, the per-card chips, and the

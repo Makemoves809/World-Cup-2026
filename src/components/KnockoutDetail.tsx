@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import type { PlayerAbsence } from "../data/types";
 import { teamById } from "../data/teams";
 import { IMPACT_LABELS, sentOffInTie, unavailableFor } from "../data/discipline";
+import { goalsForTie, minuteLabel, type Goal } from "../data/goals";
 import { matchupTeams } from "../lib/matchup";
 import { openRoster, isRosterOpen } from "../lib/roster";
 import { useSheetDismiss } from "../lib/useSheetDismiss";
@@ -46,6 +47,7 @@ export function KnockoutDetail({ match, onClose }: KnockoutDetailProps) {
   const bothFirm = Boolean(home.id && away.id);
   const reds = bothFirm ? sentOffInTie(home.id!, away.id!) : [];
   const out = unavailableFor(match.id, bothFirm ? [home.id!, away.id!] : []);
+  const goals = bothFirm ? goalsForTie(home.id!, away.id!) : [];
   const m = bothFirm ? matchupTeams(home.id!, away.id!, match.id) : null;
   const sheet = useSheetDismiss(onClose);
 
@@ -123,6 +125,12 @@ export function KnockoutDetail({ match, onClose }: KnockoutDetailProps) {
         {match.penaltiesHome != null && match.penaltiesAway != null && (
           <p className="modal-venue">
             {match.penaltiesHome}–{match.penaltiesAway} on penalties
+          </p>
+        )}
+
+        {goals.length > 0 && (
+          <p className="modal-venue">
+            Scorers: {goals.map((g, i) => <GoalMention key={i} g={g} first={i === 0} />)}
           </p>
         )}
 
@@ -239,6 +247,17 @@ function TeamSide({
           {flag} {seed.name}
         </>
       )}
+    </span>
+  );
+}
+
+function GoalMention({ g, first }: { g: Goal; first: boolean }) {
+  const team = teamById(g.team);
+  return (
+    <span>
+      {!first && ", "}
+      {minuteLabel(g.minute, g.extra)} {g.scorer}
+      {g.type === "OWN" ? " (OG)" : g.type === "PENALTY" ? " (pen)" : ""} ({team.code})
     </span>
   );
 }
