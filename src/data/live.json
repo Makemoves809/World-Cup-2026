@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-03T19:22:13.354Z",
+  "updatedAt": "2026-07-03T19:24:17.933Z",
   "results": {
     "m-A-1": [
       2,
@@ -422,11 +422,20 @@
       "minute": 12,
       "extra": null,
       "type": "REGULAR"
+    },
+    {
+      "matchId": "ko:aus-egy",
+      "team": "aus",
+      "scorer": "Unknown",
+      "assist": null,
+      "minute": 54,
+      "extra": null,
+      "type": "OWN"
     }
   ],
   "lastEventsCheck": {
     "ko:alg-sui": "2026-07-03T05:02:14.069Z",
-    "ko:aus-egy": "2026-07-03T19:15:22.997Z"
+    "ko:aus-egy": "2026-07-03T19:24:17.933Z"
   },
   "eventLookup": {
     "ko:alg-sui": {},
