@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-03T19:07:15.914Z",
+  "updatedAt": "2026-07-03T19:12:21.545Z",
   "results": {
     "m-A-1": [
       2,
@@ -400,17 +400,7 @@
       "winnerId": "sui"
     }
   ],
-  "liveKo": [
-    {
-      "stage": "LAST_32",
-      "homeId": "aus",
-      "awayId": "egy",
-      "homeScore": 0,
-      "awayScore": 1,
-      "minute": null,
-      "phase": "HT"
-    }
-  ],
+  "liveKo": [],
   "liveScores": {},
   "attendance": {},
   "goals": [
