@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-03T20:49:15.722Z",
+  "updatedAt": "2026-07-03T20:50:27.643Z",
   "results": {
     "m-A-1": [
       2,
@@ -410,7 +410,17 @@
       "penaltiesAway": 0
     }
   ],
-  "liveKo": [],
+  "liveKo": [
+    {
+      "stage": "LAST_32",
+      "homeId": "aus",
+      "awayId": "egy",
+      "homeScore": 1,
+      "awayScore": 1,
+      "minute": null,
+      "phase": "PENS"
+    }
+  ],
   "liveScores": {},
   "attendance": {},
   "goals": [
