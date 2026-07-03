@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-03T18:06:16.125Z",
+  "updatedAt": "2026-07-03T18:15:17.268Z",
   "results": {
     "m-A-1": [
       2,
@@ -413,10 +413,20 @@
   ],
   "liveScores": {},
   "attendance": {},
-  "goals": [],
+  "goals": [
+    {
+      "matchId": "ko:aus-egy",
+      "team": "egy",
+      "scorer": "Unknown",
+      "assist": null,
+      "minute": 12,
+      "extra": null,
+      "type": "REGULAR"
+    }
+  ],
   "lastEventsCheck": {
     "ko:alg-sui": "2026-07-03T05:02:14.069Z",
-    "ko:aus-egy": "2026-07-03T18:06:16.124Z"
+    "ko:aus-egy": "2026-07-03T18:15:17.268Z"
   },
   "eventLookup": {
     "ko:alg-sui": {},
