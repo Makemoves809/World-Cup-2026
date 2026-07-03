@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-03T20:44:16.867Z",
+  "updatedAt": "2026-07-03T20:49:15.722Z",
   "results": {
     "m-A-1": [
       2,
@@ -398,19 +398,19 @@
       "homeScore": 2,
       "awayScore": 0,
       "winnerId": "sui"
-    }
-  ],
-  "liveKo": [
+    },
     {
       "stage": "LAST_32",
       "homeId": "aus",
       "awayId": "egy",
       "homeScore": 1,
       "awayScore": 1,
-      "minute": null,
-      "phase": "PENS"
+      "winnerId": null,
+      "penaltiesHome": 0,
+      "penaltiesAway": 0
     }
   ],
+  "liveKo": [],
   "liveScores": {},
   "attendance": {},
   "goals": [
@@ -435,7 +435,7 @@
   ],
   "lastEventsCheck": {
     "ko:alg-sui": "2026-07-03T05:02:14.069Z",
-    "ko:aus-egy": "2026-07-03T20:40:28.806Z"
+    "ko:aus-egy": "2026-07-03T20:49:15.721Z"
   },
   "eventLookup": {
     "ko:alg-sui": {},
