@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-03T05:02:14.069Z",
+  "updatedAt": "2026-07-03T18:06:16.125Z",
   "results": {
     "m-A-1": [
       2,
@@ -400,14 +400,28 @@
       "winnerId": "sui"
     }
   ],
-  "liveKo": [],
+  "liveKo": [
+    {
+      "stage": "LAST_32",
+      "homeId": "aus",
+      "awayId": "egy",
+      "homeScore": 0,
+      "awayScore": 0,
+      "minute": null,
+      "phase": "1H"
+    }
+  ],
   "liveScores": {},
   "attendance": {},
   "goals": [],
   "lastEventsCheck": {
-    "ko:alg-sui": "2026-07-03T05:02:14.069Z"
+    "ko:alg-sui": "2026-07-03T05:02:14.069Z",
+    "ko:aus-egy": "2026-07-03T18:06:16.124Z"
   },
   "eventLookup": {
-    "ko:alg-sui": {}
+    "ko:alg-sui": {},
+    "ko:aus-egy": {
+      "espnEventId": "760499"
+    }
   }
 }
