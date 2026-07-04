@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-04T03:46:15.191Z",
+  "updatedAt": "2026-07-04T03:59:16.379Z",
   "results": {
     "m-A-1": [
       2,
@@ -421,7 +421,7 @@
       "stage": "LAST_32",
       "homeId": "col",
       "awayId": "gha",
-      "homeScore": 1,
+      "homeScore": 2,
       "awayScore": 0,
       "winnerId": "col"
     }
