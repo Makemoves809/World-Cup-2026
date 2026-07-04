@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-04T06:12:13.738Z",
+  "updatedAt": "2026-07-04T17:06:40.851Z",
   "results": {
     "m-A-1": [
       2,
@@ -426,7 +426,17 @@
       "winnerId": "col"
     }
   ],
-  "liveKo": [],
+  "liveKo": [
+    {
+      "stage": "LAST_16",
+      "homeId": "can",
+      "awayId": "mar",
+      "homeScore": 0,
+      "awayScore": 0,
+      "minute": null,
+      "phase": "1H"
+    }
+  ],
   "liveScores": {},
   "attendance": {},
   "goals": [
@@ -498,7 +508,8 @@
     "ko:alg-sui": "2026-07-03T05:02:14.069Z",
     "ko:aus-egy": "2026-07-03T20:49:15.721Z",
     "ko:arg-cpv": "2026-07-04T00:50:25.261Z",
-    "ko:col-gha": "2026-07-04T03:37:15.278Z"
+    "ko:col-gha": "2026-07-04T03:37:15.278Z",
+    "ko:can-mar": "2026-07-04T17:06:40.851Z"
   },
   "eventLookup": {
     "ko:alg-sui": {},
@@ -508,6 +519,9 @@
     "ko:arg-cpv": {
       "espnEventId": "760500"
     },
-    "ko:col-gha": {}
+    "ko:col-gha": {},
+    "ko:can-mar": {
+      "espnEventId": "760502"
+    }
   }
 }
