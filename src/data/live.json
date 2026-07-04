@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-03T23:56:13.669Z",
+  "updatedAt": "2026-07-04T00:04:16.476Z",
   "results": {
     "m-A-1": [
       2,
@@ -418,7 +418,7 @@
       "homeScore": 1,
       "awayScore": 1,
       "minute": null,
-      "phase": "2H"
+      "phase": "HT"
     }
   ],
   "liveScores": {},
@@ -464,7 +464,7 @@
   "lastEventsCheck": {
     "ko:alg-sui": "2026-07-03T05:02:14.069Z",
     "ko:aus-egy": "2026-07-03T20:49:15.721Z",
-    "ko:arg-cpv": "2026-07-03T23:56:13.669Z"
+    "ko:arg-cpv": "2026-07-04T00:04:16.476Z"
   },
   "eventLookup": {
     "ko:alg-sui": {},
