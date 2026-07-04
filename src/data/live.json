@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-04T19:07:11.465Z",
+  "updatedAt": "2026-07-04T19:08:14.437Z",
   "results": {
     "m-A-1": [
       2,
@@ -520,6 +520,15 @@
       "minute": 81,
       "extra": null,
       "type": "REGULAR"
+    },
+    {
+      "matchId": "ko:can-mar",
+      "team": "mar",
+      "scorer": "Soufiane Rahimi",
+      "assist": null,
+      "minute": 90,
+      "extra": null,
+      "type": "REGULAR"
     }
   ],
   "lastEventsCheck": {
@@ -527,7 +536,7 @@
     "ko:aus-egy": "2026-07-03T20:49:15.721Z",
     "ko:arg-cpv": "2026-07-04T00:50:25.261Z",
     "ko:col-gha": "2026-07-04T03:37:15.278Z",
-    "ko:can-mar": "2026-07-04T18:59:14.440Z"
+    "ko:can-mar": "2026-07-04T19:08:14.437Z"
   },
   "eventLookup": {
     "ko:alg-sui": {},
