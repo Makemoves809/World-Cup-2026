@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-04T00:20:23.777Z",
+  "updatedAt": "2026-07-04T00:23:14.809Z",
   "results": {
     "m-A-1": [
       2,
@@ -416,9 +416,9 @@
       "homeId": "arg",
       "awayId": "cpv",
       "homeScore": 2,
-      "awayScore": 1,
+      "awayScore": 2,
       "minute": null,
-      "phase": "ET"
+      "phase": "2H"
     }
   ],
   "liveScores": {},
