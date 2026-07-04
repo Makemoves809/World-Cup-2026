@@ -329,7 +329,8 @@ const SCOTLAND: TeamSquad = {
 
 const MOROCCO: TeamSquad = {
   teamId: "mar",
-  // Opener vs Brazil (1–1): a 4-2-3-1.
+  // Same XI/shape through to the R16 vs Canada as the opener vs Brazil
+  // (1–1): a 4-2-3-1.
   formation: "4-2-3-1",
   players: [
     // ---- Starting XI ----
@@ -550,11 +551,11 @@ const GERMANY: TeamSquad = {
 
 const PARAGUAY: TeamSquad = {
   teamId: "par",
-  // Most recent: R32 vs Germany (1–1, won 4–3 on penalties, the tournament's
-  // biggest shock) — switched to a 4-3-3: Canale in for Alderete at CB, and
-  // Galarza into central midfield alongside Bobadilla and Cubas. (Pending:
-  // some recaps had an "Ávalos" starting up front, not yet in this 26-man
-  // list — Sanabria kept there as a placeholder until confirmed.)
+  // Most recent: R16 vs France — still a 4-3-3 from the Germany shock win,
+  // but two changes confirmed pre-match: Diego Gómez in for Bobadilla in
+  // midfield, and Gabriel Ávalos (previously missing from this list — his
+  // shirt number is a best-effort guess, kept as Sanabria's for now to avoid
+  // a clash) in for Sanabria up front.
   formation: "4-3-3",
   players: [
     { num: 12, name: "Orlando Gill", short: "Gill", line: "gk", role: "Goalkeeper", club: "San Lorenzo", at2022: false, start: { x: 50, y: 90 } },
@@ -563,10 +564,10 @@ const PARAGUAY: TeamSquad = {
     { num: 15, name: "Gustavo Gómez", short: "G. Gómez", line: "def", role: "Centre-back", club: "Palmeiras", at2022: false, captain: true, start: { x: 38, y: 73 } },
     { num: 6, name: "Junior Alonso", short: "Alonso", line: "def", role: "Left-back", club: "Atlético Mineiro", at2022: false, start: { x: 16, y: 70 } },
     { num: 14, name: "Andrés Cubas", short: "Cubas", line: "mid", role: "Central midfield", club: "Vancouver Whitecaps", at2022: false, start: { x: 50, y: 48 } },
-    { num: 16, name: "Damián Bobadilla", short: "Bobadilla", line: "mid", role: "Central midfield", club: "São Paulo", at2022: false, start: { x: 30, y: 40 } },
+    { num: 8, name: "Diego Gómez", short: "D. Gómez", line: "mid", role: "Central midfield", club: "Brighton", at2022: false, start: { x: 30, y: 40 } },
     { num: 23, name: "Matías Galarza", short: "Galarza", line: "mid", role: "Central midfield", club: "Atlanta United", at2022: false, start: { x: 70, y: 40 } },
     { num: 10, name: "Miguel Almirón", short: "Almirón", line: "fwd", role: "Left midfield", club: "Atlanta United", at2022: false, start: { x: 82, y: 18 } },
-    { num: 9, name: "Antonio Sanabria", short: "Sanabria", line: "fwd", role: "Striker", club: "Cremonese", at2022: false, start: { x: 50, y: 13 } },
+    { num: 9, name: "Gabriel Ávalos", short: "Ávalos", line: "fwd", role: "Striker", club: "Independiente", at2022: false, start: { x: 50, y: 13 } },
     { num: 19, name: "Julio Enciso", short: "Enciso", line: "fwd", role: "Forward", club: "Brighton", at2022: false, start: { x: 18, y: 18 } },
 
     { num: 1, name: "Roberto Fernández", short: "Gatito", line: "gk", role: "Goalkeeper", club: "Cerro Porteño", at2022: false },
@@ -577,7 +578,7 @@ const PARAGUAY: TeamSquad = {
     { num: 24, name: "Robert Rojas", short: "R. Rojas", line: "def", role: "Right-back", club: "Vélez Sarsfield", at2022: false },
     { num: 7, name: "Ramón Sosa", short: "Sosa", line: "mid", role: "Winger", club: "Nottingham Forest", at2022: false },
     { num: 20, name: "Braian Ojeda", short: "Ojeda", line: "mid", role: "Central midfield", club: "Orlando City", at2022: false },
-    { num: 8, name: "Diego Gómez", short: "D. Gómez", line: "mid", role: "Right midfield", club: "Brighton", at2022: false },
+    { num: 16, name: "Damián Bobadilla", short: "Bobadilla", line: "mid", role: "Central midfield", club: "São Paulo", at2022: false },
     { num: 11, name: "Diego González", short: "D. González", line: "mid", role: "Winger", club: "Lanús", at2022: false },
     { num: 17, name: "Alejandro Romero", short: "Kaku", line: "mid", role: "Attacking midfield", club: "Always Ready", at2022: false },
     { num: 18, name: "Ramón Martínez", short: "Martínez", line: "def", role: "Centre-back", club: "Cerro Porteño", at2022: false },
@@ -1700,28 +1701,30 @@ const SWITZERLAND: TeamSquad = {
 
 const CANADA: TeamSquad = {
   teamId: "can",
-  // Most recent: R32 vs South Africa (1–0) — still a 4-4-2, but Millar over
-  // Ali Ahmed on the left; Davies remains an unused sub as he builds match
-  // fitness after his hamstring tear.
-  formation: "4-4-2",
+  // Most recent: R16 vs Morocco — switched from the group/R32 4-4-2 to a
+  // 4-3-3: Bombito in for de Fougerolles at centre-back, Buchanan pushed up
+  // into the front three, and Tani Oluwaseyi (previously missing from this
+  // list — his shirt number is a best-effort guess, kept as Larin's for now
+  // to avoid a clash) in for Larin up front.
+  formation: "4-3-3",
   players: [
     { num: 16, name: "Maxime Crépeau", short: "Crépeau", line: "gk", role: "Goalkeeper", club: "Portland Timbers", at2022: true, photo: "Maxime Crépeau and James Pantemis Portland Timbers 2024 (cropped).jpg", start: { x: 50, y: 90 } },
     { num: 2, name: "Alistair Johnston", short: "Johnston", line: "def", role: "Right-back", club: "Celtic", at2022: true, photo: "Alistair Johnston with a fan (cropped).jpg", start: { x: 84, y: 70 } },
-    { num: 4, name: "Luc de Fougerolles", short: "de Fougerolles", line: "def", role: "Centre-back", club: "Fulham", at2022: false, start: { x: 62, y: 73 } },
+    { num: 13, name: "Moïse Bombito", short: "Bombito", line: "def", role: "Centre-back", club: "Nice", at2022: false, start: { x: 62, y: 73 } },
     { num: 5, name: "Derek Cornelius", short: "Cornelius", line: "def", role: "Centre-back", club: "Marseille", at2022: true, photo: "Derek Cornelius photo by Djuradj Vujcic.jpg", start: { x: 38, y: 73 } },
     { num: 22, name: "Richie Laryea", short: "Laryea", line: "def", role: "Left-back", club: "Toronto FC", at2022: true, start: { x: 16, y: 70 } },
-    { num: 11, name: "Tajon Buchanan", short: "Buchanan", line: "mid", role: "Right midfield", club: "Villarreal", at2022: true, photo: "Tajon Buchanan WC2022.jpg", start: { x: 84, y: 44 } },
-    { num: 7, name: "Stephen Eustáquio", short: "Eustáquio", line: "mid", role: "Central midfield", club: "Porto", at2022: true, captain: true, photo: "S Eustaqui Canada national football team WC2022 (cropped).jpg", start: { x: 58, y: 50 } },
-    { num: 12, name: "Nathan Saliba", short: "Saliba", line: "mid", role: "Central midfield", club: "Anderlecht", at2022: false, photo: "Nathan-Dylan Saliba RSC Anderlecht 2025.jpg", start: { x: 38, y: 50 } },
-    { num: 23, name: "Liam Millar", short: "Millar", line: "fwd", role: "Winger", club: "Hull City", at2022: true, start: { x: 14, y: 44 } },
-    { num: 20, name: "Jonathan David", short: "David", line: "fwd", role: "Striker", club: "Juventus", at2022: true, photo: "JonathanDavidCanadaBelgium2022.jpg", start: { x: 62, y: 16 } },
-    { num: 9, name: "Cyle Larin", short: "Larin", line: "fwd", role: "Striker", club: "Mallorca", at2022: true, photo: "Cyle Larin 17.jpg", start: { x: 38, y: 16 } },
+    { num: 7, name: "Stephen Eustáquio", short: "Eustáquio", line: "mid", role: "Central midfield", club: "Porto", at2022: true, captain: true, photo: "S Eustaqui Canada national football team WC2022 (cropped).jpg", start: { x: 50, y: 48 } },
+    { num: 23, name: "Liam Millar", short: "Millar", line: "mid", role: "Central midfield", club: "Hull City", at2022: true, start: { x: 70, y: 42 } },
+    { num: 12, name: "Nathan Saliba", short: "Saliba", line: "mid", role: "Central midfield", club: "Anderlecht", at2022: false, photo: "Nathan-Dylan Saliba RSC Anderlecht 2025.jpg", start: { x: 30, y: 42 } },
+    { num: 11, name: "Tajon Buchanan", short: "Buchanan", line: "fwd", role: "Right winger", club: "Villarreal", at2022: true, photo: "Tajon Buchanan WC2022.jpg", start: { x: 80, y: 18 } },
+    { num: 20, name: "Jonathan David", short: "David", line: "fwd", role: "Striker", club: "Juventus", at2022: true, photo: "JonathanDavidCanadaBelgium2022.jpg", start: { x: 50, y: 13 } },
+    { num: 9, name: "Tani Oluwaseyi", short: "Oluwaseyi", line: "fwd", role: "Left winger", club: "Villarreal", at2022: false, start: { x: 20, y: 18 } },
 
     { num: 1, name: "Dayne St. Clair", short: "St. Clair", line: "gk", role: "Goalkeeper", club: "Minnesota United", at2022: false },
     { num: 18, name: "Milan Borjan", short: "Borjan", line: "gk", role: "Goalkeeper", club: "Slovan Bratislava", at2022: true },
     { num: 19, name: "Alphonso Davies", short: "Davies", line: "def", role: "Left-back", club: "Bayern Munich", at2022: true },
     { num: 3, name: "Sam Adekugbe", short: "Adekugbe", line: "def", role: "Left-back", club: "Hatayspor", at2022: true },
-    { num: 13, name: "Moïse Bombito", short: "Bombito", line: "def", role: "Centre-back", club: "Nice", at2022: false },
+    { num: 4, name: "Luc de Fougerolles", short: "de Fougerolles", line: "def", role: "Centre-back", club: "Fulham", at2022: false },
     { num: 15, name: "Joel Waterman", short: "Waterman", line: "def", role: "Centre-back", club: "CF Montréal", at2022: false },
     { num: 6, name: "Ismaël Koné", short: "Koné", line: "mid", role: "Central midfield", club: "Rennes", at2022: true },
     { num: 8, name: "Liam Fraser", short: "Fraser", line: "mid", role: "Defensive midfield", club: "Deinze", at2022: false },
