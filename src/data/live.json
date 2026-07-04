@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-04T00:29:12.179Z",
+  "updatedAt": "2026-07-04T00:37:18.167Z",
   "results": {
     "m-A-1": [
       2,
@@ -415,7 +415,7 @@
       "stage": "LAST_32",
       "homeId": "arg",
       "awayId": "cpv",
-      "homeScore": 2,
+      "homeScore": 3,
       "awayScore": 2,
       "minute": null,
       "phase": "HT"
@@ -477,12 +477,21 @@
       "minute": 102,
       "extra": null,
       "type": "REGULAR"
+    },
+    {
+      "matchId": "ko:arg-cpv",
+      "team": "arg",
+      "scorer": "Unknown",
+      "assist": null,
+      "minute": 110,
+      "extra": null,
+      "type": "OWN"
     }
   ],
   "lastEventsCheck": {
     "ko:alg-sui": "2026-07-03T05:02:14.069Z",
     "ko:aus-egy": "2026-07-03T20:49:15.721Z",
-    "ko:arg-cpv": "2026-07-04T00:29:12.179Z"
+    "ko:arg-cpv": "2026-07-04T00:37:18.167Z"
   },
   "eventLookup": {
     "ko:alg-sui": {},
