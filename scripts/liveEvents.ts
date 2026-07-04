@@ -71,19 +71,32 @@ async function fetchApiFootballGoals(
   let fixtureId = cache.apiFootballFixtureId;
 
   if (!fixtureId) {
-    const date = dateISO.slice(0, 10);
-    const data = await getJson(
-      `${API_FOOTBALL_BASE}/fixtures?league=${API_FOOTBALL_WC_LEAGUE}&season=${API_FOOTBALL_SEASON}&date=${date}`,
-      headers
-    );
-    const fixtures: any[] = data?.response ?? [];
-    const hit = fixtures.find(
-      (f) =>
-        namesMatch(f?.teams?.home?.name ?? "", homeTeam) &&
-        namesMatch(f?.teams?.away?.name ?? "", awayTeam)
-    );
-    if (!hit?.fixture?.id) return null;
-    fixtureId = hit.fixture.id;
+    const base = new Date(dateISO);
+    const candidateDates = [0, -1, 1].map((offset) => {
+      const d = new Date(base);
+      d.setUTCDate(d.getUTCDate() + offset);
+      return d.toISOString().slice(0, 10);
+    });
+    for (const date of candidateDates) {
+      const data = await getJson(
+        `${API_FOOTBALL_BASE}/fixtures?league=${API_FOOTBALL_WC_LEAGUE}&season=${API_FOOTBALL_SEASON}&date=${date}`,
+        headers
+      );
+      const fixtures: any[] = data?.response ?? [];
+      const hit = fixtures.find((f) => {
+        const a = f?.teams?.home?.name ?? "";
+        const b = f?.teams?.away?.name ?? "";
+        return (
+          (namesMatch(a, homeTeam) && namesMatch(b, awayTeam)) ||
+          (namesMatch(a, awayTeam) && namesMatch(b, homeTeam))
+        );
+      });
+      if (hit?.fixture?.id) {
+        fixtureId = hit.fixture.id;
+        break;
+      }
+    }
+    if (!fixtureId) return null;
   }
 
   const eventsData = await getJson(
@@ -110,29 +123,86 @@ async function fetchApiFootballGoals(
 
 const ESPN_BASE = "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world";
 
+const yyyymmdd = (d: Date) =>
+  `${d.getUTCFullYear()}${String(d.getUTCMonth() + 1).padStart(2, "0")}${String(
+    d.getUTCDate()
+  ).padStart(2, "0")}`;
+
+/**
+ * Find the ESPN event id for a match. Tries the UTC kickoff date first, then
+ * the day either side (ESPN's scoreboard is sometimes indexed by US local
+ * date rather than UTC, which can be off by one for a late-night/early-
+ * morning kickoff), and checks team order both ways (a neutral-site knockout
+ * match's home/away label can differ from football-data.org's).
+ */
+async function findEspnEventId(homeTeam: string, awayTeam: string, dateISO: string): Promise<string | null> {
+  const base = new Date(dateISO);
+  const candidateDates = [0, -1, 1].map((offset) => {
+    const d = new Date(base);
+    d.setUTCDate(d.getUTCDate() + offset);
+    return yyyymmdd(d);
+  });
+
+  for (const date of candidateDates) {
+    const data = await getJson(`${ESPN_BASE}/scoreboard?dates=${date}`);
+    const events: any[] = data?.events ?? [];
+    const hit = events.find((ev) => {
+      const competitors = ev?.competitions?.[0]?.competitors ?? [];
+      const a = competitors[0]?.team?.displayName ?? "";
+      const b = competitors[1]?.team?.displayName ?? "";
+      return (
+        (namesMatch(a, homeTeam) && namesMatch(b, awayTeam)) ||
+        (namesMatch(a, awayTeam) && namesMatch(b, homeTeam))
+      );
+    });
+    if (hit?.id) return hit.id;
+  }
+  return null;
+}
+
+/**
+ * Best-effort scorer name extraction. The exact field ESPN uses for the
+ * scoring player's name is unconfirmed (this sandbox can't reach the live
+ * API to check), so this tries several plausible shapes before giving up —
+ * and logs the raw event once per match so a real miss is debuggable from
+ * the Action logs rather than a silent "Unknown".
+ */
+function extractScorerName(d: any, logged: Set<string>, matchKey: string): string {
+  const athlete = d?.athletesInvolved?.[0];
+  const direct =
+    athlete?.displayName ??
+    athlete?.shortName ??
+    athlete?.fullName ??
+    athlete?.athlete?.displayName ??
+    d?.participants?.find((p: any) => p?.type === "scorer")?.athlete?.displayName;
+  if (direct) return direct;
+
+  // Fall back to parsing the human-readable narrative text, e.g.
+  // "Goal!  Spain 1, Austria 0. Mikel Oyarzabal (Spain) right footed shot...".
+  const text: string = d?.text ?? d?.shortText ?? "";
+  const afterScore = text.split(/\.\s+/)[1] ?? text;
+  const beforeParen = afterScore.split("(")[0]?.trim();
+  if (beforeParen && /^[A-ZÀ-ÿ][\w'.-]*(\s+[A-ZÀ-ÿ][\w'.-]*){0,3}$/.test(beforeParen)) {
+    return beforeParen;
+  }
+
+  if (!logged.has(matchKey)) {
+    logged.add(matchKey);
+    console.warn(`Couldn't identify scorer name, raw event: ${JSON.stringify(d).slice(0, 500)}`);
+  }
+  return "Unknown";
+}
+
+const loggedUnknownScorers = new Set<string>();
+
 async function fetchEspnGoals(
   homeTeam: string,
   awayTeam: string,
   dateISO: string,
   cache: EventLookupCache
 ): Promise<{ goals: RawGoal[]; eventId?: string } | null> {
-  let eventId = cache.espnEventId;
-
-  if (!eventId) {
-    const date = dateISO.slice(0, 10).replace(/-/g, "");
-    const data = await getJson(`${ESPN_BASE}/scoreboard?dates=${date}`);
-    const events: any[] = data?.events ?? [];
-    const hit = events.find((ev) => {
-      const competitors = ev?.competitions?.[0]?.competitors ?? [];
-      const home =
-        competitors.find((c: any) => c.homeAway === "home")?.team?.displayName ?? "";
-      const away =
-        competitors.find((c: any) => c.homeAway === "away")?.team?.displayName ?? "";
-      return namesMatch(home, homeTeam) && namesMatch(away, awayTeam);
-    });
-    if (!hit?.id) return null;
-    eventId = hit.id;
-  }
+  const eventId = cache.espnEventId ?? (await findEspnEventId(homeTeam, awayTeam, dateISO));
+  if (!eventId) return null;
 
   const summary = await getJson(`${ESPN_BASE}/summary?event=${eventId}`);
   const details: any[] =
@@ -143,8 +213,7 @@ async function fetchEspnGoals(
       const typeText: string = d?.type?.text ?? "";
       return {
         teamName: d?.team?.displayName ?? d?.team?.name ?? "",
-        scorer:
-          d?.athletesInvolved?.[0]?.displayName ?? d?.athletesInvolved?.[0]?.shortName ?? "Unknown",
+        scorer: extractScorerName(d, loggedUnknownScorers, `${eventId}`),
         assist: d?.athletesInvolved?.[1]?.displayName ?? null,
         minute: d?.clock?.value != null ? Math.floor(d.clock.value / 60) : null,
         extra: null,
