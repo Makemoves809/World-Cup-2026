@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-04T22:05:20.497Z",
+  "updatedAt": "2026-07-04T22:14:20.679Z",
   "results": {
     "m-A-1": [
       2,
@@ -434,17 +434,7 @@
       "winnerId": "mar"
     }
   ],
-  "liveKo": [
-    {
-      "stage": "LAST_16",
-      "homeId": "par",
-      "awayId": "fra",
-      "homeScore": 0,
-      "awayScore": 0,
-      "minute": null,
-      "phase": "HT"
-    }
-  ],
+  "liveKo": [],
   "liveScores": {},
   "attendance": {},
   "goals": [
