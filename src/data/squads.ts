@@ -95,7 +95,8 @@ const FRANCE: TeamSquad = {
 
 const ARGENTINA: TeamSquad = {
   teamId: "arg",
-  // Actual opener vs Algeria (3–0, Messi hat-trick): a 4-3-3.
+  // Same XI/shape through the R32 win vs Cabo Verde (3–2 AET) as the opener
+  // vs Algeria (3–0): a 4-3-3, Romero starting despite a fitness scare.
   formation: "4-3-3",
   players: [
     // ---- Starting XI ----
@@ -211,18 +212,20 @@ const ENGLAND: TeamSquad = {
 
 const PORTUGAL: TeamSquad = {
   teamId: "por",
-  // Opener vs DR Congo (1–1): a 4-2-3-1 with Ronaldo up top.
+  // Most recent: R32 vs Croatia (2–1). Still a 4-2-3-1, but Rúben Dias in for
+  // Tomás Araújo at centre-back, and Rafael Leão in for Bernardo Silva on the
+  // right of the front three.
   formation: "4-2-3-1",
   players: [
     // ---- Starting XI ----
     { num: 1, name: "Diogo Costa", short: "D. Costa", line: "gk", role: "Goalkeeper", club: "FC Porto", at2022: true, start: { x: 50, y: 90 } },
     { num: 20, name: "João Cancelo", short: "Cancelo", line: "def", role: "Right-back", club: "Barcelona", at2022: true, start: { x: 84, y: 70 } },
-    { num: 4, name: "Tomás Araújo", short: "T. Araújo", line: "def", role: "Centre-back", club: "Benfica", at2022: false, start: { x: 62, y: 73 } },
+    { num: 3, name: "Rúben Dias", short: "R. Dias", line: "def", role: "Centre-back", club: "Manchester City", at2022: true, start: { x: 62, y: 73 } },
     { num: 13, name: "Renato Veiga", short: "R. Veiga", line: "def", role: "Centre-back", club: "Villarreal", at2022: false, start: { x: 38, y: 73 } },
     { num: 25, name: "Nuno Mendes", short: "N. Mendes", line: "def", role: "Left-back", club: "PSG", at2022: true, photo: "Nuno Mendes (cropped).jpg", start: { x: 16, y: 70 } },
     { num: 15, name: "João Neves", short: "J. Neves", line: "mid", role: "Defensive midfield", club: "PSG", at2022: false, start: { x: 64, y: 50 } },
     { num: 23, name: "Vitinha", short: "Vitinha", line: "mid", role: "Central midfield", club: "PSG", at2022: true, photo: "Vitinha (PSG).jpg", start: { x: 36, y: 50 } },
-    { num: 10, name: "Bernardo Silva", short: "B. Silva", line: "mid", role: "Right winger", club: "Manchester City", at2022: true, photo: "Bernardo Silva.jpg", start: { x: 78, y: 29 } },
+    { num: 19, name: "Rafael Leão", short: "Leão", line: "fwd", role: "Right winger", club: "AC Milan", at2022: true, start: { x: 78, y: 29 } },
     { num: 8, name: "Bruno Fernandes", short: "B. Fernandes", line: "mid", role: "Attacking midfield", club: "Manchester United", at2022: true, photo: "Bruno Fernandes Portugal, 2018.jpg", start: { x: 50, y: 31 } },
     { num: 18, name: "Pedro Neto", short: "Neto", line: "fwd", role: "Left winger", club: "Chelsea", at2022: false, start: { x: 22, y: 29 } },
     { num: 7, name: "Cristiano Ronaldo", short: "Ronaldo", line: "fwd", role: "Forward", club: "Al Nassr", at2022: true, captain: true, photo: "Cristiano Ronaldo WC2022 - 01 (cropped).jpg", start: { x: 50, y: 13 } },
@@ -230,7 +233,7 @@ const PORTUGAL: TeamSquad = {
     // ---- Bench ----
     { num: 12, name: "Rui Silva", short: "Rui Silva", line: "gk", role: "Goalkeeper", club: "Sporting CP", at2022: false },
     { num: 22, name: "José Sá", short: "José Sá", line: "gk", role: "Goalkeeper", club: "Wolves", at2022: true },
-    { num: 3, name: "Rúben Dias", short: "R. Dias", line: "def", role: "Centre-back", club: "Manchester City", at2022: true },
+    { num: 4, name: "Tomás Araújo", short: "T. Araújo", line: "def", role: "Centre-back", club: "Benfica", at2022: false },
     { num: 24, name: "Gonçalo Inácio", short: "Inácio", line: "def", role: "Centre-back", club: "Sporting CP", at2022: false },
     { num: 2, name: "Nélson Semedo", short: "Semedo", line: "def", role: "Right-back", club: "Fenerbahçe", at2022: true },
     { num: 5, name: "Diogo Dalot", short: "Dalot", line: "def", role: "Full-back", club: "Manchester United", at2022: true },
@@ -240,7 +243,7 @@ const PORTUGAL: TeamSquad = {
     { num: 11, name: "Francisco Trincão", short: "Trincão", line: "fwd", role: "Winger", club: "Sporting CP", at2022: false },
     { num: 16, name: "João Félix", short: "Félix", line: "fwd", role: "Forward", club: "Al Nassr", at2022: true },
     { num: 17, name: "Francisco Conceição", short: "Conceição", line: "fwd", role: "Winger", club: "Juventus", at2022: false },
-    { num: 19, name: "Rafael Leão", short: "Leão", line: "fwd", role: "Forward", club: "AC Milan", at2022: true },
+    { num: 10, name: "Bernardo Silva", short: "B. Silva", line: "fwd", role: "Right winger", club: "Manchester City", at2022: true, photo: "Bernardo Silva.jpg" },
     { num: 6, name: "Gonçalo Guedes", short: "Guedes", line: "fwd", role: "Winger", club: "Real Sociedad", at2022: false },
     { num: 9, name: "Gonçalo Ramos", short: "G. Ramos", line: "fwd", role: "Striker", club: "PSG", at2022: true },
   ],
@@ -909,20 +912,24 @@ const NEW_ZEALAND: TeamSquad = {
 
 const EGYPT: TeamSquad = {
   teamId: "egy",
-  // Opener vs Belgium (1–1): a 3-4-1-2. Some shirt numbers best-effort.
-  formation: "3-4-1-2",
+  // Most recent: R32 vs Australia (1–1, won 4–2 on penalties). Switched from
+  // the group stage's back-three 3-4-1-2 to a flat back four — Rabia and
+  // Hafez in, Fatouh and Lashin out, Ashour and Zico pushed into a 4-3-3.
+  // Best-effort on the exact shape (read from match-report prose, not an
+  // official lineup graphic).
+  formation: "4-3-3",
   players: [
     { num: 16, name: "Mostafa Shoubir", short: "Shoubir", line: "gk", role: "Goalkeeper", club: "Al Ahly", at2022: false, start: { x: 50, y: 90 } },
-    { num: 2, name: "Mohamed Hany", short: "Hany", line: "def", role: "Centre-back", club: "Al Ahly", at2022: false, start: { x: 28, y: 75 } },
-    { num: 3, name: "Yasser Ibrahim", short: "Y. Ibrahim", line: "def", role: "Centre-back", club: "Al Ahly", at2022: false, start: { x: 50, y: 77 } },
-    { num: 12, name: "Ahmed Fatouh", short: "Fatouh", line: "def", role: "Centre-back", club: "Zamalek", at2022: false, start: { x: 72, y: 75 } },
-    { num: 8, name: "Emam Ashour", short: "Ashour", line: "mid", role: "Right wing-back", club: "Al Ahly", at2022: false, photo: "Emam Ashour.jpg", start: { x: 88, y: 52 } },
-    { num: 17, name: "Hamdi Fathi", short: "Fathi", line: "mid", role: "Central midfield", club: "Wydad", at2022: false, start: { x: 38, y: 48 } },
-    { num: 4, name: "Marwan Attia", short: "Attia", line: "mid", role: "Central midfield", club: "Al Ahly", at2022: false, start: { x: 62, y: 48 } },
-    { num: 21, name: "Mohanad Lashin", short: "Lashin", line: "mid", role: "Left wing-back", club: "Zamalek", at2022: false, start: { x: 12, y: 52 } },
-    { num: 14, name: "Mostafa Zico", short: "Zico", line: "mid", role: "Attacking midfield", club: "Pyramids", at2022: false, start: { x: 50, y: 32 } },
-    { num: 10, name: "Mohamed Salah", short: "Salah", line: "fwd", role: "Forward", club: "Liverpool", at2022: false, captain: true, photo: "Mo Salah 2018 (cropped).jpg", start: { x: 62, y: 15 } },
-    { num: 9, name: "Omar Marmoush", short: "Marmoush", line: "fwd", role: "Forward", club: "Manchester City", at2022: false, photo: "OmarMarmoush.png", start: { x: 38, y: 15 } },
+    { num: 2, name: "Mohamed Hany", short: "Hany", line: "def", role: "Right-back", club: "Al Ahly", at2022: false, start: { x: 84, y: 70 } },
+    { num: 3, name: "Yasser Ibrahim", short: "Y. Ibrahim", line: "def", role: "Centre-back", club: "Al Ahly", at2022: false, start: { x: 62, y: 73 } },
+    { num: 20, name: "Rami Rabia", short: "Rabia", line: "def", role: "Centre-back", club: "Al Ahly", at2022: false, start: { x: 38, y: 73 } },
+    { num: 15, name: "Karim Hafez", short: "Hafez", line: "def", role: "Left-back", club: "ZED", at2022: false, start: { x: 16, y: 70 } },
+    { num: 17, name: "Hamdi Fathi", short: "Fathi", line: "mid", role: "Central midfield", club: "Wydad", at2022: false, start: { x: 64, y: 48 } },
+    { num: 4, name: "Marwan Attia", short: "Attia", line: "mid", role: "Central midfield", club: "Al Ahly", at2022: false, start: { x: 36, y: 48 } },
+    { num: 8, name: "Emam Ashour", short: "Ashour", line: "mid", role: "Central midfield", club: "Al Ahly", at2022: false, photo: "Emam Ashour.jpg", start: { x: 50, y: 32 } },
+    { num: 10, name: "Mohamed Salah", short: "Salah", line: "fwd", role: "Right winger", club: "Liverpool", at2022: false, captain: true, photo: "Mo Salah 2018 (cropped).jpg", start: { x: 78, y: 18 } },
+    { num: 14, name: "Mostafa Zico", short: "Zico", line: "fwd", role: "Striker", club: "Pyramids", at2022: false, start: { x: 50, y: 13 } },
+    { num: 9, name: "Omar Marmoush", short: "Marmoush", line: "fwd", role: "Left winger", club: "Manchester City", at2022: false, photo: "OmarMarmoush.png", start: { x: 22, y: 18 } },
 
     { num: 1, name: "Mohamed Elshenawy", short: "Elshenawy", line: "gk", role: "Goalkeeper", club: "Al Ahly", at2022: false },
     { num: 22, name: "Mahdy Soliman", short: "Soliman", line: "gk", role: "Goalkeeper", club: "Ceramica", at2022: false },
@@ -930,8 +937,8 @@ const EGYPT: TeamSquad = {
     { num: 5, name: "Hossam Abdelmagid", short: "Abdelmagid", line: "def", role: "Centre-back", club: "Al Ahly", at2022: false },
     { num: 6, name: "Mohamed Abdelmonem", short: "Abdelmonem", line: "def", role: "Centre-back", club: "Nice", at2022: false },
     { num: 13, name: "Tarek Alaa", short: "T. Alaa", line: "def", role: "Centre-back", club: "Zamalek", at2022: false },
-    { num: 15, name: "Karim Hafez", short: "Hafez", line: "def", role: "Left-back", club: "ZED", at2022: false },
-    { num: 20, name: "Rami Rabia", short: "Rabia", line: "def", role: "Centre-back", club: "Al Ahly", at2022: false },
+    { num: 12, name: "Ahmed Fatouh", short: "Fatouh", line: "def", role: "Centre-back", club: "Zamalek", at2022: false },
+    { num: 21, name: "Mohanad Lashin", short: "Lashin", line: "def", role: "Left-back", club: "Zamalek", at2022: false },
     { num: 18, name: "Nabil Emad", short: "Emad", line: "mid", role: "Defensive midfield", club: "Pyramids", at2022: false },
     { num: 19, name: "Haitham Hassan", short: "H. Hassan", line: "mid", role: "Central midfield", club: "Modern Future", at2022: false },
     { num: 24, name: "Mahmoud Saber", short: "Saber", line: "mid", role: "Central midfield", club: "Al Ahly", at2022: false },
@@ -1440,7 +1447,8 @@ const AUSTRALIA: TeamSquad = {
 
 const COLOMBIA: TeamSquad = {
   teamId: "col",
-  // 4-2-3-1 — XI vs Uzbekistan (3–1). Bench numbers best-effort.
+  // Same XI/shape through the R32 win vs Ghana (1–0) as the group stage: a
+  // 4-2-3-1. Bench numbers best-effort.
   formation: "4-2-3-1",
   players: [
     { num: 1, name: "Camilo Vargas", short: "Vargas", line: "gk", role: "Goalkeeper", club: "Atlético Mineiro", at2022: false, start: { x: 50, y: 90 } },
@@ -1655,29 +1663,31 @@ const CZECHIA: TeamSquad = {
 
 const SWITZERLAND: TeamSquad = {
   teamId: "sui",
-  // 4-3-3 — XI around the Bosnia win / Canada decider. Bench numbers best-effort.
-  formation: "4-3-3",
+  // Most recent: R32 vs Algeria (2–0). Switched from the group stage's 4-3-3
+  // to a back three with attacking wing-backs — Zakaria in for Widmer,
+  // Ndoye and Manzambi pushed further forward.
+  formation: "3-4-3",
   players: [
     { num: 1, name: "Gregor Kobel", short: "Kobel", line: "gk", role: "Goalkeeper", club: "Borussia Dortmund", at2022: false, photo: "GregorKobel.jpg", start: { x: 50, y: 90 } },
-    { num: 2, name: "Silvan Widmer", short: "Widmer", line: "def", role: "Right-back", club: "Mainz", at2022: true, photo: "AUT vs. SUI 2015-11-17 (173) Silvan Widmer.jpg", start: { x: 84, y: 70 } },
-    { num: 4, name: "Nico Elvedi", short: "Elvedi", line: "def", role: "Centre-back", club: "Borussia M'gladbach", at2022: true, start: { x: 62, y: 73 } },
-    { num: 5, name: "Manuel Akanji", short: "Akanji", line: "def", role: "Centre-back", club: "Manchester City", at2022: true, photo: "Manuel Akanji.jpg", start: { x: 38, y: 73 } },
-    { num: 13, name: "Ricardo Rodríguez", short: "R. Rodríguez", line: "def", role: "Left-back", club: "Real Betis", at2022: true, photo: "Ricardo Rodríguez 2018 (cropped).jpg", start: { x: 16, y: 70 } },
-    { num: 10, name: "Granit Xhaka", short: "Xhaka", line: "mid", role: "Defensive midfield", club: "Sunderland", at2022: true, captain: true, photo: "Granit Xhaka (cropped).jpg", start: { x: 50, y: 48 } },
-    { num: 8, name: "Remo Freuler", short: "Freuler", line: "mid", role: "Central midfield", club: "Bologna", at2022: true, photo: "Azione Lecce Atalanta - Remo Freuler (cropped).jpg", start: { x: 70, y: 40 } },
-    { num: 15, name: "Johan Manzambi", short: "Manzambi", line: "mid", role: "Central midfield", club: "Freiburg", at2022: false, start: { x: 30, y: 40 } },
-    { num: 11, name: "Dan Ndoye", short: "Ndoye", line: "fwd", role: "Right winger", club: "Nottingham Forest", at2022: false, photo: "Lens - Nice (23-01-2021) 44.jpg", start: { x: 82, y: 18 } },
-    { num: 7, name: "Breel Embolo", short: "Embolo", line: "fwd", role: "Striker", club: "Monaco", at2022: true, photo: "Wales-Switzerland match at Euro 2020 in Baku 5.jpg", start: { x: 50, y: 13 } },
-    { num: 17, name: "Rubén Vargas", short: "Vargas", line: "fwd", role: "Left winger", club: "Sevilla", at2022: true, start: { x: 18, y: 18 } },
+    { num: 5, name: "Manuel Akanji", short: "Akanji", line: "def", role: "Centre-back", club: "Manchester City", at2022: true, photo: "Manuel Akanji.jpg", start: { x: 30, y: 75 } },
+    { num: 18, name: "Denis Zakaria", short: "Zakaria", line: "def", role: "Centre-back", club: "Monaco", at2022: true, start: { x: 50, y: 78 } },
+    { num: 4, name: "Nico Elvedi", short: "Elvedi", line: "def", role: "Centre-back", club: "Borussia M'gladbach", at2022: true, start: { x: 70, y: 75 } },
+    { num: 13, name: "Ricardo Rodríguez", short: "R. Rodríguez", line: "def", role: "Left wing-back", club: "Real Betis", at2022: true, photo: "Ricardo Rodríguez 2018 (cropped).jpg", start: { x: 12, y: 55 } },
+    { num: 11, name: "Dan Ndoye", short: "Ndoye", line: "def", role: "Right wing-back", club: "Nottingham Forest", at2022: false, photo: "Lens - Nice (23-01-2021) 44.jpg", start: { x: 88, y: 55 } },
+    { num: 10, name: "Granit Xhaka", short: "Xhaka", line: "mid", role: "Defensive midfield", club: "Sunderland", at2022: true, captain: true, photo: "Granit Xhaka (cropped).jpg", start: { x: 64, y: 45 } },
+    { num: 8, name: "Remo Freuler", short: "Freuler", line: "mid", role: "Central midfield", club: "Bologna", at2022: true, photo: "Azione Lecce Atalanta - Remo Freuler (cropped).jpg", start: { x: 36, y: 45 } },
+    { num: 17, name: "Rubén Vargas", short: "Vargas", line: "fwd", role: "Left winger", club: "Sevilla", at2022: true, start: { x: 20, y: 20 } },
+    { num: 7, name: "Breel Embolo", short: "Embolo", line: "fwd", role: "Striker", club: "Monaco", at2022: true, photo: "Wales-Switzerland match at Euro 2020 in Baku 5.jpg", start: { x: 50, y: 14 } },
+    { num: 15, name: "Johan Manzambi", short: "Manzambi", line: "fwd", role: "Right winger", club: "Freiburg", at2022: false, start: { x: 80, y: 20 } },
 
     { num: 12, name: "Marwin Hitz", short: "Hitz", line: "gk", role: "Goalkeeper", club: "Basel", at2022: false },
     { num: 21, name: "Jonas Omlin", short: "Omlin", line: "gk", role: "Goalkeeper", club: "Borussia M'gladbach", at2022: false },
+    { num: 2, name: "Silvan Widmer", short: "Widmer", line: "def", role: "Right-back", club: "Mainz", at2022: true, photo: "AUT vs. SUI 2015-11-17 (173) Silvan Widmer.jpg" },
     { num: 3, name: "Cédric Zesiger", short: "Zesiger", line: "def", role: "Centre-back", club: "Augsburg", at2022: false },
     { num: 22, name: "Fabian Schär", short: "Schär", line: "def", role: "Centre-back", club: "Newcastle", at2022: true },
     { num: 20, name: "Becir Omeragic", short: "Omeragic", line: "def", role: "Centre-back", club: "Montpellier", at2022: false },
     { num: 6, name: "Aurèle Amenda", short: "Amenda", line: "def", role: "Centre-back", club: "Eintracht Frankfurt", at2022: false },
     { num: 24, name: "Leonidas Stergiou", short: "Stergiou", line: "def", role: "Right-back", club: "Stuttgart", at2022: false },
-    { num: 18, name: "Denis Zakaria", short: "Zakaria", line: "mid", role: "Defensive midfield", club: "Monaco", at2022: true },
     { num: 14, name: "Vincent Sierro", short: "Sierro", line: "mid", role: "Central midfield", club: "Toulouse", at2022: false },
     { num: 23, name: "Michel Aebischer", short: "Aebischer", line: "mid", role: "Central midfield", club: "Bologna", at2022: true },
     { num: 16, name: "Fabian Rieder", short: "Rieder", line: "mid", role: "Attacking midfield", club: "Stuttgart", at2022: false },
