@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-04T22:14:20.679Z",
+  "updatedAt": "2026-07-04T22:15:22.781Z",
   "results": {
     "m-A-1": [
       2,
@@ -434,7 +434,17 @@
       "winnerId": "mar"
     }
   ],
-  "liveKo": [],
+  "liveKo": [
+    {
+      "stage": "LAST_16",
+      "homeId": "par",
+      "awayId": "fra",
+      "homeScore": 0,
+      "awayScore": 0,
+      "minute": null,
+      "phase": "2H"
+    }
+  ],
   "liveScores": {},
   "attendance": {},
   "goals": [
@@ -535,7 +545,7 @@
     "ko:arg-cpv": "2026-07-04T00:50:25.261Z",
     "ko:col-gha": "2026-07-04T03:37:15.278Z",
     "ko:can-mar": "2026-07-04T19:10:27.363Z",
-    "ko:fra-par": "2026-07-04T22:05:20.497Z"
+    "ko:fra-par": "2026-07-04T22:15:22.781Z"
   },
   "eventLookup": {
     "ko:alg-sui": {},
