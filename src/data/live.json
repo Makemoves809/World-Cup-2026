@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-04T06:09:15.889Z",
+  "updatedAt": "2026-07-04T06:12:13.738Z",
   "results": {
     "m-A-1": [
       2,
@@ -403,10 +403,10 @@
       "stage": "LAST_32",
       "homeId": "aus",
       "awayId": "egy",
-      "homeScore": -1,
+      "homeScore": 1,
       "awayScore": 1,
-      "winnerId": null,
-      "penaltiesHome": 4,
+      "winnerId": "egy",
+      "penaltiesHome": 2,
       "penaltiesAway": 4
     },
     {
