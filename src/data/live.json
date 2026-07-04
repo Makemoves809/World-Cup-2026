@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-04T22:39:14.907Z",
+  "updatedAt": "2026-07-04T22:42:15.795Z",
   "results": {
     "m-A-1": [
       2,
@@ -537,6 +537,15 @@
       "minute": 90,
       "extra": null,
       "type": "REGULAR"
+    },
+    {
+      "matchId": "ko:fra-par",
+      "team": "fra",
+      "scorer": "Unknown",
+      "assist": null,
+      "minute": 69,
+      "extra": null,
+      "type": "PENALTY"
     }
   ],
   "lastEventsCheck": {
@@ -545,7 +554,7 @@
     "ko:arg-cpv": "2026-07-04T00:50:25.261Z",
     "ko:col-gha": "2026-07-04T03:37:15.278Z",
     "ko:can-mar": "2026-07-04T19:10:27.363Z",
-    "ko:fra-par": "2026-07-04T22:33:11.207Z"
+    "ko:fra-par": "2026-07-04T22:42:15.795Z"
   },
   "eventLookup": {
     "ko:alg-sui": {},
