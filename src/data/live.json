@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-04T19:08:14.437Z",
+  "updatedAt": "2026-07-04T19:10:27.364Z",
   "results": {
     "m-A-1": [
       2,
@@ -424,19 +424,17 @@
       "homeScore": 1,
       "awayScore": 0,
       "winnerId": "col"
-    }
-  ],
-  "liveKo": [
+    },
     {
       "stage": "LAST_16",
       "homeId": "can",
       "awayId": "mar",
       "homeScore": 0,
       "awayScore": 3,
-      "minute": null,
-      "phase": "2H"
+      "winnerId": "mar"
     }
   ],
+  "liveKo": [],
   "liveScores": {},
   "attendance": {},
   "goals": [
@@ -536,7 +534,7 @@
     "ko:aus-egy": "2026-07-03T20:49:15.721Z",
     "ko:arg-cpv": "2026-07-04T00:50:25.261Z",
     "ko:col-gha": "2026-07-04T03:37:15.278Z",
-    "ko:can-mar": "2026-07-04T19:08:14.437Z"
+    "ko:can-mar": "2026-07-04T19:10:27.363Z"
   },
   "eventLookup": {
     "ko:alg-sui": {},
