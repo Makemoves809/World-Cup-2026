@@ -161,28 +161,33 @@ async function findEspnEventId(homeTeam: string, awayTeam: string, dateISO: stri
 }
 
 /**
- * Best-effort scorer name extraction. The exact field ESPN uses for the
- * scoring player's name is unconfirmed (this sandbox can't reach the live
- * API to check), so this tries several plausible shapes before giving up —
- * and logs the raw event once per match so a real miss is debuggable from
- * the Action logs rather than a silent "Unknown".
+ * Scorer name extraction. Confirmed against a real event from production
+ * (France's penalty vs Paraguay, 4 Jul 2026): ESPN's keyEvents put the
+ * scorer at `participants[0].athlete.displayName`, not `athletesInvolved`
+ * (that field doesn't exist on real events — the original guess here was
+ * wrong). Keeps `athletesInvolved` as a fallback in case some event types
+ * use a different shape, then a text-narrative parse as a last resort, and
+ * logs the raw event once per match if all three miss so a real gap is
+ * debuggable from the Action logs rather than a silent "Unknown".
  */
 function extractScorerName(d: any, logged: Set<string>, matchKey: string): string {
   const athlete = d?.athletesInvolved?.[0];
   const direct =
+    d?.participants?.[0]?.athlete?.displayName ??
     athlete?.displayName ??
     athlete?.shortName ??
     athlete?.fullName ??
-    athlete?.athlete?.displayName ??
-    d?.participants?.find((p: any) => p?.type === "scorer")?.athlete?.displayName;
+    athlete?.athlete?.displayName;
   if (direct) return direct;
 
   // Fall back to parsing the human-readable narrative text, e.g.
-  // "Goal!  Spain 1, Austria 0. Mikel Oyarzabal (Spain) right footed shot...".
+  // "Goal! Paraguay 0, France 1. Kylian Mbappé (France) converts the
+  // penalty...". [^\s] (not \w) so accented letters — Mbappé, Ávalos,
+  // Martínez — aren't cut off mid-name; \w alone is ASCII-only in JS.
   const text: string = d?.text ?? d?.shortText ?? "";
   const afterScore = text.split(/\.\s+/)[1] ?? text;
   const beforeParen = afterScore.split("(")[0]?.trim();
-  if (beforeParen && /^[A-ZÀ-ÿ][\w'.-]*(\s+[A-ZÀ-ÿ][\w'.-]*){0,3}$/.test(beforeParen)) {
+  if (beforeParen && /^[A-ZÀ-ÿ][^\s]*(\s+[A-ZÀ-ÿ][^\s]*){0,3}$/.test(beforeParen)) {
     return beforeParen;
   }
 
