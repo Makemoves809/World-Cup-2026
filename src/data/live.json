@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-05T21:13:14.818Z",
+  "updatedAt": "2026-07-05T22:10:33.895Z",
   "results": {
     "m-A-1": [
       2,
@@ -440,6 +440,14 @@
       "homeScore": 0,
       "awayScore": 1,
       "winnerId": "fra"
+    },
+    {
+      "stage": "LAST_16",
+      "homeId": "bra",
+      "awayId": "nor",
+      "homeScore": 1,
+      "awayScore": 2,
+      "winnerId": "nor"
     }
   ],
   "liveKo": [],
@@ -544,6 +552,33 @@
       "minute": 69,
       "extra": null,
       "type": "PENALTY"
+    },
+    {
+      "matchId": "ko:bra-nor",
+      "team": "nor",
+      "scorer": "Erling Haaland",
+      "assist": null,
+      "minute": 78,
+      "extra": null,
+      "type": "REGULAR"
+    },
+    {
+      "matchId": "ko:bra-nor",
+      "team": "nor",
+      "scorer": "Erling Haaland",
+      "assist": null,
+      "minute": 89,
+      "extra": null,
+      "type": "REGULAR"
+    },
+    {
+      "matchId": "ko:bra-nor",
+      "team": "bra",
+      "scorer": "Neymar",
+      "assist": null,
+      "minute": 90,
+      "extra": null,
+      "type": "PENALTY"
     }
   ],
   "lastEventsCheck": {
@@ -553,7 +588,7 @@
     "ko:col-gha": "2026-07-04T03:37:15.278Z",
     "ko:can-mar": "2026-07-04T19:10:27.363Z",
     "ko:fra-par": "2026-07-04T23:10:25.392Z",
-    "ko:bra-nor": "2026-07-05T21:07:17.522Z"
+    "ko:bra-nor": "2026-07-05T22:10:33.894Z"
   },
   "eventLookup": {
     "ko:alg-sui": {},
