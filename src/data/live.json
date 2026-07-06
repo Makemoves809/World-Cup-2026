@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-06T02:15:23.939Z",
+  "updatedAt": "2026-07-06T02:24:16.252Z",
   "results": {
     "m-A-1": [
       2,
@@ -616,6 +616,15 @@
       "minute": 41,
       "extra": null,
       "type": "REGULAR"
+    },
+    {
+      "matchId": "ko:eng-mex",
+      "team": "eng",
+      "scorer": "Harry Kane",
+      "assist": null,
+      "minute": 59,
+      "extra": null,
+      "type": "PENALTY"
     }
   ],
   "lastEventsCheck": {
@@ -626,7 +635,7 @@
     "ko:can-mar": "2026-07-04T19:10:27.363Z",
     "ko:fra-par": "2026-07-04T23:10:25.392Z",
     "ko:bra-nor": "2026-07-05T22:10:33.894Z",
-    "ko:eng-mex": "2026-07-06T02:15:23.938Z"
+    "ko:eng-mex": "2026-07-06T02:24:16.252Z"
   },
   "eventLookup": {
     "ko:alg-sui": {},
