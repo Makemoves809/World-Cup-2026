@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-06T01:32:20.064Z",
+  "updatedAt": "2026-07-06T01:40:35.620Z",
   "results": {
     "m-A-1": [
       2,
@@ -589,6 +589,24 @@
       "minute": 90,
       "extra": null,
       "type": "PENALTY"
+    },
+    {
+      "matchId": "ko:eng-mex",
+      "team": "eng",
+      "scorer": "Jude Bellingham",
+      "assist": null,
+      "minute": 35,
+      "extra": null,
+      "type": "REGULAR"
+    },
+    {
+      "matchId": "ko:eng-mex",
+      "team": "eng",
+      "scorer": "Jude Bellingham",
+      "assist": null,
+      "minute": 37,
+      "extra": null,
+      "type": "REGULAR"
     }
   ],
   "lastEventsCheck": {
@@ -599,7 +617,7 @@
     "ko:can-mar": "2026-07-04T19:10:27.363Z",
     "ko:fra-par": "2026-07-04T23:10:25.392Z",
     "ko:bra-nor": "2026-07-05T22:10:33.894Z",
-    "ko:eng-mex": "2026-07-06T01:32:20.064Z"
+    "ko:eng-mex": "2026-07-06T01:40:35.619Z"
   },
   "eventLookup": {
     "ko:alg-sui": {},
