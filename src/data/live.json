@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-06T01:48:16.896Z",
+  "updatedAt": "2026-07-06T01:49:16.429Z",
   "results": {
     "m-A-1": [
       2,
@@ -607,6 +607,15 @@
       "minute": 37,
       "extra": null,
       "type": "REGULAR"
+    },
+    {
+      "matchId": "ko:eng-mex",
+      "team": "mex",
+      "scorer": "Julián Quiñones",
+      "assist": null,
+      "minute": 41,
+      "extra": null,
+      "type": "REGULAR"
     }
   ],
   "lastEventsCheck": {
@@ -617,7 +626,7 @@
     "ko:can-mar": "2026-07-04T19:10:27.363Z",
     "ko:fra-par": "2026-07-04T23:10:25.392Z",
     "ko:bra-nor": "2026-07-05T22:10:33.894Z",
-    "ko:eng-mex": "2026-07-06T01:40:35.619Z"
+    "ko:eng-mex": "2026-07-06T01:49:16.428Z"
   },
   "eventLookup": {
     "ko:alg-sui": {},
