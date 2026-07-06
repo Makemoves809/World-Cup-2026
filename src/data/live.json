@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-06T03:05:16.886Z",
+  "updatedAt": "2026-07-06T03:10:36.402Z",
   "results": {
     "m-A-1": [
       2,
@@ -448,19 +448,17 @@
       "homeScore": 1,
       "awayScore": 2,
       "winnerId": "nor"
-    }
-  ],
-  "liveKo": [
+    },
     {
       "stage": "LAST_16",
       "homeId": "mex",
       "awayId": "eng",
       "homeScore": 2,
       "awayScore": 3,
-      "minute": null,
-      "phase": "2H"
+      "winnerId": "eng"
     }
   ],
+  "liveKo": [],
   "liveScores": {},
   "attendance": {},
   "goals": [
@@ -644,7 +642,7 @@
     "ko:can-mar": "2026-07-04T19:10:27.363Z",
     "ko:fra-par": "2026-07-04T23:10:25.392Z",
     "ko:bra-nor": "2026-07-05T22:10:33.894Z",
-    "ko:eng-mex": "2026-07-06T03:05:16.886Z"
+    "ko:eng-mex": "2026-07-06T03:10:36.402Z"
   },
   "eventLookup": {
     "ko:alg-sui": {},
