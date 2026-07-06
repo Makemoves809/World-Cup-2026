@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-06T02:28:14.203Z",
+  "updatedAt": "2026-07-06T02:32:21.779Z",
   "results": {
     "m-A-1": [
       2,
@@ -625,6 +625,15 @@
       "minute": 59,
       "extra": null,
       "type": "PENALTY"
+    },
+    {
+      "matchId": "ko:eng-mex",
+      "team": "mex",
+      "scorer": "Raúl Jiménez",
+      "assist": null,
+      "minute": 68,
+      "extra": null,
+      "type": "PENALTY"
     }
   ],
   "lastEventsCheck": {
@@ -635,7 +644,7 @@
     "ko:can-mar": "2026-07-04T19:10:27.363Z",
     "ko:fra-par": "2026-07-04T23:10:25.392Z",
     "ko:bra-nor": "2026-07-05T22:10:33.894Z",
-    "ko:eng-mex": "2026-07-06T02:24:16.252Z"
+    "ko:eng-mex": "2026-07-06T02:32:21.779Z"
   },
   "eventLookup": {
     "ko:alg-sui": {},
