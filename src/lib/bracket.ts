@@ -114,7 +114,8 @@ const R16: KoMatch[] = [
   { id: "m89", num: 89, home: P("m74"), away: P("m77"), date: "2026-07-04", kickoff: "2026-07-04T21:00:00Z", venue: "Lincoln Financial Field · Philadelphia" },
   { id: "m90", num: 90, home: P("m73"), away: P("m75"), date: "2026-07-04", kickoff: "2026-07-04T17:00:00Z", venue: "NRG Stadium · Houston" },
   { id: "m91", num: 91, home: P("m76"), away: P("m78"), date: "2026-07-05", kickoff: "2026-07-05T20:00:00Z", venue: "MetLife Stadium · New York/New Jersey" },
-  { id: "m92", num: 92, home: P("m79"), away: P("m80"), date: "2026-07-05", kickoff: "2026-07-06T00:00:00Z", venue: "Estadio Azteca · Mexico City" },
+  // Kickoff delayed an hour (6pm → 7pm local) by a thunderstorm in Mexico City.
+  { id: "m92", num: 92, home: P("m79"), away: P("m80"), date: "2026-07-05", kickoff: "2026-07-06T01:00:00Z", venue: "Estadio Azteca · Mexico City" },
   { id: "m93", num: 93, home: P("m83"), away: P("m84"), date: "2026-07-06", kickoff: "2026-07-06T19:00:00Z", venue: "AT&T Stadium · Dallas" },
   { id: "m94", num: 94, home: P("m81"), away: P("m82"), date: "2026-07-06", kickoff: "2026-07-07T00:00:00Z", venue: "Lumen Field · Seattle" },
   { id: "m95", num: 95, home: P("m86"), away: P("m88"), date: "2026-07-07", kickoff: "2026-07-07T16:00:00Z", venue: "Mercedes-Benz Stadium · Atlanta" },
