@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-05T22:10:33.895Z",
+  "updatedAt": "2026-07-06T01:06:14.582Z",
   "results": {
     "m-A-1": [
       2,
@@ -450,7 +450,17 @@
       "winnerId": "nor"
     }
   ],
-  "liveKo": [],
+  "liveKo": [
+    {
+      "stage": "LAST_16",
+      "homeId": "mex",
+      "awayId": "eng",
+      "homeScore": 0,
+      "awayScore": 0,
+      "minute": null,
+      "phase": "1H"
+    }
+  ],
   "liveScores": {},
   "attendance": {},
   "goals": [
@@ -588,7 +598,8 @@
     "ko:col-gha": "2026-07-04T03:37:15.278Z",
     "ko:can-mar": "2026-07-04T19:10:27.363Z",
     "ko:fra-par": "2026-07-04T23:10:25.392Z",
-    "ko:bra-nor": "2026-07-05T22:10:33.894Z"
+    "ko:bra-nor": "2026-07-05T22:10:33.894Z",
+    "ko:eng-mex": "2026-07-06T01:06:14.582Z"
   },
   "eventLookup": {
     "ko:alg-sui": {},
@@ -607,6 +618,9 @@
     },
     "ko:bra-nor": {
       "espnEventId": "760504"
+    },
+    "ko:eng-mex": {
+      "espnEventId": "760505"
     }
   }
 }
