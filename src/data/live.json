@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-07T22:45:19.037Z",
+  "updatedAt": "2026-07-07T22:46:13.702Z",
   "results": {
     "m-A-1": [
       2,
@@ -487,20 +487,12 @@
       "awayId": "col",
       "homeScore": 0,
       "awayScore": 0,
-      "winnerId": null
+      "winnerId": null,
+      "penaltiesHome": 0,
+      "penaltiesAway": 0
     }
   ],
-  "liveKo": [
-    {
-      "stage": "LAST_16",
-      "homeId": "sui",
-      "awayId": "col",
-      "homeScore": 0,
-      "awayScore": 0,
-      "minute": null,
-      "phase": "PENS"
-    }
-  ],
+  "liveKo": [],
   "liveScores": {},
   "attendance": {},
   "goals": [
