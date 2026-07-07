@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-07T17:42:22.057Z",
+  "updatedAt": "2026-07-07T17:48:13.952Z",
   "results": {
     "m-A-1": [
       2,
@@ -479,7 +479,7 @@
       "stage": "LAST_16",
       "homeId": "arg",
       "awayId": "egy",
-      "homeScore": 0,
+      "homeScore": 1,
       "awayScore": 2,
       "minute": null,
       "phase": "2H"
