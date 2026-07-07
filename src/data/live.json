@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-07T00:24:20.814Z",
+  "updatedAt": "2026-07-07T00:33:15.631Z",
   "results": {
     "m-A-1": [
       2,
@@ -668,6 +668,15 @@
       "minute": 8,
       "extra": null,
       "type": "REGULAR"
+    },
+    {
+      "matchId": "ko:bel-usa",
+      "team": "usa",
+      "scorer": "Malik Tillman",
+      "assist": null,
+      "minute": 30,
+      "extra": null,
+      "type": "REGULAR"
     }
   ],
   "lastEventsCheck": {
@@ -680,7 +689,7 @@
     "ko:bra-nor": "2026-07-05T22:10:33.894Z",
     "ko:eng-mex": "2026-07-06T03:10:36.402Z",
     "ko:esp-por": "2026-07-06T21:07:21.357Z",
-    "ko:bel-usa": "2026-07-07T00:24:20.813Z"
+    "ko:bel-usa": "2026-07-07T00:33:15.630Z"
   },
   "eventLookup": {
     "ko:alg-sui": {},
