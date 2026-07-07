@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-07T22:39:13.156Z",
+  "updatedAt": "2026-07-07T22:45:19.037Z",
   "results": {
     "m-A-1": [
       2,
@@ -498,7 +498,7 @@
       "homeScore": 0,
       "awayScore": 0,
       "minute": null,
-      "phase": "ET"
+      "phase": "PENS"
     }
   ],
   "liveScores": {},
