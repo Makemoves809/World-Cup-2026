@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-07T01:15:21.701Z",
+  "updatedAt": "2026-07-07T01:24:16.153Z",
   "results": {
     "m-A-1": [
       2,
@@ -686,6 +686,15 @@
       "minute": 32,
       "extra": null,
       "type": "REGULAR"
+    },
+    {
+      "matchId": "ko:bel-usa",
+      "team": "bel",
+      "scorer": "Hans Vanaken",
+      "assist": null,
+      "minute": 56,
+      "extra": null,
+      "type": "REGULAR"
     }
   ],
   "lastEventsCheck": {
@@ -698,7 +707,7 @@
     "ko:bra-nor": "2026-07-05T22:10:33.894Z",
     "ko:eng-mex": "2026-07-06T03:10:36.402Z",
     "ko:esp-por": "2026-07-06T21:07:21.357Z",
-    "ko:bel-usa": "2026-07-07T01:15:21.700Z"
+    "ko:bel-usa": "2026-07-07T01:24:16.152Z"
   },
   "eventLookup": {
     "ko:alg-sui": {},
