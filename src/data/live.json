@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-07T18:10:39.108Z",
+  "updatedAt": "2026-07-07T20:06:16.165Z",
   "results": {
     "m-A-1": [
       2,
@@ -482,7 +482,17 @@
       "winnerId": "arg"
     }
   ],
-  "liveKo": [],
+  "liveKo": [
+    {
+      "stage": "LAST_16",
+      "homeId": "sui",
+      "awayId": "col",
+      "homeScore": 0,
+      "awayScore": 0,
+      "minute": null,
+      "phase": "1H"
+    }
+  ],
   "liveScores": {},
   "attendance": {},
   "goals": [
@@ -768,7 +778,8 @@
     "ko:eng-mex": "2026-07-06T03:10:36.402Z",
     "ko:esp-por": "2026-07-06T21:07:21.357Z",
     "ko:bel-usa": "2026-07-07T02:04:13.129Z",
-    "ko:arg-egy": "2026-07-07T18:10:39.108Z"
+    "ko:arg-egy": "2026-07-07T18:10:39.108Z",
+    "ko:col-sui": "2026-07-07T20:06:16.165Z"
   },
   "eventLookup": {
     "ko:alg-sui": {},
@@ -799,6 +810,9 @@
     },
     "ko:arg-egy": {
       "espnEventId": "760509"
+    },
+    "ko:col-sui": {
+      "espnEventId": "760508"
     }
   }
 }
