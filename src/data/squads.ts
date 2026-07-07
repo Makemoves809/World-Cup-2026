@@ -133,9 +133,8 @@ const ARGENTINA: TeamSquad = {
 
 const SPAIN: TeamSquad = {
   teamId: "esp",
-  // Most recent: R32 vs Austria (3–0). Shifted from the opener's 4-2-3-1 to a
-  // 4-3-3 — Porro in for Llorente at right-back, Olmo and Baena in for Fabián
-  // Ruiz and Ferran Torres, Yamal in for Gavi on the right.
+  // Same XI/shape through the R16 win vs Portugal as the R32 vs Austria
+  // (3–0): Porro, Olmo, Baena and Yamal all confirmed still starting.
   formation: "4-3-3",
   players: [
     // ---- Starting XI ----
@@ -172,23 +171,22 @@ const SPAIN: TeamSquad = {
 
 const ENGLAND: TeamSquad = {
   teamId: "eng",
-  // Most recent: R32 vs DR Congo (2–1) — still a 4-2-3-1, but Spence for the
-  // injured Reece James at right-back, Guéhi for Stones at centre-back (James
-  // and Quansah both unavailable), and Rashford for Gordon on the left. Saka
-  // managed his fitness from the bench; Madueke started on the right.
+  // Most recent: R16 vs Mexico (3–2) — still a 4-2-3-1, but Quansah in for
+  // Spence at right-back, and Saka and Gordon in for Madueke and Rashford in
+  // the front three.
   formation: "4-2-3-1",
   players: [
     // ---- Starting XI ----
     { num: 1, name: "Jordan Pickford", short: "Pickford", line: "gk", role: "Goalkeeper", club: "Everton", at2022: true, start: { x: 50, y: 90 } },
-    { num: 25, name: "Djed Spence", short: "Spence", line: "def", role: "Full-back", club: "Tottenham", at2022: false, start: { x: 84, y: 70 } },
+    { num: 26, name: "Jarell Quansah", short: "Quansah", line: "def", role: "Right-back", club: "Bayer Leverkusen", at2022: false, start: { x: 84, y: 70 } },
     { num: 6, name: "Marc Guéhi", short: "Guéhi", line: "def", role: "Centre-back", club: "Crystal Palace", at2022: false, start: { x: 62, y: 73 } },
     { num: 2, name: "Ezri Konsa", short: "Konsa", line: "def", role: "Centre-back", club: "Aston Villa", at2022: false, start: { x: 38, y: 73 } },
     { num: 3, name: "Nico O'Reilly", short: "O'Reilly", line: "def", role: "Left-back", club: "Manchester City", at2022: false, start: { x: 16, y: 70 } },
     { num: 8, name: "Elliot Anderson", short: "Anderson", line: "mid", role: "Defensive midfield", club: "Nottingham Forest", at2022: false, start: { x: 64, y: 50 } },
     { num: 4, name: "Declan Rice", short: "Rice", line: "mid", role: "Defensive midfield", club: "Arsenal", at2022: true, photo: "Declan Rice.jpg", start: { x: 36, y: 50 } },
-    { num: 20, name: "Noni Madueke", short: "Madueke", line: "fwd", role: "Right winger", club: "Arsenal", at2022: false, start: { x: 78, y: 29 } },
+    { num: 7, name: "Bukayo Saka", short: "Saka", line: "fwd", role: "Right winger", club: "Arsenal", at2022: true, photo: "1 bukayo saka arsenal 2025 (cropped).jpg", start: { x: 78, y: 29 } },
     { num: 10, name: "Jude Bellingham", short: "Bellingham", line: "mid", role: "Attacking midfield", club: "Real Madrid", at2022: true, photo: "Jude Bellingham 2022-11-21 1.jpg", start: { x: 50, y: 31 } },
-    { num: 11, name: "Marcus Rashford", short: "Rashford", line: "fwd", role: "Forward", club: "Barcelona", at2022: true, start: { x: 22, y: 29 } },
+    { num: 18, name: "Anthony Gordon", short: "Gordon", line: "fwd", role: "Left winger", club: "Newcastle", at2022: false, start: { x: 22, y: 29 } },
     { num: 9, name: "Harry Kane", short: "Kane", line: "fwd", role: "Striker", club: "Bayern Munich", at2022: true, captain: true, photo: "Harry Kane (24685589756).jpg", start: { x: 50, y: 13 } },
 
     // ---- Bench ----
@@ -198,13 +196,13 @@ const ENGLAND: TeamSquad = {
     { num: 12, name: "Trevoh Chalobah", short: "Chalobah", line: "def", role: "Centre-back", club: "Chelsea", at2022: false },
     { num: 15, name: "Dan Burn", short: "Burn", line: "def", role: "Centre-back", club: "Newcastle", at2022: false },
     { num: 24, name: "Reece James", short: "James", line: "def", role: "Right-back", club: "Chelsea", at2022: false },
-    { num: 26, name: "Jarell Quansah", short: "Quansah", line: "def", role: "Centre-back", club: "Bayer Leverkusen", at2022: false },
+    { num: 25, name: "Djed Spence", short: "Spence", line: "def", role: "Full-back", club: "Tottenham", at2022: false },
     { num: 14, name: "Jordan Henderson", short: "J. Henderson", line: "mid", role: "Central midfield", club: "Brentford", at2022: true },
     { num: 16, name: "Kobbie Mainoo", short: "Mainoo", line: "mid", role: "Central midfield", club: "Manchester United", at2022: false },
     { num: 17, name: "Morgan Rogers", short: "Rogers", line: "mid", role: "Attacking midfield", club: "Aston Villa", at2022: false },
     { num: 21, name: "Eberechi Eze", short: "Eze", line: "mid", role: "Attacking midfield", club: "Arsenal", at2022: false },
-    { num: 7, name: "Bukayo Saka", short: "Saka", line: "fwd", role: "Right winger", club: "Arsenal", at2022: true, photo: "1 bukayo saka arsenal 2025 (cropped).jpg" },
-    { num: 18, name: "Anthony Gordon", short: "Gordon", line: "fwd", role: "Left winger", club: "Newcastle", at2022: false },
+    { num: 20, name: "Noni Madueke", short: "Madueke", line: "fwd", role: "Right winger", club: "Arsenal", at2022: false },
+    { num: 11, name: "Marcus Rashford", short: "Rashford", line: "fwd", role: "Forward", club: "Barcelona", at2022: true },
     { num: 19, name: "Ollie Watkins", short: "Watkins", line: "fwd", role: "Striker", club: "Aston Villa", at2022: false },
     { num: 22, name: "Ivan Toney", short: "Toney", line: "fwd", role: "Striker", club: "Al-Ahli", at2022: false },
   ],
@@ -661,35 +659,37 @@ const IVORY_COAST: TeamSquad = {
 
 const BELGIUM: TeamSquad = {
   teamId: "bel",
-  // Most recent: R32 vs Senegal (3–2) — switched to a 4-3-3. Castagne moved
-  // to right-back, De Cuyper came in at left-back, Vanaken joined the
-  // midfield three (Onana out), and De Bruyne dropped alongside Tielemans.
+  // Most recent: R16 vs USA (4–1) — De Bruyne (fitness) and Lukaku (hamstring
+  // management) both dropped to the bench, so Tielemans wears the armband.
+  // Theate out for Ngoy at centre-back; Vanaken and De Bruyne out for Amadou
+  // Onana and Raskin in midfield; Doku out for Lukébakio on the right. Both
+  // De Bruyne and Lukaku came off the bench and Lukaku scored late.
   formation: "4-3-3",
   players: [
     { num: 1, name: "Thibaut Courtois", short: "Courtois", line: "gk", role: "Goalkeeper", club: "Real Madrid", at2022: true, photo: "Thibaut Courtois - 02 (cropped).jpg", start: { x: 50, y: 90 } },
-    { num: 21, name: "Timothy Castagne", short: "Castagne", line: "def", role: "Centre-back", club: "Fulham", at2022: true, photo: "Timothy Castagne USMNT v Belgium Mar 28 2026-17 (cropped).jpg", start: { x: 84, y: 70 } },
+    { num: 21, name: "Timothy Castagne", short: "Castagne", line: "def", role: "Right-back", club: "Fulham", at2022: true, photo: "Timothy Castagne USMNT v Belgium Mar 28 2026-17 (cropped).jpg", start: { x: 84, y: 70 } },
     { num: 4, name: "Brandon Mechele", short: "Mechele", line: "def", role: "Centre-back", club: "Club Brugge", at2022: false, photo: "Brandon Mechele Club Brugge.jpg", start: { x: 62, y: 73 } },
-    { num: 3, name: "Arthur Theate", short: "Theate", line: "def", role: "Centre-back", club: "Eintracht Frankfurt", at2022: true, start: { x: 38, y: 73 } },
+    { num: 24, name: "Nathan Ngoy", short: "Ngoy", line: "def", role: "Centre-back", club: "Lille", at2022: false, start: { x: 38, y: 73 } },
     { num: 17, name: "Maxim De Cuyper", short: "De Cuyper", line: "def", role: "Left-back", club: "Brighton", at2022: false, start: { x: 16, y: 70 } },
-    { num: 14, name: "Hans Vanaken", short: "Vanaken", line: "mid", role: "Central midfield", club: "Club Brugge", at2022: true, start: { x: 50, y: 48 } },
-    { num: 7, name: "Kevin De Bruyne", short: "De Bruyne", line: "mid", role: "Attacking midfield", club: "Napoli", at2022: true, captain: true, photo: "Kevin De Bruyne.jpg", start: { x: 30, y: 40 } },
-    { num: 8, name: "Youri Tielemans", short: "Tielemans", line: "mid", role: "Defensive midfield", club: "Aston Villa", at2022: true, photo: "Youri Tielemans USMNT v Belgium Mar 28 2026-20 (cropped).jpg", start: { x: 70, y: 40 } },
+    { num: 8, name: "Youri Tielemans", short: "Tielemans", line: "mid", role: "Central midfield", club: "Aston Villa", at2022: true, photo: "Youri Tielemans USMNT v Belgium Mar 28 2026-20 (cropped).jpg", captain: true, start: { x: 50, y: 48 } },
+    { num: 20, name: "Amadou Onana", short: "Onana", line: "mid", role: "Defensive midfield", club: "Aston Villa", at2022: true, photo: "Amadou Onana USMNT v Belgium Mar 28 2026-96 (cropped).jpg", start: { x: 70, y: 42 } },
+    { num: 6, name: "Nicolas Raskin", short: "Raskin", line: "mid", role: "Central midfield", club: "Rangers", at2022: false, start: { x: 30, y: 42 } },
     { num: 11, name: "Leandro Trossard", short: "Trossard", line: "fwd", role: "Left winger", club: "Arsenal", at2022: true, photo: "Leandro Trossard 2022.jpg", start: { x: 82, y: 18 } },
     { num: 9, name: "Charles De Ketelaere", short: "De Ketelaere", line: "fwd", role: "Striker", club: "Atalanta", at2022: true, photo: "Charles De Ketelaere USMNT v Belgium Mar 28 2026-76 (cropped).jpg", start: { x: 50, y: 13 } },
-    { num: 22, name: "Jérémy Doku", short: "Doku", line: "fwd", role: "Right winger", club: "Manchester City", at2022: true, photo: "Jérémy Doku USMNT v Belgium Mar 28 2026-169 (cropped).jpg", start: { x: 18, y: 18 } },
+    { num: 16, name: "Dodi Lukebakio", short: "Lukebakio", line: "fwd", role: "Right winger", club: "Benfica", at2022: false, start: { x: 18, y: 18 } },
 
     { num: 12, name: "Senne Lammens", short: "Lammens", line: "gk", role: "Goalkeeper", club: "Manchester United", at2022: false },
     { num: 23, name: "Mike Penders", short: "Penders", line: "gk", role: "Goalkeeper", club: "Strasbourg", at2022: false },
     { num: 2, name: "Zeno Debast", short: "Debast", line: "def", role: "Centre-back", club: "Sporting CP", at2022: false },
     { num: 15, name: "Thomas Meunier", short: "Meunier", line: "def", role: "Right-back", club: "Lille", at2022: true, photo: "Thomas Meunier USMNT v Belgium Mar 28 2026-16 (cropped).jpg" },
     { num: 5, name: "Koni De Winter", short: "De Winter", line: "def", role: "Centre-back", club: "AC Milan", at2022: false },
-    { num: 24, name: "Nathan Ngoy", short: "Ngoy", line: "def", role: "Left-back", club: "Lille", at2022: false },
+    { num: 3, name: "Arthur Theate", short: "Theate", line: "def", role: "Centre-back", club: "Eintracht Frankfurt", at2022: true },
     { num: 13, name: "Joaquin Seys", short: "Seys", line: "def", role: "Right-back", club: "Club Brugge", at2022: false },
-    { num: 6, name: "Nicolas Raskin", short: "Raskin", line: "mid", role: "Central midfield", club: "Rangers", at2022: false },
-    { num: 20, name: "Amadou Onana", short: "Onana", line: "mid", role: "Defensive midfield", club: "Aston Villa", at2022: true, photo: "Amadou Onana USMNT v Belgium Mar 28 2026-96 (cropped).jpg" },
+    { num: 14, name: "Hans Vanaken", short: "Vanaken", line: "mid", role: "Central midfield", club: "Club Brugge", at2022: true },
+    { num: 7, name: "Kevin De Bruyne", short: "De Bruyne", line: "mid", role: "Attacking midfield", club: "Napoli", at2022: true, photo: "Kevin De Bruyne.jpg" },
     { num: 18, name: "Axel Witsel", short: "Witsel", line: "mid", role: "Defensive midfield", club: "Girona", at2022: true },
     { num: 10, name: "Romelu Lukaku", short: "Lukaku", line: "fwd", role: "Striker", club: "Napoli", at2022: true },
-    { num: 16, name: "Dodi Lukebakio", short: "Lukebakio", line: "fwd", role: "Winger", club: "Benfica", at2022: false },
+    { num: 22, name: "Jérémy Doku", short: "Doku", line: "fwd", role: "Right winger", club: "Manchester City", at2022: true, photo: "Jérémy Doku USMNT v Belgium Mar 28 2026-169 (cropped).jpg" },
     { num: 19, name: "Alexis Saelemaekers", short: "Saelemaekers", line: "fwd", role: "Winger", club: "AC Milan", at2022: false },
     { num: 25, name: "Matías Fernández-Pardo", short: "Fdez-Pardo", line: "fwd", role: "Winger", club: "Lille", at2022: false },
     { num: 26, name: "Diego Moreira", short: "Moreira", line: "fwd", role: "Winger", club: "Strasbourg", at2022: false },
@@ -1060,20 +1060,22 @@ const SENEGAL: TeamSquad = {
 
 const NORWAY: TeamSquad = {
   teamId: "nor",
-  // Opener vs Iraq (4–1): a 4-4-2 with Haaland & Sørloth. Numbers best-effort.
-  formation: "4-4-2",
+  // Most recent: R16 vs Brazil (2–1, first-ever QF) — switched from the
+  // opener's 4-4-2 to a 4-3-3: Patrick Berg in for Aursnes in midfield,
+  // Sørloth/Haaland/Nusa reshuffled into a front three.
+  formation: "4-3-3",
   players: [
     { num: 1, name: "Ørjan Nyland", short: "Nyland", line: "gk", role: "Goalkeeper", club: "Sevilla", at2022: false, start: { x: 50, y: 90 } },
     { num: 2, name: "Julian Ryerson", short: "Ryerson", line: "def", role: "Right-back", club: "Borussia Dortmund", at2022: false, start: { x: 84, y: 70 } },
     { num: 5, name: "Kristoffer Ajer", short: "Ajer", line: "def", role: "Centre-back", club: "Brentford", at2022: false, start: { x: 62, y: 73 } },
     { num: 6, name: "Torbjørn Heggem", short: "Heggem", line: "def", role: "Centre-back", club: "West Brom", at2022: false, start: { x: 38, y: 73 } },
     { num: 3, name: "David Møller Wolfe", short: "Wolfe", line: "def", role: "Left-back", club: "AZ Alkmaar", at2022: false, start: { x: 16, y: 70 } },
-    { num: 20, name: "Fredrik Aursnes", short: "Aursnes", line: "mid", role: "Right midfield", club: "Benfica", at2022: false, start: { x: 84, y: 44 } },
-    { num: 10, name: "Martin Ødegaard", short: "Ødegaard", line: "mid", role: "Central midfield", club: "Arsenal", at2022: false, captain: true, start: { x: 58, y: 50 } },
-    { num: 8, name: "Sander Berge", short: "Berge", line: "mid", role: "Central midfield", club: "Fulham", at2022: false, start: { x: 38, y: 50 } },
-    { num: 16, name: "Antonio Nusa", short: "Nusa", line: "mid", role: "Left midfield", club: "RB Leipzig", at2022: false, start: { x: 14, y: 44 } },
-    { num: 9, name: "Erling Haaland", short: "Haaland", line: "fwd", role: "Striker", club: "Manchester City", at2022: false, start: { x: 62, y: 16 } },
-    { num: 11, name: "Alexander Sørloth", short: "Sørloth", line: "fwd", role: "Striker", club: "Atlético Madrid", at2022: false, start: { x: 38, y: 16 } },
+    { num: 10, name: "Martin Ødegaard", short: "Ødegaard", line: "mid", role: "Central midfield", club: "Arsenal", at2022: false, captain: true, start: { x: 50, y: 48 } },
+    { num: 8, name: "Sander Berge", short: "Berge", line: "mid", role: "Central midfield", club: "Fulham", at2022: false, start: { x: 70, y: 42 } },
+    { num: 7, name: "Patrick Berg", short: "P. Berg", line: "mid", role: "Defensive midfield", club: "Bodø/Glimt", at2022: false, start: { x: 30, y: 42 } },
+    { num: 16, name: "Antonio Nusa", short: "Nusa", line: "fwd", role: "Left winger", club: "RB Leipzig", at2022: false, start: { x: 20, y: 18 } },
+    { num: 9, name: "Erling Haaland", short: "Haaland", line: "fwd", role: "Striker", club: "Manchester City", at2022: false, start: { x: 50, y: 13 } },
+    { num: 11, name: "Alexander Sørloth", short: "Sørloth", line: "fwd", role: "Right winger", club: "Atlético Madrid", at2022: false, start: { x: 80, y: 18 } },
 
     { num: 12, name: "Egil Selvik", short: "Selvik", line: "gk", role: "Goalkeeper", club: "Brann", at2022: false },
     { num: 23, name: "Mads Hansen", short: "Hansen", line: "gk", role: "Goalkeeper", club: "Lillestrøm", at2022: false },
@@ -1081,7 +1083,7 @@ const NORWAY: TeamSquad = {
     { num: 13, name: "Stefan Strandberg", short: "Strandberg", line: "def", role: "Centre-back", club: "Vålerenga", at2022: false },
     { num: 15, name: "Andreas Hanche-Olsen", short: "Hanche-Olsen", line: "def", role: "Centre-back", club: "Mainz", at2022: false },
     { num: 17, name: "Birger Meling", short: "Meling", line: "def", role: "Left-back", club: "Rennes", at2022: false },
-    { num: 7, name: "Patrick Berg", short: "P. Berg", line: "mid", role: "Defensive midfield", club: "Bodø/Glimt", at2022: false },
+    { num: 20, name: "Fredrik Aursnes", short: "Aursnes", line: "mid", role: "Central midfield", club: "Benfica", at2022: false },
     { num: 14, name: "Morten Thorsby", short: "Thorsby", line: "mid", role: "Central midfield", club: "Genoa", at2022: false },
     { num: 18, name: "Kristian Thorstvedt", short: "Thorstvedt", line: "mid", role: "Central midfield", club: "Sassuolo", at2022: false },
     { num: 19, name: "Oscar Bobb", short: "Bobb", line: "fwd", role: "Winger", club: "Manchester City", at2022: false },
