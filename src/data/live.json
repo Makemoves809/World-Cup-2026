@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-07T17:48:13.952Z",
+  "updatedAt": "2026-07-07T17:50:45.765Z",
   "results": {
     "m-A-1": [
       2,
@@ -730,6 +730,24 @@
       "minute": 66,
       "extra": null,
       "type": "REGULAR"
+    },
+    {
+      "matchId": "ko:arg-egy",
+      "team": "arg",
+      "scorer": "Cristian Romero",
+      "assist": null,
+      "minute": 78,
+      "extra": null,
+      "type": "REGULAR"
+    },
+    {
+      "matchId": "ko:arg-egy",
+      "team": "arg",
+      "scorer": "Lionel Messi",
+      "assist": null,
+      "minute": 82,
+      "extra": null,
+      "type": "REGULAR"
     }
   ],
   "lastEventsCheck": {
@@ -743,7 +761,7 @@
     "ko:eng-mex": "2026-07-06T03:10:36.402Z",
     "ko:esp-por": "2026-07-06T21:07:21.357Z",
     "ko:bel-usa": "2026-07-07T02:04:13.129Z",
-    "ko:arg-egy": "2026-07-07T17:42:22.056Z"
+    "ko:arg-egy": "2026-07-07T17:50:45.764Z"
   },
   "eventLookup": {
     "ko:alg-sui": {},
