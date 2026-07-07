@@ -323,9 +323,13 @@ const banStillActive = (a: PlayerAbsence): boolean =>
 
 /** Card / availability status for a named player on a team. */
 export function cardStatus(teamId: string, playerName: string): CardStatus {
-  const words = nameWords(playerName).filter((w) => w.length >= 3);
+  const words = nameWords(playerName);
+  // Every word of the curated entry's name must appear in the squad player's
+  // name — a shared surname/mononym still matches (tolerating minor
+  // formatting differences), but two different players who merely share a
+  // common first name (e.g. two "Juan"s on the same squad) no longer collide.
   const mine = (a: { team: string; player: string }) =>
-    a.team === teamId && nameWords(a.player).some((w) => words.includes(w));
+    a.team === teamId && nameWords(a.player).every((w) => words.includes(w));
 
   const hits = absences.filter(mine);
   // Only count a red/suspension/injury while it still covers an unplayed match,
