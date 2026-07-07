@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-07T22:46:13.702Z",
+  "updatedAt": "2026-07-07T22:48:15.328Z",
   "results": {
     "m-A-1": [
       2,
@@ -485,11 +485,11 @@
       "stage": "LAST_16",
       "homeId": "sui",
       "awayId": "col",
-      "homeScore": 0,
+      "homeScore": -1,
       "awayScore": 0,
       "winnerId": null,
-      "penaltiesHome": 0,
-      "penaltiesAway": 0
+      "penaltiesHome": 1,
+      "penaltiesAway": 1
     }
   ],
   "liveKo": [],
