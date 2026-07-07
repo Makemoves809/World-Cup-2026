@@ -48,6 +48,17 @@ const curated: PlayerAbsence[] = [
     missesMatchIds: ["m-A-4"],
     impact: 4,
   },
+  {
+    player: "Jarell Quansah",
+    position: "Right-back",
+    team: "eng",
+    type: "red",
+    reason: "Red card · 54' vs Mexico (R16) — challenge on Jesús Gallardo, confirmed by VAR",
+    sourceMatchId: koKey("mex", "eng"),
+    missesMatchIds: ["m99"],
+    impact: 4,
+    note: "England's first sending-off at a World Cup since Wayne Rooney in 2006.",
+  },
 
   /* ----- Injuries (hand-curated; no free feed — refresh manually) ----- */
   {
@@ -254,6 +265,18 @@ const curated: PlayerAbsence[] = [
     missesMatchIds: ["m-B-3"],
     impact: 4,
     note: "Captain; severity unconfirmed — doubtful for the next match.",
+  },
+  {
+    player: "Amadou Onana",
+    position: "Defensive midfielder",
+    team: "bel",
+    type: "injury",
+    reason: "Torn ACL — collision in the 18th minute vs USA (R16), off in the 21st",
+    sourceMatchId: koKey("usa", "bel"),
+    missesMatchIds: teamMatchIds("bel"),
+    outForTournament: true,
+    impact: 4,
+    note: "Ruled out of the tournament. Started the R16 win before going off injured.",
   },
 ];
 
