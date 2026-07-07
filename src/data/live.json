@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-07T16:07:19.363Z",
+  "updatedAt": "2026-07-07T16:58:14.522Z",
   "results": {
     "m-A-1": [
       2,
@@ -474,7 +474,17 @@
       "winnerId": "bel"
     }
   ],
-  "liveKo": [],
+  "liveKo": [
+    {
+      "stage": "LAST_16",
+      "homeId": "arg",
+      "awayId": "egy",
+      "homeScore": 0,
+      "awayScore": 1,
+      "minute": null,
+      "phase": "HT"
+    }
+  ],
   "liveScores": {},
   "attendance": {},
   "goals": [
@@ -702,6 +712,15 @@
       "minute": 90,
       "extra": null,
       "type": "REGULAR"
+    },
+    {
+      "matchId": "ko:arg-egy",
+      "team": "egy",
+      "scorer": "Yasser Ibrahim",
+      "assist": null,
+      "minute": 14,
+      "extra": null,
+      "type": "REGULAR"
     }
   ],
   "lastEventsCheck": {
@@ -715,7 +734,7 @@
     "ko:eng-mex": "2026-07-06T03:10:36.402Z",
     "ko:esp-por": "2026-07-06T21:07:21.357Z",
     "ko:bel-usa": "2026-07-07T02:04:13.129Z",
-    "ko:arg-egy": "2026-07-07T16:06:20.562Z"
+    "ko:arg-egy": "2026-07-07T16:58:14.521Z"
   },
   "eventLookup": {
     "ko:alg-sui": {},
