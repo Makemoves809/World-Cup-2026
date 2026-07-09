@@ -57,8 +57,13 @@ export function initials(short: string): string {
 
 const FRANCE: TeamSquad = {
   teamId: "fra",
-  // Most recent: R32 vs Sweden (3–0) — still a 4-2-3-1, but Digne over Théo
-  // Hernández at left-back and Barcola preferred to Doué on the left.
+  // Most recent: R16 vs Paraguay (1–0, July 4) — still a 4-2-3-1. One change
+  // from the R32 vs Sweden: Tchouaméni (groin injury, picked up in training
+  // after the Sweden game) was out, with Manu Koné coming in alongside Rabiot
+  // in the double pivot. Digne stayed over Théo Hernández at left-back and
+  // Barcola stayed preferred to Doué on the left — unchanged from Sweden.
+  // Tchouaméni returned to full training July 9 and is a game-time call for
+  // the QF vs Morocco; Koné/Rabiot are set to continue if he isn't risked.
   formation: "4-2-3-1",
   players: [
     // ---- Starting XI ----
@@ -67,7 +72,7 @@ const FRANCE: TeamSquad = {
     { num: 17, name: "William Saliba", short: "Saliba", line: "def", role: "Centre-back", club: "Arsenal", at2022: true, photo: "William saliba arsenal 2025.jpg", start: { x: 62, y: 73 } },
     { num: 4, name: "Dayot Upamecano", short: "Upamecano", line: "def", role: "Centre-back", club: "Bayern Munich", at2022: true, start: { x: 38, y: 73 } },
     { num: 3, name: "Lucas Digne", short: "Digne", line: "def", role: "Left-back", club: "Aston Villa", at2022: false, start: { x: 16, y: 70 } },
-    { num: 8, name: "Aurélien Tchouaméni", short: "Tchouaméni", line: "mid", role: "Defensive midfield", club: "Real Madrid", at2022: true, photo: "Aurélien Tchouaméni.jpg", start: { x: 64, y: 50 } },
+    { num: 6, name: "Manu Koné", short: "Koné", line: "mid", role: "Defensive midfield", club: "AS Roma", at2022: false, photo: "Manu Koné durante il riscaldamento di Roma-Lille.jpg", start: { x: 64, y: 50 } },
     { num: 14, name: "Adrien Rabiot", short: "Rabiot", line: "mid", role: "Central midfield", club: "AC Milan", at2022: true, photo: "Adrien Rabiot, PSG.JPG", start: { x: 36, y: 50 } },
     { num: 7, name: "Ousmane Dembélé", short: "Dembélé", line: "fwd", role: "Right winger", club: "PSG", at2022: true, photo: "Ousmane Dembélé 2018 (cropped).jpg", start: { x: 78, y: 29 } },
     { num: 11, name: "Michael Olise", short: "Olise", line: "fwd", role: "Attacking midfield", club: "Bayern Munich", at2022: false, photo: "Michael Olise bayern 2025.jpg", start: { x: 50, y: 31 } },
@@ -82,7 +87,7 @@ const FRANCE: TeamSquad = {
     { num: 15, name: "Ibrahima Konaté", short: "Konaté", line: "def", role: "Centre-back", club: "Liverpool", at2022: true, photo: "Ibrahima Konaté 06042025 (1).jpg" },
     { num: 21, name: "Lucas Hernández", short: "L. Hernández", line: "def", role: "Centre-back", club: "PSG", at2022: true },
     { num: 26, name: "Maxence Lacroix", short: "Lacroix", line: "def", role: "Centre-back", club: "Crystal Palace", at2022: false },
-    { num: 6, name: "Manu Koné", short: "Koné", line: "mid", role: "Central midfield", club: "AS Roma", at2022: false, photo: "Manu Koné durante il riscaldamento di Roma-Lille.jpg" },
+    { num: 8, name: "Aurélien Tchouaméni", short: "Tchouaméni", line: "mid", role: "Defensive midfield", club: "Real Madrid", at2022: true, photo: "Aurélien Tchouaméni.jpg" },
     { num: 13, name: "N'Golo Kanté", short: "Kanté", line: "mid", role: "Central midfield", club: "Fenerbahçe", at2022: false },
     { num: 18, name: "Warren Zaïre-Emery", short: "Zaïre-Emery", line: "mid", role: "Central midfield", club: "PSG", at2022: false },
     { num: 9, name: "Marcus Thuram", short: "Thuram", line: "fwd", role: "Striker", club: "Inter Milan", at2022: true, photo: "Marcus Thuram in 2023 (cropped).jpg" },

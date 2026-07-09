@@ -116,6 +116,17 @@ const curated: PlayerAbsence[] = [
     note: "Ruled out of the tournament.",
   },
   {
+    player: "Aurélien Tchouaméni",
+    position: "Defensive midfielder",
+    team: "fra",
+    type: "injury",
+    reason: "Groin injury, picked up in training after the R32 win over Sweden — missed the R16 win over Paraguay",
+    sourceMatchId: koKey("fra", "par"),
+    missesMatchIds: ["m89"],
+    impact: 4,
+    note: "Returned to full training July 9; a game-time decision for the QF vs Morocco, with Deschamps only starting him if fully fit. Koné/Rabiot set to continue as the pivot otherwise.",
+  },
+  {
     player: "Serge Gnabry",
     position: "Winger",
     team: "ger",
@@ -246,6 +257,17 @@ const curated: PlayerAbsence[] = [
     note: "Cut from Morocco's squad — out of the tournament.",
   },
   {
+    player: "Ismael Saibari",
+    position: "Striker",
+    team: "mar",
+    type: "injury",
+    reason: "Hamstring strain — off in the 22nd minute of the R16 win over Canada, replaced by Rahimi",
+    sourceMatchId: koKey("can", "mar"),
+    missesMatchIds: ["m97"],
+    impact: 4,
+    note: "Ruled out of the QF vs France (coach Ouahbi confirmed July 8 the game \"comes too soon\"). MRI reportedly showed the strain isn't severe enough to end his tournament — hopeful to return for the semifinal if Morocco advance. Rahimi is the favourite to start up front in his place.",
+  },
+  {
     player: "Luca Jaquez",
     position: "Centre-back",
     team: "sui",
@@ -311,6 +333,25 @@ export interface CardStatus {
   injured: boolean;
   /** Short reason for the most relevant entry (tooltip / modal). */
   note?: string;
+  /**
+   * True if the absence rules the player out for the rest of the tournament
+   * (season-ending injury, squad cut) rather than just the next match — the
+   * distinction a fan actually wants when a key starter is missing: "have
+   * they been out the whole tournament, or is this fresh from last game?"
+   */
+  outForTournament?: boolean;
+}
+
+/**
+ * Short, structured "how long" label for an absence — pairs with the
+ * free-text `reason` (which already says why and when) to make the scope
+ * unmissable at a glance: a season-ending injury reads very differently from
+ * a one-match suspension, even when both show up in the same list.
+ */
+export function scopeLabel(a: PlayerAbsence): string {
+  if (a.outForTournament) return "Out for the rest of the tournament";
+  const n = a.missesMatchIds.length;
+  return n > 1 ? `Out for ${n} matches` : "Out for this match only";
 }
 
 /** A match counts as already played once it's finished. */
@@ -348,7 +389,14 @@ export function cardStatus(teamId: string, playerName: string): CardStatus {
 
   const primary = redHit ?? suspHit ?? injHit;
 
-  return { yellows, red, suspended: red || susp, injured, note: primary?.reason };
+  return {
+    yellows,
+    red,
+    suspended: red || susp,
+    injured,
+    note: primary?.reason,
+    outForTournament: primary?.outForTournament,
+  };
 }
 
 /** Players shown a red card during the given match. */
