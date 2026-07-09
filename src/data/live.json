@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-09T21:07:13.947Z",
+  "updatedAt": "2026-07-09T21:15:18.734Z",
   "results": {
     "m-A-1": [
       2,
@@ -500,7 +500,7 @@
       "homeScore": 0,
       "awayScore": 0,
       "minute": null,
-      "phase": "HT"
+      "phase": "2H"
     }
   ],
   "liveScores": {},
@@ -790,7 +790,7 @@
     "ko:bel-usa": "2026-07-07T02:04:13.129Z",
     "ko:arg-egy": "2026-07-07T18:10:39.108Z",
     "ko:col-sui": "2026-07-07T22:39:13.156Z",
-    "ko:fra-mar": "2026-07-09T21:07:13.946Z"
+    "ko:fra-mar": "2026-07-09T21:15:18.734Z"
   },
   "eventLookup": {
     "ko:alg-sui": {},
