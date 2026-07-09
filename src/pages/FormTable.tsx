@@ -73,10 +73,10 @@ function GoalLeaders() {
         <li className="goal-row goal-head" aria-hidden="true">
           <span className="goal-rank">#</span>
           <span>Team</span>
-          <span className="goal-played">Pld</span>
-          <span className="goal-ga">GA</span>
-          <span className="goal-gd">GD</span>
-          <span className="goal-val">GF</span>
+          <span className="goal-played" title="Matches played">Pld</span>
+          <span className="goal-ga" title="Goals against (conceded)">GA</span>
+          <span className="goal-gd" title="Goal difference (scored minus conceded)">GD</span>
+          <span className="goal-val" title="Goals for (scored) — ranked by this">GF</span>
         </li>
         {rows.map((r, i) => {
           const gd = r.goalsFor - r.goalsAgainst;
@@ -102,6 +102,11 @@ function GoalLeaders() {
           );
         })}
       </ol>
+      <p className="goal-leaders-foot">
+        <strong>Pld</strong> matches played · <strong>GA</strong> goals conceded ·{" "}
+        <strong>GD</strong> goal difference · <strong>GF</strong> goals scored,
+        ranked by this — group stage and knockouts combined.
+      </p>
     </section>
   );
 }

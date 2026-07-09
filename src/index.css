@@ -2158,6 +2158,88 @@ img.flag {
   transform: translateX(4px);
 }
 
+/* ---------- Form table preview (home) ---------- */
+.form-preview {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 32px 24px 0;
+}
+.form-preview-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+.form-preview-head h2 {
+  margin: 4px 0 0;
+  font-family: var(--font-display);
+  font-size: var(--fs-xl);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  color: var(--chalk);
+}
+.form-preview-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  color: var(--grass);
+  white-space: nowrap;
+  padding: 8px 4px;
+  transition: transform 0.2s var(--ease);
+}
+.form-preview-link:hover { transform: translateX(3px); }
+.form-preview-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  background: var(--surface-card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-card);
+  padding: 6px 20px;
+}
+.form-preview-row {
+  display: grid;
+  grid-template-columns: 22px 1fr 44px 48px;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--line-soft);
+}
+.form-preview-row:last-child { border-bottom: none; }
+.form-preview-rank {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--chalk-faint);
+}
+.form-preview-team {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+.form-preview-name {
+  font-size: 14px;
+  color: var(--chalk);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.form-preview-rating {
+  font-family: var(--font-mono);
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--grass);
+  text-align: right;
+}
+
 /* ---------- Tournament progress ---------- */
 .progress {
   max-width: var(--maxw);
@@ -3271,6 +3353,16 @@ img.flag {
   font-weight: 600;
   color: var(--grass);
   text-align: right;
+}
+.goal-leaders-foot {
+  margin: 14px 0 0;
+  font-size: 12px;
+  line-height: 1.6;
+  color: var(--chalk-faint);
+}
+.goal-leaders-foot strong {
+  color: var(--chalk-dim);
+  font-weight: 600;
 }
 .form-list {
   list-style: none;

@@ -12,12 +12,12 @@ interface HeaderProps {
 const PRIMARY = [
   { to: "/knockout", label: "Knockout" },
   { to: "/schedule", label: "Schedule" },
+  { to: "/form", label: "Form table" },
 ];
 
 /** Records & archive — tucked under the "More" menu to keep the bar clean. */
 const MORE = [
   { to: "/groups", label: "Group tables" },
-  { to: "/form", label: "Form table" },
   { to: "/continuity", label: "Squad turnover" },
   { to: "/qatar2022", label: "Qatar 2022" },
 ];
