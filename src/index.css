@@ -4040,6 +4040,23 @@ img.flag {
 .pl-status-yellow .pl-status-tag { color: var(--floodlight); }
 .pl-status-out .pl-status-tag { color: var(--chalk-dim); }
 .pl-status-note { color: var(--chalk-dim); }
+.pl-status-scope {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 2px 8px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+.pl-status-scope[data-scope="tournament"] {
+  background: rgba(255, 90, 60, 0.16);
+  color: var(--vermilion);
+}
+.pl-status-scope[data-scope="short"] {
+  background: var(--grass-soft);
+  color: var(--grass);
+}
 
 /* Mathematical qualification badges in group standings */
 .qual-badge {

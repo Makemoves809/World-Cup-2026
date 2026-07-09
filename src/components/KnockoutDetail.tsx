@@ -1,7 +1,6 @@
 import { useEffect } from "react";
-import type { PlayerAbsence } from "../data/types";
 import { teamById } from "../data/teams";
-import { IMPACT_LABELS, sentOffInTie, unavailableFor } from "../data/discipline";
+import { sentOffInTie, unavailableFor } from "../data/discipline";
 import { goalsForTie, minuteLabel, type Goal } from "../data/goals";
 import { matchupTeams } from "../lib/matchup";
 import { openRoster, isRosterOpen } from "../lib/roster";
@@ -9,6 +8,7 @@ import { useSheetDismiss } from "../lib/useSheetDismiss";
 import { flagUrl } from "../lib/flags";
 import { Flag } from "./Flag";
 import { MatchupPanel } from "./MatchupPanel";
+import { PlayerRow } from "./PlayerRow";
 import type { ResolvedMatch, ResolvedSeed } from "../lib/bracket";
 
 const fmtFull = new Intl.DateTimeFormat(undefined, {
@@ -262,30 +262,3 @@ function GoalMention({ g, first }: { g: Goal; first: boolean }) {
   );
 }
 
-function PlayerRow({ a }: { a: PlayerAbsence }) {
-  const team = teamById(a.team);
-  return (
-    <li className="player-row">
-      <div className="player-main">
-        <span className="player-name">
-          <Flag team={team} size={14} /> {a.player}
-          {a.position && <em className="player-pos">{a.position}</em>}
-        </span>
-        <span className="player-reason">{a.reason}</span>
-        {a.note && <span className="player-note">{a.note}</span>}
-      </div>
-      <div className="impact" data-level={a.impact}>
-        <span className="impact-label">{IMPACT_LABELS[a.impact]}</span>
-        <span
-          className="impact-meter"
-          role="img"
-          aria-label={`Impact ${a.impact} out of 5 — ${IMPACT_LABELS[a.impact]}`}
-        >
-          {[1, 2, 3, 4, 5].map((i) => (
-            <i key={i} className={i <= a.impact ? "seg is-on" : "seg"} />
-          ))}
-        </span>
-      </div>
-    </li>
-  );
-}

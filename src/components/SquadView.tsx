@@ -7,6 +7,7 @@ import {
   type Player,
 } from "../data/squads";
 import { cardStatus, type CardStatus } from "../data/discipline";
+import { goalsForPlayer, minuteLabel } from "../data/goals";
 import { playerRating, type PlayerRating } from "../lib/playerRating";
 import { useSheetDismiss } from "../lib/useSheetDismiss";
 
@@ -91,26 +92,42 @@ function StatusLine({ status }: { status: CardStatus }) {
         ? "Two yellows"
         : "One booking"
       : "Out injured";
+  // Only a suspension/injury has a meaningful "how long" — a booking clears
+  // itself once the next match is played, so there's nothing to add there.
+  const showsScope = kind === "red" || kind === "out";
   return (
     <p className={`pl-status pl-status-${kind}`}>
       <span className="pl-status-tag">{label}</span>
       {status.note && <span className="pl-status-note">{status.note}</span>}
+      {showsScope && (
+        <span
+          className="pl-status-scope"
+          data-scope={status.outForTournament ? "tournament" : "short"}
+        >
+          {status.outForTournament
+            ? "Out for the rest of the tournament"
+            : "Expected back soon"}
+        </span>
+      )}
     </p>
   );
 }
 
 function PlayerModal({
+  teamId,
   player,
   status,
   rating,
   onClose,
 }: {
+  teamId: string;
   player: Player;
   status: CardStatus;
   rating: PlayerRating | null;
   onClose: () => void;
 }) {
   const sheet = useSheetDismiss(onClose);
+  const scored = goalsForPlayer(teamId, player.name);
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => e.key === "Escape" && onClose();
@@ -172,6 +189,15 @@ function PlayerModal({
               {player.at2022 ? "In the squad" : "New since 2022"}
             </dd>
           </div>
+          {scored.length > 0 && (
+            <div>
+              <dt>This World Cup</dt>
+              <dd className="pl-yes">
+                {scored.length} goal{scored.length > 1 ? "s" : ""} ·{" "}
+                {scored.map((g) => minuteLabel(g.minute, g.extra)).join(", ")}
+              </dd>
+            </div>
+          )}
         </dl>
 
         <p className="pl-modal-note">
@@ -253,6 +279,7 @@ export function SquadView({ teamId }: { teamId: string }) {
 
       {active && (
         <PlayerModal
+          teamId={teamId}
           player={active}
           status={statusOf(active)}
           rating={ratingOf(active)}
