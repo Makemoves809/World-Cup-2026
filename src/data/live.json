@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-09T21:24:13.717Z",
+  "updatedAt": "2026-07-09T21:29:11.573Z",
   "results": {
     "m-A-1": [
       2,
@@ -497,7 +497,7 @@
       "stage": "QUARTER_FINALS",
       "homeId": "fra",
       "awayId": "mar",
-      "homeScore": 0,
+      "homeScore": 1,
       "awayScore": 0,
       "minute": null,
       "phase": "2H"
