@@ -336,8 +336,10 @@ const SCOTLAND: TeamSquad = {
 
 const MOROCCO: TeamSquad = {
   teamId: "mar",
-  // Same XI/shape through to the R16 vs Canada as the opener vs Brazil
-  // (1–1): a 4-2-3-1.
+  // QF vs France (July 9): Saibari (hamstring strain from the R16) is
+  // ruled out — coach Ouahbi confirmed it "comes too soon" — with Rahimi
+  // starting up front in his place. Everything else unchanged: same
+  // 4-2-3-1 through the R16 vs Canada as the opener vs Brazil (1–1).
   formation: "4-2-3-1",
   players: [
     // ---- Starting XI ----
@@ -351,7 +353,7 @@ const MOROCCO: TeamSquad = {
     { num: 10, name: "Brahim Díaz", short: "Brahim", line: "mid", role: "Right winger", club: "Real Madrid", at2022: false, photo: "Brahim Diaz 2 vs Niger (cropped) (cropped).jpg", start: { x: 78, y: 29 } },
     { num: 8, name: "Azzedine Ounahi", short: "Ounahi", line: "mid", role: "Attacking midfield", club: "Girona", at2022: true, photo: "Ounahi.jpg", start: { x: 50, y: 31 } },
     { num: 23, name: "Bilal El Khannouss", short: "El Khannouss", line: "mid", role: "Left winger", club: "Stuttgart", at2022: false, photo: "Bilal El Khannouss.jpg", start: { x: 22, y: 29 } },
-    { num: 11, name: "Ismael Saibari", short: "Saibari", line: "fwd", role: "Striker", club: "PSV", at2022: false, photo: "Ismael Saibari Morocco v Norway 7 June 2026-162 (cropped).jpg", start: { x: 50, y: 13 } },
+    { num: 9, name: "Soufiane Rahimi", short: "Rahimi", line: "fwd", role: "Striker", club: "Al Ain", at2022: false, start: { x: 50, y: 13 } },
 
     // ---- Bench ----
     { num: 12, name: "Munir Mohamedi", short: "Munir", line: "gk", role: "Goalkeeper", club: "RS Berkane", at2022: true },
@@ -364,7 +366,7 @@ const MOROCCO: TeamSquad = {
     { num: 4, name: "Sofyan Amrabat", short: "Amrabat", line: "mid", role: "Defensive midfield", club: "Real Betis", at2022: true },
     { num: 15, name: "Samir El Mourabet", short: "El Mourabet", line: "mid", role: "Central midfield", club: "Strasbourg", at2022: false },
     { num: 7, name: "Chemsdine Talbi", short: "Talbi", line: "fwd", role: "Winger", club: "Sunderland", at2022: false },
-    { num: 9, name: "Soufiane Rahimi", short: "Rahimi", line: "fwd", role: "Striker", club: "Al Ain", at2022: false },
+    { num: 11, name: "Ismael Saibari", short: "Saibari", line: "fwd", role: "Striker", club: "PSV", at2022: false, photo: "Ismael Saibari Morocco v Norway 7 June 2026-162 (cropped).jpg" },
     { num: 16, name: "Ayoub El Kaabi", short: "El Kaabi", line: "fwd", role: "Striker", club: "Olympiacos", at2022: false },
     { num: 17, name: "Hamza Igamane", short: "Igamane", line: "fwd", role: "Striker", club: "Lille", at2022: false },
     { num: 20, name: "Yassine Gessime", short: "Gessime", line: "fwd", role: "Forward", club: "Strasbourg", at2022: false },
@@ -1675,22 +1677,27 @@ const CZECHIA: TeamSquad = {
 
 const SWITZERLAND: TeamSquad = {
   teamId: "sui",
-  // Most recent: R32 vs Algeria (2–0). Switched from the group stage's 4-3-3
-  // to a back three with attacking wing-backs — Zakaria in for Widmer,
-  // Ndoye and Manzambi pushed further forward.
-  formation: "3-4-3",
+  // R16 vs Colombia (0–0, won 4–3 on penalties, July 7): Yakin reverted
+  // from the R32's back three to a flat back four/4-2-3-1. Ricardo
+  // Rodríguez moved inside from left wing-back to left-back; Zakaria
+  // stayed as a right-sided centre-back (no orthodox right-back in the
+  // XI). Ndoye shifted from wing-back into the right of an attacking
+  // three, with Jashari and Rieder coming in centrally/left for the
+  // injured Manzambi (knee, non-contact, picked up in the final training
+  // session before this match) and Vargas.
+  formation: "4-2-3-1",
   players: [
     { num: 1, name: "Gregor Kobel", short: "Kobel", line: "gk", role: "Goalkeeper", club: "Borussia Dortmund", at2022: false, photo: "GregorKobel.jpg", start: { x: 50, y: 90 } },
-    { num: 5, name: "Manuel Akanji", short: "Akanji", line: "def", role: "Centre-back", club: "Manchester City", at2022: true, photo: "Manuel Akanji.jpg", start: { x: 30, y: 75 } },
-    { num: 18, name: "Denis Zakaria", short: "Zakaria", line: "def", role: "Centre-back", club: "Monaco", at2022: true, start: { x: 50, y: 78 } },
-    { num: 4, name: "Nico Elvedi", short: "Elvedi", line: "def", role: "Centre-back", club: "Borussia M'gladbach", at2022: true, start: { x: 70, y: 75 } },
-    { num: 13, name: "Ricardo Rodríguez", short: "R. Rodríguez", line: "def", role: "Left wing-back", club: "Real Betis", at2022: true, photo: "Ricardo Rodríguez 2018 (cropped).jpg", start: { x: 12, y: 55 } },
-    { num: 11, name: "Dan Ndoye", short: "Ndoye", line: "def", role: "Right wing-back", club: "Nottingham Forest", at2022: false, photo: "Lens - Nice (23-01-2021) 44.jpg", start: { x: 88, y: 55 } },
-    { num: 10, name: "Granit Xhaka", short: "Xhaka", line: "mid", role: "Defensive midfield", club: "Sunderland", at2022: true, captain: true, photo: "Granit Xhaka (cropped).jpg", start: { x: 64, y: 45 } },
-    { num: 8, name: "Remo Freuler", short: "Freuler", line: "mid", role: "Central midfield", club: "Bologna", at2022: true, photo: "Azione Lecce Atalanta - Remo Freuler (cropped).jpg", start: { x: 36, y: 45 } },
-    { num: 17, name: "Rubén Vargas", short: "Vargas", line: "fwd", role: "Left winger", club: "Sevilla", at2022: true, start: { x: 20, y: 20 } },
-    { num: 7, name: "Breel Embolo", short: "Embolo", line: "fwd", role: "Striker", club: "Monaco", at2022: true, photo: "Wales-Switzerland match at Euro 2020 in Baku 5.jpg", start: { x: 50, y: 14 } },
-    { num: 15, name: "Johan Manzambi", short: "Manzambi", line: "fwd", role: "Right winger", club: "Freiburg", at2022: false, start: { x: 80, y: 20 } },
+    { num: 18, name: "Denis Zakaria", short: "Zakaria", line: "def", role: "Right-sided centre-back", club: "Monaco", at2022: true, start: { x: 84, y: 70 } },
+    { num: 4, name: "Nico Elvedi", short: "Elvedi", line: "def", role: "Centre-back", club: "Borussia M'gladbach", at2022: true, start: { x: 62, y: 73 } },
+    { num: 5, name: "Manuel Akanji", short: "Akanji", line: "def", role: "Centre-back", club: "Manchester City", at2022: true, photo: "Manuel Akanji.jpg", start: { x: 38, y: 73 } },
+    { num: 13, name: "Ricardo Rodríguez", short: "R. Rodríguez", line: "def", role: "Left-back", club: "Real Betis", at2022: true, photo: "Ricardo Rodríguez 2018 (cropped).jpg", start: { x: 16, y: 70 } },
+    { num: 10, name: "Granit Xhaka", short: "Xhaka", line: "mid", role: "Defensive midfield", club: "Sunderland", at2022: true, captain: true, photo: "Granit Xhaka (cropped).jpg", start: { x: 64, y: 50 } },
+    { num: 8, name: "Remo Freuler", short: "Freuler", line: "mid", role: "Defensive midfield", club: "Bologna", at2022: true, photo: "Azione Lecce Atalanta - Remo Freuler (cropped).jpg", start: { x: 36, y: 50 } },
+    { num: 11, name: "Dan Ndoye", short: "Ndoye", line: "fwd", role: "Right winger", club: "Nottingham Forest", at2022: false, photo: "Lens - Nice (23-01-2021) 44.jpg", start: { x: 78, y: 29 } },
+    { num: 25, name: "Ardon Jashari", short: "Jashari", line: "mid", role: "Attacking midfield", club: "Club Brugge", at2022: false, start: { x: 50, y: 31 } },
+    { num: 16, name: "Fabian Rieder", short: "Rieder", line: "mid", role: "Left winger", club: "Stuttgart", at2022: false, start: { x: 22, y: 29 } },
+    { num: 7, name: "Breel Embolo", short: "Embolo", line: "fwd", role: "Striker", club: "Monaco", at2022: true, photo: "Wales-Switzerland match at Euro 2020 in Baku 5.jpg", start: { x: 50, y: 13 } },
 
     { num: 12, name: "Marwin Hitz", short: "Hitz", line: "gk", role: "Goalkeeper", club: "Basel", at2022: false },
     { num: 21, name: "Jonas Omlin", short: "Omlin", line: "gk", role: "Goalkeeper", club: "Borussia M'gladbach", at2022: false },
@@ -1702,8 +1709,8 @@ const SWITZERLAND: TeamSquad = {
     { num: 24, name: "Leonidas Stergiou", short: "Stergiou", line: "def", role: "Right-back", club: "Stuttgart", at2022: false },
     { num: 14, name: "Vincent Sierro", short: "Sierro", line: "mid", role: "Central midfield", club: "Toulouse", at2022: false },
     { num: 23, name: "Michel Aebischer", short: "Aebischer", line: "mid", role: "Central midfield", club: "Bologna", at2022: true },
-    { num: 16, name: "Fabian Rieder", short: "Rieder", line: "mid", role: "Attacking midfield", club: "Stuttgart", at2022: false },
-    { num: 25, name: "Ardon Jashari", short: "Jashari", line: "mid", role: "Central midfield", club: "Club Brugge", at2022: false },
+    { num: 17, name: "Rubén Vargas", short: "Vargas", line: "fwd", role: "Winger", club: "Sevilla", at2022: true },
+    { num: 15, name: "Johan Manzambi", short: "Manzambi", line: "fwd", role: "Winger", club: "Freiburg", at2022: false },
     { num: 9, name: "Zeki Amdouni", short: "Amdouni", line: "fwd", role: "Striker", club: "Benfica", at2022: false },
     { num: 19, name: "Andi Zeqiri", short: "Zeqiri", line: "fwd", role: "Striker", club: "Getafe", at2022: false },
     { num: 26, name: "Joël Monteiro", short: "Monteiro", line: "fwd", role: "Winger", club: "Young Boys", at2022: false },
