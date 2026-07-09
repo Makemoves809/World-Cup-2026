@@ -92,6 +92,13 @@ Several things are **manual / curated** and must be kept current by hand:
   starter's `start` coordinates (and bench membership) to match. Also fill any
   missing player **photos** (Wikimedia Commons file names) and verify the eleven
   flagged with a `start` are the real most-recent XI, not the whole squad.
+  **This has one override: if research for the team's *next* match (see below)
+  turns up confirmed news — not speculation — that a listed starter is out and
+  names their replacement, swap it in `squads.ts` right away**, the same pass,
+  rather than leaving the last-match XI showing on the pitch map through kickoff.
+  `discipline.ts` and `squads.ts` are describing the same reality and must never
+  disagree — don't record a player as ruled out in one place while the other
+  still draws them in the starting eleven.
 - **Goal scorers** (`scripts/liveEvents.ts`, feeds `src/data/goals.ts`) —
   best-effort, NOT football-data.org (confirmed dead on the free tier, see
   above). Tries API-Football (needs an `API_FOOTBALL_KEY` repo secret; free
@@ -143,5 +150,10 @@ finished: fresh injuries/suspensions, a game-time-decision player's latest
 fitness update, expected lineup changes. This is what lets the site say
 something useful about a match *before* it's played, not just react to it
 afterward — don't wait for the match to happen and then explain it in
-hindsight.
+hindsight. **A confirmed starter change found here isn't done until it's
+reflected in `squads.ts` too** (see the override above) — a curated
+`discipline.ts` entry saying a key player is out is not enough on its own if
+the pitch map still shows them starting. This was a live bug (Morocco's
+Saibari showing as the starter on match day after we'd already confirmed
+Rahimi was replacing him) — the fix is to treat both files as one update.
 
