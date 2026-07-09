@@ -5,8 +5,8 @@ Fan site + live group-stage standings tracker for the 2026 FIFA World Cup
 full project tour.
 
 It also has clickable team rosters everywhere (pitch line-ups + each team's
-results so far) and a per-match **"Script"** — an auto-written read, lean
-scoreline, and self-graded accuracy record (see the upkeep notes below).
+results so far) and a form-adjusted team-strength model (`src/lib/form.ts`)
+that powers the Form Table and the "team comparison" panel on every match.
 
 ## Deployment workflow (IMPORTANT)
 
@@ -113,19 +113,18 @@ Several things are **manual / curated** and must be kept current by hand:
   match what the API actually returns — check the Action logs for `Goal
   events:` / `lookup failed` lines first. Missing/wrong scorers fail silently
   by design (never breaks the results/score pipeline); nothing to hand-edit.
-- **Match "Script" & model accuracy** (`src/lib/script.ts`,
-  `src/lib/accuracy.ts`) — the per-match written read, lean scoreline, the
-  ✓/✗ "called it / missed" grade on played games, the per-card chips, and the
-  Fixtures-header accuracy badge are **all auto-generated** from results + form
-  ratings (`src/lib/form.ts`) + squad captains, and recompute on every build.
-  There is **nothing to hand-edit** — but it's part of the update: after new
-  results land, sanity-check that each newly-finished game shows a ✓/✗ and the
-  **Script record** ticked over. Two invariants to preserve if you touch the
-  model: grading uses **pre-match** ratings (`formRatingsBefore`, so a game
-  never informs its own call), and the live Script and the grader share one
-  `predict()` so the lean shown always equals the lean judged. The favoured
-  side's named leader is read from the squad `captain` flag, so a wrong or
-  missing captain surfaces here too.
+- **Form-adjusted ratings** (`src/lib/form.ts`) — powers the Form Table page,
+  its home-page preview, and the "team comparison" panel on every match
+  (group and knockout). Elo-style: every finished result nudges a team's
+  rating from its pre-tournament FIFA base, scaled by how surprising the
+  result was and by goal margin. **Recomputes automatically from group +
+  knockout results combined** — the two live in separate data sources
+  (`src/data/fixtures.ts` vs `src/lib/bracket.ts`/`live.json`), so this has to
+  merge both explicitly rather than only reading the group schedule (that was
+  a real bug: ratings silently froze at group-stage state once the knockouts
+  started). A knockout tie decided on penalties counts as a win/loss for
+  whoever advanced (via the bracket's `winner` field), not a draw, even
+  though the scoreline itself may be level. Nothing to hand-edit here.
 - **Revisit flagged / pending figures** — circle back on anything left
   uncertain. Pending: official attendances for England 4–2 Croatia (m-L-1),
   Czechia 1–1 South Africa (m-A-3), and the June 21–22 matches (Belgium–Iran
@@ -140,8 +139,7 @@ touched, fill in their attendance (and any new cards/injuries), **re-check the
 starting lineup/formation in `squads.ts` for every team that played since the
 last update** (not just the ones a request happens to mention), verify final
 group order/qualification once a group ends, verify the knockout bracket once
-the knockouts have started, confirm the Script auto-graded the new results
-(✓/✗ + the record ticked), revisit any pending figures, then build and push
+the knockouts have started, revisit any pending figures, then build and push
 along with whatever the owner actually asked for.
 
 Also **check for and research the next match(es) coming up** (today's date and

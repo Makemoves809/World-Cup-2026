@@ -720,49 +720,6 @@ img.flag {
   margin-bottom: 26px;
   position: relative;
 }
-/* The Script model's running accuracy, top-right of the Fixtures header */
-.script-badge {
-  display: inline-flex;
-  align-items: baseline;
-  gap: 8px;
-  margin-top: 14px;
-  padding: 8px 13px;
-  border: 1px solid var(--line);
-  border-radius: 999px;
-  background: var(--line-soft);
-  cursor: default;
-}
-.script-badge-tag {
-  font-family: var(--font-display);
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--grass-ink);
-  background: var(--grass);
-  padding: 2px 7px;
-  border-radius: 5px;
-}
-.script-badge-pct {
-  font-family: var(--font-mono);
-  font-size: 17px;
-  font-weight: 700;
-  color: var(--floodlight);
-}
-.script-badge-sub {
-  font-size: 11px;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  color: var(--chalk-faint);
-}
-@media (min-width: 600px) {
-  .script-badge {
-    position: absolute;
-    top: 0;
-    right: 0;
-    margin-top: 0;
-  }
-}
 .kicker {
   display: inline-flex;
   align-items: center;
@@ -1324,7 +1281,6 @@ img.flag {
   border-top: 1px solid var(--line-soft);
 }
 .mc-footer .match-strength,
-.mc-footer .card-script,
 .mc-footer .match-venue {
   margin: 0;
 }
@@ -2636,163 +2592,12 @@ img.flag {
   color: var(--grass);
 }
 
-/* Auto-written match "script" */
-.match-script .modal-head { margin-bottom: 12px; }
-.script-tag {
-  display: inline-flex;
-  align-items: center;
-  padding: 2px 8px;
-  border-radius: 6px;
-  background: var(--grass);
-  color: var(--grass-ink);
-  font-family: var(--font-display);
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-}
-.script-headline {
-  margin: 0 0 10px;
-  font-family: var(--font-display);
-  font-size: 18px;
-  letter-spacing: 0.01em;
-  color: var(--chalk);
-}
-.script-line {
-  margin: 0 0 8px;
-  font-size: 14px;
-  line-height: 1.55;
-  color: var(--chalk-dim);
-}
-.script-note {
-  margin: 0 0 12px;
-  padding: 10px 12px;
-  border-left: 3px solid var(--floodlight);
-  border-radius: 0 8px 8px 0;
-  background: var(--floodlight-soft);
-  font-size: 13.5px;
-  line-height: 1.55;
-  color: var(--chalk);
-}
-.script-note-tag {
-  display: inline-block;
-  margin-right: 8px;
-  font-family: var(--font-display);
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--floodlight);
-}
-.script-projection {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  margin: 4px 0 0;
-  padding: 7px 12px;
-  border: 1px solid var(--line);
-  border-radius: 999px;
-  background: var(--line-soft);
-  font-size: 12px;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: var(--chalk-faint);
-}
-.script-score {
-  font-family: var(--font-mono);
-  font-size: 16px;
-  font-weight: 700;
-  letter-spacing: 0;
-  color: var(--floodlight);
-}
-.script-grade {
-  display: flex;
-  align-items: baseline;
-  flex-wrap: wrap;
-  gap: 6px 10px;
-  margin: 12px 0 0;
-  padding: 8px 12px;
-  border-radius: 10px;
-  font-size: 13px;
-  font-weight: 600;
-}
-.script-grade.is-hit {
-  background: var(--grass-soft);
-  color: var(--grass);
-}
-.script-grade.is-miss {
-  background: rgba(255, 90, 60, 0.12);
-  color: var(--vermilion-soft);
-}
-.grade-mark { font-weight: 800; }
-.grade-detail {
-  font-weight: 500;
-  font-size: 12px;
-  color: var(--chalk-dim);
-}
-.script-foot {
-  margin: 12px 0 0;
-  font-size: 11px;
-  color: var(--chalk-faint);
-  font-style: italic;
-}
-.script-record {
-  font-style: normal;
-  color: var(--chalk-dim);
-}
-
 /* Fixture-card mini strength bar */
 .match-strength {
   display: flex;
   align-items: center;
   gap: 9px;
   margin-top: 11px;
-}
-/* Per-card Script call — lean (upcoming) or graded ✓/✗ (finished) */
-.card-script {
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-  margin-top: 10px;
-  font-size: 12px;
-  color: var(--chalk-dim);
-}
-.card-script .cs-text strong {
-  font-family: var(--font-mono);
-  color: var(--chalk);
-  font-weight: 700;
-}
-.cs-tag {
-  font-family: var(--font-display);
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--grass-ink);
-  background: var(--grass);
-  padding: 1px 6px;
-  border-radius: 5px;
-}
-.cs-mark {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 16px;
-  height: 16px;
-  border-radius: 5px;
-  font-size: 11px;
-  font-weight: 800;
-}
-.card-script.is-hit .cs-mark {
-  background: var(--grass-soft);
-  color: var(--grass);
-}
-.card-script.is-miss .cs-mark {
-  background: rgba(255, 90, 60, 0.14);
-  color: var(--vermilion-soft);
-}
-.card-script.is-hit .cs-text strong,
-.card-script.is-miss .cs-text strong {
-  color: var(--chalk-dim);
 }
 .ms-num {
   font-family: var(--font-mono);

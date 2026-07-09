@@ -6,9 +6,6 @@ import { attendanceFor } from "../data/attendance";
 import { isLive, liveScore } from "../lib/live";
 import { goalsFor, minuteLabel, type Goal } from "../data/goals";
 import { matchup } from "../lib/matchup";
-import { matchScript } from "../lib/script";
-import { gradeMatch, modelAccuracy } from "../lib/accuracy";
-import { matchNote } from "../data/matchNotes";
 import { openRoster, isRosterOpen } from "../lib/roster";
 import { useSheetDismiss } from "../lib/useSheetDismiss";
 import { Flag } from "./Flag";
@@ -38,10 +35,6 @@ export function MatchDetail({ match, onClose }: MatchDetailProps) {
   const reds = sentOffIn(match.id);
   const out = unavailableFor(match.id, [match.home, match.away]);
   const m = matchup(match);
-  const script = matchScript(match);
-  const grade = gradeMatch(match);
-  const acc = modelAccuracy();
-  const note = matchNote(match.id);
   const sheet = useSheetDismiss(onClose);
 
   // Open the roster as an overlay *on top of* this comparison (it sits at a
@@ -125,64 +118,17 @@ export function MatchDetail({ match, onClose }: MatchDetailProps) {
           </p>
         )}
 
+        {goals.length > 0 && (
+          <p className="modal-venue">
+            Scorers: {goals.map((g, i) => <GoalMention key={i} g={g} first={i === 0} />)}
+          </p>
+        )}
+
         <p className="modal-venue">
           {match.venue.stadium} · {match.venue.city}, {match.venue.country}
         </p>
 
         <Attendance match={match} />
-
-        <section className="modal-section match-script">
-          <h4 className="modal-head">
-            <span className="script-tag">Script</span>
-            {match.status === "finished" ? "Match recap" : "The read"}
-          </h4>
-          <p className="script-headline">{script.headline}</p>
-          {note && (
-            <p className="script-note">
-              <span className="script-note-tag">Editor's note</span>
-              {note}
-            </p>
-          )}
-          {script.lines.map((line, i) => (
-            <p key={i} className="script-line">
-              {line}
-            </p>
-          ))}
-          {goals.length > 0 && (
-            <p className="script-line">
-              Scorers: {goals.map((g, i) => <GoalMention key={i} g={g} first={i === 0} />)}
-            </p>
-          )}
-          {script.projection && (
-            <p className="script-projection">
-              Model lean
-              <span className="script-score">{script.projection}</span>
-            </p>
-          )}
-          {grade && (
-            <p className={`script-grade ${grade.outcomeHit ? "is-hit" : "is-miss"}`}>
-              <span className="grade-mark">{grade.outcomeHit ? "✓" : "✗"}</span>
-              {grade.outcomeHit ? "Called the result" : "Missed the result"}
-              <span className="grade-detail">
-                pre-match lean {grade.projection}
-                {grade.exactHit && " — exact score"}
-              </span>
-            </p>
-          )}
-          <p className="script-foot">
-            Auto-generated from the form-adjusted ratings below — a projection,
-            not a prediction.
-            {acc.graded > 0 && (
-              <>
-                {" "}
-                <strong className="script-record">
-                  Script record: {acc.outcomeCorrect}/{acc.graded} results right (
-                  {acc.outcomePct}%){acc.exactCorrect > 0 && `, ${acc.exactCorrect} exact`}
-                </strong>
-              </>
-            )}
-          </p>
-        </section>
 
         <MatchupPanel m={m} onOpen={openSquad} />
 
