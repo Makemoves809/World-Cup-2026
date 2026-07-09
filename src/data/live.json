@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-09T21:58:19.255Z",
+  "updatedAt": "2026-07-09T22:06:14.831Z",
   "results": {
     "m-A-1": [
       2,
@@ -490,19 +490,17 @@
       "winnerId": "sui",
       "penaltiesHome": 4,
       "penaltiesAway": 3
-    }
-  ],
-  "liveKo": [
+    },
     {
       "stage": "QUARTER_FINALS",
       "homeId": "fra",
       "awayId": "mar",
       "homeScore": 2,
       "awayScore": 0,
-      "minute": null,
-      "phase": "2H"
+      "winnerId": "fra"
     }
   ],
+  "liveKo": [],
   "liveScores": {},
   "attendance": {},
   "goals": [
@@ -808,7 +806,7 @@
     "ko:bel-usa": "2026-07-07T02:04:13.129Z",
     "ko:arg-egy": "2026-07-07T18:10:39.108Z",
     "ko:col-sui": "2026-07-07T22:39:13.156Z",
-    "ko:fra-mar": "2026-07-09T21:58:19.254Z"
+    "ko:fra-mar": "2026-07-09T22:06:14.831Z"
   },
   "eventLookup": {
     "ko:alg-sui": {},
