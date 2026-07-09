@@ -53,7 +53,7 @@ function MoverCard({ row, kind }: { row: Row; kind: "riser" | "faller" }) {
 }
 
 function GoalLeaders() {
-  const rows = topScorers(10)
+  const rows = topScorers(15)
     .map((s) => {
       try {
         return { ...s, team: teamById(s.teamId) };
@@ -70,6 +70,14 @@ function GoalLeaders() {
       <span className="kicker">Golden Boot race · team totals</span>
       <h3>Most goals scored</h3>
       <ol className="goal-leaders-list">
+        <li className="goal-row goal-head" aria-hidden="true">
+          <span className="goal-rank">#</span>
+          <span>Team</span>
+          <span className="goal-played">Pld</span>
+          <span className="goal-ga">GA</span>
+          <span className="goal-gd">GD</span>
+          <span className="goal-val">GF</span>
+        </li>
         {rows.map((r, i) => {
           const gd = r.goalsFor - r.goalsAgainst;
           return (
@@ -83,10 +91,11 @@ function GoalLeaders() {
                 <Flag team={r.team} size={18} />
                 <span className="goal-name">{r.team.name}</span>
               </button>
-              <span className="goal-played">{r.played}p</span>
+              <span className="goal-played">{r.played}</span>
+              <span className="goal-ga">{r.goalsAgainst}</span>
               <span className="goal-gd">
                 {gd >= 0 ? "+" : ""}
-                {gd} GD
+                {gd}
               </span>
               <span className="goal-val">{r.goalsFor}</span>
             </li>

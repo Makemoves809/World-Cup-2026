@@ -3216,13 +3216,29 @@ img.flag {
 }
 .goal-row {
   display: grid;
-  grid-template-columns: 22px 1fr 44px 64px 32px;
+  grid-template-columns: 22px 1fr 38px 38px 48px 32px;
   align-items: center;
   gap: 10px;
   padding: 7px 0;
   border-bottom: 1px solid var(--line-soft);
 }
 .goal-row:last-child { border-bottom: none; }
+.goal-head {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--chalk-faint);
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--line);
+}
+.goal-head .goal-played,
+.goal-head .goal-ga,
+.goal-head .goal-gd,
+.goal-head .goal-val {
+  font-size: 10px;
+  color: var(--chalk-faint);
+}
 .goal-rank {
   font-family: var(--font-mono);
   font-size: 12px;
@@ -3242,6 +3258,7 @@ img.flag {
   white-space: nowrap;
 }
 .goal-played,
+.goal-ga,
 .goal-gd {
   font-family: var(--font-mono);
   font-size: 11px;
