@@ -129,9 +129,19 @@ Several things are **manual / curated** and must be kept current by hand:
   sources appear.
 
 Workflow each time: check which matches have finished since the data was last
-touched, fill in their attendance (and any new cards/injuries), verify final
+touched, fill in their attendance (and any new cards/injuries), **re-check the
+starting lineup/formation in `squads.ts` for every team that played since the
+last update** (not just the ones a request happens to mention), verify final
 group order/qualification once a group ends, verify the knockout bracket once
 the knockouts have started, confirm the Script auto-graded the new results
 (✓/✗ + the record ticked), revisit any pending figures, then build and push
 along with whatever the owner actually asked for.
+
+Also **check for and research the next match(es) coming up** (today's date and
+the days just ahead) — search for current team news, not just what's already
+finished: fresh injuries/suspensions, a game-time-decision player's latest
+fitness update, expected lineup changes. This is what lets the site say
+something useful about a match *before* it's played, not just react to it
+afterward — don't wait for the match to happen and then explain it in
+hindsight.
 
