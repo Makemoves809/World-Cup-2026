@@ -58,6 +58,15 @@ Several things are **manual / curated** and must be kept current by hand:
   Confirm **suspension length** (violent-conduct reds can be more than one
   game), and remember **yellow-card totals are wiped after the quarter-finals**
   — don't let the two-yellow auto-suspension carry yellows into the semis.
+  Each entry's `reason` should name the specific date/match the injury or
+  squad cut happened (not just "ruled out of the tournament") — that's what
+  lets a fan tell whether a missing key player has been out the whole
+  tournament or just picked up something last game. **If research shows a
+  player was injured or cut before the tournament's first match and so never
+  played a single game this World Cup, remove their entry entirely** rather
+  than curate it — a squad-strength read only matters relative to games
+  actually played here, so a pre-tournament absence is just clutter, not
+  signal. Keep entries for anyone who played at least one match first.
 - **Team ratings** (`src/data/ratings.ts`) — adjust if form shifts materially.
 - **Standings & qualification (tiebreakers)** (`src/lib/standings.ts`) — the
   auto-sort only does points → goal difference → goals scored. FIFA's real
