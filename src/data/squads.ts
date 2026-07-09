@@ -57,13 +57,17 @@ export function initials(short: string): string {
 
 const FRANCE: TeamSquad = {
   teamId: "fra",
-  // Most recent: R16 vs Paraguay (1–0, July 4) — still a 4-2-3-1. One change
-  // from the R32 vs Sweden: Tchouaméni (groin injury, picked up in training
-  // after the Sweden game) was out, with Manu Koné coming in alongside Rabiot
-  // in the double pivot. Digne stayed over Théo Hernández at left-back and
-  // Barcola stayed preferred to Doué on the left — unchanged from Sweden.
-  // Tchouaméni returned to full training July 9 and is a game-time call for
-  // the QF vs Morocco; Koné/Rabiot are set to continue if he isn't risked.
+  // Most recent: QF vs Morocco (W 2–0, July 9) — still a 4-2-3-1. Tchouaméni
+  // was passed fit (full training July 9) but Deschamps kept faith with the
+  // R16 pivot, so he stayed an unused substitute; Koné continued alongside
+  // Rabiot. The one personnel change from the R16 vs Paraguay: Doué started on
+  // the left ahead of Barcola (who dropped to the bench), with the rest of the
+  // XI unchanged — Maignan; Koundé, Saliba, Upamecano, Digne; Koné, Rabiot;
+  // Dembélé, Olise, Doué; Mbappé. Mbappé (captain) went off in the 77th minute
+  // with what looked like a precautionary right-ankle knock after scoring and
+  // assisting — walked off under his own power, replaced by Mateta; severity
+  // unconfirmed as of July 9, a fitness watch for the semifinal (July 14,
+  // AT&T Stadium, vs the Spain/Belgium winner from their July 10 QF).
   formation: "4-2-3-1",
   players: [
     // ---- Starting XI ----
@@ -76,7 +80,7 @@ const FRANCE: TeamSquad = {
     { num: 14, name: "Adrien Rabiot", short: "Rabiot", line: "mid", role: "Central midfield", club: "AC Milan", at2022: true, photo: "Adrien Rabiot, PSG.JPG", start: { x: 36, y: 50 } },
     { num: 7, name: "Ousmane Dembélé", short: "Dembélé", line: "fwd", role: "Right winger", club: "PSG", at2022: true, photo: "Ousmane Dembélé 2018 (cropped).jpg", start: { x: 78, y: 29 } },
     { num: 11, name: "Michael Olise", short: "Olise", line: "fwd", role: "Attacking midfield", club: "Bayern Munich", at2022: false, photo: "Michael Olise bayern 2025.jpg", start: { x: 50, y: 31 } },
-    { num: 12, name: "Bradley Barcola", short: "Barcola", line: "fwd", role: "Left winger", club: "PSG", at2022: false, start: { x: 22, y: 29 } },
+    { num: 20, name: "Désiré Doué", short: "Doué", line: "fwd", role: "Left winger", club: "PSG", at2022: false, start: { x: 22, y: 29 } },
     { num: 10, name: "Kylian Mbappé", short: "Mbappé", line: "fwd", role: "Forward", club: "Real Madrid", at2022: true, captain: true, photo: "Kylian Mbappé.jpg", start: { x: 50, y: 13 } },
 
     // ---- Bench ----
@@ -91,7 +95,7 @@ const FRANCE: TeamSquad = {
     { num: 13, name: "N'Golo Kanté", short: "Kanté", line: "mid", role: "Central midfield", club: "Fenerbahçe", at2022: false },
     { num: 18, name: "Warren Zaïre-Emery", short: "Zaïre-Emery", line: "mid", role: "Central midfield", club: "PSG", at2022: false },
     { num: 9, name: "Marcus Thuram", short: "Thuram", line: "fwd", role: "Striker", club: "Inter Milan", at2022: true, photo: "Marcus Thuram in 2023 (cropped).jpg" },
-    { num: 20, name: "Désiré Doué", short: "Doué", line: "fwd", role: "Left winger", club: "PSG", at2022: false },
+    { num: 12, name: "Bradley Barcola", short: "Barcola", line: "fwd", role: "Left winger", club: "PSG", at2022: false },
     { num: 22, name: "Jean-Philippe Mateta", short: "Mateta", line: "fwd", role: "Striker", club: "Crystal Palace", at2022: false },
     { num: 24, name: "Rayan Cherki", short: "Cherki", line: "fwd", role: "Attacking midfield", club: "Manchester City", at2022: false },
     { num: 25, name: "Maghnes Akliouche", short: "Akliouche", line: "fwd", role: "Attacking midfield", club: "Monaco", at2022: false },
