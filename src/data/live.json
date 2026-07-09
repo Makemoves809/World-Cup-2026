@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-09T21:29:11.573Z",
+  "updatedAt": "2026-07-09T21:32:24.104Z",
   "results": {
     "m-A-1": [
       2,
@@ -775,6 +775,24 @@
       "minute": 90,
       "extra": null,
       "type": "REGULAR"
+    },
+    {
+      "matchId": "ko:fra-mar",
+      "team": "fra",
+      "scorer": "Kylian Mbappé",
+      "assist": null,
+      "minute": 59,
+      "extra": null,
+      "type": "REGULAR"
+    },
+    {
+      "matchId": "ko:fra-mar",
+      "team": "fra",
+      "scorer": "Ousmane Dembélé",
+      "assist": null,
+      "minute": 65,
+      "extra": null,
+      "type": "REGULAR"
     }
   ],
   "lastEventsCheck": {
@@ -790,7 +808,7 @@
     "ko:bel-usa": "2026-07-07T02:04:13.129Z",
     "ko:arg-egy": "2026-07-07T18:10:39.108Z",
     "ko:col-sui": "2026-07-07T22:39:13.156Z",
-    "ko:fra-mar": "2026-07-09T21:24:13.716Z"
+    "ko:fra-mar": "2026-07-09T21:32:24.103Z"
   },
   "eventLookup": {
     "ko:alg-sui": {},
