@@ -402,6 +402,43 @@ export function resolveBracket(): ResolvedRound[] {
   return rounds;
 }
 
+/** A knockout match tagged with which round it belongs to, e.g. "R32"/"QF". */
+export interface TeamKoMatch extends ResolvedMatch {
+  roundLabel: string;
+}
+
+const ROUND_SHORT_LABEL: Record<string, string> = {
+  r32: "R32",
+  r16: "R16",
+  qf: "QF",
+  sf: "SF",
+  final: "Final",
+};
+
+/**
+ * Every knockout match a team has played or is projected to play, earliest
+ * first — the knockout counterpart to `matchesForTeam` (which only ever
+ * covers the group stage, since it reads from a separate schedule). Used to
+ * extend a team's "tournament so far" history past the group stage instead
+ * of it silently freezing once R32 kicks off.
+ */
+export function koMatchesForTeam(teamId: string): TeamKoMatch[] {
+  const rounds = resolveBracket();
+  const out: TeamKoMatch[] = [];
+  for (const round of rounds) {
+    for (const m of round.matches) {
+      if (m.home.id === teamId || m.away.id === teamId) {
+        out.push({ ...m, roundLabel: ROUND_SHORT_LABEL[round.id] ?? round.name });
+      }
+    }
+  }
+  const third = resolveThirdPlace();
+  if (third.home.id === teamId || third.away.id === teamId) {
+    out.push({ ...third, roundLabel: "3rd" });
+  }
+  return out.sort((a, b) => new Date(a.kickoff).getTime() - new Date(b.kickoff).getTime());
+}
+
 /**
  * Display order for a true bracket tree. Each match is ranked by the index of
  * its left-most Round-of-32 descendant — found by walking the pending feeders
