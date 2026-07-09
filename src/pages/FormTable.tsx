@@ -1,6 +1,7 @@
-import { teams } from "../data/teams";
+import { teams, teamById } from "../data/teams";
 import { formRating, type FormRating } from "../lib/form";
 import { continuity } from "../data/continuity";
+import { topScorers } from "../lib/tournamentStats";
 import { openRoster } from "../lib/roster";
 import { Flag } from "../components/Flag";
 import type { Team } from "../data/types";
@@ -51,6 +52,51 @@ function MoverCard({ row, kind }: { row: Row; kind: "riser" | "faller" }) {
   );
 }
 
+function GoalLeaders() {
+  const rows = topScorers(10)
+    .map((s) => {
+      try {
+        return { ...s, team: teamById(s.teamId) };
+      } catch {
+        return null;
+      }
+    })
+    .filter((r): r is NonNullable<typeof r> => r !== null);
+
+  if (rows.length === 0) return null;
+
+  return (
+    <section className="goal-leaders">
+      <span className="kicker">Golden Boot race · team totals</span>
+      <h3>Most goals scored</h3>
+      <ol className="goal-leaders-list">
+        {rows.map((r, i) => {
+          const gd = r.goalsFor - r.goalsAgainst;
+          return (
+            <li className="goal-row" key={r.teamId}>
+              <span className="goal-rank">{i + 1}</span>
+              <button
+                className="goal-team team-link"
+                onClick={() => openRoster(r.teamId)}
+                title={`${r.team.name} squad`}
+              >
+                <Flag team={r.team} size={18} />
+                <span className="goal-name">{r.team.name}</span>
+              </button>
+              <span className="goal-played">{r.played}p</span>
+              <span className="goal-gd">
+                {gd >= 0 ? "+" : ""}
+                {gd} GD
+              </span>
+              <span className="goal-val">{r.goalsFor}</span>
+            </li>
+          );
+        })}
+      </ol>
+    </section>
+  );
+}
+
 export function FormTable() {
   const rows: Row[] = teams
     .map((team) => ({ team, f: formRating(team.id) }))
@@ -77,6 +123,8 @@ export function FormTable() {
           <MoverCard row={faller} kind="faller" />
         </div>
       )}
+
+      <GoalLeaders />
 
       <ol className="form-list">
         <li className="form-head" aria-hidden="true">
