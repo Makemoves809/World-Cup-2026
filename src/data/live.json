@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-10T20:42:20.246Z",
+  "updatedAt": "2026-07-10T20:50:32.791Z",
   "results": {
     "m-A-1": [
       2,
@@ -819,6 +819,15 @@
       "minute": 40,
       "extra": null,
       "type": "REGULAR"
+    },
+    {
+      "matchId": "ko:bel-esp",
+      "team": "esp",
+      "scorer": "Mikel Merino",
+      "assist": null,
+      "minute": 87,
+      "extra": null,
+      "type": "REGULAR"
     }
   ],
   "lastEventsCheck": {
@@ -835,7 +844,7 @@
     "ko:arg-egy": "2026-07-07T18:10:39.108Z",
     "ko:col-sui": "2026-07-07T22:39:13.156Z",
     "ko:fra-mar": "2026-07-09T22:06:14.831Z",
-    "ko:bel-esp": "2026-07-10T20:42:20.245Z"
+    "ko:bel-esp": "2026-07-10T20:50:32.791Z"
   },
   "eventLookup": {
     "ko:alg-sui": {},
