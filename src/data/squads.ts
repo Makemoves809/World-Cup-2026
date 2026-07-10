@@ -146,8 +146,10 @@ const ARGENTINA: TeamSquad = {
 
 const SPAIN: TeamSquad = {
   teamId: "esp",
-  // Same XI/shape through the R16 win vs Portugal as the R32 vs Austria
-  // (3–0): Porro, Olmo, Baena and Yamal all confirmed still starting.
+  // QF vs Belgium (W 2–1, July 10): same 4-3-3, but a tactical change from
+  // De la Fuente, not injury — Fabián Ruiz started over Pedri, reviving the
+  // Rodri/Fabián/Olmo trio Spain used at Euro 2024. Fabián scored the
+  // opener. Everything else unchanged from the R16 win over Portugal.
   formation: "4-3-3",
   players: [
     // ---- Starting XI ----
@@ -158,7 +160,7 @@ const SPAIN: TeamSquad = {
     { num: 24, name: "Marc Cucurella", short: "Cucurella", line: "def", role: "Left-back", club: "Chelsea", at2022: false, photo: "Marc Cucurella (cropped).jpg", start: { x: 16, y: 70 } },
     { num: 16, name: "Rodri", short: "Rodri", line: "mid", role: "Defensive midfield", club: "Manchester City", at2022: true, captain: true, photo: "Yokohama F. Marinos - Manchester City (3-5) - 53075487835 (Rodri) (cropped).jpg", start: { x: 50, y: 52 } },
     { num: 10, name: "Dani Olmo", short: "Olmo", line: "mid", role: "Central midfield", club: "Barcelona", at2022: true, start: { x: 72, y: 46 } },
-    { num: 20, name: "Pedri", short: "Pedri", line: "mid", role: "Central midfield", club: "Barcelona", at2022: true, photo: "Pedri.jpg", start: { x: 28, y: 46 } },
+    { num: 8, name: "Fabián Ruiz", short: "Fabián", line: "mid", role: "Central midfield", club: "PSG", at2022: false, photo: "UEFA EURO qualifiers Sweden vs Spain 20191015 Fabian Ruiz.jpg", start: { x: 28, y: 46 } },
     { num: 19, name: "Lamine Yamal", short: "Yamal", line: "fwd", role: "Right winger", club: "Barcelona", at2022: false, photo: "Lamine Yamal in 2025 (cropped).jpg", start: { x: 80, y: 18 } },
     { num: 21, name: "Mikel Oyarzabal", short: "Oyarzabal", line: "fwd", role: "Striker", club: "Real Sociedad", at2022: false, photo: "Mikel Oyarzabal.jpg", start: { x: 50, y: 13 } },
     { num: 15, name: "Álex Baena", short: "Baena", line: "fwd", role: "Left winger", club: "Atlético Madrid", at2022: false, start: { x: 20, y: 18 } },
@@ -171,7 +173,7 @@ const SPAIN: TeamSquad = {
     { num: 4, name: "Eric García", short: "E. García", line: "def", role: "Centre-back", club: "Barcelona", at2022: true },
     { num: 5, name: "Marcos Llorente", short: "Llorente", line: "def", role: "Right-back", club: "Atlético Madrid", at2022: true, photo: "Marcos Llorente.JPG" },
     { num: 6, name: "Mikel Merino", short: "Merino", line: "mid", role: "Central midfield", club: "Arsenal", at2022: false },
-    { num: 8, name: "Fabián Ruiz", short: "Fabián", line: "mid", role: "Central midfield", club: "PSG", at2022: false, photo: "UEFA EURO qualifiers Sweden vs Spain 20191015 Fabian Ruiz.jpg" },
+    { num: 20, name: "Pedri", short: "Pedri", line: "mid", role: "Central midfield", club: "Barcelona", at2022: true, photo: "Pedri.jpg" },
     { num: 18, name: "Martín Zubimendi", short: "Zubimendi", line: "mid", role: "Defensive midfield", club: "Arsenal", at2022: false },
     { num: 25, name: "Víctor Muñoz", short: "V. Muñoz", line: "mid", role: "Central midfield", club: "Girona", at2022: false },
     { num: 7, name: "Ferran Torres", short: "Ferran", line: "fwd", role: "Right winger", club: "Barcelona", at2022: true },
@@ -674,11 +676,13 @@ const IVORY_COAST: TeamSquad = {
 
 const BELGIUM: TeamSquad = {
   teamId: "bel",
-  // Most recent: R16 vs USA (4–1) — De Bruyne (fitness) and Lukaku (hamstring
-  // management) both dropped to the bench, so Tielemans wears the armband.
-  // Theate out for Ngoy at centre-back; Vanaken and De Bruyne out for Amadou
-  // Onana and Raskin in midfield; Doku out for Lukébakio on the right. Both
-  // De Bruyne and Lukaku came off the bench and Lukaku scored late.
+  // Final match: QF vs Spain (L 1–2, July 10 — eliminated). Tielemans was
+  // named but scratched in the warm-up with a suspected hamstring issue;
+  // Vanaken came in with ~12 minutes' notice and De Bruyne (rested for the
+  // R16) took the armband. De Bruyne and Doku both returned to the XI in
+  // place of Onana (already out injured, see discipline.ts) and Lukebakio.
+  // Courtois started but went off 71' with a thigh injury, replaced by
+  // Lammens, who spilled the shot that led to Spain's late winner.
   formation: "4-3-3",
   players: [
     { num: 1, name: "Thibaut Courtois", short: "Courtois", line: "gk", role: "Goalkeeper", club: "Real Madrid", at2022: true, photo: "Thibaut Courtois - 02 (cropped).jpg", start: { x: 50, y: 90 } },
@@ -686,12 +690,12 @@ const BELGIUM: TeamSquad = {
     { num: 4, name: "Brandon Mechele", short: "Mechele", line: "def", role: "Centre-back", club: "Club Brugge", at2022: false, photo: "Brandon Mechele Club Brugge.jpg", start: { x: 62, y: 73 } },
     { num: 24, name: "Nathan Ngoy", short: "Ngoy", line: "def", role: "Centre-back", club: "Lille", at2022: false, start: { x: 38, y: 73 } },
     { num: 17, name: "Maxim De Cuyper", short: "De Cuyper", line: "def", role: "Left-back", club: "Brighton", at2022: false, start: { x: 16, y: 70 } },
-    { num: 8, name: "Youri Tielemans", short: "Tielemans", line: "mid", role: "Central midfield", club: "Aston Villa", at2022: true, photo: "Youri Tielemans USMNT v Belgium Mar 28 2026-20 (cropped).jpg", captain: true, start: { x: 50, y: 48 } },
-    { num: 20, name: "Amadou Onana", short: "Onana", line: "mid", role: "Defensive midfield", club: "Aston Villa", at2022: true, photo: "Amadou Onana USMNT v Belgium Mar 28 2026-96 (cropped).jpg", start: { x: 70, y: 42 } },
+    { num: 14, name: "Hans Vanaken", short: "Vanaken", line: "mid", role: "Central midfield", club: "Club Brugge", at2022: true, start: { x: 50, y: 48 } },
+    { num: 7, name: "Kevin De Bruyne", short: "De Bruyne", line: "mid", role: "Attacking midfield", club: "Napoli", at2022: true, photo: "Kevin De Bruyne.jpg", captain: true, start: { x: 70, y: 42 } },
     { num: 6, name: "Nicolas Raskin", short: "Raskin", line: "mid", role: "Central midfield", club: "Rangers", at2022: false, start: { x: 30, y: 42 } },
     { num: 11, name: "Leandro Trossard", short: "Trossard", line: "fwd", role: "Left winger", club: "Arsenal", at2022: true, photo: "Leandro Trossard 2022.jpg", start: { x: 82, y: 18 } },
     { num: 9, name: "Charles De Ketelaere", short: "De Ketelaere", line: "fwd", role: "Striker", club: "Atalanta", at2022: true, photo: "Charles De Ketelaere USMNT v Belgium Mar 28 2026-76 (cropped).jpg", start: { x: 50, y: 13 } },
-    { num: 16, name: "Dodi Lukebakio", short: "Lukebakio", line: "fwd", role: "Right winger", club: "Benfica", at2022: false, start: { x: 18, y: 18 } },
+    { num: 22, name: "Jérémy Doku", short: "Doku", line: "fwd", role: "Right winger", club: "Manchester City", at2022: true, photo: "Jérémy Doku USMNT v Belgium Mar 28 2026-169 (cropped).jpg", start: { x: 18, y: 18 } },
 
     { num: 12, name: "Senne Lammens", short: "Lammens", line: "gk", role: "Goalkeeper", club: "Manchester United", at2022: false },
     { num: 23, name: "Mike Penders", short: "Penders", line: "gk", role: "Goalkeeper", club: "Strasbourg", at2022: false },
@@ -700,11 +704,11 @@ const BELGIUM: TeamSquad = {
     { num: 5, name: "Koni De Winter", short: "De Winter", line: "def", role: "Centre-back", club: "AC Milan", at2022: false },
     { num: 3, name: "Arthur Theate", short: "Theate", line: "def", role: "Centre-back", club: "Eintracht Frankfurt", at2022: true },
     { num: 13, name: "Joaquin Seys", short: "Seys", line: "def", role: "Right-back", club: "Club Brugge", at2022: false },
-    { num: 14, name: "Hans Vanaken", short: "Vanaken", line: "mid", role: "Central midfield", club: "Club Brugge", at2022: true },
-    { num: 7, name: "Kevin De Bruyne", short: "De Bruyne", line: "mid", role: "Attacking midfield", club: "Napoli", at2022: true, photo: "Kevin De Bruyne.jpg" },
+    { num: 8, name: "Youri Tielemans", short: "Tielemans", line: "mid", role: "Central midfield", club: "Aston Villa", at2022: true, photo: "Youri Tielemans USMNT v Belgium Mar 28 2026-20 (cropped).jpg" },
+    { num: 20, name: "Amadou Onana", short: "Onana", line: "mid", role: "Defensive midfield", club: "Aston Villa", at2022: true, photo: "Amadou Onana USMNT v Belgium Mar 28 2026-96 (cropped).jpg" },
     { num: 18, name: "Axel Witsel", short: "Witsel", line: "mid", role: "Defensive midfield", club: "Girona", at2022: true },
     { num: 10, name: "Romelu Lukaku", short: "Lukaku", line: "fwd", role: "Striker", club: "Napoli", at2022: true },
-    { num: 22, name: "Jérémy Doku", short: "Doku", line: "fwd", role: "Right winger", club: "Manchester City", at2022: true, photo: "Jérémy Doku USMNT v Belgium Mar 28 2026-169 (cropped).jpg" },
+    { num: 16, name: "Dodi Lukebakio", short: "Lukebakio", line: "fwd", role: "Right winger", club: "Benfica", at2022: false },
     { num: 19, name: "Alexis Saelemaekers", short: "Saelemaekers", line: "fwd", role: "Winger", club: "AC Milan", at2022: false },
     { num: 25, name: "Matías Fernández-Pardo", short: "Fdez-Pardo", line: "fwd", role: "Winger", club: "Lille", at2022: false },
     { num: 26, name: "Diego Moreira", short: "Moreira", line: "fwd", role: "Winger", club: "Strasbourg", at2022: false },
