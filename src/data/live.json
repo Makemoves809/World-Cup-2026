@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-10T19:33:14.900Z",
+  "updatedAt": "2026-07-10T19:37:12.826Z",
   "results": {
     "m-A-1": [
       2,
@@ -505,7 +505,7 @@
       "stage": "QUARTER_FINALS",
       "homeId": "esp",
       "awayId": "bel",
-      "homeScore": 0,
+      "homeScore": 1,
       "awayScore": 0,
       "minute": null,
       "phase": "1H"
