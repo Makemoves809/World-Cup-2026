@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-10T19:24:19.244Z",
+  "updatedAt": "2026-07-10T19:33:14.900Z",
   "results": {
     "m-A-1": [
       2,
@@ -801,6 +801,15 @@
       "minute": 65,
       "extra": null,
       "type": "REGULAR"
+    },
+    {
+      "matchId": "ko:bel-esp",
+      "team": "esp",
+      "scorer": "Fabián Ruiz",
+      "assist": null,
+      "minute": 29,
+      "extra": null,
+      "type": "REGULAR"
     }
   ],
   "lastEventsCheck": {
@@ -817,7 +826,7 @@
     "ko:arg-egy": "2026-07-07T18:10:39.108Z",
     "ko:col-sui": "2026-07-07T22:39:13.156Z",
     "ko:fra-mar": "2026-07-09T22:06:14.831Z",
-    "ko:bel-esp": "2026-07-10T19:24:19.243Z"
+    "ko:bel-esp": "2026-07-10T19:33:14.900Z"
   },
   "eventLookup": {
     "ko:alg-sui": {},
