@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-11T23:05:15.950Z",
+  "updatedAt": "2026-07-11T23:08:17.611Z",
   "results": {
     "m-A-1": [
       2,
@@ -513,10 +513,10 @@
       "stage": "QUARTER_FINALS",
       "homeId": "nor",
       "awayId": "eng",
-      "homeScore": 2,
+      "homeScore": 1,
       "awayScore": 1,
       "minute": null,
-      "phase": "2H"
+      "phase": "HT"
     }
   ],
   "liveScores": {},
