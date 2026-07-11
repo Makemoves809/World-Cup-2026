@@ -55,9 +55,9 @@ const curated: PlayerAbsence[] = [
     type: "red",
     reason: "Red card · 54' vs Mexico (R16) — challenge on Jesús Gallardo, confirmed by VAR",
     sourceMatchId: koKey("mex", "eng"),
-    missesMatchIds: ["m99"],
+    missesMatchIds: ["m99", "m102"],
     impact: 4,
-    note: "England's first sending-off at a World Cup since Wayne Rooney in 2006.",
+    note: "FIFA ruled it serious foul play (Article 14) and banned him two matches, not the usual one — misses the QF vs Norway and a potential semifinal too. Earliest possible return is the final.",
   },
 
   /* ----- Injuries (hand-curated; no free feed — refresh manually) ----- */
