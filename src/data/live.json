@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-12T03:47:17.228Z",
+  "updatedAt": "2026-07-12T03:48:14.271Z",
   "results": {
     "m-A-1": [
       2,
@@ -521,7 +521,7 @@
       "stage": "QUARTER_FINALS",
       "homeId": "arg",
       "awayId": "sui",
-      "homeScore": 2,
+      "homeScore": 3,
       "awayScore": 1,
       "minute": null,
       "phase": "ET"
