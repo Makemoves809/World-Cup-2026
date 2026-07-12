@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-12T03:48:14.271Z",
+  "updatedAt": "2026-07-12T03:52:15.749Z",
   "results": {
     "m-A-1": [
       2,
@@ -514,19 +514,17 @@
       "homeScore": 1,
       "awayScore": 2,
       "winnerId": "eng"
-    }
-  ],
-  "liveKo": [
+    },
     {
       "stage": "QUARTER_FINALS",
       "homeId": "arg",
       "awayId": "sui",
       "homeScore": 3,
       "awayScore": 1,
-      "minute": null,
-      "phase": "ET"
+      "winnerId": "arg"
     }
   ],
+  "liveKo": [],
   "liveScores": {},
   "attendance": {},
   "goals": [
@@ -925,7 +923,7 @@
     "ko:fra-mar": "2026-07-09T22:06:14.831Z",
     "ko:bel-esp": "2026-07-10T21:05:17.417Z",
     "ko:eng-nor": "2026-07-11T23:54:21.301Z",
-    "ko:arg-sui": "2026-07-12T03:47:17.228Z"
+    "ko:arg-sui": "2026-07-12T03:52:15.748Z"
   },
   "eventLookup": {
     "ko:alg-sui": {},
