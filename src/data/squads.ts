@@ -109,7 +109,9 @@ const ARGENTINA: TeamSquad = {
   // Messi up top (Lautaro dropped to the bench, came on and set up the
   // stoppage-time winner), Paredes replaced Almada in midfield, and
   // Tagliafico came in for Medina at left-back. Molina started at
-  // right-back ahead of Montiel.
+  // right-back ahead of Montiel. Unchanged for the QF vs Switzerland (W 3–1
+  // AET, July 11) — Montiel came on for Molina in the 85th; Lautaro and
+  // Álvarez's extra-time goals came off the bench/as the front-two starter.
   formation: "4-1-3-2",
   players: [
     // ---- Starting XI ----
@@ -186,20 +188,21 @@ const SPAIN: TeamSquad = {
 
 const ENGLAND: TeamSquad = {
   teamId: "eng",
-  // Most recent: R16 vs Mexico (3–2) — still a 4-2-3-1, but Quansah in for
-  // Spence at right-back, and Saka and Gordon in for Madueke and Rashford in
-  // the front three.
+  // QF vs Norway (W 2–1, July 11): Quansah serving the first match of his
+  // two-match ban (see discipline.ts) — Konsa shifted from centre-back to
+  // right-back to cover, Stones came in at centre-back, and Madueke replaced
+  // Saka on the right. Quansah's ban also covers the semifinal vs Argentina.
   formation: "4-2-3-1",
   players: [
     // ---- Starting XI ----
     { num: 1, name: "Jordan Pickford", short: "Pickford", line: "gk", role: "Goalkeeper", club: "Everton", at2022: true, start: { x: 50, y: 90 } },
-    { num: 26, name: "Jarell Quansah", short: "Quansah", line: "def", role: "Right-back", club: "Bayer Leverkusen", at2022: false, start: { x: 84, y: 70 } },
+    { num: 2, name: "Ezri Konsa", short: "Konsa", line: "def", role: "Right-back", club: "Aston Villa", at2022: false, start: { x: 84, y: 70 } },
     { num: 6, name: "Marc Guéhi", short: "Guéhi", line: "def", role: "Centre-back", club: "Crystal Palace", at2022: false, start: { x: 62, y: 73 } },
-    { num: 2, name: "Ezri Konsa", short: "Konsa", line: "def", role: "Centre-back", club: "Aston Villa", at2022: false, start: { x: 38, y: 73 } },
+    { num: 5, name: "John Stones", short: "Stones", line: "def", role: "Centre-back", club: "Manchester City", at2022: true, photo: "1 john stones 2015 (cropped).jpg", start: { x: 38, y: 73 } },
     { num: 3, name: "Nico O'Reilly", short: "O'Reilly", line: "def", role: "Left-back", club: "Manchester City", at2022: false, start: { x: 16, y: 70 } },
     { num: 8, name: "Elliot Anderson", short: "Anderson", line: "mid", role: "Defensive midfield", club: "Nottingham Forest", at2022: false, start: { x: 64, y: 50 } },
     { num: 4, name: "Declan Rice", short: "Rice", line: "mid", role: "Defensive midfield", club: "Arsenal", at2022: true, photo: "Declan Rice.jpg", start: { x: 36, y: 50 } },
-    { num: 7, name: "Bukayo Saka", short: "Saka", line: "fwd", role: "Right winger", club: "Arsenal", at2022: true, photo: "1 bukayo saka arsenal 2025 (cropped).jpg", start: { x: 78, y: 29 } },
+    { num: 20, name: "Noni Madueke", short: "Madueke", line: "fwd", role: "Right winger", club: "Arsenal", at2022: false, start: { x: 78, y: 29 } },
     { num: 10, name: "Jude Bellingham", short: "Bellingham", line: "mid", role: "Attacking midfield", club: "Real Madrid", at2022: true, photo: "Jude Bellingham 2022-11-21 1.jpg", start: { x: 50, y: 31 } },
     { num: 18, name: "Anthony Gordon", short: "Gordon", line: "fwd", role: "Left winger", club: "Newcastle", at2022: false, start: { x: 22, y: 29 } },
     { num: 9, name: "Harry Kane", short: "Kane", line: "fwd", role: "Striker", club: "Bayern Munich", at2022: true, captain: true, photo: "Harry Kane (24685589756).jpg", start: { x: 50, y: 13 } },
@@ -207,7 +210,7 @@ const ENGLAND: TeamSquad = {
     // ---- Bench ----
     { num: 13, name: "Dean Henderson", short: "D. Henderson", line: "gk", role: "Goalkeeper", club: "Crystal Palace", at2022: false },
     { num: 23, name: "James Trafford", short: "Trafford", line: "gk", role: "Goalkeeper", club: "Manchester City", at2022: false },
-    { num: 5, name: "John Stones", short: "Stones", line: "def", role: "Centre-back", club: "Manchester City", at2022: true, photo: "1 john stones 2015 (cropped).jpg" },
+    { num: 26, name: "Jarell Quansah", short: "Quansah", line: "def", role: "Right-back", club: "Bayer Leverkusen", at2022: false },
     { num: 12, name: "Trevoh Chalobah", short: "Chalobah", line: "def", role: "Centre-back", club: "Chelsea", at2022: false },
     { num: 15, name: "Dan Burn", short: "Burn", line: "def", role: "Centre-back", club: "Newcastle", at2022: false },
     { num: 24, name: "Reece James", short: "James", line: "def", role: "Right-back", club: "Chelsea", at2022: false },
@@ -216,7 +219,7 @@ const ENGLAND: TeamSquad = {
     { num: 16, name: "Kobbie Mainoo", short: "Mainoo", line: "mid", role: "Central midfield", club: "Manchester United", at2022: false },
     { num: 17, name: "Morgan Rogers", short: "Rogers", line: "mid", role: "Attacking midfield", club: "Aston Villa", at2022: false },
     { num: 21, name: "Eberechi Eze", short: "Eze", line: "mid", role: "Attacking midfield", club: "Arsenal", at2022: false },
-    { num: 20, name: "Noni Madueke", short: "Madueke", line: "fwd", role: "Right winger", club: "Arsenal", at2022: false },
+    { num: 7, name: "Bukayo Saka", short: "Saka", line: "fwd", role: "Right winger", club: "Arsenal", at2022: true, photo: "1 bukayo saka arsenal 2025 (cropped).jpg" },
     { num: 11, name: "Marcus Rashford", short: "Rashford", line: "fwd", role: "Forward", club: "Barcelona", at2022: true },
     { num: 19, name: "Ollie Watkins", short: "Watkins", line: "fwd", role: "Striker", club: "Aston Villa", at2022: false },
     { num: 22, name: "Ivan Toney", short: "Toney", line: "fwd", role: "Striker", club: "Al-Ahli", at2022: false },
@@ -1079,9 +1082,12 @@ const SENEGAL: TeamSquad = {
 
 const NORWAY: TeamSquad = {
   teamId: "nor",
-  // Most recent: R16 vs Brazil (2–1, first-ever QF) — switched from the
-  // opener's 4-4-2 to a 4-3-3: Patrick Berg in for Aursnes in midfield,
-  // Sørloth/Haaland/Nusa reshuffled into a front three.
+  // QF vs England (L 1–2, July 11, Norway's first-ever World Cup QF):
+  // Schjelderup — who scored the equalizer — came into the front line for
+  // Nusa, otherwise unchanged from the R16 win over Brazil. Note: Schjelderup
+  // wasn't in this file's original squad list; added here with an unconfirmed
+  // shirt number (couldn't verify against a reliable source — flagged for a
+  // follow-up correction if one surfaces).
   formation: "4-3-3",
   players: [
     { num: 1, name: "Ørjan Nyland", short: "Nyland", line: "gk", role: "Goalkeeper", club: "Sevilla", at2022: false, start: { x: 50, y: 90 } },
@@ -1092,10 +1098,11 @@ const NORWAY: TeamSquad = {
     { num: 10, name: "Martin Ødegaard", short: "Ødegaard", line: "mid", role: "Central midfield", club: "Arsenal", at2022: false, captain: true, start: { x: 50, y: 48 } },
     { num: 8, name: "Sander Berge", short: "Berge", line: "mid", role: "Central midfield", club: "Fulham", at2022: false, start: { x: 70, y: 42 } },
     { num: 7, name: "Patrick Berg", short: "P. Berg", line: "mid", role: "Defensive midfield", club: "Bodø/Glimt", at2022: false, start: { x: 30, y: 42 } },
-    { num: 16, name: "Antonio Nusa", short: "Nusa", line: "fwd", role: "Left winger", club: "RB Leipzig", at2022: false, start: { x: 20, y: 18 } },
+    { num: 27, name: "Andreas Schjelderup", short: "Schjelderup", line: "fwd", role: "Left winger", club: "Benfica", at2022: false, start: { x: 20, y: 18 } },
     { num: 9, name: "Erling Haaland", short: "Haaland", line: "fwd", role: "Striker", club: "Manchester City", at2022: false, start: { x: 50, y: 13 } },
     { num: 11, name: "Alexander Sørloth", short: "Sørloth", line: "fwd", role: "Right winger", club: "Atlético Madrid", at2022: false, start: { x: 80, y: 18 } },
 
+    { num: 16, name: "Antonio Nusa", short: "Nusa", line: "fwd", role: "Left winger", club: "RB Leipzig", at2022: false },
     { num: 12, name: "Egil Selvik", short: "Selvik", line: "gk", role: "Goalkeeper", club: "Brann", at2022: false },
     { num: 23, name: "Mads Hansen", short: "Hansen", line: "gk", role: "Goalkeeper", club: "Lillestrøm", at2022: false },
     { num: 4, name: "Leo Østigård", short: "Østigård", line: "def", role: "Centre-back", club: "Rennes", at2022: false },

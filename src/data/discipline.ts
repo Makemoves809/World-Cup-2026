@@ -134,6 +134,18 @@ const curated: PlayerAbsence[] = [
     note: "Captain; severity unconfirmed — doubtful for the next match.",
   },
   {
+    player: "Breel Embolo",
+    position: "Striker",
+    team: "sui",
+    type: "red",
+    reason:
+      "Red card · 72' vs Argentina (QF) — second yellow, upheld on VAR review for simulation after the referee initially (mistakenly) booked Argentina's Paredes for a foul on him",
+    sourceMatchId: koKey("arg", "sui"),
+    missesMatchIds: [],
+    impact: 4,
+    note: "Switzerland were eliminated in this match (lost 3–1 AET), so the red carries no forward suspension.",
+  },
+  {
     player: "Amadou Onana",
     position: "Defensive midfielder",
     team: "bel",
