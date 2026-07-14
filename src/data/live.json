@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-14T20:14:17.040Z",
+  "updatedAt": "2026-07-14T20:23:17.234Z",
   "results": {
     "m-A-1": [
       2,
@@ -924,6 +924,15 @@
       "minute": 21,
       "extra": null,
       "type": "PENALTY"
+    },
+    {
+      "matchId": "ko:esp-fra",
+      "team": "esp",
+      "scorer": "Pedro Porro",
+      "assist": null,
+      "minute": 57,
+      "extra": null,
+      "type": "REGULAR"
     }
   ],
   "lastEventsCheck": {
@@ -943,7 +952,7 @@
     "ko:bel-esp": "2026-07-10T21:05:17.417Z",
     "ko:eng-nor": "2026-07-11T23:54:21.301Z",
     "ko:arg-sui": "2026-07-12T03:52:15.748Z",
-    "ko:esp-fra": "2026-07-14T20:14:17.040Z"
+    "ko:esp-fra": "2026-07-14T20:23:17.234Z"
   },
   "eventLookup": {
     "ko:alg-sui": {},
