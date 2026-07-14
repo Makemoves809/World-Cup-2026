@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-14T19:15:20.378Z",
+  "updatedAt": "2026-07-14T19:24:14.864Z",
   "results": {
     "m-A-1": [
       2,
@@ -915,6 +915,15 @@
       "minute": 120,
       "extra": null,
       "type": "REGULAR"
+    },
+    {
+      "matchId": "ko:esp-fra",
+      "team": "esp",
+      "scorer": "Mikel Oyarzabal",
+      "assist": null,
+      "minute": 21,
+      "extra": null,
+      "type": "PENALTY"
     }
   ],
   "lastEventsCheck": {
@@ -934,7 +943,7 @@
     "ko:bel-esp": "2026-07-10T21:05:17.417Z",
     "ko:eng-nor": "2026-07-11T23:54:21.301Z",
     "ko:arg-sui": "2026-07-12T03:52:15.748Z",
-    "ko:esp-fra": "2026-07-14T19:15:20.378Z"
+    "ko:esp-fra": "2026-07-14T19:24:14.864Z"
   },
   "eventLookup": {
     "ko:alg-sui": {},
