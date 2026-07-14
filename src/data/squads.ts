@@ -74,13 +74,13 @@ const FRANCE: TeamSquad = {
     { num: 16, name: "Mike Maignan", short: "Maignan", line: "gk", role: "Goalkeeper", club: "AC Milan", at2022: false, photo: "Mike Maignan 2022 Salzburg vs AC Milan 2022-09-06.jpg", start: { x: 50, y: 90 } },
     { num: 5, name: "Jules Koundé", short: "Koundé", line: "def", role: "Right-back", club: "Barcelona", at2022: true, photo: "Jules Koundé (cropped).jpg", start: { x: 84, y: 70 } },
     { num: 17, name: "William Saliba", short: "Saliba", line: "def", role: "Centre-back", club: "Arsenal", at2022: true, photo: "William saliba arsenal 2025.jpg", start: { x: 62, y: 73 } },
-    { num: 4, name: "Dayot Upamecano", short: "Upamecano", line: "def", role: "Centre-back", club: "Bayern Munich", at2022: true, start: { x: 38, y: 73 } },
-    { num: 3, name: "Lucas Digne", short: "Digne", line: "def", role: "Left-back", club: "Aston Villa", at2022: false, start: { x: 16, y: 70 } },
+    { num: 4, name: "Dayot Upamecano", short: "Upamecano", line: "def", role: "Centre-back", club: "Bayern Munich", at2022: true, photo: "Dayot Upamecano France v Senegal 16 June 2026-402 (cropped).jpg", start: { x: 38, y: 73 } },
+    { num: 3, name: "Lucas Digne", short: "Digne", line: "def", role: "Left-back", club: "Aston Villa", at2022: false, photo: "Lucas Digne, PSG.JPG", start: { x: 16, y: 70 } },
     { num: 6, name: "Manu Koné", short: "Koné", line: "mid", role: "Defensive midfield", club: "AS Roma", at2022: false, photo: "Manu Koné durante il riscaldamento di Roma-Lille.jpg", start: { x: 64, y: 50 } },
     { num: 14, name: "Adrien Rabiot", short: "Rabiot", line: "mid", role: "Central midfield", club: "AC Milan", at2022: true, photo: "Adrien Rabiot, PSG.JPG", start: { x: 36, y: 50 } },
     { num: 7, name: "Ousmane Dembélé", short: "Dembélé", line: "fwd", role: "Right winger", club: "PSG", at2022: true, photo: "Ousmane Dembélé 2018 (cropped).jpg", start: { x: 78, y: 29 } },
     { num: 11, name: "Michael Olise", short: "Olise", line: "fwd", role: "Attacking midfield", club: "Bayern Munich", at2022: false, photo: "Michael Olise bayern 2025.jpg", start: { x: 50, y: 31 } },
-    { num: 20, name: "Désiré Doué", short: "Doué", line: "fwd", role: "Left winger", club: "PSG", at2022: false, start: { x: 22, y: 29 } },
+    { num: 20, name: "Désiré Doué", short: "Doué", line: "fwd", role: "Left winger", club: "PSG", at2022: false, photo: "Doue asse psg 2425.png", start: { x: 22, y: 29 } },
     { num: 10, name: "Kylian Mbappé", short: "Mbappé", line: "fwd", role: "Forward", club: "Real Madrid", at2022: true, captain: true, photo: "Kylian Mbappé.jpg", start: { x: 50, y: 13 } },
 
     // ---- Bench ----
@@ -116,15 +116,15 @@ const ARGENTINA: TeamSquad = {
   players: [
     // ---- Starting XI ----
     { num: 23, name: "Emiliano Martínez", short: "E. Martínez", line: "gk", role: "Goalkeeper", club: "Aston Villa", at2022: true, photo: "Dibu Martínez - ARG v CAN - 2024-07-09 (cropped).jpg", start: { x: 50, y: 90 } },
-    { num: 26, name: "Nahuel Molina", short: "Molina", line: "def", role: "Right-back", club: "Atlético Madrid", at2022: true, start: { x: 84, y: 70 } },
+    { num: 26, name: "Nahuel Molina", short: "Molina", line: "def", role: "Right-back", club: "Atlético Madrid", at2022: true, photo: "Nahuel Molina WC2022.jpg", start: { x: 84, y: 70 } },
     { num: 13, name: "Cristian Romero", short: "Romero", line: "def", role: "Centre-back", club: "Tottenham", at2022: true, photo: "Cuti Romero Tottenham 2022.jpg", start: { x: 62, y: 73 } },
     { num: 6, name: "Lisandro Martínez", short: "L. Martínez", line: "def", role: "Centre-back", club: "Manchester United", at2022: true, photo: "Lisandro Martínez Manchester United v Brighton & Hove Albion, 7 August 2022 (05) (cropped).jpg", start: { x: 38, y: 73 } },
     { num: 3, name: "Nicolás Tagliafico", short: "Tagliafico", line: "def", role: "Left-back", club: "Lyon", at2022: true, photo: "Nicolas Tagliafico.jpg", start: { x: 16, y: 70 } },
     { num: 20, name: "Alexis Mac Allister", short: "Mac Allister", line: "mid", role: "Defensive midfield", club: "Liverpool", at2022: true, photo: "Alexis Mac Allister WC 2022.jpg", start: { x: 50, y: 58 } },
-    { num: 7, name: "Rodrigo De Paul", short: "De Paul", line: "mid", role: "Central midfield", club: "Inter Miami", at2022: true, start: { x: 75, y: 44 } },
-    { num: 24, name: "Enzo Fernández", short: "Enzo", line: "mid", role: "Central midfield", club: "Chelsea", at2022: true, start: { x: 50, y: 46 } },
-    { num: 5, name: "Leandro Paredes", short: "Paredes", line: "mid", role: "Central midfield", club: "Boca Juniors", at2022: true, start: { x: 25, y: 44 } },
-    { num: 9, name: "Julián Álvarez", short: "J. Álvarez", line: "fwd", role: "Forward", club: "Atlético Madrid", at2022: true, start: { x: 62, y: 16 } },
+    { num: 7, name: "Rodrigo De Paul", short: "De Paul", line: "mid", role: "Central midfield", club: "Inter Miami", at2022: true, photo: "Rodrigo de Paul (2022).jpg", start: { x: 75, y: 44 } },
+    { num: 24, name: "Enzo Fernández", short: "Enzo", line: "mid", role: "Central midfield", club: "Chelsea", at2022: true, photo: "Enzo Fernández.jpg", start: { x: 50, y: 46 } },
+    { num: 5, name: "Leandro Paredes", short: "Paredes", line: "mid", role: "Central midfield", club: "Boca Juniors", at2022: true, photo: "Leandro Paredes (PSG).jpg", start: { x: 25, y: 44 } },
+    { num: 9, name: "Julián Álvarez", short: "J. Álvarez", line: "fwd", role: "Forward", club: "Atlético Madrid", at2022: true, photo: "Julián Álvarez (footballer) 2023.jpg", start: { x: 62, y: 16 } },
     { num: 10, name: "Lionel Messi", short: "Messi", line: "fwd", role: "Forward", club: "Inter Miami", at2022: true, captain: true, photo: "Lionel-Messi-Argentina-2022-FIFA-World-Cup (cropped).jpg", start: { x: 38, y: 16 } },
 
     // ---- Bench ----
@@ -155,17 +155,17 @@ const SPAIN: TeamSquad = {
   formation: "4-3-3",
   players: [
     // ---- Starting XI ----
-    { num: 23, name: "Unai Simón", short: "U. Simón", line: "gk", role: "Goalkeeper", club: "Athletic Club", at2022: true, start: { x: 50, y: 90 } },
-    { num: 12, name: "Pedro Porro", short: "Porro", line: "def", role: "Right-back", club: "Tottenham", at2022: false, start: { x: 84, y: 70 } },
-    { num: 22, name: "Pau Cubarsí", short: "Cubarsí", line: "def", role: "Centre-back", club: "Barcelona", at2022: false, start: { x: 62, y: 73 } },
+    { num: 23, name: "Unai Simón", short: "U. Simón", line: "gk", role: "Goalkeeper", club: "Athletic Club", at2022: true, photo: "Unai Simón Mendibil.jpg", start: { x: 50, y: 90 } },
+    { num: 12, name: "Pedro Porro", short: "Porro", line: "def", role: "Right-back", club: "Tottenham", at2022: false, photo: "Pedro Porro 2021.png", start: { x: 84, y: 70 } },
+    { num: 22, name: "Pau Cubarsí", short: "Cubarsí", line: "def", role: "Centre-back", club: "Barcelona", at2022: false, photo: "Pau Cubarsí.jpg", start: { x: 62, y: 73 } },
     { num: 14, name: "Aymeric Laporte", short: "Laporte", line: "def", role: "Centre-back", club: "Athletic Club", at2022: true, photo: "Aymeric Laporte 2023 (cropped).jpg", start: { x: 38, y: 73 } },
     { num: 24, name: "Marc Cucurella", short: "Cucurella", line: "def", role: "Left-back", club: "Chelsea", at2022: false, photo: "Marc Cucurella (cropped).jpg", start: { x: 16, y: 70 } },
     { num: 16, name: "Rodri", short: "Rodri", line: "mid", role: "Defensive midfield", club: "Manchester City", at2022: true, captain: true, photo: "Yokohama F. Marinos - Manchester City (3-5) - 53075487835 (Rodri) (cropped).jpg", start: { x: 50, y: 52 } },
-    { num: 10, name: "Dani Olmo", short: "Olmo", line: "mid", role: "Central midfield", club: "Barcelona", at2022: true, start: { x: 72, y: 46 } },
+    { num: 10, name: "Dani Olmo", short: "Olmo", line: "mid", role: "Central midfield", club: "Barcelona", at2022: true, photo: "Dani Olmo 2022.jpg", start: { x: 72, y: 46 } },
     { num: 8, name: "Fabián Ruiz", short: "Fabián", line: "mid", role: "Central midfield", club: "PSG", at2022: false, photo: "UEFA EURO qualifiers Sweden vs Spain 20191015 Fabian Ruiz.jpg", start: { x: 28, y: 46 } },
     { num: 19, name: "Lamine Yamal", short: "Yamal", line: "fwd", role: "Right winger", club: "Barcelona", at2022: false, photo: "Lamine Yamal in 2025 (cropped).jpg", start: { x: 80, y: 18 } },
     { num: 21, name: "Mikel Oyarzabal", short: "Oyarzabal", line: "fwd", role: "Striker", club: "Real Sociedad", at2022: false, photo: "Mikel Oyarzabal.jpg", start: { x: 50, y: 13 } },
-    { num: 15, name: "Álex Baena", short: "Baena", line: "fwd", role: "Left winger", club: "Atlético Madrid", at2022: false, start: { x: 20, y: 18 } },
+    { num: 15, name: "Álex Baena", short: "Baena", line: "fwd", role: "Left winger", club: "Atlético Madrid", at2022: false, photo: "Álex Baena 2019.jpg", start: { x: 20, y: 18 } },
 
     // ---- Bench ----
     { num: 1, name: "David Raya", short: "Raya", line: "gk", role: "Goalkeeper", club: "Arsenal", at2022: true },
@@ -195,16 +195,16 @@ const ENGLAND: TeamSquad = {
   formation: "4-2-3-1",
   players: [
     // ---- Starting XI ----
-    { num: 1, name: "Jordan Pickford", short: "Pickford", line: "gk", role: "Goalkeeper", club: "Everton", at2022: true, start: { x: 50, y: 90 } },
+    { num: 1, name: "Jordan Pickford", short: "Pickford", line: "gk", role: "Goalkeeper", club: "Everton", at2022: true, photo: "Jordan Pickford England v Ghana 23 June 2026-049.jpg", start: { x: 50, y: 90 } },
     { num: 2, name: "Ezri Konsa", short: "Konsa", line: "def", role: "Right-back", club: "Aston Villa", at2022: false, start: { x: 84, y: 70 } },
     { num: 6, name: "Marc Guéhi", short: "Guéhi", line: "def", role: "Centre-back", club: "Crystal Palace", at2022: false, start: { x: 62, y: 73 } },
     { num: 5, name: "John Stones", short: "Stones", line: "def", role: "Centre-back", club: "Manchester City", at2022: true, photo: "1 john stones 2015 (cropped).jpg", start: { x: 38, y: 73 } },
     { num: 3, name: "Nico O'Reilly", short: "O'Reilly", line: "def", role: "Left-back", club: "Manchester City", at2022: false, start: { x: 16, y: 70 } },
-    { num: 8, name: "Elliot Anderson", short: "Anderson", line: "mid", role: "Defensive midfield", club: "Nottingham Forest", at2022: false, start: { x: 64, y: 50 } },
+    { num: 8, name: "Elliot Anderson", short: "Anderson", line: "mid", role: "Defensive midfield", club: "Nottingham Forest", at2022: false, photo: "Elliot Anderson Bristol Rovers.jpg", start: { x: 64, y: 50 } },
     { num: 4, name: "Declan Rice", short: "Rice", line: "mid", role: "Defensive midfield", club: "Arsenal", at2022: true, photo: "Declan Rice.jpg", start: { x: 36, y: 50 } },
-    { num: 20, name: "Noni Madueke", short: "Madueke", line: "fwd", role: "Right winger", club: "Arsenal", at2022: false, start: { x: 78, y: 29 } },
+    { num: 20, name: "Noni Madueke", short: "Madueke", line: "fwd", role: "Right winger", club: "Arsenal", at2022: false, photo: "Noni Madueke England v Panama 27 June 26-054.jpg", start: { x: 78, y: 29 } },
     { num: 10, name: "Jude Bellingham", short: "Bellingham", line: "mid", role: "Attacking midfield", club: "Real Madrid", at2022: true, photo: "Jude Bellingham 2022-11-21 1.jpg", start: { x: 50, y: 31 } },
-    { num: 18, name: "Anthony Gordon", short: "Gordon", line: "fwd", role: "Left winger", club: "Newcastle", at2022: false, start: { x: 22, y: 29 } },
+    { num: 18, name: "Anthony Gordon", short: "Gordon", line: "fwd", role: "Left winger", club: "Newcastle", at2022: false, photo: "Anthony Gordon England v Ghana 23 June 2026-017.jpg", start: { x: 22, y: 29 } },
     { num: 9, name: "Harry Kane", short: "Kane", line: "fwd", role: "Striker", club: "Bayern Munich", at2022: true, captain: true, photo: "Harry Kane (24685589756).jpg", start: { x: 50, y: 13 } },
 
     // ---- Bench ----
