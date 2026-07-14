@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-14T20:05:19.404Z",
+  "updatedAt": "2026-07-14T20:12:06.952Z",
   "results": {
     "m-A-1": [
       2,
@@ -524,17 +524,7 @@
       "winnerId": "arg"
     }
   ],
-  "liveKo": [
-    {
-      "stage": "SEMI_FINALS",
-      "homeId": "fra",
-      "awayId": "esp",
-      "homeScore": 0,
-      "awayScore": 1,
-      "minute": null,
-      "phase": "HT"
-    }
-  ],
+  "liveKo": [],
   "liveScores": {},
   "attendance": {},
   "goals": [
