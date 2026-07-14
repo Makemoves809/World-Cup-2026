@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-12T03:52:15.749Z",
+  "updatedAt": "2026-07-14T19:06:24.527Z",
   "results": {
     "m-A-1": [
       2,
@@ -524,7 +524,17 @@
       "winnerId": "arg"
     }
   ],
-  "liveKo": [],
+  "liveKo": [
+    {
+      "stage": "SEMI_FINALS",
+      "homeId": "fra",
+      "awayId": "esp",
+      "homeScore": 0,
+      "awayScore": 0,
+      "minute": null,
+      "phase": "1H"
+    }
+  ],
   "liveScores": {},
   "attendance": {},
   "goals": [
@@ -923,7 +933,8 @@
     "ko:fra-mar": "2026-07-09T22:06:14.831Z",
     "ko:bel-esp": "2026-07-10T21:05:17.417Z",
     "ko:eng-nor": "2026-07-11T23:54:21.301Z",
-    "ko:arg-sui": "2026-07-12T03:52:15.748Z"
+    "ko:arg-sui": "2026-07-12T03:52:15.748Z",
+    "ko:esp-fra": "2026-07-14T19:06:24.526Z"
   },
   "eventLookup": {
     "ko:alg-sui": {},
@@ -969,6 +980,9 @@
     },
     "ko:arg-sui": {
       "espnEventId": "760513"
+    },
+    "ko:esp-fra": {
+      "espnEventId": "760514"
     }
   }
 }
