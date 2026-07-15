@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-15T20:17:13.395Z",
+  "updatedAt": "2026-07-15T20:21:12.055Z",
   "results": {
     "m-A-1": [
       2,
@@ -537,7 +537,7 @@
       "stage": "SEMI_FINALS",
       "homeId": "eng",
       "awayId": "arg",
-      "homeScore": 0,
+      "homeScore": 1,
       "awayScore": 0,
       "minute": null,
       "phase": "2H"
