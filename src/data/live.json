@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-15T20:12:17.527Z",
+  "updatedAt": "2026-07-15T20:17:13.395Z",
   "results": {
     "m-A-1": [
       2,
@@ -941,6 +941,15 @@
       "minute": 57,
       "extra": null,
       "type": "REGULAR"
+    },
+    {
+      "matchId": "ko:arg-eng",
+      "team": "eng",
+      "scorer": "Anthony Gordon",
+      "assist": null,
+      "minute": 54,
+      "extra": null,
+      "type": "REGULAR"
     }
   ],
   "lastEventsCheck": {
@@ -961,7 +970,7 @@
     "ko:eng-nor": "2026-07-11T23:54:21.301Z",
     "ko:arg-sui": "2026-07-12T03:52:15.748Z",
     "ko:esp-fra": "2026-07-14T21:04:21.432Z",
-    "ko:arg-eng": "2026-07-15T20:08:19.756Z"
+    "ko:arg-eng": "2026-07-15T20:17:13.395Z"
   },
   "eventLookup": {
     "ko:alg-sui": {},
