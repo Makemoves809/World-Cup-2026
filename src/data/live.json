@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-15T20:42:17.775Z",
+  "updatedAt": "2026-07-15T20:50:34.915Z",
   "results": {
     "m-A-1": [
       2,
@@ -950,6 +950,15 @@
       "minute": 54,
       "extra": null,
       "type": "REGULAR"
+    },
+    {
+      "matchId": "ko:arg-eng",
+      "team": "arg",
+      "scorer": "Enzo Fernández",
+      "assist": null,
+      "minute": 84,
+      "extra": null,
+      "type": "REGULAR"
     }
   ],
   "lastEventsCheck": {
@@ -970,7 +979,7 @@
     "ko:eng-nor": "2026-07-11T23:54:21.301Z",
     "ko:arg-sui": "2026-07-12T03:52:15.748Z",
     "ko:esp-fra": "2026-07-14T21:04:21.432Z",
-    "ko:arg-eng": "2026-07-15T20:42:17.774Z"
+    "ko:arg-eng": "2026-07-15T20:50:34.914Z"
   },
   "eventLookup": {
     "ko:alg-sui": {},
