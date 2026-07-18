@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-18T22:23:18.038Z",
+  "updatedAt": "2026-07-18T22:24:22.324Z",
   "results": {
     "m-A-1": [
       2,
@@ -1021,6 +1021,15 @@
       "minute": 47,
       "extra": null,
       "type": "REGULAR"
+    },
+    {
+      "matchId": "ko:eng-fra",
+      "team": "fra",
+      "scorer": "Bradley Barcola",
+      "assist": null,
+      "minute": 53,
+      "extra": null,
+      "type": "REGULAR"
     }
   ],
   "lastEventsCheck": {
@@ -1042,7 +1051,7 @@
     "ko:arg-sui": "2026-07-12T03:52:15.748Z",
     "ko:esp-fra": "2026-07-14T21:04:21.432Z",
     "ko:arg-eng": "2026-07-15T21:10:32.894Z",
-    "ko:eng-fra": "2026-07-18T22:15:21.225Z"
+    "ko:eng-fra": "2026-07-18T22:24:22.324Z"
   },
   "eventLookup": {
     "ko:alg-sui": {},
