@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-18T22:50:20.276Z",
+  "updatedAt": "2026-07-18T22:56:17.626Z",
   "results": {
     "m-A-1": [
       2,
@@ -546,7 +546,7 @@
       "homeId": "fra",
       "awayId": "eng",
       "homeScore": 3,
-      "awayScore": 4,
+      "awayScore": 5,
       "minute": null,
       "phase": "2H"
     }
