@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-18T22:58:21.816Z",
+  "updatedAt": "2026-07-18T23:05:24.409Z",
   "results": {
     "m-A-1": [
       2,
@@ -545,7 +545,7 @@
       "stage": "THIRD_PLACE",
       "homeId": "fra",
       "awayId": "eng",
-      "homeScore": 3,
+      "homeScore": 4,
       "awayScore": 5,
       "minute": null,
       "phase": "2H"
