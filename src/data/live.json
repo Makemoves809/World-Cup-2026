@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-18T21:49:16.421Z",
+  "updatedAt": "2026-07-18T21:53:16.820Z",
   "results": {
     "m-A-1": [
       2,
@@ -546,9 +546,9 @@
       "homeId": "fra",
       "awayId": "eng",
       "homeScore": 0,
-      "awayScore": 3,
+      "awayScore": 4,
       "minute": null,
-      "phase": "1H"
+      "phase": "2H"
     }
   ],
   "liveScores": {},
