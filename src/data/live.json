@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-15T21:10:32.895Z",
+  "updatedAt": "2026-07-18T21:06:17.599Z",
   "results": {
     "m-A-1": [
       2,
@@ -540,7 +540,17 @@
       "winnerId": "arg"
     }
   ],
-  "liveKo": [],
+  "liveKo": [
+    {
+      "stage": "THIRD_PLACE",
+      "homeId": "fra",
+      "awayId": "eng",
+      "homeScore": 0,
+      "awayScore": 0,
+      "minute": null,
+      "phase": "1H"
+    }
+  ],
   "liveScores": {},
   "attendance": {},
   "goals": [
@@ -966,6 +976,15 @@
       "minute": 90,
       "extra": null,
       "type": "REGULAR"
+    },
+    {
+      "matchId": "ko:eng-fra",
+      "team": "eng",
+      "scorer": "Declan Rice",
+      "assist": null,
+      "minute": 2,
+      "extra": null,
+      "type": "REGULAR"
     }
   ],
   "lastEventsCheck": {
@@ -986,7 +1005,8 @@
     "ko:eng-nor": "2026-07-11T23:54:21.301Z",
     "ko:arg-sui": "2026-07-12T03:52:15.748Z",
     "ko:esp-fra": "2026-07-14T21:04:21.432Z",
-    "ko:arg-eng": "2026-07-15T21:10:32.894Z"
+    "ko:arg-eng": "2026-07-15T21:10:32.894Z",
+    "ko:eng-fra": "2026-07-18T21:06:17.599Z"
   },
   "eventLookup": {
     "ko:alg-sui": {},
@@ -1038,6 +1058,9 @@
     },
     "ko:arg-eng": {
       "espnEventId": "760515"
+    },
+    "ko:eng-fra": {
+      "espnEventId": "760516"
     }
   }
 }
