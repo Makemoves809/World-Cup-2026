@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-18T22:56:17.626Z",
+  "updatedAt": "2026-07-18T22:58:21.816Z",
   "results": {
     "m-A-1": [
       2,
@@ -1039,6 +1039,15 @@
       "minute": 65,
       "extra": null,
       "type": "REGULAR"
+    },
+    {
+      "matchId": "ko:eng-fra",
+      "team": "eng",
+      "scorer": "Bukayo Saka",
+      "assist": null,
+      "minute": 86,
+      "extra": null,
+      "type": "PENALTY"
     }
   ],
   "lastEventsCheck": {
@@ -1060,7 +1069,7 @@
     "ko:arg-sui": "2026-07-12T03:52:15.748Z",
     "ko:esp-fra": "2026-07-14T21:04:21.432Z",
     "ko:arg-eng": "2026-07-15T21:10:32.894Z",
-    "ko:eng-fra": "2026-07-18T22:50:20.275Z"
+    "ko:eng-fra": "2026-07-18T22:58:21.816Z"
   },
   "eventLookup": {
     "ko:alg-sui": {},
