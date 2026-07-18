@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-18T23:05:24.409Z",
+  "updatedAt": "2026-07-18T23:07:16.945Z",
   "results": {
     "m-A-1": [
       2,
@@ -546,7 +546,7 @@
       "homeId": "fra",
       "awayId": "eng",
       "homeScore": 4,
-      "awayScore": 5,
+      "awayScore": 6,
       "minute": null,
       "phase": "2H"
     }
@@ -1048,6 +1048,24 @@
       "minute": 86,
       "extra": null,
       "type": "PENALTY"
+    },
+    {
+      "matchId": "ko:eng-fra",
+      "team": "fra",
+      "scorer": "Ousmane Dembélé",
+      "assist": null,
+      "minute": 90,
+      "extra": null,
+      "type": "REGULAR"
+    },
+    {
+      "matchId": "ko:eng-fra",
+      "team": "eng",
+      "scorer": "Jude Bellingham",
+      "assist": null,
+      "minute": 90,
+      "extra": null,
+      "type": "REGULAR"
     }
   ],
   "lastEventsCheck": {
@@ -1069,7 +1087,7 @@
     "ko:arg-sui": "2026-07-12T03:52:15.748Z",
     "ko:esp-fra": "2026-07-14T21:04:21.432Z",
     "ko:arg-eng": "2026-07-15T21:10:32.894Z",
-    "ko:eng-fra": "2026-07-18T22:58:21.816Z"
+    "ko:eng-fra": "2026-07-18T23:07:16.944Z"
   },
   "eventLookup": {
     "ko:alg-sui": {},
