@@ -569,7 +569,7 @@ export function resolveThirdPlace(): ResolvedMatch {
     id: "m103",
     num: 103,
     date: "2026-07-18",
-    kickoff: "2026-07-18T19:00:00Z",
+    kickoff: "2026-07-18T21:00:00Z",
     venue: "Hard Rock Stadium · Miami",
     home,
     away,
