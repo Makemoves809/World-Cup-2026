@@ -2,9 +2,71 @@ import { teams, teamById } from "../data/teams";
 import { formRating, type FormRating } from "../lib/form";
 import { continuity } from "../data/continuity";
 import { topScorers } from "../lib/tournamentStats";
+import { goldenBoot } from "../data/goals";
 import { openRoster } from "../lib/roster";
 import { Flag } from "../components/Flag";
 import type { Team } from "../data/types";
+
+function GoldenBoot() {
+  const players = goldenBoot(15)
+    .map((s) => {
+      try {
+        return { ...s, team: teamById(s.team) };
+      } catch {
+        return null;
+      }
+    })
+    .filter((r): r is NonNullable<typeof r> => r !== null);
+
+  if (players.length === 0) return null;
+
+  // Standard competition ranking: players level on goals share a rank.
+  let prevGoals = -1;
+  let prevRank = 0;
+  const ranked = players.map((p, i) => {
+    const rank = p.goals === prevGoals ? prevRank : i + 1;
+    prevGoals = p.goals;
+    prevRank = rank;
+    return { ...p, rank };
+  });
+  const topGoals = ranked[0].goals;
+
+  return (
+    <section className="golden-boot">
+      <span className="kicker">Golden Boot · top scorers</span>
+      <h3>Golden Boot race</h3>
+      <ol className="gb-list">
+        {ranked.map((p) => (
+          <li
+            className={p.goals === topGoals ? "gb-row gb-leader" : "gb-row"}
+            key={`${p.team.id}-${p.scorer}`}
+          >
+            <span className="gb-rank">{p.rank}</span>
+            <button
+              className="gb-player team-link"
+              onClick={() => openRoster(p.team.id)}
+              title={`${p.team.name} squad`}
+            >
+              <Flag team={p.team} size={18} />
+              <span className="gb-name">{p.scorer}</span>
+              <span className="gb-team">{p.team.name}</span>
+            </button>
+            <span className="gb-pens">
+              {p.penalties > 0 ? `${p.penalties} pen` : ""}
+            </span>
+            <span className="gb-goals">{p.goals}</span>
+          </li>
+        ))}
+      </ol>
+      <p className="goal-leaders-foot">
+        Every player ranked by goals — group stage and knockouts combined. Own
+        goals don't count toward a scorer; penalties do (shown separately).
+        Players level on goals share a rank. Updates live as the feed reports
+        new goals.
+      </p>
+    </section>
+  );
+}
 
 function Continuity({ id }: { id: string }) {
   const c = continuity(id);
@@ -67,7 +129,7 @@ function GoalLeaders() {
 
   return (
     <section className="goal-leaders">
-      <span className="kicker">Golden Boot race · team totals</span>
+      <span className="kicker">Team totals · goals scored</span>
       <h3>Most goals scored</h3>
       <ol className="goal-leaders-list">
         <li className="goal-row goal-head" aria-hidden="true">
@@ -137,6 +199,8 @@ export function FormTable() {
           <MoverCard row={faller} kind="faller" />
         </div>
       )}
+
+      <GoldenBoot />
 
       <GoalLeaders />
 

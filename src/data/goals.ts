@@ -57,6 +57,51 @@ export const goalsForPlayer = (team: string, playerName: string): Goal[] => {
     .sort(byMinute);
 };
 
+export interface Scorer {
+  /** Display name (the fullest spelling seen in the feed). */
+  scorer: string;
+  /** Team id. */
+  team: string;
+  /** Total goals this tournament (own goals excluded). */
+  goals: number;
+  /** How many of those came from the penalty spot. */
+  penalties: number;
+}
+
+/**
+ * Golden Boot standings — every player ranked by goals scored across the
+ * whole tournament (group stage + knockouts, since `all` already holds both).
+ * Own goals are excluded (they never count toward a scorer's tally, and the
+ * feed credits them to the benefiting team anyway); penalties count but are
+ * also surfaced separately. Ranked by goals, then — since the free feed gives
+ * us no assists or minutes for FIFA's official tiebreakers — by fewer
+ * penalties (a light nudge toward open-play scoring) and then name, purely so
+ * the order is stable. Recomputes from the goal feed, so it tracks live.
+ */
+export function goldenBoot(limit?: number): Scorer[] {
+  const byKey = new Map<string, Scorer>();
+  for (const g of all) {
+    if (g.type === "OWN") continue;
+    const key = `${g.team}|${norm(g.scorer)}`;
+    let s = byKey.get(key);
+    if (!s) {
+      s = { scorer: g.scorer, team: g.team, goals: 0, penalties: 0 };
+      byKey.set(key, s);
+    }
+    // Keep the fullest spelling if the feed ever varies it.
+    if (g.scorer.length > s.scorer.length) s.scorer = g.scorer;
+    s.goals += 1;
+    if (g.type === "PENALTY") s.penalties += 1;
+  }
+  const ranked = [...byKey.values()].sort(
+    (a, b) =>
+      b.goals - a.goals ||
+      a.penalties - b.penalties ||
+      a.scorer.localeCompare(b.scorer)
+  );
+  return limit != null ? ranked.slice(0, limit) : ranked;
+}
+
 /** "45+2'" style clock for a goal minute + injury-time offset. */
 export const minuteLabel = (minute: number | null, extra?: number | null): string => {
   if (minute == null) return "";
