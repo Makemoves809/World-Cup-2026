@@ -2,6 +2,7 @@ import { Hero } from "../components/Hero";
 import { ResultsTicker } from "../components/ResultsTicker";
 import { TournamentProgress } from "../components/TournamentProgress";
 import { FormPreview } from "../components/FormPreview";
+import { GoldenBootPreview } from "../components/GoldenBootPreview";
 import { navigate } from "../router";
 
 const LINKS = [
@@ -34,6 +35,7 @@ export function Home() {
       <ResultsTicker />
       <TournamentProgress />
       <FormPreview />
+      <GoldenBootPreview />
 
       <section className="home-links" aria-label="Explore the hub">
         {LINKS.map((l) => (

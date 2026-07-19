@@ -2195,6 +2195,46 @@ img.flag {
   color: var(--grass);
   text-align: right;
 }
+.gbp-row {
+  display: grid;
+  grid-template-columns: 22px 1fr auto 44px;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--line-soft);
+}
+.gbp-row:last-child { border-bottom: none; }
+.gbp-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--chalk);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.gbp-team {
+  font-size: 11px;
+  color: var(--chalk-faint);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  flex-shrink: 2;
+}
+.gbp-pens {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--chalk-faint);
+  white-space: nowrap;
+}
+.gbp-goals {
+  font-family: var(--font-mono);
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--floodlight);
+  text-align: right;
+}
 
 /* ---------- Tournament progress ---------- */
 .progress {
