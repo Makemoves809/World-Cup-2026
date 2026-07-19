@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-19T21:47:12.114Z",
+  "updatedAt": "2026-07-19T22:08:16.526Z",
   "results": {
     "m-A-1": [
       2,
@@ -551,9 +551,9 @@
       "stage": "FINAL",
       "homeId": "esp",
       "awayId": "arg",
-      "homeScore": 0,
+      "homeScore": 1,
       "awayScore": 0,
-      "winnerId": null
+      "winnerId": "esp"
     }
   ],
   "liveKo": [],
