@@ -1,0 +1,78 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//UEFA Champions League 2026-27 hub//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:UEFA Champions League 2026/27
+X-WR-CALDESC:Key dates for the 2026/27 UEFA Champions League. Auto-updates.
+REFRESH-INTERVAL;VALUE=DURATION:PT12H
+X-PUBLISHED-TTL:PT12H
+BEGIN:VEVENT
+UID:league-phase-draw@champions-league-2026-27
+DTSTAMP:20260720T120000Z
+DTSTART;VALUE=DATE:20260827
+DTEND;VALUE=DATE:20260828
+SUMMARY:Champions League: League-phase draw
+DESCRIPTION:The big one for the schedule: each of the 36 clubs is drawn it
+ s 8 opponents (4 home\, 4 away). After this\, real fixtures exist.
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:league-phase-matchdays-1-6@champions-league-2026-27
+DTSTAMP:20260720T120000Z
+DTSTART;VALUE=DATE:20260916
+DTEND;VALUE=DATE:20260917
+SUMMARY:Champions League: League phase\, matchdays 1–6
+DESCRIPTION:The competition begins. Clubs rack up games in the single 36-t
+ eam table across midweek matchdays through autumn.
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:knockout-play-off-round@champions-league-2026-27
+DTSTAMP:20260720T120000Z
+DTSTART;VALUE=DATE:20270217
+DTEND;VALUE=DATE:20270226
+SUMMARY:Champions League: Knockout play-off round
+DESCRIPTION:Two-legged ties (home and away) between the teams that finishe
+ d 9th–24th\, to complete the Round of 16.
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:round-of-16@champions-league-2026-27
+DTSTAMP:20260720T120000Z
+DTSTART;VALUE=DATE:20270310
+DTEND;VALUE=DATE:20270319
+SUMMARY:Champions League: Round of 16
+DESCRIPTION:The last 16\, two legs each — home and away\, scores added t
+ ogether.
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:quarter-finals@champions-league-2026-27
+DTSTAMP:20260720T120000Z
+DTSTART;VALUE=DATE:20270407
+DTEND;VALUE=DATE:20270416
+SUMMARY:Champions League: Quarter-finals
+DESCRIPTION:Eight become four\, still over two legs.
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:semi-finals@champions-league-2026-27
+DTSTAMP:20260720T120000Z
+DTSTART;VALUE=DATE:20270428
+DTEND;VALUE=DATE:20270507
+SUMMARY:Champions League: Semi-finals
+DESCRIPTION:The last two-legged round before the showpiece.
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:final@champions-league-2026-27
+DTSTAMP:20260720T120000Z
+DTSTART;VALUE=DATE:20270605
+DTEND;VALUE=DATE:20270606
+SUMMARY:Champions League: Final
+DESCRIPTION:One match\, neutral ground — Estadio Metropolitano\, Madrid.
+  The winner is champion of Europe.
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

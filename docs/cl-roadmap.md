@@ -24,7 +24,10 @@ in-season results.
    build the fixtures data model, the **real 36-team league table** (sorted by
    points, with the three qualification bands already on `/table`), and a
    schedule page. Replace the preseason `/table` placeholder with the live
-   standings shell.
+   standings shell. **Also feed the real fixtures into the subscribable
+   calendar** — extend `scripts/gen-ics.ts` (runs on `prebuild`, writes
+   `public/champions-league.ics`) to emit a timed VEVENT per match; subscribers
+   then get every fixture automatically.
 
 2. **Season kickoff — fire `2026-09-15T12:00:00Z`** (adjust to the confirmed
    matchday-1 date)

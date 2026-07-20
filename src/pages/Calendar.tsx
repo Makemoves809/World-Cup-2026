@@ -7,6 +7,37 @@ const KIND_LABEL: Record<string, string> = {
   final: "Final",
 };
 
+// The feed is served as a static file from the deployment root. `webcal://`
+// makes Apple/Google Calendar *subscribe* (and keep re-fetching) rather than
+// import a one-time snapshot.
+const ICS_PATH = "/champions-league.ics";
+const webcalUrl = () =>
+  `webcal://${typeof window !== "undefined" ? window.location.host : ""}${ICS_PATH}`;
+
+function SubscribeCard() {
+  return (
+    <div className="cal-subscribe">
+      <div className="cal-sub-text">
+        <span className="cal-sub-head">Add this to your calendar</span>
+        <p>
+          Subscribe once and it stays in sync — when fixtures are set or a
+          kickoff moves, your calendar updates on its own. Right now it carries
+          the key dates; every match lands in it after the 27 August draw.
+        </p>
+      </div>
+      <div className="cal-sub-actions">
+        <a className="btn btn-cta" href={webcalUrl()}>
+          Subscribe
+          <span className="btn-arrow" aria-hidden="true">→</span>
+        </a>
+        <a className="cal-sub-alt" href={ICS_PATH} download>
+          Download .ics
+        </a>
+      </div>
+    </div>
+  );
+}
+
 /** The season as a timeline — what happens when, for a newcomer. */
 export function Calendar() {
   return (
@@ -20,6 +51,8 @@ export function Calendar() {
           September).
         </p>
       </div>
+
+      <SubscribeCard />
 
       <ol className="cal-list">
         {CALENDAR.map((s) => (

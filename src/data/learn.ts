@@ -62,6 +62,12 @@ export interface CalendarStage {
   detail: string;
   /** Visual grouping. */
   kind: "pre" | "league" | "knockout" | "final";
+  /** Anchor date (YYYY-MM-DD) for the subscribable .ics feed. */
+  date?: string;
+  /** Inclusive last day for a multi-day window (YYYY-MM-DD). */
+  end?: string;
+  /** Skip this stage in the .ics feed (too vague/long to be a useful event). */
+  noFeed?: boolean;
 }
 
 /** The 2026/27 season, stage by stage — so a newcomer knows when to tune in. */
@@ -72,6 +78,7 @@ export const CALENDAR: CalendarStage[] = [
     detail:
       "Clubs from smaller nations play off for the last 7 league-phase places. Names like Celtic and Bodø/Glimt are still fighting through here.",
     kind: "pre",
+    noFeed: true,
   },
   {
     when: "27 Aug 2026",
@@ -79,6 +86,7 @@ export const CALENDAR: CalendarStage[] = [
     detail:
       "The big one for the schedule: each of the 36 clubs is drawn its 8 opponents (4 home, 4 away). After this, real fixtures exist.",
     kind: "pre",
+    date: "2026-08-27",
   },
   {
     when: "Sep–Dec 2026",
@@ -86,6 +94,7 @@ export const CALENDAR: CalendarStage[] = [
     detail:
       "The competition begins. Clubs rack up games in the single 36-team table across midweek matchdays through autumn.",
     kind: "league",
+    date: "2026-09-16",
   },
   {
     when: "21 & 28 Jan 2027",
@@ -93,6 +102,7 @@ export const CALENDAR: CalendarStage[] = [
     detail:
       "The final two rounds decide the table. Top 8 go straight to the last 16; 9th–24th drop into the play-offs; 25th–36th are out.",
     kind: "league",
+    noFeed: true,
   },
   {
     when: "17–25 Feb 2027",
@@ -100,24 +110,32 @@ export const CALENDAR: CalendarStage[] = [
     detail:
       "Two-legged ties (home and away) between the teams that finished 9th–24th, to complete the Round of 16.",
     kind: "knockout",
+    date: "2027-02-17",
+    end: "2027-02-25",
   },
   {
     when: "10–18 Mar 2027",
     stage: "Round of 16",
     detail: "The last 16, two legs each — home and away, scores added together.",
     kind: "knockout",
+    date: "2027-03-10",
+    end: "2027-03-18",
   },
   {
     when: "7–15 Apr 2027",
     stage: "Quarter-finals",
     detail: "Eight become four, still over two legs.",
     kind: "knockout",
+    date: "2027-04-07",
+    end: "2027-04-15",
   },
   {
     when: "28 Apr – 6 May 2027",
     stage: "Semi-finals",
     detail: "The last two-legged round before the showpiece.",
     kind: "knockout",
+    date: "2027-04-28",
+    end: "2027-05-06",
   },
   {
     when: "5 Jun 2027",
@@ -125,6 +143,7 @@ export const CALENDAR: CalendarStage[] = [
     detail:
       "One match, neutral ground — Estadio Metropolitano, Madrid. The winner is champion of Europe.",
     kind: "final",
+    date: "2027-06-05",
   },
 ];
 

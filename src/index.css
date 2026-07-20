@@ -4634,3 +4634,49 @@ tr.stat-out .team-name { color: var(--chalk-dim); }
   color: var(--chalk-dim);
 }
 .table-foot { margin-top: 18px; }
+
+/* ---- Calendar subscribe card ---- */
+.cal-subscribe {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 28px;
+  padding: 18px 20px;
+  border-radius: var(--radius);
+  border: 1px solid var(--line);
+  background: var(--surface-card);
+  box-shadow: var(--shadow-card);
+}
+.cal-sub-text { flex: 1 1 260px; min-width: 0; }
+.cal-sub-head {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 18px;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  color: var(--chalk);
+  margin-bottom: 6px;
+}
+.cal-sub-text p {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--chalk-dim);
+}
+.cal-sub-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+}
+.cal-sub-actions .btn-cta { text-decoration: none; }
+.cal-sub-alt {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  color: var(--chalk-faint);
+  text-decoration: none;
+}
+.cal-sub-alt:hover { color: var(--chalk-dim); }
