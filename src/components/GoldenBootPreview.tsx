@@ -61,6 +61,10 @@ export function GoldenBootPreview() {
           </li>
         ))}
       </ol>
+      <p className="gbp-note">
+        Logged from a live feed that catches only some goals — official Golden
+        Boot: Kylian Mbappé (10).
+      </p>
     </section>
   );
 }

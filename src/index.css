@@ -2235,6 +2235,12 @@ img.flag {
   color: var(--floodlight);
   text-align: right;
 }
+.gbp-note {
+  margin: 12px 4px 0;
+  font-size: 11px;
+  line-height: 1.5;
+  color: var(--chalk-faint);
+}
 
 /* ---------- Tournament progress ---------- */
 .progress {

@@ -1072,6 +1072,15 @@
       "minute": 90,
       "extra": null,
       "type": "REGULAR"
+    },
+    {
+      "matchId": "ko:arg-esp",
+      "team": "esp",
+      "scorer": "Ferran Torres",
+      "assist": null,
+      "minute": 106,
+      "extra": null,
+      "type": "REGULAR"
     }
   ],
   "lastEventsCheck": {

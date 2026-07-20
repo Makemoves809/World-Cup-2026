@@ -61,8 +61,12 @@ function GoldenBoot() {
       <p className="goal-leaders-foot">
         Every player ranked by goals — group stage and knockouts combined. Own
         goals don't count toward a scorer; penalties do (shown separately).
-        Players level on goals share a rank. Updates live as the feed reports
-        new goals.
+        Players level on goals share a rank.{" "}
+        <strong>Heads-up:</strong> scorers come from a best-effort live feed
+        that logs only some of each match's goals, so these tallies sit below
+        the official totals. The official adidas Golden Boot went to{" "}
+        <strong>Kylian Mbappé (10)</strong>, ahead of Lionel Messi (8) and Jude
+        Bellingham &amp; Erling Haaland (7).
       </p>
     </section>
   );
