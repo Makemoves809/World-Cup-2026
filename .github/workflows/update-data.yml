@@ -1,13 +1,19 @@
 name: Update live data
 
+# PAUSED (Jul 2026) for the Champions League pivot. The World Cup is over and
+# its data is frozen (the finished-tournament state is archived on branch
+# archive/world-cup-2026 and tag world-cup-2026). The live deployment now
+# serves the Champions League 2026/27 hub, which has its own (not-yet-wired)
+# data path — so this World Cup fetcher must NOT commit to the production
+# branch. `workflow_dispatch` is kept so the external cron's API call still
+# succeeds without error, but the job is guarded off below.
+#
+# TO RE-ENABLE (e.g. standing the World Cup back up for 2030, or wiring a CL
+# feed): restore the `schedule` trigger and remove the `if: ${{ false }}`
+# guard on the job.
 on:
-  schedule:
-    # GitHub's own scheduler is unreliable for frequent crons (it throttles
-    # and drops runs — often only ~1–2 h apart). So this schedule is just a
-    # fallback. The reliable driver is an EXTERNAL cron (cron-job.org) that
-    # hits the workflow_dispatch API every 5 min. The script only commits when
-    # data actually changes, so empty polls are cheap no-ops.
-    - cron: "*/5 * * * *"
+  # schedule:
+  #   - cron: "*/5 * * * *"
   workflow_dispatch:
 
 concurrency:
@@ -21,6 +27,7 @@ jobs:
   # Fetch finished results + red cards and commit them. The push triggers
   # Vercel's Git integration, which rebuilds and redeploys the site.
   update:
+    if: ${{ false }} # PAUSED — see the note at the top of this file.
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4

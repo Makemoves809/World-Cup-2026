@@ -1,4 +1,27 @@
-# WC26 — World Cup 2026 Hub
+> ## ⚑ PIVOTED — this repo now serves the Champions League primer (Jul 2026)
+>
+> The live deployment has been **repointed from the World Cup to a
+> beginner-first UEFA Champions League 2026/27 hub** (`UCL Primer`). The
+> current app entry is `src/App.tsx` → `Home`/`HowItWorks`/`Clubs`/`Glossary`,
+> built on `src/data/clubs.ts` and `src/data/learn.ts`.
+>
+> - **The World Cup 2026 site is preserved**, not deleted: the finished-
+>   tournament state is on branch **`archive/world-cup-2026`** and tag
+>   **`world-cup-2026`**. It is to be **restored for the 2030 World Cup**
+>   (bring that branch back, re-enable the data bot).
+> - The **`update-data` GitHub Action is paused** (see the note in
+>   `.github/workflows/update-data.yml`) so the World Cup fetcher no longer
+>   commits to the production branch.
+> - The **World-Cup-specific curation rules below (attendance, discipline,
+>   squads, goals, form, etc.) describe the archived WC site** — they do NOT
+>   apply to the current Champions League site. The CL tracker (league table,
+>   two-legged bracket, club squads, live CL feed) is being built in phases;
+>   the current live version is the preseason "learn the competition" hub.
+> - Deployment mechanics are unchanged: the production branch
+>   `claude/repository-edits-completion-rs4u72` is what Vercel serves; build
+>   must pass (`npm run build`) before pushing.
+
+# WC26 — World Cup 2026 Hub (archived — see the pivot notice above)
 
 Fan site + live group-stage standings tracker for the 2026 FIFA World Cup
 (Canada · México · USA). React + TypeScript + Vite. See `README.md` for the
