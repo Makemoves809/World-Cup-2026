@@ -1,51 +1,24 @@
 import { Header } from "./components/Header";
-import { ProgressStrip } from "./components/ProgressStrip";
-import { Knockout } from "./components/Knockout";
-import { Schedule } from "./components/Schedule";
 import { Home } from "./pages/Home";
-import { GroupsPage } from "./pages/GroupsPage";
-import { Qatar2022 } from "./pages/Qatar2022";
-import { FormTable } from "./pages/FormTable";
-import { Continuity } from "./pages/Continuity";
-import { SquadPitch } from "./pages/SquadPitch";
-import { RosterModal } from "./components/RosterModal";
+import { HowItWorks } from "./pages/HowItWorks";
+import { Clubs } from "./pages/Clubs";
+import { Glossary } from "./pages/Glossary";
 import { navigate, useRoute } from "./router";
-import { useRoster } from "./lib/roster";
-import { startLivePolling } from "./lib/liveData";
-import { useEffect } from "react";
 
 export function App() {
   const path = useRoute();
-  const roster = useRoster();
-
-  // Keep an open tab's scores fresh without a manual reload.
-  useEffect(() => {
-    startLivePolling();
-  }, []);
 
   let page;
-  if (path.startsWith("/squad/")) {
-    page = <SquadPitch teamId={path.slice("/squad/".length)} />;
-  } else
   switch (path) {
-    case "/groups":
-      page = <GroupsPage />;
+    case "/learn":
+    case "/how-it-works":
+      page = <HowItWorks />;
       break;
-    case "/knockout":
-      page = <Knockout />;
+    case "/clubs":
+      page = <Clubs />;
       break;
-    case "/schedule":
-    case "/fixtures":
-      page = <Schedule />;
-      break;
-    case "/form":
-      page = <FormTable />;
-      break;
-    case "/qatar2022":
-      page = <Qatar2022 />;
-      break;
-    case "/continuity":
-      page = <Continuity />;
+    case "/glossary":
+      page = <Glossary />;
       break;
     default:
       page = <Home />;
@@ -54,7 +27,6 @@ export function App() {
   return (
     <div className="app">
       <Header path={path} />
-      {path !== "/" && <ProgressStrip />}
 
       <main>{page}</main>
 
@@ -62,42 +34,39 @@ export function App() {
         <div className="footer-grid">
           <div className="footer-brand">
             <span className="brand-mark">
-              WC<em>26</em>
+              UCL<em>27</em>
             </span>
             <p>
-              An unofficial fan hub for the 2026 FIFA World Cup across Canada,
-              México, and the USA. Standings recompute automatically from match
-              results, entered after full time.
+              An unofficial beginner's guide to the UEFA Champions League
+              2026/27 — the new 36-team league-phase format, the clubs, and the
+              jargon, for football fans new to the competition. Results and the
+              table fill in automatically once the season kicks off.
             </p>
           </div>
 
           <nav className="footer-nav" aria-label="Footer">
             <span className="footer-head">Explore</span>
             <button onClick={() => navigate("/")}>Home</button>
-            <button onClick={() => navigate("/knockout")}>Knockout</button>
-            <button onClick={() => navigate("/schedule")}>Schedule</button>
-            <button onClick={() => navigate("/groups")}>Final group tables</button>
-            <button onClick={() => navigate("/form")}>Form table</button>
-            <button onClick={() => navigate("/continuity")}>Squad turnover</button>
-            <button onClick={() => navigate("/qatar2022")}>Qatar 2022</button>
+            <button onClick={() => navigate("/learn")}>How it works</button>
+            <button onClick={() => navigate("/clubs")}>Clubs</button>
+            <button onClick={() => navigate("/glossary")}>Glossary</button>
           </nav>
 
           <div className="footer-notes">
             <span className="footer-head">Data</span>
             <p>
-              Schedule per the official match calendar · kickoffs shown in your
-              local time · flags from the flag-icons project (MIT).
+              Confirmed clubs and format per UEFA · the final field and fixtures
+              are set by the 27 August 2026 draw · flags from the flag-icons
+              project (MIT).
             </p>
-            <p>Not affiliated with FIFA. MIT licensed.</p>
+            <p>Not affiliated with UEFA. MIT licensed.</p>
           </div>
         </div>
 
         <p className="footer-meta">
-          WC26 Hub · Built with React + TypeScript · Jun 11 – Jul 19, 2026
+          UCL Primer · Champions League 2026/27 · Built with React + TypeScript
         </p>
       </footer>
-
-      {roster && <RosterModal teamId={roster} />}
     </div>
   );
 }

@@ -4201,3 +4201,262 @@ tr.stat-out .team-name { color: var(--chalk-dim); }
   .qb-text { display: none; }
   .qual-badge { padding: 2px 5px; }
 }
+
+/* ============================================================
+   Champions League primer — beginner-first pages
+   ============================================================ */
+
+.hero-field-line {
+  margin: 4px 0 8px;
+  font-family: var(--font-display);
+  font-size: 26px;
+  color: var(--chalk);
+}
+.hero-field-line strong { color: var(--floodlight); }
+
+/* ---- Home: three-things primer ---- */
+.primer {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 40px 24px 0;
+}
+.primer-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 14px;
+}
+.primer-card {
+  padding: 18px 20px;
+  border-radius: var(--radius);
+  border: 1px solid var(--line);
+  background: var(--surface-card);
+  box-shadow: var(--shadow-card);
+}
+.primer-k {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 18px;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  color: var(--floodlight);
+  margin-bottom: 8px;
+}
+.primer-v {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--chalk-dim);
+}
+.primer-cta {
+  margin-top: 18px;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  color: var(--grass);
+  transition: transform 0.2s var(--ease);
+}
+.primer-cta:hover { transform: translateX(3px); }
+
+/* ---- How it works ---- */
+.learn-page,
+.clubs-page,
+.glossary-page {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 48px 24px 72px;
+}
+.learn-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.learn-block {
+  display: grid;
+  grid-template-columns: 44px 1fr;
+  gap: 16px;
+  align-items: start;
+  padding: 20px;
+  border-radius: var(--radius);
+  border: 1px solid var(--line);
+  background: var(--surface-card);
+  box-shadow: var(--shadow-card);
+}
+.learn-num {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--grass-ink);
+  background: var(--grass);
+}
+.learn-body h3 {
+  margin: 6px 0 10px;
+  font-family: var(--font-display);
+  font-size: 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  color: var(--chalk);
+}
+.learn-body p {
+  margin: 0 0 10px;
+  font-size: 15px;
+  line-height: 1.65;
+  color: var(--chalk-dim);
+}
+.learn-body p:last-child { margin-bottom: 0; }
+.learn-next {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 14px;
+  margin-top: 28px;
+}
+
+/* ---- Clubs ---- */
+.club-country { margin-top: 32px; }
+.club-country-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 0 14px;
+  font-family: var(--font-display);
+  font-size: 22px;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  color: var(--chalk);
+}
+.club-country-head--pending { color: var(--chalk-dim); }
+.club-country-count {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--chalk-faint);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-pill);
+  padding: 2px 9px;
+}
+.club-pending-note { margin: -6px 0 14px; }
+.club-grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 14px;
+}
+.club-card {
+  padding: 16px 18px;
+  border-radius: var(--radius);
+  border: 1px solid var(--line);
+  background: var(--surface-card);
+  box-shadow: var(--shadow-card);
+}
+.club-card-head {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 12px;
+}
+.club-crest {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: var(--pitch-3);
+  border: 1px solid var(--line);
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--chalk);
+  flex-shrink: 0;
+}
+.club-id { min-width: 0; }
+.club-name {
+  display: block;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--chalk);
+}
+.club-meta {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: var(--chalk-faint);
+  margin-top: 2px;
+}
+.club-titles {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--chalk-faint);
+  white-space: nowrap;
+}
+.club-titles.has-titles { color: var(--floodlight); }
+.club-blurb {
+  margin: 12px 0 0;
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--chalk-dim);
+}
+.club-watch {
+  margin: 10px 0 0;
+  font-size: 13px;
+  color: var(--chalk);
+}
+.club-watch-tag {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--grass-ink);
+  background: var(--grass);
+  border-radius: var(--radius-xs);
+  padding: 2px 6px;
+  margin-right: 7px;
+  vertical-align: middle;
+}
+
+/* ---- Glossary ---- */
+.glossary-list {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.glossary-item {
+  padding: 16px 0;
+  border-bottom: 1px solid var(--line-soft);
+}
+.glossary-item:last-child { border-bottom: none; }
+.glossary-item dt {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 6px;
+}
+.glossary-term {
+  font-family: var(--font-display);
+  font-size: 18px;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  color: var(--chalk);
+}
+.glossary-short {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.03em;
+  color: var(--floodlight);
+}
+.glossary-item dd {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.65;
+  color: var(--chalk-dim);
+}
