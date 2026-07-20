@@ -17,6 +17,10 @@
 >   apply to the current Champions League site. The CL tracker (league table,
 >   two-legged bracket, club squads, live CL feed) is being built in phases;
 >   the current live version is the preseason "learn the competition" hub.
+> - **Automation roadmap → `docs/cl-roadmap.md`**: the milestone cloud triggers
+>   (draw day, season kickoff, knockouts) that advance the site through the
+>   season. If they're not yet created (the trigger connector was down at pivot
+>   time), create them when it reconnects.
 > - Deployment mechanics are unchanged: the production branch
 >   `claude/repository-edits-completion-rs4u72` is what Vercel serves; build
 >   must pass (`npm run build`) before pushing.
