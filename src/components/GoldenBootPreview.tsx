@@ -62,8 +62,8 @@ export function GoldenBootPreview() {
         ))}
       </ol>
       <p className="gbp-note">
-        Logged from a live feed that catches only some goals — official Golden
-        Boot: Kylian Mbappé (10).
+        Leaders hand-checked against official records — Kylian Mbappé took the
+        Golden Boot with 10.
       </p>
     </section>
   );
