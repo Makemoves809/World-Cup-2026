@@ -9,6 +9,8 @@ interface HeaderProps {
 const PRIMARY = [
   { to: "/learn", label: "How it works" },
   { to: "/clubs", label: "Clubs" },
+  { to: "/table", label: "The table" },
+  { to: "/calendar", label: "Calendar" },
   { to: "/glossary", label: "Glossary" },
 ];
 

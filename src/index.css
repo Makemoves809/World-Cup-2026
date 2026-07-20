@@ -4460,3 +4460,165 @@ tr.stat-out .team-name { color: var(--chalk-dim); }
   line-height: 1.65;
   color: var(--chalk-dim);
 }
+
+/* ---- Season calendar (timeline) ---- */
+.cal-page {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 48px 24px 72px;
+}
+.cal-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.cal-item {
+  display: grid;
+  grid-template-columns: 28px 1fr;
+  gap: 14px;
+}
+.cal-rail {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.cal-rail::before {
+  content: "";
+  flex: 1;
+  width: 2px;
+  background: var(--line);
+  min-height: 8px;
+}
+.cal-item:first-child .cal-rail::before { background: transparent; }
+.cal-rail::after {
+  content: "";
+  flex: 1;
+  width: 2px;
+  background: var(--line);
+}
+.cal-item:last-child .cal-rail::after { background: transparent; }
+.cal-dot {
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  border: 2px solid var(--pitch);
+  background: var(--chalk-faint);
+  flex-shrink: 0;
+}
+.cal-league .cal-dot { background: var(--grass); }
+.cal-knockout .cal-dot { background: var(--floodlight); }
+.cal-final .cal-dot {
+  background: var(--floodlight);
+  box-shadow: 0 0 0 4px var(--floodlight-soft);
+}
+.cal-body {
+  padding: 4px 0 22px;
+  min-width: 0;
+}
+.cal-when {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  color: var(--chalk-faint);
+  text-transform: uppercase;
+}
+.cal-stage {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 4px 0 6px;
+  font-family: var(--font-display);
+  font-size: 19px;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  color: var(--chalk);
+}
+.cal-kind {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.06em;
+  color: var(--chalk-faint);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-pill);
+  padding: 2px 8px;
+}
+.cal-detail {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--chalk-dim);
+}
+
+/* ---- Table explainer (qualification bands) ---- */
+.table-page {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 48px 24px 72px;
+}
+.band-chart {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-height: 440px;
+}
+.band {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 18px;
+  border-radius: var(--radius);
+  border: 1px solid var(--line);
+  background: var(--surface-card);
+  position: relative;
+  overflow: hidden;
+}
+.band::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+}
+.band-go::before { background: var(--grass); }
+.band-playoff::before { background: var(--floodlight); }
+.band-out::before { background: var(--vermilion); }
+.band-pips {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  flex-shrink: 0;
+}
+.band-pip {
+  width: 10px;
+  height: 6px;
+  border-radius: 2px;
+  background: var(--line);
+}
+.band-go .band-pip { background: rgba(43, 212, 121, 0.5); }
+.band-playoff .band-pip { background: rgba(255, 194, 60, 0.5); }
+.band-out .band-pip { background: rgba(255, 90, 60, 0.4); }
+.band-text { min-width: 0; }
+.band-range {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--chalk-faint);
+}
+.band-title {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 18px;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  color: var(--chalk);
+  margin: 2px 0 5px;
+}
+.band-detail {
+  display: block;
+  font-size: 13px;
+  line-height: 1.55;
+  color: var(--chalk-dim);
+}
+.table-foot { margin-top: 18px; }

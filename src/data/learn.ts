@@ -56,6 +56,78 @@ export const HOW_IT_WORKS: LearnSection[] = [
   },
 ];
 
+export interface CalendarStage {
+  when: string;
+  stage: string;
+  detail: string;
+  /** Visual grouping. */
+  kind: "pre" | "league" | "knockout" | "final";
+}
+
+/** The 2026/27 season, stage by stage — so a newcomer knows when to tune in. */
+export const CALENDAR: CalendarStage[] = [
+  {
+    when: "Jul–Aug 2026",
+    stage: "Qualifying rounds",
+    detail:
+      "Clubs from smaller nations play off for the last 7 league-phase places. Names like Celtic and Bodø/Glimt are still fighting through here.",
+    kind: "pre",
+  },
+  {
+    when: "27 Aug 2026",
+    stage: "League-phase draw",
+    detail:
+      "The big one for the schedule: each of the 36 clubs is drawn its 8 opponents (4 home, 4 away). After this, real fixtures exist.",
+    kind: "pre",
+  },
+  {
+    when: "Sep–Dec 2026",
+    stage: "League phase, matchdays 1–6",
+    detail:
+      "The competition begins. Clubs rack up games in the single 36-team table across midweek matchdays through autumn.",
+    kind: "league",
+  },
+  {
+    when: "21 & 28 Jan 2027",
+    stage: "League phase, matchdays 7–8",
+    detail:
+      "The final two rounds decide the table. Top 8 go straight to the last 16; 9th–24th drop into the play-offs; 25th–36th are out.",
+    kind: "league",
+  },
+  {
+    when: "17–25 Feb 2027",
+    stage: "Knockout play-off round",
+    detail:
+      "Two-legged ties (home and away) between the teams that finished 9th–24th, to complete the Round of 16.",
+    kind: "knockout",
+  },
+  {
+    when: "10–18 Mar 2027",
+    stage: "Round of 16",
+    detail: "The last 16, two legs each — home and away, scores added together.",
+    kind: "knockout",
+  },
+  {
+    when: "7–15 Apr 2027",
+    stage: "Quarter-finals",
+    detail: "Eight become four, still over two legs.",
+    kind: "knockout",
+  },
+  {
+    when: "28 Apr – 6 May 2027",
+    stage: "Semi-finals",
+    detail: "The last two-legged round before the showpiece.",
+    kind: "knockout",
+  },
+  {
+    when: "5 Jun 2027",
+    stage: "Final",
+    detail:
+      "One match, neutral ground — Estadio Metropolitano, Madrid. The winner is champion of Europe.",
+    kind: "final",
+  },
+];
+
 export interface GlossaryTerm {
   term: string;
   /** A five-word gist for scanning. */

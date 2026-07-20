@@ -3,6 +3,8 @@ import { Home } from "./pages/Home";
 import { HowItWorks } from "./pages/HowItWorks";
 import { Clubs } from "./pages/Clubs";
 import { Glossary } from "./pages/Glossary";
+import { TableExplainer } from "./pages/TableExplainer";
+import { Calendar } from "./pages/Calendar";
 import { navigate, useRoute } from "./router";
 
 export function App() {
@@ -16,6 +18,12 @@ export function App() {
       break;
     case "/clubs":
       page = <Clubs />;
+      break;
+    case "/table":
+      page = <TableExplainer />;
+      break;
+    case "/calendar":
+      page = <Calendar />;
       break;
     case "/glossary":
       page = <Glossary />;
@@ -49,6 +57,8 @@ export function App() {
             <button onClick={() => navigate("/")}>Home</button>
             <button onClick={() => navigate("/learn")}>How it works</button>
             <button onClick={() => navigate("/clubs")}>Clubs</button>
+            <button onClick={() => navigate("/table")}>The table</button>
+            <button onClick={() => navigate("/calendar")}>Calendar</button>
             <button onClick={() => navigate("/glossary")}>Glossary</button>
           </nav>
 
