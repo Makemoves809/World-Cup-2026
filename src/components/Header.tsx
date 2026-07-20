@@ -56,10 +56,8 @@ export function Header({ path }: HeaderProps) {
         }}
       >
         <span className="brand-text">
-          <span className="brand-mark">
-            UCL<em>27</em>
-          </span>
-          <span className="brand-tag">Champions League · a beginner's guide</span>
+          <span className="brand-kicker">UEFA</span>
+          <span className="brand-mark">Champions League</span>
         </span>
       </a>
 

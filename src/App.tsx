@@ -41,9 +41,8 @@ export function App() {
       <footer className="site-footer">
         <div className="footer-grid">
           <div className="footer-brand">
-            <span className="brand-mark">
-              UCL<em>27</em>
-            </span>
+            <span className="brand-kicker">UEFA</span>
+            <span className="brand-mark">Champions League</span>
             <p>
               An unofficial beginner's guide to the UEFA Champions League
               2026/27 — the new 36-team league-phase format, the clubs, and the
@@ -74,7 +73,7 @@ export function App() {
         </div>
 
         <p className="footer-meta">
-          UCL Primer · Champions League 2026/27 · Built with React + TypeScript
+          UEFA Champions League 2026/27 · a beginner's guide · Built with React + TypeScript
         </p>
       </footer>
     </div>

@@ -187,11 +187,23 @@ img.flag {
   flex-direction: column;
   line-height: 1.05;
 }
+.brand-kicker {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.34em;
+  text-transform: uppercase;
+  color: var(--grass);
+  margin-bottom: 1px;
+}
 .brand-mark {
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: 21px;
-  letter-spacing: 0.05em;
+  font-size: 20px;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  line-height: 1;
   color: var(--chalk);
 }
 .brand-mark em {
