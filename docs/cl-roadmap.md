@@ -37,6 +37,13 @@ in-season results.
    `.github/workflows/update-data.yml`, remove the `if: ${{ false }}` job guard
    and restore the `schedule:` cron) so results + the table update
    automatically all season; make `/table` a live standings table.
+   **Trigger credential:** the old external cron (cron-job.org) used a
+   fine-grained PAT ("WC26 cron trigger") that was let expire during the pivot
+   (it drove the paused WC bot; nothing used it in between). To restore frequent
+   matchday polling, either mint a fresh fine-grained PAT (this repo, Actions
+   read/write, expiry past June 2027) and repoint the external cron at the CL
+   workflow, or rely on GitHub's native `schedule:` cron (no token, but less
+   reliable for tight polling — fine for CL's ~twice-weekly matchdays).
 
 3. **Knockouts — fire `2027-02-10T12:00:00Z`** (play-off round is ~17 Feb 2027)
    Build the **two-legged knockout bracket**: play-off round (9th–24th) → R16 →
