@@ -7,13 +7,16 @@ triggers** (Claude Code Remote `create_trigger`, one-shot `run_once_at`, which
 auto-retire after firing) plus the re-enabled `update-data` GitHub Action for
 in-season results.
 
-> **Status:** these triggers were specced during the pivot but NOT yet created
-> — the `create_trigger` connector was disconnected at the time. **Create them
-> when it reconnects** (`list_triggers` first to avoid duplicates). Each must be
-> self-contained: read this file + CLAUDE.md, `git pull` production, do the
-> task, **build must pass before pushing; if it can't be done cleanly, commit
-> nothing and report** (a routine must never break the live site), then push to
-> production and report.
+> **Status (2 Sep 2026):** The **draw milestone is DONE** — done attended on
+> 2 Sep (the draw was already past): the final 36 (incl. the 7 qualifiers) are
+> locked in `clubs.ts` and the site copy reflects the completed draw and the
+> 8 Sep season start. Live standings + per-match fixtures still land via the
+> kickoff routine. The **kickoff** (fires 2026-09-07) and **knockouts** (fires
+> 2027-02-10) routines are CREATED as fresh-session-per-fire triggers with
+> push+email notifications. Each is self-contained: read this file + CLAUDE.md,
+> `git pull` production, do the task, **build must pass before pushing; if it
+> can't be done cleanly, commit nothing and report** (a routine must never
+> break the live site), then push and report.
 
 ## Milestone triggers to create
 
