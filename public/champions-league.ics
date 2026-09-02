@@ -20,11 +20,11 @@ END:VEVENT
 BEGIN:VEVENT
 UID:league-phase-matchdays-1-6@champions-league-2026-27
 DTSTAMP:20260720T120000Z
-DTSTART;VALUE=DATE:20260916
-DTEND;VALUE=DATE:20260917
+DTSTART;VALUE=DATE:20260908
+DTEND;VALUE=DATE:20260909
 SUMMARY:Champions League: League phase\, matchdays 1–6
-DESCRIPTION:The competition begins. Clubs rack up games in the single 36-t
- eam table across midweek matchdays through autumn.
+DESCRIPTION:The competition begins on 8 September. Clubs rack up games in 
+ the single 36-team table across midweek matchdays through autumn.
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT

@@ -77,9 +77,14 @@ export const CLUBS: Club[] = [
   { id: "sla", name: "Slavia Prague", short: "Slavia Prague", country: "Czechia", flag: "cz", league: "Czech First League", titles: 0, status: "confirmed", blurb: "Czech champions and one of Prague's grand old clubs." },
   { id: "gal", name: "Galatasaray", short: "Galatasaray", country: "Turkey", flag: "tr", league: "Süper Lig", titles: 0, status: "confirmed", blurb: "Istanbul giants with one of the most hostile home atmospheres in Europe." },
 
-  // ---------- Notable clubs still in qualifying ----------
-  { id: "cel", name: "Celtic", short: "Celtic", country: "Scotland", flag: "gb-sct", league: "Scottish Premiership", titles: 1, status: "qualifying", blurb: "The 1967 \"Lisbon Lions\" were Britain's first European champions; enter via the play-off round." },
-  { id: "bod", name: "Bodø/Glimt", short: "Bodø/Glimt", country: "Norway", flag: "no", league: "Eliteserien", titles: 0, status: "qualifying", blurb: "Arctic-circle overachievers chasing a first league-phase place through qualifying." },
+  // ---------- Through the qualifying rounds (Aug 2026) ----------
+  { id: "bod", name: "Bodø/Glimt", short: "Bodø/Glimt", country: "Norway", flag: "no", league: "Eliteserien", titles: 0, status: "confirmed", blurb: "Arctic-circle overachievers who came through qualifying — one of two Norwegian clubs in the field." },
+  { id: "vik", name: "Viking FK", short: "Viking", country: "Norway", flag: "no", league: "Eliteserien", titles: 0, status: "confirmed", blurb: "Stavanger's club, through a separate qualifying path — the other Norwegian side in the draw." },
+  { id: "fen", name: "Fenerbahçe", short: "Fenerbahçe", country: "Turkey", flag: "tr", league: "Süper Lig", titles: 0, status: "confirmed", blurb: "Istanbul giants with a vast, fervent support, still chasing a first European crown." },
+  { id: "aek", name: "AEK Athens", short: "AEK Athens", country: "Greece", flag: "gr", league: "Super League Greece", titles: 0, status: "confirmed", blurb: "One of Greece's grand old clubs, back among Europe's elite through qualifying." },
+  { id: "las", name: "LASK", short: "LASK", country: "Austria", flag: "at", league: "Austrian Bundesliga", titles: 0, status: "confirmed", blurb: "Linz side that battled through the play-off round to the league phase." },
+  { id: "slb", name: "Slovan Bratislava", short: "Slovan", country: "Slovakia", flag: "sk", league: "Slovak Super Liga", titles: 0, status: "confirmed", blurb: "Slovakia's dominant club and a perennial European qualifier." },
+  { id: "sab", name: "Sabah FK", short: "Sabah", country: "Azerbaijan", flag: "az", league: "Azerbaijan Premier League", titles: 0, status: "confirmed", blurb: "Baku-based side making a landmark Champions League league-phase debut." },
 ];
 
 export const clubById = (id: string): Club | undefined =>

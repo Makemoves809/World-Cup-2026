@@ -2,8 +2,8 @@ import { useEffect, useState } from "react";
 import { navigate } from "../router";
 import { confirmedClubs } from "../data/clubs";
 
-/** Draw that sets the whole season's schedule. */
-const DRAW = new Date("2026-08-27T16:00:00Z");
+/** Matchday 1 — the first games of the league phase. */
+const KICKOFF = new Date("2026-09-08T16:45:00Z");
 
 function useNow(intervalMs = 1000) {
   const [now, setNow] = useState(() => new Date());
@@ -28,13 +28,13 @@ const STATS = [
   { v: "36", l: "Clubs" },
   { v: "1", l: "League table" },
   { v: "8", l: "Games each" },
-  { v: "17", l: "Countries" },
+  { v: "15", l: "Countries" },
 ];
 
 export function HeroCL() {
   const now = useNow();
-  const { days, hours, mins, secs } = split(DRAW.getTime() - now.getTime());
-  const drawn = now >= DRAW;
+  const { days, hours, mins, secs } = split(KICKOFF.getTime() - now.getTime());
+  const started = now >= KICKOFF;
   const cells = [
     { v: days, l: "days" },
     { v: hours, l: "hrs" },
@@ -69,7 +69,7 @@ export function HeroCL() {
         <div className="hero-row">
           <div className="countdown" role="timer" aria-live="off">
             <span className="panel-label">
-              {drawn ? "League-phase draw made" : "League-phase draw in"}
+              {started ? "The season is under way" : "First matches kick off in"}
             </span>
             <div className="countdown-cells">
               {cells.map((c) => (
@@ -80,18 +80,18 @@ export function HeroCL() {
               ))}
             </div>
             <span className="next-venue">
-              27 Aug 2026 · the draw sets every club's 8 fixtures
+              Matchday 1 · 8 Sep 2026 · the league phase begins
             </span>
           </div>
 
           <div className="latest-card">
             <span className="panel-label panel-label-gold">The field</span>
             <p className="hero-field-line">
-              <strong>{confirmed}</strong> of 36 clubs confirmed
+              All <strong>{confirmed}</strong> clubs confirmed
             </p>
             <span className="next-venue">
-              The last 7 come through summer qualifying · final on 5 Jun 2027,
-              Madrid
+              The draw is made — 8 matchdays, then the knockouts · final 5 Jun
+              2027, Madrid
             </span>
           </div>
         </div>

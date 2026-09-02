@@ -63,9 +63,9 @@ export function Clubs() {
         <span className="kicker">Meet the field · 2026/27</span>
         <h2>The clubs</h2>
         <p className="section-note">
-          {confirmed} of the 36 clubs are confirmed; the last seven come through
-          summer qualifying (decided 26 August). Stars (★) mark past European
-          champions — the number is how many times they've won it.
+          All {confirmed} clubs are in — the draw was made on 27 August and the
+          season begins on 8 September. Stars (★) mark past European champions —
+          the number is how many times they've won it.
         </p>
       </div>
 

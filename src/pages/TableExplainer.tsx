@@ -70,9 +70,9 @@ export function TableExplainer() {
       </div>
 
       <p className="section-note table-foot">
-        There are no standings yet — the table starts filling in from the first
-        matchday in September, once the 27 August draw has set every club's
-        eight fixtures. This page will become the live table then.
+        All 36 clubs are set (the draw was made on 27 August). There are no
+        standings yet — the table starts filling in from matchday 1 on 8
+        September, and this page becomes the live table then.
       </p>
 
       <div className="learn-next">

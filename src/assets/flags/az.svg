@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" id="flag-icons-az" viewBox="0 0 640 480">
+  <path fill="#0092bc" d="M0 0h640v160H0z"/>
+  <path fill="#e4002b" d="M0 160h640v160H0z"/>
+  <path fill="#00af66" d="M0 320h640v160H0z"/>
+  <circle cx="300" cy="240" r="55" fill="#fff"/>
+  <circle cx="318" cy="240" r="45" fill="#e4002b"/>
+  <path fill="#fff" d="m372 240 21-6.8-13 17.8v-22l13 17.8z"/>
+</svg>

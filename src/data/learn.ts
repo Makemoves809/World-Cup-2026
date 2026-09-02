@@ -23,7 +23,7 @@ export const HOW_IT_WORKS: LearnSection[] = [
     heading: "How a club gets in",
     body: [
       "You earn your place by how you finish in your own country's league the season before. The strongest leagues (England, Spain, Italy, Germany, France) send four or five clubs each; smaller nations send their champions.",
-      "There are 36 clubs in total. 29 are already confirmed for 2026/27; the last 7 fight through knockout qualifying rounds over the summer, decided by 26 August. The all-important draw that sets the schedule is on 27 August 2026.",
+      "There are 36 clubs in total. The field is now complete — the qualifying rounds finished in August, and the draw on 27 August 2026 set every club's eight fixtures. The season begins on 8 September 2026.",
     ],
   },
   {
@@ -89,15 +89,15 @@ export const CALENDAR: CalendarStage[] = [
     date: "2026-08-27",
   },
   {
-    when: "Sep–Dec 2026",
+    when: "8 Sep – 9 Dec 2026",
     stage: "League phase, matchdays 1–6",
     detail:
-      "The competition begins. Clubs rack up games in the single 36-team table across midweek matchdays through autumn.",
+      "The competition begins on 8 September. Clubs rack up games in the single 36-team table across midweek matchdays through autumn.",
     kind: "league",
-    date: "2026-09-16",
+    date: "2026-09-08",
   },
   {
-    when: "21 & 28 Jan 2027",
+    when: "19 & 27 Jan 2027",
     stage: "League phase, matchdays 7–8",
     detail:
       "The final two rounds decide the table. Top 8 go straight to the last 16; 9th–24th drop into the play-offs; 25th–36th are out.",
