@@ -11,9 +11,12 @@ in-season results.
 > 2 Sep (the draw was already past): the final 36 (incl. the 7 qualifiers) are
 > locked in `clubs.ts` and the site copy reflects the completed draw and the
 > 8 Sep season start. Live standings + per-match fixtures still land via the
-> kickoff routine. The **kickoff** (fires 2026-09-07) and **knockouts** (fires
-> 2027-02-10) routines are CREATED as fresh-session-per-fire triggers with
-> push+email notifications. Each is self-contained: read this file + CLAUDE.md,
+> kickoff routine. The **kickoff milestone is DONE** (7 Sep, attended — the routine fired
+> but, sandboxed away from the API, correctly pushed nothing): the feed is
+> repointed to CL, the results bot is re-enabled on GitHub's native schedule,
+> all 144 fixtures flow in with kickoff times, and /table + /fixtures are
+> live. The **knockouts** routine (fires 2027-02-10) is CREATED as a
+> fresh-session-per-fire trigger with push+email notifications. Each is self-contained: read this file + CLAUDE.md,
 > `git pull` production, do the task, **build must pass before pushing; if it
 > can't be done cleanly, commit nothing and report** (a routine must never
 > break the live site), then push and report.

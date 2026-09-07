@@ -145,7 +145,7 @@ const ALIASES: Record<string, string> = {
   clubbruggekv: "clb", clubbrugge: "clb",
   galatasaraysk: "gal", galatasaray: "gal",
   fenerbahcesk: "fen", fenerbahce: "fen",
-  aekathensfc: "aek", aekathens: "aek",
+  paeaek: "aek", aek: "aek", aekfc: "aek", aekathensfc: "aek", aekathens: "aek",
   realbetisbalompie: "bet", realbetis: "bet",
   sscnapoli: "nap", napoli: "nap",
   como1907: "com",
