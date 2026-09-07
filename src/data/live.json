@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-07T13:01:06.420Z",
+  "updatedAt": "2026-09-07T13:06:09.269Z",
   "results": {},
   "fixtures": {
     "cl-clb-avl": {
@@ -543,6 +543,38 @@
       "matchday": 8
     },
     "cl-nap-vik": {
+      "utc": "2027-01-27T20:00:00Z",
+      "matchday": 8
+    },
+    "cl-aek-las": {
+      "utc": "2026-09-08T16:45:00Z",
+      "matchday": 1
+    },
+    "cl-sha-aek": {
+      "utc": "2026-10-14T19:00:00Z",
+      "matchday": 2
+    },
+    "cl-mci-aek": {
+      "utc": "2026-10-20T19:00:00Z",
+      "matchday": 3
+    },
+    "cl-aek-rma": {
+      "utc": "2026-11-04T17:45:00Z",
+      "matchday": 4
+    },
+    "cl-com-aek": {
+      "utc": "2026-11-24T20:00:00Z",
+      "matchday": 5
+    },
+    "cl-aek-gal": {
+      "utc": "2026-12-08T20:00:00Z",
+      "matchday": 6
+    },
+    "cl-aek-rom": {
+      "utc": "2027-01-19T20:00:00Z",
+      "matchday": 7
+    },
+    "cl-dor-aek": {
       "utc": "2027-01-27T20:00:00Z",
       "matchday": 8
     }
