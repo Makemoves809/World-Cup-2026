@@ -11,9 +11,11 @@ import { fileURLToPath } from "node:url";
 import { dirname, join } from "node:path";
 import { CALENDAR } from "../src/data/learn";
 
-// Bump when the feed's content meaningfully changes (keeps the file stable
-// across rebuilds so it doesn't churn in git on every deploy).
-const STAMP = "20260720T120000Z";
+// DTSTAMP = generation time. Vercel regenerates this file on every deploy
+// (prebuild), so each publish stamps the feed as freshly revised — that's the
+// signal a subscribed calendar uses to pick up changed dates instead of
+// keeping a stale copy.
+const STAMP = new Date().toISOString().replace(/[-:]/g, "").replace(/\.\d{3}/, "");
 const DOMAIN = "champions-league-2026-27";
 
 const pad = (n: number) => String(n).padStart(2, "0");
