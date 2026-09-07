@@ -1,7 +1,552 @@
 {
-  "updatedAt": "2026-09-07T00:00:00.000Z",
+  "updatedAt": "2026-09-07T13:01:06.420Z",
   "results": {},
-  "fixtures": {},
+  "fixtures": {
+    "cl-clb-avl": {
+      "utc": "2026-09-08T16:45:00Z",
+      "matchday": 1
+    },
+    "cl-rma-int": {
+      "utc": "2026-09-08T19:00:00Z",
+      "matchday": 1
+    },
+    "cl-por-mci": {
+      "utc": "2026-09-08T19:00:00Z",
+      "matchday": 1
+    },
+    "cl-dor-vil": {
+      "utc": "2026-09-08T19:00:00Z",
+      "matchday": 1
+    },
+    "cl-lil-bet": {
+      "utc": "2026-09-08T19:00:00Z",
+      "matchday": 1
+    },
+    "cl-bar-fey": {
+      "utc": "2026-09-09T16:45:00Z",
+      "matchday": 1
+    },
+    "cl-stu-vik": {
+      "utc": "2026-09-09T16:45:00Z",
+      "matchday": 1
+    },
+    "cl-liv-atm": {
+      "utc": "2026-09-09T19:00:00Z",
+      "matchday": 1
+    },
+    "cl-psg-slb": {
+      "utc": "2026-09-09T19:00:00Z",
+      "matchday": 1
+    },
+    "cl-nap-ars": {
+      "utc": "2026-09-09T19:00:00Z",
+      "matchday": 1
+    },
+    "cl-spo-gal": {
+      "utc": "2026-09-09T19:00:00Z",
+      "matchday": 1
+    },
+    "cl-fen-rom": {
+      "utc": "2026-09-10T16:45:00Z",
+      "matchday": 1
+    },
+    "cl-psv-sha": {
+      "utc": "2026-09-10T16:45:00Z",
+      "matchday": 1
+    },
+    "cl-bay-bod": {
+      "utc": "2026-09-10T19:00:00Z",
+      "matchday": 1
+    },
+    "cl-mun-sab": {
+      "utc": "2026-09-10T19:00:00Z",
+      "matchday": 1
+    },
+    "cl-com-rbl": {
+      "utc": "2026-09-10T19:00:00Z",
+      "matchday": 1
+    },
+    "cl-sla-len": {
+      "utc": "2026-09-10T19:00:00Z",
+      "matchday": 1
+    },
+    "cl-len-spo": {
+      "utc": "2026-10-13T16:45:00Z",
+      "matchday": 2
+    },
+    "cl-sab-sla": {
+      "utc": "2026-10-13T16:45:00Z",
+      "matchday": 2
+    },
+    "cl-int-clb": {
+      "utc": "2026-10-13T19:00:00Z",
+      "matchday": 2
+    },
+    "cl-gal-bar": {
+      "utc": "2026-10-13T19:00:00Z",
+      "matchday": 2
+    },
+    "cl-atm-mun": {
+      "utc": "2026-10-13T19:00:00Z",
+      "matchday": 2
+    },
+    "cl-ars-lil": {
+      "utc": "2026-10-13T19:00:00Z",
+      "matchday": 2
+    },
+    "cl-vik-bay": {
+      "utc": "2026-10-13T19:00:00Z",
+      "matchday": 2
+    },
+    "cl-rbl-psv": {
+      "utc": "2026-10-13T19:00:00Z",
+      "matchday": 2
+    },
+    "cl-vil-nap": {
+      "utc": "2026-10-13T19:00:00Z",
+      "matchday": 2
+    },
+    "cl-las-liv": {
+      "utc": "2026-10-14T16:45:00Z",
+      "matchday": 2
+    },
+    "cl-fey-com": {
+      "utc": "2026-10-14T16:45:00Z",
+      "matchday": 2
+    },
+    "cl-rom-rma": {
+      "utc": "2026-10-14T19:00:00Z",
+      "matchday": 2
+    },
+    "cl-mci-psg": {
+      "utc": "2026-10-14T19:00:00Z",
+      "matchday": 2
+    },
+    "cl-bod-dor": {
+      "utc": "2026-10-14T19:00:00Z",
+      "matchday": 2
+    },
+    "cl-avl-fen": {
+      "utc": "2026-10-14T19:00:00Z",
+      "matchday": 2
+    },
+    "cl-bet-por": {
+      "utc": "2026-10-14T19:00:00Z",
+      "matchday": 2
+    },
+    "cl-slb-stu": {
+      "utc": "2026-10-14T19:00:00Z",
+      "matchday": 2
+    },
+    "cl-sab-dor": {
+      "utc": "2026-10-20T16:45:00Z",
+      "matchday": 3
+    },
+    "cl-fen-sla": {
+      "utc": "2026-10-20T16:45:00Z",
+      "matchday": 3
+    },
+    "cl-stu-atm": {
+      "utc": "2026-10-20T19:00:00Z",
+      "matchday": 3
+    },
+    "cl-liv-vil": {
+      "utc": "2026-10-20T19:00:00Z",
+      "matchday": 3
+    },
+    "cl-rom-slb": {
+      "utc": "2026-10-20T19:00:00Z",
+      "matchday": 3
+    },
+    "cl-por-psv": {
+      "utc": "2026-10-20T19:00:00Z",
+      "matchday": 3
+    },
+    "cl-nap-bod": {
+      "utc": "2026-10-20T19:00:00Z",
+      "matchday": 3
+    },
+    "cl-psg-bar": {
+      "utc": "2026-10-20T19:00:00Z",
+      "matchday": 3
+    },
+    "cl-com-mun": {
+      "utc": "2026-10-21T16:45:00Z",
+      "matchday": 3
+    },
+    "cl-lil-gal": {
+      "utc": "2026-10-21T16:45:00Z",
+      "matchday": 3
+    },
+    "cl-rma-rbl": {
+      "utc": "2026-10-21T19:00:00Z",
+      "matchday": 3
+    },
+    "cl-int-sha": {
+      "utc": "2026-10-21T19:00:00Z",
+      "matchday": 3
+    },
+    "cl-bay-ars": {
+      "utc": "2026-10-21T19:00:00Z",
+      "matchday": 3
+    },
+    "cl-clb-len": {
+      "utc": "2026-10-21T19:00:00Z",
+      "matchday": 3
+    },
+    "cl-avl-vik": {
+      "utc": "2026-10-21T19:00:00Z",
+      "matchday": 3
+    },
+    "cl-spo-las": {
+      "utc": "2026-10-21T19:00:00Z",
+      "matchday": 3
+    },
+    "cl-bet-fey": {
+      "utc": "2026-10-21T19:00:00Z",
+      "matchday": 3
+    },
+    "cl-sha-spo": {
+      "utc": "2026-11-03T17:45:00Z",
+      "matchday": 4
+    },
+    "cl-gal-stu": {
+      "utc": "2026-11-03T17:45:00Z",
+      "matchday": 4
+    },
+    "cl-fey-int": {
+      "utc": "2026-11-03T20:00:00Z",
+      "matchday": 4
+    },
+    "cl-bar-avl": {
+      "utc": "2026-11-03T20:00:00Z",
+      "matchday": 4
+    },
+    "cl-atm-bay": {
+      "utc": "2026-11-03T20:00:00Z",
+      "matchday": 4
+    },
+    "cl-vil-psg": {
+      "utc": "2026-11-03T20:00:00Z",
+      "matchday": 4
+    },
+    "cl-mun-rom": {
+      "utc": "2026-11-03T20:00:00Z",
+      "matchday": 4
+    },
+    "cl-bod-lil": {
+      "utc": "2026-11-03T20:00:00Z",
+      "matchday": 4
+    },
+    "cl-las-slb": {
+      "utc": "2026-11-03T20:00:00Z",
+      "matchday": 4
+    },
+    "cl-fen-liv": {
+      "utc": "2026-11-04T17:45:00Z",
+      "matchday": 4
+    },
+    "cl-rbl-mci": {
+      "utc": "2026-11-04T20:00:00Z",
+      "matchday": 4
+    },
+    "cl-sla-ars": {
+      "utc": "2026-11-04T20:00:00Z",
+      "matchday": 4
+    },
+    "cl-psv-clb": {
+      "utc": "2026-11-04T20:00:00Z",
+      "matchday": 4
+    },
+    "cl-dor-bet": {
+      "utc": "2026-11-04T20:00:00Z",
+      "matchday": 4
+    },
+    "cl-por-nap": {
+      "utc": "2026-11-04T20:00:00Z",
+      "matchday": 4
+    },
+    "cl-len-com": {
+      "utc": "2026-11-04T20:00:00Z",
+      "matchday": 4
+    },
+    "cl-vik-sab": {
+      "utc": "2026-11-04T20:00:00Z",
+      "matchday": 4
+    },
+    "cl-gal-avl": {
+      "utc": "2026-11-24T17:45:00Z",
+      "matchday": 5
+    },
+    "cl-bod-las": {
+      "utc": "2026-11-24T17:45:00Z",
+      "matchday": 5
+    },
+    "cl-rma-psv": {
+      "utc": "2026-11-24T20:00:00Z",
+      "matchday": 5
+    },
+    "cl-mci-nap": {
+      "utc": "2026-11-24T20:00:00Z",
+      "matchday": 5
+    },
+    "cl-ars-dor": {
+      "utc": "2026-11-24T20:00:00Z",
+      "matchday": 5
+    },
+    "cl-fey-por": {
+      "utc": "2026-11-24T20:00:00Z",
+      "matchday": 5
+    },
+    "cl-slb-bet": {
+      "utc": "2026-11-24T20:00:00Z",
+      "matchday": 5
+    },
+    "cl-rbl-len": {
+      "utc": "2026-11-24T20:00:00Z",
+      "matchday": 5
+    },
+    "cl-sab-bar": {
+      "utc": "2026-11-25T17:45:00Z",
+      "matchday": 5
+    },
+    "cl-sla-vil": {
+      "utc": "2026-11-25T17:45:00Z",
+      "matchday": 5
+    },
+    "cl-int-stu": {
+      "utc": "2026-11-25T20:00:00Z",
+      "matchday": 5
+    },
+    "cl-atm-vik": {
+      "utc": "2026-11-25T20:00:00Z",
+      "matchday": 5
+    },
+    "cl-psg-rom": {
+      "utc": "2026-11-25T20:00:00Z",
+      "matchday": 5
+    },
+    "cl-clb-liv": {
+      "utc": "2026-11-25T20:00:00Z",
+      "matchday": 5
+    },
+    "cl-lil-bay": {
+      "utc": "2026-11-25T20:00:00Z",
+      "matchday": 5
+    },
+    "cl-spo-mun": {
+      "utc": "2026-11-25T20:00:00Z",
+      "matchday": 5
+    },
+    "cl-sha-fen": {
+      "utc": "2026-11-25T20:00:00Z",
+      "matchday": 5
+    },
+    "cl-vil-sab": {
+      "utc": "2026-12-08T17:45:00Z",
+      "matchday": 6
+    },
+    "cl-vik-fey": {
+      "utc": "2026-12-08T17:45:00Z",
+      "matchday": 6
+    },
+    "cl-bar-mci": {
+      "utc": "2026-12-08T20:00:00Z",
+      "matchday": 6
+    },
+    "cl-avl-psg": {
+      "utc": "2026-12-08T20:00:00Z",
+      "matchday": 6
+    },
+    "cl-bay-sla": {
+      "utc": "2026-12-08T20:00:00Z",
+      "matchday": 6
+    },
+    "cl-nap-clb": {
+      "utc": "2026-12-08T20:00:00Z",
+      "matchday": 6
+    },
+    "cl-rom-spo": {
+      "utc": "2026-12-08T20:00:00Z",
+      "matchday": 6
+    },
+    "cl-mun-rbl": {
+      "utc": "2026-12-08T20:00:00Z",
+      "matchday": 6
+    },
+    "cl-bet-com": {
+      "utc": "2026-12-09T17:45:00Z",
+      "matchday": 6
+    },
+    "cl-slb-sha": {
+      "utc": "2026-12-09T17:45:00Z",
+      "matchday": 6
+    },
+    "cl-ars-rma": {
+      "utc": "2026-12-09T20:00:00Z",
+      "matchday": 6
+    },
+    "cl-dor-int": {
+      "utc": "2026-12-09T20:00:00Z",
+      "matchday": 6
+    },
+    "cl-psv-atm": {
+      "utc": "2026-12-09T20:00:00Z",
+      "matchday": 6
+    },
+    "cl-liv-por": {
+      "utc": "2026-12-09T20:00:00Z",
+      "matchday": 6
+    },
+    "cl-len-bod": {
+      "utc": "2026-12-09T20:00:00Z",
+      "matchday": 6
+    },
+    "cl-las-fen": {
+      "utc": "2026-12-09T20:00:00Z",
+      "matchday": 6
+    },
+    "cl-stu-lil": {
+      "utc": "2026-12-09T20:00:00Z",
+      "matchday": 6
+    },
+    "cl-bod-atm": {
+      "utc": "2027-01-19T17:45:00Z",
+      "matchday": 7
+    },
+    "cl-gal-fey": {
+      "utc": "2027-01-19T17:45:00Z",
+      "matchday": 7
+    },
+    "cl-rma-las": {
+      "utc": "2027-01-19T20:00:00Z",
+      "matchday": 7
+    },
+    "cl-int-liv": {
+      "utc": "2027-01-19T20:00:00Z",
+      "matchday": 7
+    },
+    "cl-stu-clb": {
+      "utc": "2027-01-19T20:00:00Z",
+      "matchday": 7
+    },
+    "cl-avl-dor": {
+      "utc": "2027-01-19T20:00:00Z",
+      "matchday": 7
+    },
+    "cl-por-sla": {
+      "utc": "2027-01-19T20:00:00Z",
+      "matchday": 7
+    },
+    "cl-lil-slb": {
+      "utc": "2027-01-19T20:00:00Z",
+      "matchday": 7
+    },
+    "cl-fen-vil": {
+      "utc": "2027-01-20T17:45:00Z",
+      "matchday": 7
+    },
+    "cl-sab-nap": {
+      "utc": "2027-01-20T17:45:00Z",
+      "matchday": 7
+    },
+    "cl-len-mci": {
+      "utc": "2027-01-20T20:00:00Z",
+      "matchday": 7
+    },
+    "cl-spo-bar": {
+      "utc": "2027-01-20T20:00:00Z",
+      "matchday": 7
+    },
+    "cl-com-psg": {
+      "utc": "2027-01-20T20:00:00Z",
+      "matchday": 7
+    },
+    "cl-bet-ars": {
+      "utc": "2027-01-20T20:00:00Z",
+      "matchday": 7
+    },
+    "cl-mun-bay": {
+      "utc": "2027-01-20T20:00:00Z",
+      "matchday": 7
+    },
+    "cl-vik-psv": {
+      "utc": "2027-01-20T20:00:00Z",
+      "matchday": 7
+    },
+    "cl-rbl-sha": {
+      "utc": "2027-01-20T20:00:00Z",
+      "matchday": 7
+    },
+    "cl-sha-rma": {
+      "utc": "2027-01-27T20:00:00Z",
+      "matchday": 8
+    },
+    "cl-mci-spo": {
+      "utc": "2027-01-27T20:00:00Z",
+      "matchday": 8
+    },
+    "cl-slb-int": {
+      "utc": "2027-01-27T20:00:00Z",
+      "matchday": 8
+    },
+    "cl-bar-com": {
+      "utc": "2027-01-27T20:00:00Z",
+      "matchday": 8
+    },
+    "cl-atm-fen": {
+      "utc": "2027-01-27T20:00:00Z",
+      "matchday": 8
+    },
+    "cl-psg-gal": {
+      "utc": "2027-01-27T20:00:00Z",
+      "matchday": 8
+    },
+    "cl-liv-len": {
+      "utc": "2027-01-27T20:00:00Z",
+      "matchday": 8
+    },
+    "cl-ars-sab": {
+      "utc": "2027-01-27T20:00:00Z",
+      "matchday": 8
+    },
+    "cl-bay-bet": {
+      "utc": "2027-01-27T20:00:00Z",
+      "matchday": 8
+    },
+    "cl-clb-bod": {
+      "utc": "2027-01-27T20:00:00Z",
+      "matchday": 8
+    },
+    "cl-sla-avl": {
+      "utc": "2027-01-27T20:00:00Z",
+      "matchday": 8
+    },
+    "cl-rom-lil": {
+      "utc": "2027-01-27T20:00:00Z",
+      "matchday": 8
+    },
+    "cl-las-por": {
+      "utc": "2027-01-27T20:00:00Z",
+      "matchday": 8
+    },
+    "cl-vil-mun": {
+      "utc": "2027-01-27T20:00:00Z",
+      "matchday": 8
+    },
+    "cl-psv-stu": {
+      "utc": "2027-01-27T20:00:00Z",
+      "matchday": 8
+    },
+    "cl-fey-rbl": {
+      "utc": "2027-01-27T20:00:00Z",
+      "matchday": 8
+    },
+    "cl-nap-vik": {
+      "utc": "2027-01-27T20:00:00Z",
+      "matchday": 8
+    }
+  },
   "koResults": [],
   "liveKo": [],
   "liveScores": {},
