@@ -6,10 +6,12 @@
  * update automatically. Add real fixtures to CALENDAR (or a fixtures source)
  * after the draw and they'll flow straight into everyone's calendar.
  */
-import { writeFileSync } from "node:fs";
+import { readFileSync, writeFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { dirname, join } from "node:path";
 import { CALENDAR } from "../src/data/learn";
+import { CL_FIXTURES } from "../src/data/clFixtures";
+import { clubById } from "../src/data/clubs";
 
 // DTSTAMP = generation time. Vercel regenerates this file on every deploy
 // (prebuild), so each publish stamps the feed as freshly revised — that's the
@@ -86,11 +88,51 @@ for (const s of CALENDAR) {
     "END:VEVENT"
   );
 }
+// ---- One timed event per league-phase match, from the live feed ----
+// Kickoff times/matchdays come from live.json (written by the results bot);
+// a fixture without a time yet is simply left out until the feed has it.
+// Stable UIDs (the match id) mean a subscribed calendar updates the event in
+// place when the kickoff moves or the score lands.
+const livePath = join(dirname(fileURLToPath(import.meta.url)), "..", "src", "data", "live.json");
+const live = JSON.parse(readFileSync(livePath, "utf8")) as {
+  fixtures?: Record<string, { utc: string; matchday: number | null }>;
+  results?: Record<string, [number, number]>;
+};
+const dtUtc = (d: Date) => d.toISOString().replace(/[-:]/g, "").replace(/\.\d{3}/, "");
+let matchEvents = 0;
+for (const f of CL_FIXTURES) {
+  const m = live.fixtures?.[f.id];
+  if (!m?.utc) continue;
+  const home = clubById(f.home);
+  const away = clubById(f.away);
+  if (!home || !away) continue;
+  const r = live.results?.[f.id];
+  const start = new Date(m.utc);
+  const end = new Date(start.getTime() + 2 * 60 * 60 * 1000);
+  const md = m.matchday ? `Matchday ${m.matchday}` : "League phase";
+  const title = `${home.short} v ${away.short}` + (r ? ` (${r[0]}–${r[1]})` : "");
+  lines.push(
+    "BEGIN:VEVENT",
+    `UID:${f.id}@${DOMAIN}`,
+    `DTSTAMP:${STAMP}`,
+    `DTSTART:${dtUtc(start)}`,
+    `DTEND:${dtUtc(end)}`,
+    fold(`SUMMARY:${esc(title)} · UCL ${esc(md)}`),
+    fold(
+      `DESCRIPTION:${esc(
+        `Champions League ${md}: ${home.name} (home) v ${away.name}.` +
+          (r ? ` Final score ${r[0]}–${r[1]}.` : "")
+      )}`
+    ),
+    "END:VEVENT"
+  );
+  matchEvents++;
+}
 lines.push("END:VCALENDAR");
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const out = join(__dirname, "..", "public", "champions-league.ics");
 writeFileSync(out, lines.join("\r\n") + "\r\n", "utf8");
 console.log(
-  `Wrote ${out} (${CALENDAR.filter((s) => s.date && !s.noFeed).length} events).`
+  `Wrote ${out} (${CALENDAR.filter((s) => s.date && !s.noFeed).length} season events + ${matchEvents} matches).`
 );

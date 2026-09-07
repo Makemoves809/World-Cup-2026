@@ -13,6 +13,16 @@ const LEARN_CARDS = [
     desc: "Who's in for 2026/27, where they're from, and why each one matters.",
   },
   {
+    to: "/fixtures",
+    title: "Fixtures",
+    desc: "Every club's 8 games — who they play, where, and when.",
+  },
+  {
+    to: "/table",
+    title: "The table",
+    desc: "The live 36-club standings, with the qualification bands.",
+  },
+  {
     to: "/glossary",
     title: "Jargon buster",
     desc: "League phase, aggregate, coefficient — every term decoded.",
