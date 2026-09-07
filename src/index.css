@@ -4680,3 +4680,28 @@ tr.stat-out .team-name { color: var(--chalk-dim); }
   text-decoration: none;
 }
 .cal-sub-alt:hover { color: var(--chalk-dim); }
+
+/* ---- Fixtures (who plays who) ---- */
+.fx-page { max-width: 760px; margin: 0 auto; padding: 48px 24px 72px; }
+.fx-pick { display: flex; flex-direction: column; gap: 6px; margin-bottom: 18px; }
+.fx-pick-label { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--chalk-faint); }
+.fx-pick select { width: 100%; padding: 12px 14px; border-radius: 10px; border: 1px solid var(--line); background: var(--surface-card); color: var(--chalk); font: inherit; font-size: 15px; }
+.fx-club-head { display: flex; align-items: center; gap: 12px; margin: 6px 0 14px; }
+.fx-club-head .club-crest { width: 38px; height: 38px; font-size: 14px; }
+.fx-club-name { display: block; font-family: var(--font-display); font-size: 22px; text-transform: uppercase; letter-spacing: 0.02em; color: var(--chalk); }
+.fx-club-meta { display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--chalk-faint); }
+.fx-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+.fx-row { display: grid; grid-template-columns: 30px 1fr auto; align-items: center; gap: 12px; padding: 12px 14px; border-radius: var(--radius); border: 1px solid var(--line); background: var(--surface-card); }
+.fx-venue { font-family: var(--font-mono); font-size: 11px; font-weight: 600; text-align: center; border-radius: var(--radius-xs); padding: 4px 0; }
+.fx-h { color: var(--grass-ink); background: var(--grass); }
+.fx-a { color: var(--chalk-dim); border: 1px solid var(--line); }
+.fx-opp { display: flex; align-items: center; gap: 10px; min-width: 0; }
+.fx-crest { width: 30px; height: 30px; font-size: 12px; flex-shrink: 0; }
+.fx-opp-name { display: flex; flex-direction: column; min-width: 0; font-size: 15px; font-weight: 600; color: var(--chalk); }
+.fx-opp-meta { display: flex; align-items: center; gap: 5px; font-size: 11px; font-weight: 400; color: var(--chalk-faint); }
+.fx-when { display: flex; flex-direction: column; align-items: flex-end; gap: 2px; }
+.fx-day { font-size: 13px; color: var(--chalk); }
+.fx-time, .fx-tbc { font-family: var(--font-mono); font-size: 11px; color: var(--chalk-faint); }
+.fx-score { font-family: var(--font-mono); font-size: 16px; font-weight: 700; color: var(--floodlight); }
+.fx-played { border-color: rgba(43, 212, 121, 0.25); }
+.fx-foot { margin-top: 16px; }

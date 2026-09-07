@@ -28,7 +28,7 @@ const STATS = [
   { v: "36", l: "Clubs" },
   { v: "1", l: "League table" },
   { v: "8", l: "Games each" },
-  { v: "15", l: "Countries" },
+  { v: "16", l: "Countries" },
 ];
 
 export function HeroCL() {

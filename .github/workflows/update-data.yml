@@ -1,19 +1,19 @@
 name: Update live data
 
-# PAUSED (Jul 2026) for the Champions League pivot. The World Cup is over and
-# its data is frozen (the finished-tournament state is archived on branch
-# archive/world-cup-2026 and tag world-cup-2026). The live deployment now
-# serves the Champions League 2026/27 hub, which has its own (not-yet-wired)
-# data path — so this World Cup fetcher must NOT commit to the production
-# branch. `workflow_dispatch` is kept so the external cron's API call still
-# succeeds without error, but the job is guarded off below.
+# Champions League 2026/27 results bot (re-enabled Sep 2026 for the season).
+# scripts/update-data.ts fetches the CL league phase from football-data.org
+# (competition "CL") and writes results / kickoff times / matchdays to
+# src/data/live.json; the push makes Vercel rebuild and redeploy the site.
 #
-# TO RE-ENABLE (e.g. standing the World Cup back up for 2030, or wiring a CL
-# feed): restore the `schedule` trigger and remove the `if: ${{ false }}`
-# guard on the job.
+# Driven by GitHub's native scheduler — no token needed (the old external
+# cron's PAT was let expire). CL matchdays are ~twice a week, so this cadence
+# is plenty; off-matchday runs are cheap no-ops (the script only commits when
+# data actually changes). `workflow_dispatch` lets you force a run.
+#
+# The World Cup 2026 site is archived on branch archive/world-cup-2026.
 on:
-  # schedule:
-  #   - cron: "*/5 * * * *"
+  schedule:
+    - cron: "*/10 * * * *"
   workflow_dispatch:
 
 concurrency:
@@ -24,10 +24,9 @@ permissions:
   contents: write
 
 jobs:
-  # Fetch finished results + red cards and commit them. The push triggers
+  # Fetch results + fixture times and commit them. The push triggers
   # Vercel's Git integration, which rebuilds and redeploys the site.
   update:
-    if: ${{ false }} # PAUSED — see the note at the top of this file.
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4

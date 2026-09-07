@@ -61,8 +61,8 @@ export const CLUBS: Club[] = [
   // ---------- France (4) ----------
   { id: "psg", name: "Paris Saint-Germain", short: "PSG", country: "France", flag: "fr", league: "Ligue 1", titles: 2, status: "confirmed", blurb: "The reigning champions — back-to-back winners (2025 & 2026) and France's dominant force.", watch: "Ousmane Dembélé" },
   { id: "len", name: "Lens", short: "Lens", country: "France", flag: "fr", league: "Ligue 1", titles: 0, status: "confirmed", blurb: "Northern France's fervent, working-class club." },
-  { id: "mar", name: "Marseille", short: "Marseille", country: "France", flag: "fr", league: "Ligue 1", titles: 1, status: "confirmed", blurb: "France's first European champions (1993); famously intense support." },
-  { id: "mon", name: "Monaco", short: "Monaco", country: "France", flag: "fr", league: "Ligue 1", titles: 0, status: "confirmed", blurb: "The principality's club and a renowned factory for young talent." },
+  { id: "lil", name: "Lille", short: "Lille", country: "France", flag: "fr", league: "Ligue 1", titles: 0, status: "confirmed", blurb: "Northern France's 2021 champions, back among Europe's elite." },
+  { id: "sha", name: "Shakhtar Donetsk", short: "Shakhtar", country: "Ukraine", flag: "ua", league: "Ukrainian Premier League", titles: 0, status: "confirmed", blurb: "Ukraine's exiled powerhouse — playing its \"home\" games abroad (Stamford Bridge, London) while war continues." },
 
   // ---------- Netherlands (2) ----------
   { id: "psv", name: "PSV Eindhoven", short: "PSV", country: "Netherlands", flag: "nl", league: "Eredivisie", titles: 1, status: "confirmed", blurb: "Dutch champions and 1988 European Cup winners." },

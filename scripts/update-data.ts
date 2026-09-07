@@ -1,6 +1,7 @@
 /**
- * Pulls finished results and in-play scores for the 2026 World Cup from
- * football-data.org (v4) and writes them to src/data/live.json. Run by
+ * Pulls results, in-play scores, kickoff times and matchdays for the 2026/27
+ * UEFA Champions League from football-data.org (v4) and writes them to
+ * src/data/live.json. Run by
  * .github/workflows/update-data.yml on a schedule; the app merges live.json
  * with the manually curated data.
  *
@@ -21,13 +22,13 @@
  * Usage: FOOTBALL_API_KEY=... [API_FOOTBALL_KEY=...] npx tsx scripts/update-data.ts
  */
 import { readFileSync, writeFileSync } from "node:fs";
-import { matches } from "../src/data/fixtures";
-import { teams } from "../src/data/teams";
+import { CL_FIXTURES as matches } from "../src/data/clFixtures";
+import { CLUBS } from "../src/data/clubs";
 import { koKey } from "../src/lib/koKey";
 import { fetchLiveGoals, namesMatch, type EventLookupCache } from "./liveEvents";
 
 const API = "https://api.football-data.org/v4";
-const COMPETITION = process.env.COMPETITION ?? "WC"; // FIFA World Cup
+const COMPETITION = process.env.COMPETITION ?? "CL"; // UEFA Champions League
 const KEY = process.env.FOOTBALL_API_KEY;
 
 if (!KEY) {
@@ -75,6 +76,8 @@ interface LiveGoal {
 interface LiveData {
   updatedAt: string;
   results: Record<string, [number, number]>;
+  /** Kickoff time + matchday per fixture, from the feed (league phase + KO). */
+  fixtures: Record<string, { utc: string; matchday: number | null }>;
   /** Finished knockout matches — used to fill the bracket. */
   koResults: KoResult[];
   /** In-play knockout scores by stage + teams (rebuilt each run). */
@@ -93,6 +96,7 @@ interface LiveData {
 
 const LIVE_PATH = new URL("../src/data/live.json", import.meta.url);
 const live: LiveData = JSON.parse(readFileSync(LIVE_PATH, "utf8"));
+live.fixtures = live.fixtures ?? {};
 live.koResults = live.koResults ?? [];
 live.liveKo = live.liveKo ?? [];
 live.liveScores = live.liveScores ?? {};
@@ -102,6 +106,7 @@ live.lastEventsCheck = live.lastEventsCheck ?? {};
 live.eventLookup = live.eventLookup ?? {};
 const before = JSON.stringify({
   results: live.results,
+  fixtures: live.fixtures,
   koResults: live.koResults,
   liveKo: live.liveKo,
   liveScores: live.liveScores,
@@ -119,37 +124,85 @@ const norm = (s: string) =>
     .toLowerCase()
     .replace(/[^a-z]/g, "");
 
-/** football-data.org team names that differ from ours. */
+/**
+ * football-data.org club names whose normalized form doesn't simply contain
+ * our club name/short (e.g. "FC Internazionale Milano" for Inter). Keys are
+ * norm()-ed. Everything else resolves by containment below.
+ */
 const ALIASES: Record<string, string> = {
-  southkorea: "kor",
-  korearepublic: "kor",
-  czechrepublic: "cze",
-  turkey: "tur",
-  turkiye: "tur",
-  ivorycoast: "civ",
-  capeverdeislands: "cpv",
-  capeverde: "cpv",
-  usa: "usa",
-  unitedstates: "usa",
-  bosniaandherzegovina: "bih",
-  congodr: "cod",
-  drcongo: "cod",
+  fcinternazionalemilano: "int", internazionale: "int", intermilan: "int", inter: "int",
+  clubatleticodemadrid: "atm", atleticodemadrid: "atm", atleticomadrid: "atm",
+  sportingclubedeportugal: "spo", sportinglisbon: "spo", sportingcp: "spo",
+  skslaviapraha: "sla", slaviapraha: "sla", slaviaprague: "sla",
+  fcbayernmunchen: "bay", bayernmunchen: "bay", bayernmunich: "bay", bayern: "bay",
+  parissaintgermainfc: "psg", parissaintgermain: "psg", psg: "psg",
+  fcshakhtardonetsk: "sha", shakhtardonetsk: "sha", shakhtar: "sha",
+  skslovanbratislava: "slb", slovanbratislava: "slb",
+  fkbodoglimt: "bod", bodoglimt: "bod",
+  psveindhoven: "psv", psv: "psv",
+  feyenoordrotterdam: "fey", feyenoord: "fey",
+  fcporto: "por", porto: "por",
+  clubbruggekv: "clb", clubbrugge: "clb",
+  galatasaraysk: "gal", galatasaray: "gal",
+  fenerbahcesk: "fen", fenerbahce: "fen",
+  aekathensfc: "aek", aekathens: "aek",
+  realbetisbalompie: "bet", realbetis: "bet",
+  sscnapoli: "nap", napoli: "nap",
+  como1907: "com",
+  asroma: "rom",
+  rclens: "len",
+  lilleosc: "lil",
+  lasklinz: "las",
+  vfbstuttgart: "stu",
+  rbleipzig: "rbl",
+  borussiadortmund: "dor",
+  villarrealcf: "vil",
+  realmadridcf: "rma",
+  fcbarcelona: "bar",
+  manchestercityfc: "mci",
+  manchesterunitedfc: "mun",
+  astonvillafc: "avl",
+  liverpoolfc: "liv",
+  arsenalfc: "ars",
+  vikingfk: "vik",
+  sabahfk: "sab",
 };
 
-const teamIdByName = new Map<string, string>();
-for (const t of teams) teamIdByName.set(norm(t.name), t.id);
-for (const [k, v] of Object.entries(ALIASES)) teamIdByName.set(k, v);
-const teamIdByCode = new Map(teams.map((t) => [t.code, t.id]));
-
-/** Map a football-data team object ({ name, tla }) to our team id. */
-function mapTeam(t: { name?: string; tla?: string } | null): string | undefined {
-  if (!t) return undefined;
-  return (
-    (t.name && teamIdByName.get(norm(t.name))) ||
-    (t.tla && teamIdByCode.get(t.tla)) ||
-    undefined
-  );
+const clubIdByName = new Map<string, string>();
+for (const c of CLUBS) {
+  clubIdByName.set(norm(c.name), c.id);
+  clubIdByName.set(norm(c.short), c.id);
 }
+for (const [k, v] of Object.entries(ALIASES)) clubIdByName.set(k, v);
+/** Longest candidate first, so a short token can't pre-empt a longer, more specific one. */
+const clubNamesByLength = [...clubIdByName.keys()].sort((a, b) => b.length - a.length);
+
+/**
+ * Map a football-data team object ({ name, shortName, tla }) to our club id.
+ * Exact normalized match first (name / shortName / aliases), then containment
+ * either way, longest candidate first — e.g. "Real Madrid CF" ⊃ "realmadrid".
+ */
+function mapTeam(
+  t: { name?: string; shortName?: string; tla?: string } | null
+): string | undefined {
+  if (!t) return undefined;
+  const forms = [t.name, t.shortName].filter((x): x is string => !!x).map(norm);
+  for (const n of forms) {
+    const exact = clubIdByName.get(n);
+    if (exact) return exact;
+  }
+  for (const n of forms) {
+    if (n.length < 4) continue;
+    for (const cand of clubNamesByLength) {
+      if (cand.length < 4) continue;
+      if (n.includes(cand) || cand.includes(n)) return clubIdByName.get(cand);
+    }
+  }
+  return undefined;
+}
+
+/** The league phase (football-data: LEAGUE_STAGE; legacy GROUP_STAGE) vs. knockouts. */
+const isLeague = (stage?: string) => stage === "GROUP_STAGE" || stage === "LEAGUE_STAGE";
 
 const matchByPair = new Map<string, { id: string; reversed: boolean }>();
 for (const m of matches) {
@@ -220,12 +273,16 @@ for (const f of fdMatches) {
   const homeId = mapTeam(f.homeTeam);
   const awayId = mapTeam(f.awayTeam);
   if (!homeId || !awayId) {
-    if (f.status === "FINISHED") {
-      console.warn(`Unmapped teams: ${f.homeTeam?.name} vs ${f.awayTeam?.name}`);
-    }
+    console.warn(`Unmapped teams: ${f.homeTeam?.name} vs ${f.awayTeam?.name}`);
     continue;
   }
   const pair = matchByPair.get(`${homeId}|${awayId}`);
+
+  // Kickoff time + matchday for every mapped league fixture — this is what
+  // the Fixtures page and the .ics feed use before a ball is kicked.
+  if (pair && f.utcDate) {
+    live.fixtures[pair.id] = { utc: f.utcDate, matchday: f.matchday ?? null };
+  }
 
   // Attendance is sometimes on the list object (even while in play).
   if (pair && typeof f.attendance === "number" && f.attendance > 0) {
@@ -251,7 +308,7 @@ for (const f of fdMatches) {
       liveScores[pair.id] = pair.reversed
         ? { home: a, away: h, minute }
         : { home: h, away: a, minute };
-    } else if (f.stage && f.stage !== "GROUP_STAGE") {
+    } else if (f.stage && !isLeague(f.stage)) {
       // Knockout tie in progress — key by stage + teams so the bracket matches.
       const htPlayed = f.score?.halfTime?.home != null;
       const phase =
@@ -316,7 +373,7 @@ for (const f of fdMatches) {
     live.results[pair.id] = pair.reversed
       ? [ft.away, ft.home]
       : [ft.home, ft.away];
-  } else if (f.stage && f.stage !== "GROUP_STAGE") {
+  } else if (f.stage && !isLeague(f.stage)) {
     // Knockout match — record by stage + teams so the bracket can fill in.
     const w = f.score?.winner;
     const winnerId =
@@ -398,6 +455,7 @@ for (const c of goalCandidates) {
 
 const after = JSON.stringify({
   results: live.results,
+  fixtures: live.fixtures,
   koResults: live.koResults,
   liveKo: live.liveKo,
   liveScores: live.liveScores,
