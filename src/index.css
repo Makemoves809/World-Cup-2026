@@ -4884,3 +4884,11 @@ tr.stat-out .team-name { color: var(--chalk-dim); }
 .ml-name { font-size: 16px; font-weight: 600; color: var(--chalk-dim); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; min-width: 0; }
 .ml-score { font-family: var(--font-mono); font-size: 21px; font-weight: 700; color: var(--chalk-dim); line-height: 1; }
 .ml-lead .ml-name, .ml-lead .ml-score { color: var(--floodlight); }
+
+/* Every in-play match stacked in the hero live panel. */
+.ml-stack { display: flex; flex-direction: column; }
+.ml-match { position: relative; padding: 10px 0; border-bottom: 1px solid var(--line-soft); }
+.ml-match:last-child { border-bottom: none; padding-bottom: 4px; }
+.ml-match:first-child { padding-top: 4px; }
+.ml-match .ml { margin: 0; }
+.ml-min { display: block; margin-bottom: 2px; font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--grass); }

@@ -91,7 +91,6 @@ export function HeroCL() {
     { v: secs, l: "sec" },
   ];
 
-  const ls = liveMatch ? liveScoreFor(liveMatch.id) : undefined;
   const nextKo = next ? kickoffOf(next) : null;
   const nextMd = next ? metaFor(next.id).matchday : null;
 
@@ -125,9 +124,22 @@ export function HeroCL() {
                 <span className="live-dot" aria-hidden="true" /> Live now
                 {liveList.length > 1 && <span className="live-more"> · {liveList.length} games</span>}
               </span>
-              <MatchLine f={liveMatch} score={ls ? [ls.home, ls.away] : null} />
+              {/* Every match in play, not just the first — a CL matchday can
+                  have half a dozen running at once. */}
+              <div className="ml-stack">
+                {liveList.map((m) => {
+                  const s = liveScoreFor(m.id);
+                  return (
+                    <div className="ml-match" key={m.id}>
+                      <span className="ml-min">
+                        {s?.minute != null ? `${s.minute}'` : "In play"}
+                      </span>
+                      <MatchLine f={m} score={s ? [s.home, s.away] : null} />
+                    </div>
+                  );
+                })}
+              </div>
               <span className="next-venue">
-                {ls?.minute != null ? `${ls.minute}'` : "In play"}
                 <span className="hero-open-hint">Scoreboard ›</span>
               </span>
             </div>
