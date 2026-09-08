@@ -43,14 +43,20 @@ const STATS = [
   { v: "16", l: "Countries" },
 ];
 
-function Side({ club }: { club: Club }) {
+/**
+ * One club per row, score right-aligned — the layout live-score apps use on
+ * phones. Squeezing both clubs and the score onto a single line wrapped the
+ * names ("Club / Brugge") and even split the score at narrow widths.
+ */
+function TeamRow({ club, goals, lead }: { club: Club; goals?: number | null; lead?: boolean }) {
   const src = flagUrl(club.flag);
   return (
-    <span className="nt">
-      <Crest club={club} className="hero-crest" />
-      {src && <img className="flag" src={src} width={15} height={10} alt="" aria-hidden="true" />}
-      {club.short}
-    </span>
+    <div className={`ml-row${lead ? " ml-lead" : ""}`}>
+      <Crest club={club} className="ml-crest" />
+      {src && <img className="flag" src={src} width={16} height={11} alt="" aria-hidden="true" />}
+      <span className="ml-name">{club.name}</span>
+      {goals != null && <span className="ml-score">{goals}</span>}
+    </div>
   );
 }
 
@@ -58,13 +64,11 @@ function MatchLine({ f, score }: { f: ClFixture; score?: [number, number] | null
   const home = clubById(f.home);
   const away = clubById(f.away);
   if (!home || !away) return null;
+  const [h, a] = score ?? [null, null];
   return (
-    <div className="next-teams">
-      <Side club={home} />
-      <span className={score ? "nt-score" : "nt-v"}>
-        {score ? `${score[0]}–${score[1]}` : "vs"}
-      </span>
-      <Side club={away} />
+    <div className="ml">
+      <TeamRow club={home} goals={h} lead={h != null && a != null && h > a} />
+      <TeamRow club={away} goals={a} lead={h != null && a != null && a > h} />
     </div>
   );
 }

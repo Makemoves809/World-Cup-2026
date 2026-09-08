@@ -4875,3 +4875,12 @@ tr.stat-out .team-name { color: var(--chalk-dim); }
 .gb-nm { font-size: 14px; font-weight: 600; color: var(--chalk); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .gb-cl { font-size: 11px; color: var(--chalk-faint); }
 .gb-g { font-family: var(--font-mono); font-size: 17px; font-weight: 700; color: var(--floodlight); }
+
+/* ---- Hero match line: one club per row, score right-aligned ---- */
+.ml { display: flex; flex-direction: column; gap: 7px; margin: 11px 0 9px; }
+.ml-row { display: grid; grid-template-columns: auto auto 1fr auto; align-items: center; gap: 9px; min-width: 0; }
+.ml-crest { width: 26px; height: 26px; font-size: 10px; flex-shrink: 0; }
+.ml-crest.club-badge { width: 26px; height: 26px; }
+.ml-name { font-size: 16px; font-weight: 600; color: var(--chalk-dim); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; min-width: 0; }
+.ml-score { font-family: var(--font-mono); font-size: 21px; font-weight: 700; color: var(--chalk-dim); line-height: 1; }
+.ml-lead .ml-name, .ml-lead .ml-score { color: var(--floodlight); }
