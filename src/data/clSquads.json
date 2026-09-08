@@ -1,1 +1,293 @@
-{"updatedAt":null,"squads":{}}
+{
+  "updatedAt": "2026-09-08T17:11:18.725Z",
+  "squads": {
+    "dor": {
+      "crest": "https://crests.football-data.org/4.png",
+      "coach": "Niko Kovać",
+      "venue": "Signal Iduna Park",
+      "founded": 1909,
+      "colors": "Black / Yellow",
+      "players": []
+    },
+    "bay": {
+      "crest": "https://crests.football-data.org/5.png",
+      "coach": "Vincent Kompany",
+      "venue": "Allianz Arena",
+      "founded": 1900,
+      "colors": "Red / White / Blue",
+      "players": []
+    },
+    "stu": {
+      "crest": "https://crests.football-data.org/10.png",
+      "coach": "Sebastian Hoeneß",
+      "venue": "Mercedes-Benz Arena",
+      "founded": 1893,
+      "colors": "White / Red",
+      "players": []
+    },
+    "ars": {
+      "crest": "https://crests.football-data.org/57.png",
+      "coach": null,
+      "venue": "Emirates Stadium",
+      "founded": 1886,
+      "colors": "Red / White",
+      "players": []
+    },
+    "avl": {
+      "crest": "https://crests.football-data.org/58.png",
+      "coach": null,
+      "venue": "Villa Park",
+      "founded": 1872,
+      "colors": "Claret / Sky Blue",
+      "players": []
+    },
+    "liv": {
+      "crest": "https://crests.football-data.org/64.png",
+      "coach": null,
+      "venue": "Anfield",
+      "founded": 1892,
+      "colors": "Red / White",
+      "players": []
+    },
+    "mci": {
+      "crest": "https://crests.football-data.org/65.png",
+      "coach": null,
+      "venue": "Etihad Stadium",
+      "founded": 1880,
+      "colors": "Sky Blue / White",
+      "players": []
+    },
+    "mun": {
+      "crest": "https://crests.football-data.org/66.png",
+      "coach": null,
+      "venue": "Old Trafford",
+      "founded": 1878,
+      "colors": "Red / White",
+      "players": []
+    },
+    "atm": {
+      "crest": "https://crests.football-data.org/78.png",
+      "coach": "Diego Simeone",
+      "venue": "Estadio Wanda Metropolitano",
+      "founded": 1903,
+      "colors": "Red / White / Blue",
+      "players": []
+    },
+    "bar": {
+      "crest": "https://crests.football-data.org/81.png",
+      "coach": "Hansi Flick",
+      "venue": "Camp Nou",
+      "founded": 1899,
+      "colors": "Red / Navy Blue / Orange",
+      "players": []
+    },
+    "rma": {
+      "crest": "https://crests.football-data.org/86.png",
+      "coach": "José Mourinho",
+      "venue": "Estadio Santiago Bernabéu",
+      "founded": 1902,
+      "colors": "White / Purple",
+      "players": []
+    },
+    "bet": {
+      "crest": "https://crests.football-data.org/90.png",
+      "coach": "Manuel Pellegrini",
+      "venue": "Estadio Benito Villamarín",
+      "founded": 1907,
+      "colors": "Green / White",
+      "players": []
+    },
+    "vil": {
+      "crest": "https://crests.football-data.org/94.png",
+      "coach": "Inigo Perez",
+      "venue": "Estadio de la Cerámica",
+      "founded": 1923,
+      "colors": "Yellow / Blue",
+      "players": []
+    },
+    "rom": {
+      "crest": "https://crests.football-data.org/100.png",
+      "coach": "Gian Piero Gasperini",
+      "venue": "Stadio Olimpico",
+      "founded": 1927,
+      "colors": "Maroon / Orange / White",
+      "players": []
+    },
+    "int": {
+      "crest": "https://crests.football-data.org/108.png",
+      "coach": "Cristian Chivu",
+      "venue": "Stadio Giuseppe Meazza",
+      "founded": 1908,
+      "colors": "Blue / Black",
+      "players": []
+    },
+    "nap": {
+      "crest": "https://crests.football-data.org/113.png",
+      "coach": "Massimiliano Allegri",
+      "venue": "Stadio San Paolo",
+      "founded": 1904,
+      "colors": "Sky Blue / White",
+      "players": []
+    },
+    "spo": {
+      "crest": "https://crests.football-data.org/498.png",
+      "coach": "Rui Borges",
+      "venue": "Estádio José Alvalade",
+      "founded": 1906,
+      "colors": "Green / White",
+      "players": []
+    },
+    "por": {
+      "crest": "https://crests.football-data.org/503.png",
+      "coach": "Francesco Farioli",
+      "venue": "Estádio Do Dragão",
+      "founded": 1893,
+      "colors": "Blue / White",
+      "players": []
+    },
+    "lil": {
+      "crest": "https://crests.football-data.org/521.png",
+      "coach": "Davide Ancelotti",
+      "venue": "Stade Pierre-Mauroy",
+      "founded": 1944,
+      "colors": "White / Red",
+      "players": []
+    },
+    "psg": {
+      "crest": "https://crests.football-data.org/524.png",
+      "coach": "Luis Enrique",
+      "venue": "Parc des Princes",
+      "founded": 1904,
+      "colors": "Red / Blue / White",
+      "players": []
+    },
+    "len": {
+      "crest": "https://crests.football-data.org/546.png",
+      "coach": "Dino Toppmöller",
+      "venue": "Stade Bollaert-Delelis",
+      "founded": 1906,
+      "colors": "Red / Yellow",
+      "players": []
+    },
+    "gal": {
+      "crest": "https://crests.football-data.org/610.png",
+      "coach": "Okan Buruk",
+      "venue": "Türk Telekom Arena",
+      "founded": 1905,
+      "colors": "Red / Yellow",
+      "players": []
+    },
+    "fen": {
+      "crest": "https://crests.football-data.org/613.png",
+      "coach": "İsmail Kartal",
+      "venue": "Ülker Stadyumu Fenerbahçe Şükrü Saracoğlu Spor Kompleksi",
+      "founded": 1907,
+      "colors": "Yellow / Blue",
+      "players": []
+    },
+    "psv": {
+      "crest": "https://crests.football-data.org/674.png",
+      "coach": "Peter Bosz",
+      "venue": "Philips Stadion",
+      "founded": 1913,
+      "colors": "Red / White",
+      "players": []
+    },
+    "fey": {
+      "crest": "https://crests.football-data.org/675.png",
+      "coach": "Giovanni van Bronckhorst",
+      "venue": "Stadion Feijenoord",
+      "founded": 1908,
+      "colors": "Red / White / Black",
+      "players": []
+    },
+    "rbl": {
+      "crest": "https://crests.football-data.org/721.png",
+      "coach": "Martín Demichelis",
+      "venue": "Red Bull Arena",
+      "founded": 2009,
+      "colors": "White / Red",
+      "players": []
+    },
+    "clb": {
+      "crest": "https://crests.football-data.org/851.png",
+      "coach": "Ivan Leko",
+      "venue": "Jan Breydelstadion",
+      "founded": 1894,
+      "colors": "Blue / Black",
+      "players": []
+    },
+    "sla": {
+      "crest": "https://crests.football-data.org/930.png",
+      "coach": null,
+      "venue": "Sinobo Stadium",
+      "founded": 1892,
+      "colors": "Red / White",
+      "players": []
+    },
+    "sha": {
+      "crest": "https://crests.football-data.org/1887.png",
+      "coach": null,
+      "venue": "Oblasny SportKomplex Metalist",
+      "founded": 1936,
+      "colors": "Orange / Black",
+      "players": []
+    },
+    "aek": {
+      "crest": "https://crests.football-data.org/1899.png",
+      "coach": null,
+      "venue": "Olympiako Stadio Spyros Louis",
+      "founded": 1924,
+      "colors": "Yellow / Black",
+      "players": []
+    },
+    "las": {
+      "crest": "https://crests.football-data.org/2016.png",
+      "coach": "Dietmar Kühbauer",
+      "venue": "Raiffeisen Arena",
+      "founded": 1908,
+      "colors": "Black / White",
+      "players": []
+    },
+    "vik": {
+      "crest": "https://crests.football-data.org/5720.png",
+      "coach": "Morten Jensen",
+      "venue": "SR-Bank Arena",
+      "founded": 1899,
+      "colors": "Dark Blue / White",
+      "players": []
+    },
+    "bod": {
+      "crest": "https://crests.football-data.org/5721.png",
+      "coach": "Kjetil Knutsen",
+      "venue": "Aspmyra Stadion",
+      "founded": 1916,
+      "colors": "Yellow / Black",
+      "players": []
+    },
+    "com": {
+      "crest": "https://crests.football-data.org/7397.png",
+      "coach": "Fàbregas",
+      "venue": "Stadio Giuseppe Sinigaglia",
+      "founded": 1907,
+      "colors": "Sky Blue / White",
+      "players": []
+    },
+    "slb": {
+      "crest": "https://crests.football-data.org/7509.png",
+      "coach": null,
+      "venue": "Štadión Tehelné pole",
+      "founded": 1919,
+      "colors": "Light Blue / White",
+      "players": []
+    },
+    "sab": {
+      "crest": "https://crests.football-data.org/10233.png",
+      "coach": null,
+      "venue": null,
+      "founded": null,
+      "colors": null,
+      "players": []
+    }
+  }
+}
