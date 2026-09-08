@@ -1,4 +1,6 @@
 import { HeroCL } from "../components/HeroCL";
+import { MatchdayBoard } from "../components/MatchdayBoard";
+import { TablePreview } from "../components/TablePreview";
 import { navigate } from "../router";
 
 const LEARN_CARDS = [
@@ -49,6 +51,10 @@ export function Home() {
   return (
     <>
       <HeroCL />
+
+      <MatchdayBoard />
+
+      <TablePreview />
 
       <section className="primer" aria-label="The basics">
         <div className="section-head">

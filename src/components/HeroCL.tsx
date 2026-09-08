@@ -1,14 +1,23 @@
 import { useEffect, useState } from "react";
 import { navigate } from "../router";
-import { confirmedClubs } from "../data/clubs";
-
-/** Matchday 1 — the first games of the league phase. */
-const KICKOFF = new Date("2026-09-08T16:45:00Z");
+import { confirmedClubs, clubById, type Club } from "../data/clubs";
+import { initials } from "../data/squads";
+import { flagUrl } from "../lib/flags";
+import {
+  nextFixture,
+  liveFixtures,
+  recentResults,
+  resultFor,
+  liveScoreFor,
+  kickoffOf,
+  metaFor,
+} from "../lib/clLive";
+import type { ClFixture } from "../data/clFixtures";
 
 function useNow(intervalMs = 1000) {
-  const [now, setNow] = useState(() => new Date());
+  const [now, setNow] = useState(() => Date.now());
   useEffect(() => {
-    const t = setInterval(() => setNow(new Date()), intervalMs);
+    const t = setInterval(() => setNow(Date.now()), intervalMs);
     return () => clearInterval(t);
   }, [intervalMs]);
   return now;
@@ -24,6 +33,9 @@ function split(ms: number) {
   };
 }
 
+const fmtTime = new Intl.DateTimeFormat(undefined, { hour: "numeric", minute: "2-digit" });
+const fmtDay = new Intl.DateTimeFormat(undefined, { weekday: "short", day: "numeric", month: "short" });
+
 const STATS = [
   { v: "36", l: "Clubs" },
   { v: "1", l: "League table" },
@@ -31,17 +43,53 @@ const STATS = [
   { v: "16", l: "Countries" },
 ];
 
+function Side({ club }: { club: Club }) {
+  const src = flagUrl(club.flag);
+  return (
+    <span className="nt">
+      <span className="club-crest hero-crest">{initials(club.short)}</span>
+      {src && <img className="flag" src={src} width={15} height={10} alt="" aria-hidden="true" />}
+      {club.short}
+    </span>
+  );
+}
+
+function MatchLine({ f, score }: { f: ClFixture; score?: [number, number] | null }) {
+  const home = clubById(f.home);
+  const away = clubById(f.away);
+  if (!home || !away) return null;
+  return (
+    <div className="next-teams">
+      <Side club={home} />
+      <span className={score ? "nt-score" : "nt-v"}>
+        {score ? `${score[0]}–${score[1]}` : "vs"}
+      </span>
+      <Side club={away} />
+    </div>
+  );
+}
+
 export function HeroCL() {
   const now = useNow();
-  const { days, hours, mins, secs } = split(KICKOFF.getTime() - now.getTime());
-  const started = now >= KICKOFF;
+  const confirmed = confirmedClubs().length;
+
+  const liveList = liveFixtures(now);
+  const liveMatch = liveList[0];
+  const next = nextFixture(now);
+  const latest = recentResults(1)[0];
+
+  const target = next ? kickoffOf(next) : null;
+  const { days, hours, mins, secs } = split((target ?? now) - now);
   const cells = [
     { v: days, l: "days" },
     { v: hours, l: "hrs" },
     { v: mins, l: "min" },
     { v: secs, l: "sec" },
   ];
-  const confirmed = confirmedClubs().length;
+
+  const ls = liveMatch ? liveScoreFor(liveMatch.id) : undefined;
+  const nextKo = next ? kickoffOf(next) : null;
+  const nextMd = next ? metaFor(next.id).matchday : null;
 
   return (
     <section className="hero" id="top">
@@ -50,7 +98,7 @@ export function HeroCL() {
       <div className="hero-inner">
         <p className="eyebrow">
           <span className="dot" />
-          New to the Champions League? Start here
+          {liveMatch ? "Matches live now" : "New to the Champions League? Start here"}
         </p>
 
         <h1 className="hero-title">
@@ -62,38 +110,69 @@ export function HeroCL() {
         </p>
 
         <div className="hero-actions">
+          <CtaButton to="/schedule" label="Schedule & scores" />
           <CtaButton to="/learn" label="How it works" />
-          <CtaButton to="/clubs" label="Meet the clubs" />
         </div>
 
         <div className="hero-row">
-          <div className="countdown" role="timer" aria-live="off">
-            <span className="panel-label">
-              {started ? "The season is under way" : "First matches kick off in"}
-            </span>
-            <div className="countdown-cells">
-              {cells.map((c) => (
-                <div className="cell" key={c.l}>
-                  <span className="cell-num">{String(c.v).padStart(2, "0")}</span>
-                  <span className="cell-lab">{c.l}</span>
-                </div>
-              ))}
+          {liveMatch ? (
+            <div className="countdown livepanel hero-open" aria-live="polite" onClick={() => navigate("/schedule")}>
+              <span className="panel-label panel-label-live">
+                <span className="live-dot" aria-hidden="true" /> Live now
+                {liveList.length > 1 && <span className="live-more"> · {liveList.length} games</span>}
+              </span>
+              <MatchLine f={liveMatch} score={ls ? [ls.home, ls.away] : null} />
+              <span className="next-venue">
+                {ls?.minute != null ? `${ls.minute}'` : "In play"}
+                <span className="hero-open-hint">Scoreboard ›</span>
+              </span>
             </div>
-            <span className="next-venue">
-              Matchday 1 · 8 Sep 2026 · the league phase begins
-            </span>
-          </div>
+          ) : (
+            <div className="countdown" role="timer" aria-live="off">
+              <span className="panel-label">
+                {next ? "Next kickoff in" : "Season complete"}
+              </span>
+              <div className="countdown-cells">
+                {cells.map((c) => (
+                  <div className="cell" key={c.l}>
+                    <span className="cell-num">{String(c.v).padStart(2, "0")}</span>
+                    <span className="cell-lab">{c.l}</span>
+                  </div>
+                ))}
+              </div>
+              {next && (
+                <div className="next-fixture hero-open" onClick={() => navigate("/schedule")}>
+                  <MatchLine f={next} />
+                  <span className="next-venue">
+                    {nextMd ? `Matchday ${nextMd} · ` : ""}
+                    {nextKo ? `${fmtDay.format(new Date(nextKo))}, ${fmtTime.format(new Date(nextKo))}` : ""}
+                    <span className="hero-open-hint">Schedule ›</span>
+                  </span>
+                </div>
+              )}
+            </div>
+          )}
 
-          <div className="latest-card">
-            <span className="panel-label panel-label-gold">The field</span>
-            <p className="hero-field-line">
-              All <strong>{confirmed}</strong> clubs confirmed
-            </p>
-            <span className="next-venue">
-              The draw is made — 8 matchdays, then the knockouts · final 5 Jun
-              2027, Madrid
-            </span>
-          </div>
+          {latest ? (
+            <div className="latest-card hero-open" onClick={() => navigate("/schedule")}>
+              <span className="panel-label panel-label-gold">Latest result</span>
+              <MatchLine f={latest} score={resultFor(latest.id)} />
+              <span className="next-venue">
+                Matchday {metaFor(latest.id).matchday}
+                <span className="hero-open-hint">Scoreboard ›</span>
+              </span>
+            </div>
+          ) : (
+            <div className="latest-card">
+              <span className="panel-label panel-label-gold">The field</span>
+              <p className="hero-field-line">
+                All <strong>{confirmed}</strong> clubs confirmed
+              </p>
+              <span className="next-venue">
+                8 matchdays, then the knockouts · final 5 Jun 2027, Madrid
+              </span>
+            </div>
+          )}
         </div>
 
         <dl className="hero-stats">
