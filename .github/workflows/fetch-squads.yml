@@ -28,6 +28,9 @@ jobs:
       - run: npx tsx scripts/fetch-squads.ts
         env:
           FOOTBALL_API_KEY: ${{ secrets.FOOTBALL_API_KEY }}
+          # football-data's free tier withholds squads; this is the fallback
+          # source that actually provides them (free tier, 100 req/day).
+          API_FOOTBALL_KEY: ${{ secrets.API_FOOTBALL_KEY }}
       - name: Commit any squad changes
         run: |
           if git diff --quiet; then
