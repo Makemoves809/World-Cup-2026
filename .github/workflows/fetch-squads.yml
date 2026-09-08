@@ -1,0 +1,47 @@
+name: Fetch club squads
+
+# Club rosters for the Champions League, from football-data.org. Squads only
+# move in transfer windows, so this runs weekly (and on demand) rather than
+# with the every-10-minutes results poll.
+on:
+  schedule:
+    - cron: "17 4 * * 1"
+  workflow_dispatch:
+
+concurrency:
+  group: fetch-squads
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  squads:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npx tsx scripts/fetch-squads.ts
+        env:
+          FOOTBALL_API_KEY: ${{ secrets.FOOTBALL_API_KEY }}
+      - name: Commit any squad changes
+        run: |
+          if git diff --quiet; then
+            echo "No squad changes."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add src/data/clSquads.json
+          git commit -m "Update club squads"
+          for i in 1 2 3 4 5; do
+            if git push; then exit 0; fi
+            echo "push rejected, rebasing (attempt $i)…"
+            git pull --rebase --autostash origin "${GITHUB_REF_NAME}" || true
+            sleep 2
+          done
+          echo "push failed after retries"; exit 1
