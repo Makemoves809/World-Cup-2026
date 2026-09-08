@@ -38,13 +38,30 @@ export interface SquadPlayer {
   dateOfBirth: string | null;
 }
 export interface ClubSquad {
-  /** Club crest URL from the feed (handy later; we render monograms today). */
+  /** Real club badge from the feed — replaces our monogram tokens. */
   crest?: string | null;
   coach?: string | null;
+  venue?: string | null;
+  founded?: number | null;
+  colors?: string | null;
   players: SquadPlayer[];
 }
 
 const OUT = new URL("../src/data/clSquads.json", import.meta.url);
+
+/** Persist whatever we have — metadata is useful even with no players. */
+function writeOut() {
+  const prev = existsSync(OUT) ? readFileSync(OUT, "utf8") : "";
+  const next = JSON.stringify({ updatedAt: new Date().toISOString(), squads }, null, 2) + "\n";
+  // Compare ignoring updatedAt so unchanged data doesn't churn a commit.
+  const strip = (x: string) => x.replace(/"updatedAt":\s*"[^"]*",?\s*/, "");
+  if (strip(prev) === strip(next)) {
+    console.log("No changes.");
+  } else {
+    writeFileSync(OUT, next);
+    console.log(`Wrote ${Object.keys(squads).length} clubs (${withPlayers} with squads).`);
+  }
+}
 
 const res = await fetch(`${API}/competitions/${COMPETITION}/teams`, {
   headers: { "X-Auth-Token": KEY },
@@ -83,6 +100,9 @@ for (const t of teams) {
   squads[id] = {
     crest: t.crest ?? null,
     coach: t.coach?.name ?? null,
+    venue: t.venue ?? null,
+    founded: t.founded ?? null,
+    colors: t.clubColors ?? null,
     players,
   };
 }
@@ -100,8 +120,9 @@ if (totalPlayers === 0) {
     console.warn(
       "API_FOOTBALL_KEY is not set, so there is no squad source. " +
         "Add a free api-sports.io key as that repo secret to enable rosters. " +
-        "Leaving src/data/clSquads.json untouched."
+        "Writing club metadata (crest / venue / coach) anyway."
     );
+    writeOut();
     process.exit(0);
   }
 
@@ -160,18 +181,10 @@ if (totalPlayers === 0) {
   }
 
   if (totalPlayers === 0) {
-    console.warn("Still no squad data. Leaving src/data/clSquads.json untouched.");
+    console.warn("Still no squad data — writing club metadata only.");
+    writeOut();
     process.exit(0);
   }
 }
 
-const prev = existsSync(OUT) ? readFileSync(OUT, "utf8") : "";
-const next = JSON.stringify({ updatedAt: new Date().toISOString(), squads }, null, 2) + "\n";
-// Compare ignoring updatedAt so an unchanged squad set doesn't churn a commit.
-const strip = (s: string) => s.replace(/"updatedAt":\s*"[^"]*",?\s*/, "");
-if (strip(prev) === strip(next)) {
-  console.log("No squad changes.");
-} else {
-  writeFileSync(OUT, next);
-  console.log(`Wrote ${withPlayers} squads.`);
-}
+writeOut();

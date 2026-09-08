@@ -78,6 +78,31 @@ interface LiveData {
   results: Record<string, [number, number]>;
   /** Kickoff time + matchday per fixture, from the feed (league phase + KO). */
   fixtures: Record<string, { utc: string; matchday: number | null }>;
+  /** Official league-phase standings (position + form), straight from UEFA's feed. */
+  standings: {
+    clubId: string;
+    position: number;
+    played: number;
+    won: number;
+    drawn: number;
+    lost: number;
+    gf: number;
+    ga: number;
+    gd: number;
+    points: number;
+    /** Recent results string like "W,D,L" when the feed supplies it. */
+    form: string | null;
+  }[];
+  /** Top scorers — the Golden Boot race. */
+  scorers: {
+    name: string;
+    clubId: string | null;
+    goals: number;
+    assists: number | null;
+    penalties: number | null;
+    nationality: string | null;
+    position: string | null;
+  }[];
   /** Finished knockout matches — used to fill the bracket. */
   koResults: KoResult[];
   /** In-play knockout scores by stage + teams (rebuilt each run). */
@@ -97,6 +122,8 @@ interface LiveData {
 const LIVE_PATH = new URL("../src/data/live.json", import.meta.url);
 const live: LiveData = JSON.parse(readFileSync(LIVE_PATH, "utf8"));
 live.fixtures = live.fixtures ?? {};
+live.standings = live.standings ?? [];
+live.scorers = live.scorers ?? [];
 live.koResults = live.koResults ?? [];
 live.liveKo = live.liveKo ?? [];
 live.liveScores = live.liveScores ?? {};
@@ -107,6 +134,8 @@ live.eventLookup = live.eventLookup ?? {};
 const before = JSON.stringify({
   results: live.results,
   fixtures: live.fixtures,
+  standings: live.standings,
+  scorers: live.scorers,
   koResults: live.koResults,
   liveKo: live.liveKo,
   liveScores: live.liveScores,
@@ -314,6 +343,58 @@ for (const f of fdMatches) {
 live.liveScores = liveScores;
 live.liveKo = liveKo;
 
+// ---- Official standings (authoritative order + form) ----
+// Our own table (src/lib/clStandings.ts) computes points→GD→GF, but UEFA's
+// full tiebreaker chain goes further, so prefer the feed's own ordering.
+try {
+  const st = await get(`/competitions/${COMPETITION}/standings`);
+  const table: any[] = st.standings?.[0]?.table ?? [];
+  const rows = table
+    .map((r) => {
+      const clubId = mapTeam(r.team);
+      if (!clubId) {
+        console.warn(`Unmapped in standings: ${r.team?.name}`);
+        return null;
+      }
+      return {
+        clubId,
+        position: r.position,
+        played: r.playedGames ?? 0,
+        won: r.won ?? 0,
+        drawn: r.draw ?? 0,
+        lost: r.lost ?? 0,
+        gf: r.goalsFor ?? 0,
+        ga: r.goalsAgainst ?? 0,
+        gd: r.goalDifference ?? 0,
+        points: r.points ?? 0,
+        form: r.form ?? null,
+      };
+    })
+    .filter((r): r is NonNullable<typeof r> => r !== null);
+  if (rows.length) live.standings = rows;
+  console.log(`Standings: ${rows.length} rows`);
+} catch (err) {
+  console.warn(`Standings fetch failed: ${err}`);
+}
+
+// ---- Top scorers (Golden Boot) ----
+try {
+  const sc = await get(`/competitions/${COMPETITION}/scorers?limit=50`);
+  const list: any[] = sc.scorers ?? [];
+  live.scorers = list.map((s: any) => ({
+    name: s.player?.name ?? "",
+    clubId: mapTeam(s.team) ?? null,
+    goals: s.goals ?? 0,
+    assists: s.assists ?? null,
+    penalties: s.penalties ?? null,
+    nationality: s.player?.nationality ?? null,
+    position: s.player?.section ?? s.player?.position ?? null,
+  }));
+  console.log(`Scorers: ${live.scorers.length}`);
+} catch (err) {
+  console.warn(`Scorers fetch failed: ${err}`);
+}
+
 /** Minimum gap between goal-events checks for the same still-live match. */
 const EVENTS_THROTTLE_MS = 8 * 60 * 1000;
 
@@ -371,6 +452,8 @@ for (const c of goalCandidates) {
 const after = JSON.stringify({
   results: live.results,
   fixtures: live.fixtures,
+  standings: live.standings,
+  scorers: live.scorers,
   koResults: live.koResults,
   liveKo: live.liveKo,
   liveScores: live.liveScores,
