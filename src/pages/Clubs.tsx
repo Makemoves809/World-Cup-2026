@@ -1,16 +1,12 @@
 import { clubsByCountry, confirmedClubs, CLUBS, type Club } from "../data/clubs";
 import { flagUrl } from "../lib/flags";
 import { openClub } from "../lib/clubSheet";
-import { initials } from "../data/squads";
+import { Crest } from "../components/Crest";
 
 function ClubCrest({ club, size = 30 }: { club: Club; size?: number }) {
   // No club crests yet — a tidy monogram token, with the national flag as a
   // small accent (mirrors the World Cup site's graceful photo fallback).
-  return (
-    <span className="club-crest" style={{ width: size, height: size }}>
-      {initials(club.short)}
-    </span>
-  );
+  return <Crest club={club} size={size} />;
 }
 
 function CountryFlag({ flag }: { flag: string }) {

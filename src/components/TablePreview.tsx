@@ -1,4 +1,4 @@
-import { initials } from "../data/squads";
+import { Crest } from "./Crest";
 import { flagUrl } from "../lib/flags";
 import { navigate } from "../router";
 import { openClub } from "../lib/clubSheet";
@@ -35,7 +35,7 @@ export function TablePreview({ rows = 8 }: { rows?: number }) {
                 aria-label={r.club.name}
               />
               <span className="tp-pos">{pos}</span>
-              <span className="club-crest tp-crest">{initials(r.club.short)}</span>
+              <Crest club={r.club} className="tp-crest" />
               <span className="tp-name">{r.club.short}</span>
               {src && (
                 <img className="flag" src={src} width={15} height={10} alt="" aria-hidden="true" />

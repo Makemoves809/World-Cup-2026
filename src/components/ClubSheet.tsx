@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { clubById } from "../data/clubs";
 import { fixturesFor, type ClFixture } from "../data/clFixtures";
-import { initials } from "../data/squads";
+import { Crest } from "./Crest";
 import { flagUrl } from "../lib/flags";
 import { closeClub, useClubSheet } from "../lib/clubSheet";
 import { leagueTable } from "../lib/clStandings";
@@ -102,7 +102,7 @@ export function ClubSheet() {
         </button>
 
         <header className="cs-head">
-          <span className="club-crest cs-crest">{initials(club.short)}</span>
+          <Crest club={club} className="cs-crest" />
           <div className="cs-id">
             <h2>{club.name}</h2>
             <span className="cs-meta">

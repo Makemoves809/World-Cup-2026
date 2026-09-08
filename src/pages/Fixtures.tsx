@@ -3,7 +3,7 @@ import { CLUBS, clubById, type Club } from "../data/clubs";
 import { CL_FIXTURES, fixturesFor, type ClFixture } from "../data/clFixtures";
 import { flagUrl } from "../lib/flags";
 import { openClub } from "../lib/clubSheet";
-import { initials } from "../data/squads";
+import { Crest as ClubCrest } from "../components/Crest";
 import live from "../data/live.json";
 
 interface FixtureMeta {
@@ -33,7 +33,7 @@ const fmtTime = new Intl.DateTimeFormat(undefined, {
 });
 
 function Crest({ club, cls = "" }: { club: Club; cls?: string }) {
-  return <span className={`club-crest ${cls}`}>{initials(club.short)}</span>;
+  return <ClubCrest club={club} className={cls} />;
 }
 function Flag({ club }: { club: Club }) {
   const src = flagUrl(club.flag);

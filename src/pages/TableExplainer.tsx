@@ -3,7 +3,7 @@ import { navigate } from "../router";
 import { leagueTable, bandFor, seasonStarted, type Band } from "../lib/clStandings";
 import { flagUrl } from "../lib/flags";
 import { openClub } from "../lib/clubSheet";
-import { initials } from "../data/squads";
+import { Crest } from "../components/Crest";
 
 const BAND_LABEL: Record<Band, string> = {
   go: "Straight to the Round of 16",
@@ -62,7 +62,7 @@ export function TableExplainer() {
                         onClick={() => openClub(r.club.id)}
                         title={`${r.club.name} — squad & fixtures`}
                       >
-                        <span className="club-crest tbl-crest">{initials(r.club.short)}</span>
+                        <Crest club={r.club} className="tbl-crest" />
                         <span className="tbl-name">{r.club.short}</span>
                       </button>
                       {src && (

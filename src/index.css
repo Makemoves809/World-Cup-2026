@@ -4854,3 +4854,24 @@ tr.stat-out .team-name { color: var(--chalk-dim); }
 .cs-players li { font-size: 13px; color: var(--chalk-dim); display: flex; gap: 8px; }
 .cs-num { font-family: var(--font-mono); font-size: 11px; color: var(--chalk-faint); min-width: 18px; }
 .cs-empty { margin: 0; padding: 14px; border-radius: var(--radius); border: 1px dashed var(--line); font-size: 13px; line-height: 1.6; color: var(--chalk-faint); }
+
+/* Real club badges (fall back to the monogram token when absent). */
+.club-badge { object-fit: contain; flex-shrink: 0; width: 30px; height: 30px; }
+.mb-crest.club-badge, .sc-crest.club-badge { width: 26px; height: 26px; }
+.tp-crest.club-badge, .tbl-crest.club-badge { width: 24px; height: 24px; }
+.hero-crest.club-badge { width: 22px; height: 22px; }
+.cs-crest.club-badge { width: 46px; height: 46px; }
+.fx-crest.club-badge { width: 30px; height: 30px; }
+
+/* ---- Golden Boot ---- */
+.gb { max-width: var(--maxw); margin: 0 auto; padding: 44px 24px 0; }
+.gb-rows { list-style: none; margin: 0; padding: 0; border-radius: var(--radius); border: 1px solid var(--line); background: var(--surface-card); overflow: hidden; }
+.gb-r { display: grid; grid-template-columns: 30px 28px 1fr auto; align-items: center; gap: 10px; padding: 10px 13px; border-bottom: 1px solid var(--line-soft); }
+.gb-r:last-child { border-bottom: none; }
+.gb-lead { background: rgba(255, 194, 60, 0.06); }
+.gb-rk { font-family: var(--font-mono); font-size: 12px; color: var(--chalk-faint); }
+.gb-cr { width: 24px; height: 24px; font-size: 9px; }
+.gb-who { display: flex; flex-direction: column; min-width: 0; }
+.gb-nm { font-size: 14px; font-weight: 600; color: var(--chalk); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.gb-cl { font-size: 11px; color: var(--chalk-faint); }
+.gb-g { font-family: var(--font-mono); font-size: 17px; font-weight: 700; color: var(--floodlight); }

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { clubById, type Club } from "../data/clubs";
-import { initials } from "../data/squads";
+import { Crest } from "./Crest";
 import { flagUrl } from "../lib/flags";
 import { navigate } from "../router";
 import { openClub } from "../lib/clubSheet";
@@ -25,7 +25,7 @@ const fmtTime = new Intl.DateTimeFormat(undefined, {
 
 function Side({ club, align }: { club: Club; align: "l" | "r" }) {
   const src = flagUrl(club.flag);
-  const crest = <span className="club-crest mb-crest">{initials(club.short)}</span>;
+  const crest = <Crest club={club} className="mb-crest" />;
   const name = <span className="mb-name">{club.short}</span>;
   const flag = src ? (
     <img className="flag" src={src} width={15} height={10} alt="" aria-hidden="true" />

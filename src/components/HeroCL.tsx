@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { navigate } from "../router";
 import { confirmedClubs, clubById, type Club } from "../data/clubs";
-import { initials } from "../data/squads";
+import { Crest } from "./Crest";
 import { flagUrl } from "../lib/flags";
 import {
   nextFixture,
@@ -47,7 +47,7 @@ function Side({ club }: { club: Club }) {
   const src = flagUrl(club.flag);
   return (
     <span className="nt">
-      <span className="club-crest hero-crest">{initials(club.short)}</span>
+      <Crest club={club} className="hero-crest" />
       {src && <img className="flag" src={src} width={15} height={10} alt="" aria-hidden="true" />}
       {club.short}
     </span>
