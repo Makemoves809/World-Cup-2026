@@ -1,6 +1,11 @@
 {
-  "updatedAt": "2026-09-08T17:11:25.283Z",
-  "results": {},
+  "updatedAt": "2026-09-08T18:43:31.889Z",
+  "results": {
+    "cl-aek-las": [
+      2,
+      0
+    ]
+  },
   "fixtures": {
     "cl-clb-avl": {
       "utc": "2026-09-08T16:45:00Z",
@@ -583,21 +588,16 @@
   "liveKo": [],
   "liveScores": {
     "cl-clb-avl": {
-      "home": 0,
-      "away": 1,
-      "minute": null
-    },
-    "cl-aek-las": {
-      "home": 0,
-      "away": 0,
+      "home": 2,
+      "away": 3,
       "minute": null
     }
   },
   "attendance": {},
   "goals": [],
   "lastEventsCheck": {
-    "cl-clb-avl": "2026-09-08T17:11:25.241Z",
-    "cl-aek-las": "2026-09-08T17:11:25.283Z"
+    "cl-clb-avl": "2026-09-08T18:43:31.836Z",
+    "cl-aek-las": "2026-09-08T18:43:31.889Z"
   },
   "eventLookup": {
     "cl-clb-avl": {},
@@ -611,8 +611,8 @@
       "won": 1,
       "drawn": 0,
       "lost": 0,
-      "gf": 2,
-      "ga": 1,
+      "gf": 3,
+      "ga": 2,
       "gd": 1,
       "points": 3,
       "form": null
@@ -1053,8 +1053,8 @@
       "won": 0,
       "drawn": 0,
       "lost": 1,
-      "gf": 1,
-      "ga": 2,
+      "gf": 2,
+      "ga": 3,
       "gd": -1,
       "points": 0,
       "form": null
@@ -1100,6 +1100,24 @@
       "penalties": null,
       "nationality": "Argentina",
       "position": "Midfield"
+    },
+    {
+      "name": "Nicolas Jackson",
+      "clubId": "avl",
+      "goals": 1,
+      "assists": null,
+      "penalties": null,
+      "nationality": "Senegal",
+      "position": "Offence"
+    },
+    {
+      "name": "Nicolo Tresoldi",
+      "clubId": "clb",
+      "goals": 1,
+      "assists": null,
+      "penalties": 1,
+      "nationality": "Italy",
+      "position": "Offence"
     },
     {
       "name": "Răzvan Marin",
