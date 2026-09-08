@@ -1,14 +1,13 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { CLUBS, clubById, type Club } from "../data/clubs";
-import { fixturesFor, type ClFixture } from "../data/clFixtures";
+import { CL_FIXTURES, fixturesFor, type ClFixture } from "../data/clFixtures";
 import { flagUrl } from "../lib/flags";
 import { initials } from "../data/squads";
 import live from "../data/live.json";
 
-/** Kickoff time + matchday, filled in by the live feed once known. */
 interface FixtureMeta {
   utc?: string;
-  matchday?: number;
+  matchday?: number | null;
 }
 const liveAny = live as {
   fixtures?: Record<string, FixtureMeta>;
@@ -17,28 +16,132 @@ const liveAny = live as {
 const metaFor = (id: string): FixtureMeta => liveAny.fixtures?.[id] ?? {};
 const resultFor = (id: string) => liveAny.results?.[id];
 
-const fmtDay = new Intl.DateTimeFormat(undefined, {
+const fmtDayFull = new Intl.DateTimeFormat(undefined, {
+  weekday: "long",
+  day: "numeric",
+  month: "long",
+});
+const fmtDayShort = new Intl.DateTimeFormat(undefined, {
   weekday: "short",
   day: "numeric",
   month: "short",
 });
-const fmtTime = new Intl.DateTimeFormat(undefined, { hour: "numeric", minute: "2-digit" });
+const fmtTime = new Intl.DateTimeFormat(undefined, {
+  hour: "numeric",
+  minute: "2-digit",
+});
 
-function Crest({ club }: { club: Club }) {
-  return <span className="club-crest fx-crest">{initials(club.short)}</span>;
+function Crest({ club, cls = "" }: { club: Club; cls?: string }) {
+  return <span className={`club-crest ${cls}`}>{initials(club.short)}</span>;
 }
 function Flag({ club }: { club: Club }) {
   const src = flagUrl(club.flag);
-  return src ? <img className="flag" src={src} width={18} height={12} alt="" aria-hidden="true" /> : null;
+  return src ? (
+    <img className="flag" src={src} width={16} height={11} alt="" aria-hidden="true" />
+  ) : null;
 }
 
-function FixtureRow({ f, me }: { f: ClFixture; me: string }) {
+/* ------------------------------- schedule ------------------------------- */
+
+const MATCHDAYS = [1, 2, 3, 4, 5, 6, 7, 8];
+
+/** Matchday whose last kickoff is still ahead — i.e. the one in play or next up. */
+function currentMatchday(now: number): number {
+  for (const md of MATCHDAYS) {
+    const times = CL_FIXTURES.map((f) => metaFor(f.id))
+      .filter((m) => m.matchday === md && m.utc)
+      .map((m) => new Date(m.utc!).getTime());
+    if (times.length && Math.max(...times) + 2 * 60 * 60 * 1000 > now) return md;
+  }
+  return MATCHDAYS[MATCHDAYS.length - 1];
+}
+
+function ScheduleRow({ f }: { f: ClFixture }) {
+  const home = clubById(f.home);
+  const away = clubById(f.away);
+  if (!home || !away) return null;
+  const m = metaFor(f.id);
+  const r = resultFor(f.id);
+  const when = m.utc ? new Date(m.utc) : null;
+  return (
+    <li className={`sc-row${r ? " sc-played" : ""}`}>
+      <span className="sc-time">{when ? fmtTime.format(when) : "TBC"}</span>
+      <span className="sc-side sc-home">
+        <span className="sc-name">{home.short}</span>
+        <Flag club={home} />
+        <Crest club={home} cls="sc-crest" />
+      </span>
+      <span className="sc-mid">{r ? `${r[0]}–${r[1]}` : "v"}</span>
+      <span className="sc-side sc-away">
+        <Crest club={away} cls="sc-crest" />
+        <Flag club={away} />
+        <span className="sc-name">{away.short}</span>
+      </span>
+    </li>
+  );
+}
+
+function Schedule() {
+  const now = Date.now();
+  const [md, setMd] = useState(() => currentMatchday(now));
+
+  const byDate = useMemo(() => {
+    const rows = CL_FIXTURES.filter((f) => metaFor(f.id).matchday === md).sort(
+      (a, b) => (metaFor(a.id).utc ?? "").localeCompare(metaFor(b.id).utc ?? "")
+    );
+    const groups = new Map<string, ClFixture[]>();
+    for (const f of rows) {
+      const key = (metaFor(f.id).utc ?? "").slice(0, 10);
+      groups.set(key, [...(groups.get(key) ?? []), f]);
+    }
+    return [...groups.entries()];
+  }, [md]);
+
+  return (
+    <>
+      <div className="sc-pills" role="tablist" aria-label="Matchday">
+        {MATCHDAYS.map((n) => (
+          <button
+            key={n}
+            role="tab"
+            aria-selected={n === md}
+            className={`sc-pill${n === md ? " is-on" : ""}`}
+            onClick={() => setMd(n)}
+          >
+            MD{n}
+          </button>
+        ))}
+      </div>
+
+      {byDate.map(([date, rows]) => (
+        <section className="sc-day" key={date}>
+          <h3 className="sc-date">
+            {date ? fmtDayFull.format(new Date(`${date}T12:00:00Z`)) : "Date to be confirmed"}
+          </h3>
+          <ol className="sc-list">
+            {rows.map((f) => (
+              <ScheduleRow key={f.id} f={f} />
+            ))}
+          </ol>
+        </section>
+      ))}
+
+      <p className="section-note sc-foot">
+        All 18 matches of each matchday, in your local time. Scores appear here
+        as games finish.
+      </p>
+    </>
+  );
+}
+
+/* -------------------------------- by club ------------------------------- */
+
+function ClubRow({ f, me }: { f: ClFixture; me: string }) {
   const isHome = f.home === me;
   const opp = clubById(isHome ? f.away : f.home);
   if (!opp) return null;
   const m = metaFor(f.id);
   const r = resultFor(f.id);
-  // Result is stored home-first; flip it to "my goals – their goals".
   const mine = r ? (isHome ? r[0] : r[1]) : null;
   const theirs = r ? (isHome ? r[1] : r[0]) : null;
   const when = m.utc ? new Date(m.utc) : null;
@@ -46,11 +149,12 @@ function FixtureRow({ f, me }: { f: ClFixture; me: string }) {
     <li className={`fx-row${r ? " fx-played" : ""}`}>
       <span className={`fx-venue ${isHome ? "fx-h" : "fx-a"}`}>{isHome ? "H" : "A"}</span>
       <span className="fx-opp">
-        <Crest club={opp} />
+        <Crest club={opp} cls="fx-crest" />
         <span className="fx-opp-name">
           {opp.name}
           <span className="fx-opp-meta">
             <Flag club={opp} /> {opp.country}
+            {m.matchday ? ` · MD${m.matchday}` : ""}
           </span>
         </span>
       </span>
@@ -61,50 +165,37 @@ function FixtureRow({ f, me }: { f: ClFixture; me: string }) {
           </span>
         ) : when ? (
           <>
-            <span className="fx-day">{fmtDay.format(when)}</span>
+            <span className="fx-day">{fmtDayShort.format(when)}</span>
             <span className="fx-time">{fmtTime.format(when)}</span>
           </>
         ) : (
-          <span className="fx-tbc">
-            {m.matchday ? `Matchday ${m.matchday}` : "Date TBC"}
-          </span>
+          <span className="fx-tbc">Date TBC</span>
         )}
       </span>
     </li>
   );
 }
 
-const byMatchday = (x: ClFixture, y: ClFixture) =>
-  (metaFor(x.id).matchday ?? 99) - (metaFor(y.id).matchday ?? 99);
-
-/** Every club's 8 league-phase games — who they play, where, and when. */
-export function Fixtures() {
+function ByClub() {
   const [clubId, setClubId] = useState("rma");
   const club = clubById(clubId) ?? CLUBS[0];
   const { home, away } = fixturesFor(club.id);
-  const all = [...home, ...away].sort(byMatchday);
-  const hasDates = all.some((f) => metaFor(f.id).utc);
+  const all = [...home, ...away].sort(
+    (a, b) => (metaFor(a.id).matchday ?? 99) - (metaFor(b.id).matchday ?? 99)
+  );
 
   return (
-    <section className="fx-page">
-      <div className="section-head">
-        <span className="kicker">Fixtures · league phase</span>
-        <h2>Who plays who</h2>
-        <p className="section-note">
-          There are no groups — each of the 36 clubs plays its own 8 opponents,
-          4 at home and 4 away, drawn on 27 August. Pick a club to see its
-          eight games.
-        </p>
-      </div>
-
+    <>
       <label className="fx-pick">
         <span className="fx-pick-label">Club</span>
         <select value={club.id} onChange={(e) => setClubId(e.target.value)}>
-          {[...CLUBS].sort((a, b) => a.name.localeCompare(b.name)).map((c) => (
-            <option key={c.id} value={c.id}>
-              {c.name} · {c.country}
-            </option>
-          ))}
+          {[...CLUBS]
+            .sort((a, b) => a.name.localeCompare(b.name))
+            .map((c) => (
+              <option key={c.id} value={c.id}>
+                {c.name} · {c.country}
+              </option>
+            ))}
         </select>
       </label>
 
@@ -120,16 +211,55 @@ export function Fixtures() {
 
       <ol className="fx-list">
         {all.map((f) => (
-          <FixtureRow key={f.id} f={f} me={club.id} />
+          <ClubRow key={f.id} f={f} me={club.id} />
         ))}
       </ol>
 
       <p className="section-note fx-foot">
-        <strong>H</strong> = at home, <strong>A</strong> = away.{" "}
-        {hasDates
-          ? "Kickoff times are shown in your local time. Scores fill in as matches finish."
-          : "Kickoff times and matchdays arrive automatically once the live feed is connected; scores fill in as matches finish."}
+        <strong>H</strong> = at home, <strong>A</strong> = away. Each club plays
+        8 different opponents — 4 home, 4 away.
       </p>
+    </>
+  );
+}
+
+/* --------------------------------- page --------------------------------- */
+
+export function Fixtures() {
+  const [mode, setMode] = useState<"schedule" | "club">("schedule");
+
+  return (
+    <section className="fx-page">
+      <div className="section-head">
+        <span className="kicker">Schedule · league phase</span>
+        <h2>Every match</h2>
+        <p className="section-note">
+          There are no groups — all 36 clubs sit in one league, each playing 8
+          different opponents across 8 matchdays. Browse the schedule by
+          matchday, or see one club's eight games.
+        </p>
+      </div>
+
+      <div className="sc-modes" role="tablist" aria-label="View">
+        <button
+          role="tab"
+          aria-selected={mode === "schedule"}
+          className={`sc-mode${mode === "schedule" ? " is-on" : ""}`}
+          onClick={() => setMode("schedule")}
+        >
+          By matchday
+        </button>
+        <button
+          role="tab"
+          aria-selected={mode === "club"}
+          className={`sc-mode${mode === "club" ? " is-on" : ""}`}
+          onClick={() => setMode("club")}
+        >
+          By club
+        </button>
+      </div>
+
+      {mode === "schedule" ? <Schedule /> : <ByClub />}
     </section>
   );
 }

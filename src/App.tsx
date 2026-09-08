@@ -21,6 +21,7 @@ export function App() {
       page = <Clubs />;
       break;
     case "/fixtures":
+    case "/schedule":
       page = <Fixtures />;
       break;
     case "/table":
@@ -60,7 +61,7 @@ export function App() {
             <button onClick={() => navigate("/")}>Home</button>
             <button onClick={() => navigate("/learn")}>How it works</button>
             <button onClick={() => navigate("/clubs")}>Clubs</button>
-            <button onClick={() => navigate("/fixtures")}>Fixtures</button>
+            <button onClick={() => navigate("/fixtures")}>Schedule</button>
             <button onClick={() => navigate("/table")}>The table</button>
             <button onClick={() => navigate("/calendar")}>Calendar</button>
             <button onClick={() => navigate("/glossary")}>Glossary</button>

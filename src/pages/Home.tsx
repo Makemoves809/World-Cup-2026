@@ -14,8 +14,8 @@ const LEARN_CARDS = [
   },
   {
     to: "/fixtures",
-    title: "Fixtures",
-    desc: "Every club's 8 games — who they play, where, and when.",
+    title: "Schedule",
+    desc: "Every match by matchday, with kickoff times — or one club's 8 games.",
   },
   {
     to: "/table",
