@@ -2,6 +2,7 @@ import { Fragment } from "react";
 import { navigate } from "../router";
 import { leagueTable, bandFor, seasonStarted, type Band } from "../lib/clStandings";
 import { flagUrl } from "../lib/flags";
+import { openClub } from "../lib/clubSheet";
 import { initials } from "../data/squads";
 
 const BAND_LABEL: Record<Band, string> = {
@@ -55,8 +56,15 @@ export function TableExplainer() {
                   <tr className={`tbl-row tbl-${band}`}>
                     <td className="tbl-pos">{pos}</td>
                     <td className="tbl-club">
-                      <span className="club-crest tbl-crest">{initials(r.club.short)}</span>
-                      <span className="tbl-name">{r.club.short}</span>
+                      <button
+                        type="button"
+                        className="tbl-hit club-link"
+                        onClick={() => openClub(r.club.id)}
+                        title={`${r.club.name} — squad & fixtures`}
+                      >
+                        <span className="club-crest tbl-crest">{initials(r.club.short)}</span>
+                        <span className="tbl-name">{r.club.short}</span>
+                      </button>
                       {src && (
                         <img className="flag tbl-flag" src={src} width={16} height={11} alt="" aria-hidden="true" />
                       )}

@@ -1,6 +1,7 @@
 import { initials } from "../data/squads";
 import { flagUrl } from "../lib/flags";
 import { navigate } from "../router";
+import { openClub } from "../lib/clubSheet";
 import { leagueTable, bandFor } from "../lib/clStandings";
 
 /** Top of the 36-club league table, for the home page. */
@@ -26,6 +27,13 @@ export function TablePreview({ rows = 8 }: { rows?: number }) {
           const src = flagUrl(r.club.flag);
           return (
             <li className={`tp-row tp-${bandFor(pos)}`} key={r.club.id}>
+              <button
+                type="button"
+                className="tp-hit club-link"
+                onClick={() => openClub(r.club.id)}
+                title={`${r.club.name} — squad & fixtures`}
+                aria-label={r.club.name}
+              />
               <span className="tp-pos">{pos}</span>
               <span className="club-crest tp-crest">{initials(r.club.short)}</span>
               <span className="tp-name">{r.club.short}</span>

@@ -1,5 +1,6 @@
 import { clubsByCountry, confirmedClubs, CLUBS, type Club } from "../data/clubs";
 import { flagUrl } from "../lib/flags";
+import { openClub } from "../lib/clubSheet";
 import { initials } from "../data/squads";
 
 function ClubCrest({ club, size = 30 }: { club: Club; size?: number }) {
@@ -25,7 +26,7 @@ function titleBadge(n: number): string {
 
 function ClubCard({ club }: { club: Club }) {
   return (
-    <li className="club-card">
+    <li className="club-card club-card--tap" onClick={() => openClub(club.id)} role="button" tabIndex={0} onKeyDown={(e) => (e.key === "Enter" || e.key === " ") && openClub(club.id)} title={`${club.name} — squad & fixtures`}>
       <div className="club-card-head">
         <ClubCrest club={club} />
         <div className="club-id">

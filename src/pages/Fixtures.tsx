@@ -2,6 +2,7 @@ import { useMemo, useState } from "react";
 import { CLUBS, clubById, type Club } from "../data/clubs";
 import { CL_FIXTURES, fixturesFor, type ClFixture } from "../data/clFixtures";
 import { flagUrl } from "../lib/flags";
+import { openClub } from "../lib/clubSheet";
 import { initials } from "../data/squads";
 import live from "../data/live.json";
 
@@ -66,17 +67,17 @@ function ScheduleRow({ f }: { f: ClFixture }) {
   return (
     <li className={`sc-row${r ? " sc-played" : ""}`}>
       <span className="sc-time">{when ? fmtTime.format(when) : "TBC"}</span>
-      <span className="sc-side sc-home">
+      <button type="button" className="sc-side sc-home club-link" onClick={() => openClub(home.id)} title={`${home.name} — squad & fixtures`}>
         <span className="sc-name">{home.short}</span>
         <Flag club={home} />
         <Crest club={home} cls="sc-crest" />
-      </span>
+      </button>
       <span className="sc-mid">{r ? `${r[0]}–${r[1]}` : "v"}</span>
-      <span className="sc-side sc-away">
+      <button type="button" className="sc-side sc-away club-link" onClick={() => openClub(away.id)} title={`${away.name} — squad & fixtures`}>
         <Crest club={away} cls="sc-crest" />
         <Flag club={away} />
         <span className="sc-name">{away.short}</span>
-      </span>
+      </button>
     </li>
   );
 }
@@ -148,7 +149,7 @@ function ClubRow({ f, me }: { f: ClFixture; me: string }) {
   return (
     <li className={`fx-row${r ? " fx-played" : ""}`}>
       <span className={`fx-venue ${isHome ? "fx-h" : "fx-a"}`}>{isHome ? "H" : "A"}</span>
-      <span className="fx-opp">
+      <button type="button" className="fx-opp club-link" onClick={() => openClub(opp.id)} title={`${opp.name} — squad & fixtures`}>
         <Crest club={opp} cls="fx-crest" />
         <span className="fx-opp-name">
           {opp.name}
@@ -157,7 +158,7 @@ function ClubRow({ f, me }: { f: ClFixture; me: string }) {
             {m.matchday ? ` · MD${m.matchday}` : ""}
           </span>
         </span>
-      </span>
+      </button>
       <span className="fx-when">
         {r ? (
           <span className="fx-score">

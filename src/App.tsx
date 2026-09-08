@@ -7,6 +7,7 @@ import { TableExplainer } from "./pages/TableExplainer";
 import { Calendar } from "./pages/Calendar";
 import { Fixtures } from "./pages/Fixtures";
 import { navigate, useRoute } from "./router";
+import { ClubSheet } from "./components/ClubSheet";
 
 export function App() {
   const path = useRoute();
@@ -42,6 +43,8 @@ export function App() {
       <Header path={path} />
 
       <main>{page}</main>
+
+      <ClubSheet />
 
       <footer className="site-footer">
         <div className="footer-grid">

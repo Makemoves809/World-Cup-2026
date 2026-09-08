@@ -3,6 +3,7 @@ import { clubById, type Club } from "../data/clubs";
 import { initials } from "../data/squads";
 import { flagUrl } from "../lib/flags";
 import { navigate } from "../router";
+import { openClub } from "../lib/clubSheet";
 import {
   currentMatchday,
   matchdayFixtures,
@@ -30,7 +31,12 @@ function Side({ club, align }: { club: Club; align: "l" | "r" }) {
     <img className="flag" src={src} width={15} height={10} alt="" aria-hidden="true" />
   ) : null;
   return (
-    <span className={`mb-side ${align === "l" ? "mb-l" : "mb-r"}`}>
+    <button
+      type="button"
+      className={`mb-side club-link ${align === "l" ? "mb-l" : "mb-r"}`}
+      onClick={() => openClub(club.id)}
+      title={`${club.name} — squad & fixtures`}
+    >
       {align === "l" ? (
         <>
           {name}
@@ -44,7 +50,7 @@ function Side({ club, align }: { club: Club; align: "l" | "r" }) {
           {name}
         </>
       )}
-    </span>
+    </button>
   );
 }
 
