@@ -11,7 +11,11 @@ interface Scorer {
   nationality: string | null;
   position: string | null;
 }
-const scorers = ((live as { scorers?: Scorer[] }).scorers ?? []).filter((s) => s.goals > 0);
+// Cast via `unknown`: JSON import types follow the file's current contents
+// (see the note in lib/clLive.ts), so a direct `as` breaks as data arrives.
+const scorers = ((live as unknown as { scorers?: Scorer[] }).scorers ?? []).filter(
+  (s) => typeof s?.goals === "number" && s.goals > 0
+);
 
 /** Top scorers — the Golden Boot race, straight from the feed. */
 export function GoldenBoot({ limit = 10 }: { limit?: number }) {

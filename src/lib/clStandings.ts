@@ -13,7 +13,7 @@
  */
 import { CLUBS, type Club } from "../data/clubs";
 import { CL_FIXTURES } from "../data/clFixtures";
-import live from "../data/live.json";
+import { resultFor } from "./clLive";
 
 export interface StandingRow {
   club: Club;
@@ -34,13 +34,12 @@ export const bandFor = (pos: number): Band =>
   pos <= 8 ? "go" : pos <= 24 ? "playoff" : "out";
 
 export function leagueTable(): StandingRow[] {
-  const results = (live as { results?: Record<string, [number, number]> }).results ?? {};
   const rows = new Map<string, StandingRow>();
   for (const club of CLUBS) {
     rows.set(club.id, { club, played: 0, won: 0, drawn: 0, lost: 0, gf: 0, ga: 0, gd: 0, pts: 0 });
   }
   for (const f of CL_FIXTURES) {
-    const r = results[f.id];
+    const r = resultFor(f.id);
     if (!r) continue;
     const [h, a] = r;
     const H = rows.get(f.home);

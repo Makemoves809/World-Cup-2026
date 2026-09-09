@@ -21,8 +21,10 @@ interface SquadPlayer {
   position: string | null;
   number?: number | null;
 }
-const squads = (squadData as { squads?: Record<string, { players?: SquadPlayer[]; coach?: string | null }> })
-  .squads ?? {};
+const squads =
+  (squadData as unknown as {
+    squads?: Record<string, { players?: SquadPlayer[]; coach?: string | null }>;
+  }).squads ?? {};
 
 /** Group a squad by position, in a sensible order. */
 const POS_ORDER = ["Goalkeeper", "Defender", "Midfielder", "Attacker", "Offence", "Forward"];

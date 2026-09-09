@@ -3,7 +3,9 @@ import type { Club } from "../data/clubs";
 import { initials } from "../data/squads";
 import squadData from "../data/clSquads.json";
 
-const meta = (squadData as { squads?: Record<string, { crest?: string | null }> }).squads ?? {};
+const meta =
+  (squadData as unknown as { squads?: Record<string, { crest?: string | null }> })
+    .squads ?? {};
 
 /**
  * A club badge: the real crest from the feed, falling back to a monogram

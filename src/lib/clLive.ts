@@ -22,16 +22,36 @@ export interface LiveScore {
   minute: number | null;
 }
 
-const feed = live as {
+interface LiveFeed {
   updatedAt?: string;
   fixtures?: Record<string, FixtureMeta>;
-  results?: Record<string, [number, number]>;
+  /** Stored as a 2-element array [home, away]. */
+  results?: Record<string, number[]>;
   liveScores?: Record<string, LiveScore>;
-};
+  standings?: unknown[];
+  scorers?: unknown[];
+}
+
+/**
+ * Cast through `unknown` deliberately. TypeScript types an imported JSON file
+ * from its *current contents*, so a direct `as` is checked against whatever
+ * the bot last wrote — e.g. an empty `results: {}` narrows to `{}`, and one
+ * real entry narrows to `number[]`, which is not assignable to a
+ * `[number, number]` tuple. That made the build fail the first time a match
+ * finished. Going through `unknown` decouples our types from the live data's
+ * shape, and the accessors below validate at runtime instead.
+ */
+const feed = live as unknown as LiveFeed;
 
 export const metaFor = (id: string): FixtureMeta => feed.fixtures?.[id] ?? {};
-export const resultFor = (id: string): [number, number] | undefined =>
-  feed.results?.[id];
+
+/** A final score, only when the feed really has both numbers. */
+export const resultFor = (id: string): [number, number] | undefined => {
+  const r = feed.results?.[id];
+  return r && r.length >= 2 && typeof r[0] === "number" && typeof r[1] === "number"
+    ? [r[0], r[1]]
+    : undefined;
+};
 export const liveScoreFor = (id: string): LiveScore | undefined =>
   feed.liveScores?.[id];
 

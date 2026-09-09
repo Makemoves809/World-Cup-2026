@@ -4,18 +4,7 @@ import { CL_FIXTURES, fixturesFor, type ClFixture } from "../data/clFixtures";
 import { flagUrl } from "../lib/flags";
 import { openClub } from "../lib/clubSheet";
 import { Crest as ClubCrest } from "../components/Crest";
-import live from "../data/live.json";
-
-interface FixtureMeta {
-  utc?: string;
-  matchday?: number | null;
-}
-const liveAny = live as {
-  fixtures?: Record<string, FixtureMeta>;
-  results?: Record<string, [number, number]>;
-};
-const metaFor = (id: string): FixtureMeta => liveAny.fixtures?.[id] ?? {};
-const resultFor = (id: string) => liveAny.results?.[id];
+import { metaFor, resultFor } from "../lib/clLive";
 
 const fmtDayFull = new Intl.DateTimeFormat(undefined, {
   weekday: "long",

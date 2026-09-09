@@ -21,6 +21,14 @@
 >   (draw day, season kickoff, knockouts) that advance the site through the
 >   season. If they're not yet created (the trigger connector was down at pivot
 >   time), create them when it reconnects.
+> - **Never `as`-cast an imported JSON data file directly.** TypeScript types
+>   `live.json` / `clSquads.json` from their *current contents*, so a cast is
+>   checked against whatever the bot last wrote. An empty `results: {}` narrows
+>   to `{}` and one real entry narrows to `number[]` — which broke the
+>   production build the first time a match finished (the bot's own commit
+>   failed to deploy, silently freezing the site). Go through `unknown` and
+>   validate at runtime; read the feed via `src/lib/clLive.ts` rather than
+>   re-casting the JSON in each component.
 > - Deployment mechanics are unchanged: the production branch
 >   `claude/repository-edits-completion-rs4u72` is what Vercel serves; build
 >   must pass (`npm run build`) before pushing.
