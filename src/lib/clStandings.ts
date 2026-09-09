@@ -10,10 +10,19 @@
  *
  * Bands, by position: 1–8 straight to the Round of 16; 9–24 into the
  * two-legged knockout play-off; 25–36 eliminated.
+ *
+ * We compute from results rather than using the feed's own standings table,
+ * because that table lags: it has been observed reporting a club's goal
+ * difference from mid-match (AEK at +1 while the finished result was 2–0,
+ * i.e. +2). Results are always the finished truth. But UEFA's tiebreaker
+ * chain runs past goals scored (head-to-head, away goals, wins, disciplinary
+ * points...), which we can't replicate — so when clubs are genuinely level on
+ * points, goal difference and goals scored, we defer to the feed's own
+ * ordering before falling back to alphabetical.
  */
 import { CLUBS, type Club } from "../data/clubs";
 import { CL_FIXTURES } from "../data/clFixtures";
-import { resultFor } from "./clLive";
+import { resultFor, officialPosition } from "./clLive";
 
 export interface StandingRow {
   club: Club;
@@ -72,6 +81,9 @@ export function leagueTable(): StandingRow[] {
       y.pts - x.pts ||
       y.gd - x.gd ||
       y.gf - x.gf ||
+      // Genuinely level: use UEFA's own ordering, which applies tiebreakers
+      // we can't compute. Clubs the feed hasn't ranked sort last.
+      (officialPosition(x.club.id) ?? 99) - (officialPosition(y.club.id) ?? 99) ||
       x.club.name.localeCompare(y.club.name)
   );
 }

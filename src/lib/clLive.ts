@@ -112,4 +112,15 @@ export function recentResults(limit = 6): ClFixture[] {
 export const seasonUnderway = (now: number): boolean =>
   recentResults(1).length > 0 || liveFixtures(now).length > 0;
 
+/**
+ * The feed's own table position for a club, when it has ranked them.
+ * Used only as a deep tiebreaker — the table itself is computed from results,
+ * since this standings snapshot can lag behind finished matches.
+ */
+export function officialPosition(clubId: string): number | undefined {
+  const rows = (feed.standings ?? []) as { clubId?: string; position?: number }[];
+  const row = rows.find((r) => r?.clubId === clubId);
+  return typeof row?.position === "number" ? row.position : undefined;
+}
+
 export const feedUpdatedAt = (): string | undefined => feed.updatedAt;
