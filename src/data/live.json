@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-09T21:14:23.074Z",
+  "updatedAt": "2026-09-10T17:50:46.800Z",
   "results": {
     "cl-aek-las": [
       1,
@@ -630,7 +630,18 @@
   },
   "koResults": [],
   "liveKo": [],
-  "liveScores": {},
+  "liveScores": {
+    "cl-fen-rom": {
+      "home": 0,
+      "away": 1,
+      "minute": null
+    },
+    "cl-psv-sha": {
+      "home": 0,
+      "away": 1,
+      "minute": null
+    }
+  },
   "attendance": {},
   "goals": [
     {
@@ -785,6 +796,15 @@
       "minute": 90,
       "extra": null,
       "type": "OWN"
+    },
+    {
+      "matchId": "cl-fen-rom",
+      "team": "rom",
+      "scorer": "Bryan Cristante",
+      "assist": null,
+      "minute": 39,
+      "extra": null,
+      "type": "REGULAR"
     },
     {
       "matchId": "cl-lil-bet",
@@ -945,6 +965,15 @@
       "scorer": "Fabián Ruiz",
       "assist": null,
       "minute": 87,
+      "extra": null,
+      "type": "REGULAR"
+    },
+    {
+      "matchId": "cl-psv-sha",
+      "team": "sha",
+      "scorer": "Gleiker Mendoza",
+      "assist": null,
+      "minute": 45,
       "extra": null,
       "type": "REGULAR"
     },
@@ -1221,8 +1250,8 @@
       "form": null
     },
     {
-      "clubId": "aek",
-      "position": 12,
+      "clubId": "rom",
+      "position": 11,
       "played": 1,
       "won": 1,
       "drawn": 0,
@@ -1234,21 +1263,34 @@
       "form": null
     },
     {
-      "clubId": "rom",
-      "position": 13,
-      "played": 0,
-      "won": 0,
+      "clubId": "sha",
+      "position": 11,
+      "played": 1,
+      "won": 1,
       "drawn": 0,
       "lost": 0,
-      "gf": 0,
+      "gf": 1,
       "ga": 0,
-      "gd": 0,
-      "points": 0,
+      "gd": 1,
+      "points": 3,
+      "form": null
+    },
+    {
+      "clubId": "aek",
+      "position": 14,
+      "played": 1,
+      "won": 1,
+      "drawn": 0,
+      "lost": 0,
+      "gf": 1,
+      "ga": 0,
+      "gd": 1,
+      "points": 3,
       "form": null
     },
     {
       "clubId": "bay",
-      "position": 13,
+      "position": 15,
       "played": 0,
       "won": 0,
       "drawn": 0,
@@ -1261,20 +1303,7 @@
     },
     {
       "clubId": "com",
-      "position": 13,
-      "played": 0,
-      "won": 0,
-      "drawn": 0,
-      "lost": 0,
-      "gf": 0,
-      "ga": 0,
-      "gd": 0,
-      "points": 0,
-      "form": null
-    },
-    {
-      "clubId": "fen",
-      "position": 13,
+      "position": 15,
       "played": 0,
       "won": 0,
       "drawn": 0,
@@ -1287,7 +1316,7 @@
     },
     {
       "clubId": "bod",
-      "position": 13,
+      "position": 15,
       "played": 0,
       "won": 0,
       "drawn": 0,
@@ -1300,20 +1329,7 @@
     },
     {
       "clubId": "mun",
-      "position": 13,
-      "played": 0,
-      "won": 0,
-      "drawn": 0,
-      "lost": 0,
-      "gf": 0,
-      "ga": 0,
-      "gd": 0,
-      "points": 0,
-      "form": null
-    },
-    {
-      "clubId": "psv",
-      "position": 13,
+      "position": 15,
       "played": 0,
       "won": 0,
       "drawn": 0,
@@ -1326,7 +1342,7 @@
     },
     {
       "clubId": "rbl",
-      "position": 13,
+      "position": 15,
       "played": 0,
       "won": 0,
       "drawn": 0,
@@ -1339,7 +1355,7 @@
     },
     {
       "clubId": "len",
-      "position": 13,
+      "position": 15,
       "played": 0,
       "won": 0,
       "drawn": 0,
@@ -1352,20 +1368,7 @@
     },
     {
       "clubId": "sab",
-      "position": 13,
-      "played": 0,
-      "won": 0,
-      "drawn": 0,
-      "lost": 0,
-      "gf": 0,
-      "ga": 0,
-      "gd": 0,
-      "points": 0,
-      "form": null
-    },
-    {
-      "clubId": "sha",
-      "position": 13,
+      "position": 15,
       "played": 0,
       "won": 0,
       "drawn": 0,
@@ -1378,7 +1381,7 @@
     },
     {
       "clubId": "sla",
-      "position": 13,
+      "position": 15,
       "played": 0,
       "won": 0,
       "drawn": 0,
@@ -1391,7 +1394,7 @@
     },
     {
       "clubId": "vil",
-      "position": 25,
+      "position": 23,
       "played": 1,
       "won": 0,
       "drawn": 0,
@@ -1404,7 +1407,7 @@
     },
     {
       "clubId": "clb",
-      "position": 26,
+      "position": 24,
       "played": 1,
       "won": 0,
       "drawn": 0,
@@ -1417,7 +1420,7 @@
     },
     {
       "clubId": "lil",
-      "position": 26,
+      "position": 24,
       "played": 1,
       "won": 0,
       "drawn": 0,
@@ -1430,7 +1433,7 @@
     },
     {
       "clubId": "atm",
-      "position": 28,
+      "position": 26,
       "played": 1,
       "won": 0,
       "drawn": 0,
@@ -1443,7 +1446,7 @@
     },
     {
       "clubId": "int",
-      "position": 28,
+      "position": 26,
       "played": 1,
       "won": 0,
       "drawn": 0,
@@ -1455,8 +1458,34 @@
       "form": null
     },
     {
+      "clubId": "fen",
+      "position": 28,
+      "played": 1,
+      "won": 0,
+      "drawn": 0,
+      "lost": 1,
+      "gf": 0,
+      "ga": 1,
+      "gd": -1,
+      "points": 0,
+      "form": null
+    },
+    {
       "clubId": "las",
-      "position": 30,
+      "position": 28,
+      "played": 1,
+      "won": 0,
+      "drawn": 0,
+      "lost": 1,
+      "gf": 0,
+      "ga": 1,
+      "gd": -1,
+      "points": 0,
+      "form": null
+    },
+    {
+      "clubId": "psv",
+      "position": 28,
       "played": 1,
       "won": 0,
       "drawn": 0,
@@ -1469,7 +1498,7 @@
     },
     {
       "clubId": "nap",
-      "position": 30,
+      "position": 28,
       "played": 1,
       "won": 0,
       "drawn": 0,
@@ -1852,6 +1881,24 @@
       "penalties": null,
       "nationality": "Uruguay",
       "position": "Midfield"
+    },
+    {
+      "name": "Bryan Cristante",
+      "clubId": "rom",
+      "goals": 1,
+      "assists": null,
+      "penalties": null,
+      "nationality": "Italy",
+      "position": "Midfield"
+    },
+    {
+      "name": "Gleiker Mendoza",
+      "clubId": "sha",
+      "goals": 1,
+      "assists": null,
+      "penalties": null,
+      "nationality": "Venezuela",
+      "position": "Offence"
     }
   ]
 }
