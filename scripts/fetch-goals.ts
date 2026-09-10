@@ -17,7 +17,8 @@
  * job's log for `HTTP` / `no scorer name` lines first.
  *
  * Only fetches dates that actually need work — dates with finished fixtures
- * whose goals we don't have yet, plus today (for matches in progress).
+ * whose goals we don't have yet, plus today (for matches in progress). Pass
+ * `--all` to re-check every played date, e.g. after changing the parsing.
  *
  * Writes `goals` in src/data/live.json, in the same shape src/data/goals.ts
  * and src/lib/clLive.ts read.
@@ -55,12 +56,15 @@ const results: Record<string, number[]> = live.results ?? {};
 const haveGoalsFor = new Set<string>(live.goals.map((g: MatchGoal) => g.matchId));
 
 /** Dates worth asking about: finished fixtures still missing goals, plus today. */
+const refetchAll = process.argv.includes("--all");
 const dates = new Set<string>();
 dates.add(new Date().toISOString().slice(0, 10).replace(/-/g, ""));
 for (const f of CL_FIXTURES) {
   const utc = meta[f.id]?.utc;
   if (!utc) continue;
-  if (results[f.id] && !haveGoalsFor.has(f.id)) dates.add(utc.slice(0, 10).replace(/-/g, ""));
+  if (results[f.id] && (refetchAll || !haveGoalsFor.has(f.id))) {
+    dates.add(utc.slice(0, 10).replace(/-/g, ""));
+  }
 }
 console.log(`Checking ${dates.size} date(s): ${[...dates].sort().join(", ")}`);
 
@@ -127,8 +131,6 @@ for (const date of [...dates].sort()) {
       if (!fixture) continue;
 
       const goals: MatchGoal[] = [];
-      let prevHome = 0;
-      let prevAway = 0;
       for (const d of comp.details ?? []) {
         const text: string = d?.type?.text ?? "";
         // Shootout kicks are not goals — they decide a knockout tie but never
@@ -137,24 +139,15 @@ for (const date of [...dates].sort()) {
         if (!d?.scoringPlay) continue;
 
         /*
-         * Which side the goal counted for. Prefer the running scoreline:
-         * whichever score ticked up is the credited side, which stays right
-         * for an own goal without having to guess whether ESPN's `team` on
-         * an own goal means the scorer's club or the one that benefits.
-         * Fall back to the event's team, flipped for an own goal.
+         * Which side the goal counted for. ESPN's `team` on a scoring play is
+         * already the *credited* side, own goals included — confirmed by
+         * Sporting 3–1 Galatasaray, where Gonçalo Inácio's 5th-minute own
+         * goal (Inácio plays for Sporting) carries Galatasaray's team id. An
+         * earlier version flipped own goals and produced a 4–0 scoresheet for
+         * that 3–1 match, so do not "correct" this.
          */
         const type = typeOf(text);
-        let side: string | null = null;
-        if (typeof d.homeScore === "number" && typeof d.awayScore === "number") {
-          if (d.homeScore > prevHome) side = homeId;
-          else if (d.awayScore > prevAway) side = awayId;
-          prevHome = d.homeScore;
-          prevAway = d.awayScore;
-        }
-        if (!side) {
-          const evTeam = byEspnId.get(String(d?.team?.id)) ?? null;
-          side = type === "OWN" ? (evTeam === homeId ? awayId : homeId) : evTeam;
-        }
+        const side = byEspnId.get(String(d?.team?.id)) ?? null;
         if (!side) continue;
 
         const { scorer, assist } = namesOf(d);
@@ -171,6 +164,26 @@ for (const date of [...dates].sort()) {
         });
       }
       if (!goals.length) continue;
+
+      /*
+       * Never publish a scoresheet that contradicts the score. The per-side
+       * goal counts must add up to the final result — that check is what
+       * caught the own-goal misattribution above, and it's cheap insurance
+       * against the next shape change in an unofficial API. Skipped while a
+       * match is still in play, when the two are legitimately out of step.
+       */
+      const final = results[fixture.id];
+      if (final) {
+        const h = goals.filter((g) => g.team === homeId).length;
+        const a = goals.filter((g) => g.team === awayId).length;
+        if (h !== final[0] || a !== final[1]) {
+          console.warn(
+            `  ${fixture.id}: SKIPPED — scorers say ${h}-${a} but the result is ` +
+              `${final[0]}-${final[1]}. ESPN's event shape probably changed.`
+          );
+          continue;
+        }
+      }
 
       // Replace this match's goals wholesale — simpler than merging, and
       // self-correcting if ESPN revises an event (goal reassigned, minute
