@@ -29,6 +29,20 @@
 >   failed to deploy, silently freezing the site). Go through `unknown` and
 >   validate at runtime; read the feed via `src/lib/clLive.ts` rather than
 >   re-casting the JSON in each component.
+> - **Goal scorers come from ESPN, not football-data.** football-data's free
+>   tier has no per-match goal events (probed: `goals`/`bookings`/
+>   `substitutions` all empty on a finished CL match); its `/scorers` gives
+>   season totals only. `scripts/fetch-goals.ts` reads ESPN's public
+>   `uefa.champions` scoreboard — no key — and writes `goals` in `live.json`,
+>   as its own non-fatal step after the results bot. Two rules there, both
+>   learned the hard way: ESPN's `team` on a scoring play is **already the side
+>   the goal counted for**, own goals included (do not "fix" this by flipping
+>   own goals — that published Sporting 3–1 Galatasaray as a 4–0 scoresheet);
+>   and every match's per-side goal counts are checked against the final
+>   result before publishing, with a mismatched match skipped and logged. Run
+>   it with `--all` to re-fetch every played date after changing the parsing.
+>   `scripts/liveEvents.ts` is World-Cup-only (ESPN `fifa.world`, API-Football
+>   league 1) and is no longer called — leave it disconnected until 2030.
 > - Deployment mechanics are unchanged: the production branch
 >   `claude/repository-edits-completion-rs4u72` is what Vercel serves; build
 >   must pass (`npm run build`) before pushing.
