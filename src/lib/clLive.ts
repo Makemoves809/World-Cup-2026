@@ -5,6 +5,7 @@
  *   fixtures    — kickoff time + matchday per fixture id
  *   results     — final score [home, away] per fixture id
  *   liveScores  — in-play score + minute, rebuilt each run
+ *   goals       — who scored, from scripts/fetch-goals.ts (ESPN)
  *
  * Everything the hero, home dashboard and schedule need comes from here so
  * they can't drift apart.
@@ -30,6 +31,7 @@ interface LiveFeed {
   liveScores?: Record<string, LiveScore>;
   standings?: unknown[];
   scorers?: unknown[];
+  goals?: unknown[];
 }
 
 /**
@@ -121,6 +123,68 @@ export function officialPosition(clubId: string): number | undefined {
   const rows = (feed.standings ?? []) as { clubId?: string; position?: number }[];
   const row = rows.find((r) => r?.clubId === clubId);
   return typeof row?.position === "number" ? row.position : undefined;
+}
+
+/* ------------------------------ goal scorers ----------------------------- */
+
+export interface Goal {
+  /** Our club id for the side the goal counted for (own goals included). */
+  team: string;
+  scorer: string;
+  assist: string | null;
+  /** Regulation minute — 45 for a goal at 45+2'. */
+  minute: number | null;
+  /** Added time on top of `minute` — 2 for a goal at 45+2'. */
+  extra: number | null;
+  /** "REGULAR" | "PENALTY" | "OWN". */
+  type: string;
+}
+interface FeedGoal extends Goal {
+  matchId: string;
+}
+
+/**
+ * Validated at runtime rather than trusted. These come from ESPN's unofficial
+ * API via the bot, so a shape change upstream should quietly drop a bad entry
+ * — never render `undefined` next to a scoreline, and never break the build
+ * (see the cast note above).
+ */
+const isGoal = (g: unknown): g is FeedGoal => {
+  const x = g as FeedGoal;
+  return (
+    !!x &&
+    typeof x.matchId === "string" &&
+    typeof x.team === "string" &&
+    typeof x.scorer === "string" &&
+    x.scorer.length > 0
+  );
+};
+
+const ALL_GOALS: FeedGoal[] = (feed.goals ?? []).filter(isGoal);
+
+const byClock = (a: Goal, b: Goal) =>
+  (a.minute ?? 0) - (b.minute ?? 0) || (a.extra ?? 0) - (b.extra ?? 0);
+
+/** Goals in one match, earliest first. Empty when we have no scorer data. */
+export const goalsFor = (matchId: string): Goal[] =>
+  ALL_GOALS.filter((g) => g.matchId === matchId).sort(byClock);
+
+/** Every match we have scorers for — lets the UI hide an empty history. */
+export const matchesWithGoals = (): Set<string> =>
+  new Set(ALL_GOALS.map((g) => g.matchId));
+
+/** How a goal reads on a scoresheet: "23'", "45+2'", "78' (pen)". */
+export function goalClock(g: Goal): string {
+  const base = g.minute == null ? "" : `${g.minute}${g.extra ? `+${g.extra}` : ""}'`;
+  const tag = g.type === "PENALTY" ? " (pen)" : g.type === "OWN" ? " (og)" : "";
+  return `${base}${tag}`;
+}
+
+/** Every finished match, newest first — the match history. */
+export function playedFixtures(): ClFixture[] {
+  return CL_FIXTURES.filter((f) => resultFor(f.id)).sort(
+    (a, b) => (kickoffOf(b) ?? 0) - (kickoffOf(a) ?? 0)
+  );
 }
 
 export const feedUpdatedAt = (): string | undefined => feed.updatedAt;

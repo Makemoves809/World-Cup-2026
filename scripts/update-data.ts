@@ -25,7 +25,7 @@ import { readFileSync, writeFileSync } from "node:fs";
 import { CL_FIXTURES as matches } from "../src/data/clFixtures";
 import { norm, mapTeam } from "./clubMap";
 import { koKey } from "../src/lib/koKey";
-import { fetchLiveGoals, namesMatch, type EventLookupCache } from "./liveEvents";
+import { type EventLookupCache } from "./liveEvents";
 
 const API = "https://api.football-data.org/v4";
 const COMPETITION = process.env.COMPETITION ?? "CL"; // UEFA Champions League
@@ -192,27 +192,6 @@ const liveScores: Record<
 /** In-play knockout scores, rebuilt fresh each run. */
 const liveKo: LiveKo[] = [];
 
-/** Matches already on record as finished before this run touches anything —
- * used below to tell a freshly-finished match (worth one goal-events check)
- * from one that's been finished for a while (never re-checked). */
-const alreadyFinished = new Set<string>([
-  ...Object.keys(live.results),
-  ...live.koResults.map((k) => koKey(k.homeId, k.awayId)),
-]);
-
-interface GoalCandidate {
-  matchId: string;
-  homeId: string;
-  awayId: string;
-  homeName: string;
-  awayName: string;
-  dateISO: string;
-  /** Bypasses the throttle — always checked once right as a match finishes. */
-  justFinished: boolean;
-}
-/** Live-or-just-finished matches to check for goal events — "game time" only. */
-const goalCandidates: GoalCandidate[] = [];
-
 for (const f of fdMatches) {
   const homeId = mapTeam(f.homeTeam);
   const awayId = mapTeam(f.awayTeam);
@@ -267,15 +246,6 @@ for (const f of fdMatches) {
           : "1H";
       liveKo.push({ stage: f.stage, homeId, awayId, homeScore: h, awayScore: a, minute, phase });
     }
-    goalCandidates.push({
-      matchId: pair ? pair.id : koKey(homeId, awayId),
-      homeId,
-      awayId,
-      homeName: f.homeTeam?.name ?? "",
-      awayName: f.awayTeam?.name ?? "",
-      dateISO: f.utcDate ?? new Date().toISOString(),
-      justFinished: false,
-    });
     continue;
   }
 
@@ -297,21 +267,6 @@ for (const f of fdMatches) {
     ? { home: rawFt.home - pens.home, away: rawFt.away - pens.away }
     : rawFt;
   if (ft?.home == null || ft?.away == null) continue;
-
-  const finishedMatchId = pair ? pair.id : koKey(homeId, awayId);
-  if (!alreadyFinished.has(finishedMatchId)) {
-    // Newly finished this run — one last check to catch a stoppage-time goal
-    // the live polling window might have just missed.
-    goalCandidates.push({
-      matchId: finishedMatchId,
-      homeId,
-      awayId,
-      homeName: f.homeTeam?.name ?? "",
-      awayName: f.awayTeam?.name ?? "",
-      dateISO: f.utcDate ?? new Date().toISOString(),
-      justFinished: true,
-    });
-  }
 
   if (pair) {
     live.results[pair.id] = pair.reversed
@@ -395,59 +350,14 @@ try {
   console.warn(`Scorers fetch failed: ${err}`);
 }
 
-/** Minimum gap between goal-events checks for the same still-live match. */
-const EVENTS_THROTTLE_MS = 8 * 60 * 1000;
-
-for (const c of goalCandidates) {
-  const last = live.lastEventsCheck[c.matchId];
-  const due =
-    c.justFinished || !last || Date.now() - new Date(last).getTime() > EVENTS_THROTTLE_MS;
-  if (!due) continue;
-
-  try {
-    const cache = live.eventLookup[c.matchId] ?? {};
-    const { goals: raw, cache: newCache } = await fetchLiveGoals(
-      c.homeName,
-      c.awayName,
-      c.dateISO,
-      cache
-    );
-    live.eventLookup[c.matchId] = newCache;
-    live.lastEventsCheck[c.matchId] = new Date().toISOString();
-
-    for (const g of raw) {
-      const teamId = namesMatch(g.teamName, c.homeName)
-        ? c.homeId
-        : namesMatch(g.teamName, c.awayName)
-        ? c.awayId
-        : undefined;
-      if (!teamId) continue;
-      const exists = live.goals.some(
-        (x) =>
-          x.matchId === c.matchId &&
-          x.team === teamId &&
-          x.scorer === g.scorer &&
-          x.minute === g.minute
-      );
-      if (!exists) {
-        live.goals.push({
-          matchId: c.matchId,
-          team: teamId,
-          scorer: g.scorer,
-          assist: g.assist,
-          minute: g.minute,
-          extra: g.extra,
-          type: g.type,
-        });
-      }
-    }
-    if (raw.length > 0) {
-      console.log(`Goal events: ${c.homeName} v ${c.awayName} — ${raw.length} found`);
-    }
-  } catch (err) {
-    console.warn(`Goal-events check failed for ${c.homeName} v ${c.awayName}: ${err}`);
-  }
-}
+/*
+ * Goal scorers are NOT fetched here. liveEvents.ts targets the World Cup
+ * (ESPN's `fifa.world` feed and API-Football league 1) and is kept only for
+ * the 2030 restore; running it during a Champions League match would look up
+ * the wrong competition. CL scorers come from scripts/fetch-goals.ts, which
+ * reads ESPN's `uefa.champions` scoreboard and writes the same `goals` array
+ * — it runs as its own (non-fatal) step right after this script.
+ */
 
 const after = JSON.stringify({
   results: live.results,

@@ -41,6 +41,10 @@ jobs:
           # Optional — goal-scorer lookups (scripts/liveEvents.ts) use this
           # when set and fall back to ESPN's unofficial API when it's not.
           API_FOOTBALL_KEY: ${{ secrets.API_FOOTBALL_KEY }}
+      # Goal scorers come from ESPN (no key) — football-data's free tier has
+      # no goal events. Non-fatal: never let a scorer lookup break results.
+      - run: npx tsx scripts/fetch-goals.ts || echo "goal fetch failed (non-fatal)"
+
       - name: Commit any data changes
         run: |
           if git diff --quiet; then

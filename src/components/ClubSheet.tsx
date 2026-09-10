@@ -5,7 +5,7 @@ import { Crest } from "./Crest";
 import { flagUrl } from "../lib/flags";
 import { closeClub, useClubSheet } from "../lib/clubSheet";
 import { leagueTable } from "../lib/clStandings";
-import { metaFor, resultFor, liveScoreFor, kickoffOf } from "../lib/clLive";
+import { metaFor, resultFor, liveScoreFor, kickoffOf, goalsFor, goalClock } from "../lib/clLive";
 import squadData from "../data/clSquads.json";
 
 const fmt = new Intl.DateTimeFormat(undefined, {
@@ -53,6 +53,10 @@ function FixtureLine({ f, me }: { f: ClFixture; me: string }) {
   const outcome =
     mine == null || theirs == null ? "" : mine > theirs ? "w" : mine < theirs ? "l" : "d";
 
+  // Who scored, in order — this club's goals highlighted, the opponent's
+  // dimmed, so the line reads as "our scorers" at a glance.
+  const goals = r ? goalsFor(f.id) : [];
+
   return (
     <li className="cs-fx">
       <span className={`cs-venue ${isHome ? "is-h" : "is-a"}`}>{isHome ? "H" : "A"}</span>
@@ -63,6 +67,15 @@ function FixtureLine({ f, me }: { f: ClFixture; me: string }) {
         </span>
       ) : (
         <span className="cs-when">{t ? fmt.format(new Date(t)) : "TBC"}</span>
+      )}
+      {goals.length > 0 && (
+        <ul className="cs-goals">
+          {goals.map((g, i) => (
+            <li key={`${g.scorer}-${g.minute}-${i}`} className={g.team === me ? "is-me" : "is-opp"}>
+              <span className="cs-gmin">{goalClock(g)}</span> {g.scorer}
+            </li>
+          ))}
+        </ul>
       )}
     </li>
   );
