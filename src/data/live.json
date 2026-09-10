@@ -632,7 +632,422 @@
   "liveKo": [],
   "liveScores": {},
   "attendance": {},
-  "goals": [],
+  "goals": [
+    {
+      "matchId": "cl-aek-las",
+      "team": "aek",
+      "scorer": "Razvan Marin",
+      "assist": null,
+      "minute": 21,
+      "extra": null,
+      "type": "REGULAR"
+    },
+    {
+      "matchId": "cl-bar-fey",
+      "team": "bar",
+      "scorer": "Raphinha",
+      "assist": null,
+      "minute": 3,
+      "extra": null,
+      "type": "REGULAR"
+    },
+    {
+      "matchId": "cl-bar-fey",
+      "team": "bar",
+      "scorer": "Karim Adeyemi",
+      "assist": null,
+      "minute": 22,
+      "extra": null,
+      "type": "REGULAR"
+    },
+    {
+      "matchId": "cl-bar-fey",
+      "team": "bar",
+      "scorer": "Raphinha",
+      "assist": null,
+      "minute": 57,
+      "extra": null,
+      "type": "REGULAR"
+    },
+    {
+      "matchId": "cl-bar-fey",
+      "team": "bar",
+      "scorer": "Lamine Yamal",
+      "assist": null,
+      "minute": 77,
+      "extra": null,
+      "type": "REGULAR"
+    },
+    {
+      "matchId": "cl-bar-fey",
+      "team": "fey",
+      "scorer": "Sem Steijn",
+      "assist": null,
+      "minute": 82,
+      "extra": null,
+      "type": "REGULAR"
+    },
+    {
+      "matchId": "cl-bar-fey",
+      "team": "bar",
+      "scorer": "Gabriel Jesus",
+      "assist": null,
+      "minute": 85,
+      "extra": null,
+      "type": "REGULAR"
+    },
+    {
+      "matchId": "cl-clb-avl",
+      "team": "avl",
+      "scorer": "John McGinn",
+      "assist": null,
+      "minute": 11,
+      "extra": null,
+      "type": "REGULAR"
+    },
+    {
+      "matchId": "cl-clb-avl",
+      "team": "clb",
+      "scorer": "Hugo Vetlesen",
+      "assist": null,
+      "minute": 19,
+      "extra": null,
+      "type": "REGULAR"
+    },
+    {
+      "matchId": "cl-clb-avl",
+      "team": "avl",
+      "scorer": "Emiliano Buendía",
+      "assist": null,
+      "minute": 22,
+      "extra": null,
+      "type": "REGULAR"
+    },
+    {
+      "matchId": "cl-clb-avl",
+      "team": "avl",
+      "scorer": "Nicolas Jackson",
+      "assist": null,
+      "minute": 43,
+      "extra": null,
+      "type": "REGULAR"
+    },
+    {
+      "matchId": "cl-clb-avl",
+      "team": "clb",
+      "scorer": "Nicolo Tresoldi",
+      "assist": null,
+      "minute": 61,
+      "extra": null,
+      "type": "PENALTY"
+    },
+    {
+      "matchId": "cl-dor-vil",
+      "team": "vil",
+      "scorer": "Renato Veiga",
+      "assist": null,
+      "minute": 53,
+      "extra": null,
+      "type": "OWN"
+    },
+    {
+      "matchId": "cl-dor-vil",
+      "team": "vil",
+      "scorer": "Santiago Mouriño",
+      "assist": null,
+      "minute": 66,
+      "extra": null,
+      "type": "REGULAR"
+    },
+    {
+      "matchId": "cl-dor-vil",
+      "team": "dor",
+      "scorer": "Serhou Guirassy",
+      "assist": null,
+      "minute": 80,
+      "extra": null,
+      "type": "REGULAR"
+    },
+    {
+      "matchId": "cl-dor-vil",
+      "team": "dor",
+      "scorer": "Serhou Guirassy",
+      "assist": null,
+      "minute": 85,
+      "extra": null,
+      "type": "PENALTY"
+    },
+    {
+      "matchId": "cl-dor-vil",
+      "team": "dor",
+      "scorer": "Serhou Guirassy",
+      "assist": null,
+      "minute": 90,
+      "extra": null,
+      "type": "OWN"
+    },
+    {
+      "matchId": "cl-lil-bet",
+      "team": "lil",
+      "scorer": "Ayase Ueda",
+      "assist": null,
+      "minute": 12,
+      "extra": null,
+      "type": "REGULAR"
+    },
+    {
+      "matchId": "cl-lil-bet",
+      "team": "bet",
+      "scorer": "Marc Bartra",
+      "assist": null,
+      "minute": 33,
+      "extra": null,
+      "type": "REGULAR"
+    },
+    {
+      "matchId": "cl-lil-bet",
+      "team": "lil",
+      "scorer": "Alexsandro",
+      "assist": null,
+      "minute": 36,
+      "extra": null,
+      "type": "REGULAR"
+    },
+    {
+      "matchId": "cl-lil-bet",
+      "team": "bet",
+      "scorer": "Marc Bartra",
+      "assist": null,
+      "minute": 49,
+      "extra": null,
+      "type": "REGULAR"
+    },
+    {
+      "matchId": "cl-lil-bet",
+      "team": "bet",
+      "scorer": "Troy Parrott",
+      "assist": null,
+      "minute": 53,
+      "extra": null,
+      "type": "REGULAR"
+    },
+    {
+      "matchId": "cl-liv-atm",
+      "team": "atm",
+      "scorer": "Marcos Llorente",
+      "assist": null,
+      "minute": 17,
+      "extra": null,
+      "type": "REGULAR"
+    },
+    {
+      "matchId": "cl-liv-atm",
+      "team": "liv",
+      "scorer": "Dominik Szoboszlai",
+      "assist": null,
+      "minute": 40,
+      "extra": null,
+      "type": "REGULAR"
+    },
+    {
+      "matchId": "cl-liv-atm",
+      "team": "liv",
+      "scorer": "Alexis Mac Allister",
+      "assist": null,
+      "minute": 50,
+      "extra": null,
+      "type": "REGULAR"
+    },
+    {
+      "matchId": "cl-nap-ars",
+      "team": "ars",
+      "scorer": "Martin Ødegaard",
+      "assist": null,
+      "minute": 75,
+      "extra": null,
+      "type": "REGULAR"
+    },
+    {
+      "matchId": "cl-por-mci",
+      "team": "mci",
+      "scorer": "Erling Haaland",
+      "assist": null,
+      "minute": 47,
+      "extra": null,
+      "type": "REGULAR"
+    },
+    {
+      "matchId": "cl-por-mci",
+      "team": "mci",
+      "scorer": "Erling Haaland",
+      "assist": null,
+      "minute": 90,
+      "extra": null,
+      "type": "REGULAR"
+    },
+    {
+      "matchId": "cl-psg-slb",
+      "team": "psg",
+      "scorer": "Ousmane Dembélé",
+      "assist": null,
+      "minute": 17,
+      "extra": null,
+      "type": "REGULAR"
+    },
+    {
+      "matchId": "cl-psg-slb",
+      "team": "psg",
+      "scorer": "Ousmane Dembélé",
+      "assist": null,
+      "minute": 23,
+      "extra": null,
+      "type": "REGULAR"
+    },
+    {
+      "matchId": "cl-psg-slb",
+      "team": "psg",
+      "scorer": "Ferran Torres",
+      "assist": null,
+      "minute": 31,
+      "extra": null,
+      "type": "REGULAR"
+    },
+    {
+      "matchId": "cl-psg-slb",
+      "team": "psg",
+      "scorer": "Ferran Torres",
+      "assist": null,
+      "minute": 47,
+      "extra": null,
+      "type": "REGULAR"
+    },
+    {
+      "matchId": "cl-psg-slb",
+      "team": "psg",
+      "scorer": "Ferran Torres",
+      "assist": null,
+      "minute": 57,
+      "extra": null,
+      "type": "REGULAR"
+    },
+    {
+      "matchId": "cl-psg-slb",
+      "team": "slb",
+      "scorer": "Suleiman Camara",
+      "assist": null,
+      "minute": 58,
+      "extra": null,
+      "type": "REGULAR"
+    },
+    {
+      "matchId": "cl-psg-slb",
+      "team": "psg",
+      "scorer": "Fabián Ruiz",
+      "assist": null,
+      "minute": 87,
+      "extra": null,
+      "type": "REGULAR"
+    },
+    {
+      "matchId": "cl-rma-int",
+      "team": "rma",
+      "scorer": "Kylian Mbappé",
+      "assist": null,
+      "minute": 14,
+      "extra": null,
+      "type": "REGULAR"
+    },
+    {
+      "matchId": "cl-rma-int",
+      "team": "rma",
+      "scorer": "Federico Valverde",
+      "assist": null,
+      "minute": 23,
+      "extra": null,
+      "type": "REGULAR"
+    },
+    {
+      "matchId": "cl-rma-int",
+      "team": "int",
+      "scorer": "Carlos Augusto",
+      "assist": null,
+      "minute": 77,
+      "extra": null,
+      "type": "REGULAR"
+    },
+    {
+      "matchId": "cl-spo-gal",
+      "team": "spo",
+      "scorer": "Gonçalo Inácio",
+      "assist": null,
+      "minute": 5,
+      "extra": null,
+      "type": "OWN"
+    },
+    {
+      "matchId": "cl-spo-gal",
+      "team": "spo",
+      "scorer": "Geny Catamo",
+      "assist": null,
+      "minute": 27,
+      "extra": null,
+      "type": "REGULAR"
+    },
+    {
+      "matchId": "cl-spo-gal",
+      "team": "spo",
+      "scorer": "Luis Suárez",
+      "assist": null,
+      "minute": 57,
+      "extra": null,
+      "type": "PENALTY"
+    },
+    {
+      "matchId": "cl-spo-gal",
+      "team": "spo",
+      "scorer": "Rodrigo Zalazar",
+      "assist": null,
+      "minute": 63,
+      "extra": null,
+      "type": "REGULAR"
+    },
+    {
+      "matchId": "cl-stu-vik",
+      "team": "stu",
+      "scorer": "Ermedin Demirovic",
+      "assist": null,
+      "minute": 20,
+      "extra": null,
+      "type": "REGULAR"
+    },
+    {
+      "matchId": "cl-stu-vik",
+      "team": "vik",
+      "scorer": "Zlatko Tripic",
+      "assist": null,
+      "minute": 22,
+      "extra": null,
+      "type": "REGULAR"
+    },
+    {
+      "matchId": "cl-stu-vik",
+      "team": "stu",
+      "scorer": "Ermedin Demirovic",
+      "assist": null,
+      "minute": 26,
+      "extra": null,
+      "type": "REGULAR"
+    },
+    {
+      "matchId": "cl-stu-vik",
+      "team": "stu",
+      "scorer": "Ermedin Demirovic",
+      "assist": null,
+      "minute": 32,
+      "extra": null,
+      "type": "REGULAR"
+    }
+  ],
   "lastEventsCheck": {
     "cl-clb-avl": "2026-09-08T21:27:26.021Z",
     "cl-aek-las": "2026-09-08T18:43:31.889Z",
