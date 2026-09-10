@@ -4900,11 +4900,12 @@ tr.stat-out .team-name { color: var(--chalk-dim); }
 .sc-open { border-color: rgba(43, 212, 121, 0.45); }
 .sc-sheet { grid-column: 1 / -1; margin-top: 8px; padding-top: 9px; border-top: 1px solid var(--line); }
 
-.gs { display: grid; grid-template-columns: 1fr auto 1fr; align-items: start; gap: 10px; }
+/* Auto columns, so a 6–0 gives its scorers the whole card instead of half. */
+.gs { display: grid; grid-template-columns: minmax(0, auto) 1px minmax(0, auto); justify-content: center; align-items: start; gap: 9px; }
 .gs-col { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 3px; min-width: 0; }
 .gs-l { text-align: right; }
 .gs-r { text-align: left; }
-.gs-col li { font-size: 12.5px; color: var(--chalk); display: flex; gap: 6px; align-items: baseline; }
+.gs-col li { font-size: 12px; color: var(--chalk); display: flex; gap: 5px; align-items: baseline; }
 .gs-l li { justify-content: flex-end; }
 .gs-r li { flex-direction: row-reverse; justify-content: flex-end; }
 .gs-who { font-weight: 600; min-width: 0; }
@@ -4917,8 +4918,10 @@ tr.stat-out .team-name { color: var(--chalk-dim); }
 .rs-round { margin-bottom: 18px; }
 .rs-list { list-style: none; margin: 10px 0 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 10px; }
 .rs-item { position: relative; padding: 12px 13px 11px; border-radius: var(--radius); border: 1px solid var(--line); background: var(--surface-card); }
-.rs-head { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 9px; margin-bottom: 9px; }
-.rs-side { display: flex; align-items: center; gap: 7px; justify-content: flex-end; min-width: 0; background: transparent; border: 0; cursor: pointer; padding: 0; }
+/* Content-sized sides rather than two equal halves: an even split truncated
+   "Real Madrid" while the "Inter" half sat half empty. */
+.rs-head { display: flex; align-items: center; justify-content: center; gap: 9px; margin-bottom: 9px; }
+.rs-side { display: flex; align-items: center; gap: 7px; justify-content: flex-end; min-width: 0; flex: 0 1 auto; background: transparent; border: 0; cursor: pointer; padding: 0; }
 .rs-away { justify-content: flex-start; }
 .rs-name { font-size: 13.5px; font-weight: 700; color: var(--chalk); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .rs-score { font-family: var(--font-mono); font-size: 17px; font-weight: 800; color: var(--floodlight); white-space: nowrap; }
