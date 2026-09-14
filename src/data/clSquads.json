@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-08T17:11:18.725Z",
+  "updatedAt": "2026-09-14T09:50:05.025Z",
   "squads": {
     "dor": {
       "crest": "https://crests.football-data.org/4.png",
@@ -223,7 +223,50 @@
       "venue": "Sinobo Stadium",
       "founded": 1892,
       "colors": "Red / White",
-      "players": []
+      "players": [
+        {
+          "name": "David Barčot",
+          "position": null,
+          "number": null,
+          "nationality": "Czech Republic",
+          "dateOfBirth": "2009-04-10"
+        },
+        {
+          "name": "Karel Belžík",
+          "position": null,
+          "number": null,
+          "nationality": "Czech Republic",
+          "dateOfBirth": "2007-10-16"
+        },
+        {
+          "name": "Emmanuel Ayaosi",
+          "position": null,
+          "number": null,
+          "nationality": "Nigeria",
+          "dateOfBirth": "2004-10-28"
+        },
+        {
+          "name": "Pavel Kačor",
+          "position": null,
+          "number": null,
+          "nationality": "Czech Republic",
+          "dateOfBirth": "2006-09-12"
+        },
+        {
+          "name": "Wiktor Nowak",
+          "position": null,
+          "number": null,
+          "nationality": "Poland",
+          "dateOfBirth": "2004-09-20"
+        },
+        {
+          "name": "Oskar Kubiak",
+          "position": null,
+          "number": null,
+          "nationality": "Poland",
+          "dateOfBirth": "2006-09-25"
+        }
+      ]
     },
     "sha": {
       "crest": "https://crests.football-data.org/1887.png",
@@ -287,7 +330,15 @@
       "venue": null,
       "founded": null,
       "colors": null,
-      "players": []
+      "players": [
+        {
+          "name": "Rauf Rüstəmli",
+          "position": null,
+          "number": null,
+          "nationality": "Azerbaijan",
+          "dateOfBirth": "2003-11-01"
+        }
+      ]
     }
   }
 }
