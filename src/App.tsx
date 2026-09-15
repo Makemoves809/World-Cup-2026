@@ -73,9 +73,9 @@ export function App() {
           <div className="footer-notes">
             <span className="footer-head">Data</span>
             <p>
-              Confirmed clubs and format per UEFA · the final field and fixtures
-              are set by the 27 August 2026 draw · flags from the flag-icons
-              project (MIT).
+              Clubs and format per UEFA · fixtures from the 27 August 2026
+              draw · results, table and goalscorers update automatically ·
+              flags from the flag-icons project (MIT).
             </p>
             <p>Not affiliated with UEFA. MIT licensed.</p>
           </div>

@@ -4,6 +4,7 @@ import { leagueTable, bandFor, seasonStarted, type Band } from "../lib/clStandin
 import { flagUrl } from "../lib/flags";
 import { openClub } from "../lib/clubSheet";
 import { Crest } from "../components/Crest";
+import { RoadToFinal } from "../components/RoadToFinal";
 
 const BAND_LABEL: Record<Band, string> = {
   go: "Straight to the Round of 16",
@@ -112,6 +113,8 @@ export function TableExplainer() {
         <strong>Pts</strong> points (3 for a win, 1 for a draw). Clubs level
         on points are split by goal difference, then goals scored.
       </p>
+
+      <RoadToFinal />
 
       <div className="learn-next">
         <button className="home-link" onClick={() => navigate("/fixtures")}>

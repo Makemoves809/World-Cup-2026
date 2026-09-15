@@ -31,6 +31,7 @@ export const HOW_IT_WORKS: LearnSection[] = [
     body: [
       "This is the one thing even long-time fans had to relearn. Until 2024 the 36 teams were split into small groups. Now there are no groups at all: all 36 clubs sit in one single combined table.",
       "Each club plays 8 matches against 8 different opponents — four at home, four away — and everyone is ranked together in that one table. More games, more variety, one league.",
+      "Points work exactly as they do in any league: 3 for a win, 1 for a draw, nothing for a defeat. Clubs level on points are separated by goal difference, then goals scored. Because nobody plays the same opponent twice — and most pairs of clubs never meet at all — the table is 36 clubs each judged on their own eight-game schedule, not a round-robin.",
     ],
   },
   {
@@ -38,6 +39,13 @@ export const HOW_IT_WORKS: LearnSection[] = [
     body: [
       "When the league phase ends (late January), your position in the 36-team table decides your fate:",
       "Finish 1st–8th and you go straight through to the Round of 16. Finish 9th–24th and you drop into a two-legged knockout play-off round to fight for the remaining last-16 spots. Finish 25th–36th and you're eliminated — out of Europe entirely (there's no longer a parachute into a lesser competition).",
+    ],
+  },
+  {
+    heading: "Nobody wins the league phase",
+    body: [
+      "Worth saying plainly, because the single table invites the assumption: finishing 1st wins you nothing. There's no trophy for topping the league phase — its only job is to sort the 36 clubs into those three fates. The champion of Europe is decided entirely in the knockout rounds that follow.",
+      "Finishing high still matters, though, in two concrete ways. The top eight skip the play-off round altogether — two fewer matches, and no chance of going out in February. And the higher you finish, the better you're seeded in the knockout draw, which also means playing the second leg of each two-legged tie at home: you get the decisive half in front of your own crowd.",
     ],
   },
   {

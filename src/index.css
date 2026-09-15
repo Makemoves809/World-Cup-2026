@@ -4949,3 +4949,46 @@ tr.stat-out .team-name { color: var(--chalk-dim); }
   .site-nav { flex-wrap: wrap; margin-right: 0; }
   .nav-link { font-size: 13px; padding: 6px 10px; }
 }
+
+/* ---- "So who actually wins it?" — table → knockouts → trophy ---- */
+.rtf { margin-top: 34px; padding-top: 26px; border-top: 1px solid var(--line); }
+.rtf-head { margin-bottom: 16px; }
+.rtf-head h3 { font-family: var(--font-display); font-size: var(--fs-xl); text-transform: uppercase; letter-spacing: 0.02em; margin: 0 0 8px; color: var(--chalk); }
+
+/* The three bands are one set of three — auto-fit dropped to 2+1 at middling
+   widths, which read as a hierarchy that isn't there. */
+.rtf-bands { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: 1fr; gap: 10px; }
+@media (min-width: 720px) { .rtf-bands { grid-template-columns: repeat(3, 1fr); } }
+.rtf-band { position: relative; padding: 13px 14px 13px 17px; border-radius: var(--radius); border: 1px solid var(--line); background: var(--surface-card); display: flex; flex-direction: column; gap: 4px; }
+/* Same colour language as the table rows above, so the bands read as the
+   same three groups rather than a new set of categories. */
+.rtf-band::before { content: ""; position: absolute; left: 0; top: 10px; bottom: 10px; width: 3px; border-radius: 0 3px 3px 0; }
+.rtf-go::before { background: var(--grass); }
+.rtf-playoff::before { background: var(--floodlight); }
+.rtf-out::before { background: var(--vermilion); }
+.rtf-range { font-family: var(--font-mono); font-size: var(--fs-2xs); letter-spacing: 0.12em; text-transform: uppercase; }
+.rtf-go .rtf-range { color: var(--grass); }
+.rtf-playoff .rtf-range { color: var(--floodlight); }
+.rtf-out .rtf-range { color: var(--vermilion-soft); }
+.rtf-dest { font-size: var(--fs-md); font-weight: 700; color: var(--chalk); line-height: 1.25; }
+.rtf-note { font-size: 12.5px; color: var(--chalk-dim); line-height: 1.45; }
+
+.rtf-bridge { margin: 18px 0 12px; font-size: 14px; color: var(--chalk-dim); max-width: 62ch; }
+
+.rtf-chain { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; align-items: stretch; gap: 8px; }
+.rtf-step { flex: 1 1 130px; min-width: 0; position: relative; padding: 11px 12px; border-radius: var(--radius); border: 1px solid var(--line); background: var(--surface-card); display: flex; flex-direction: column; gap: 3px; }
+/* Chevron between steps: it's a sequence, not a menu of options. */
+.rtf-step + .rtf-step::before { content: "›"; position: absolute; left: -8px; top: 50%; transform: translateY(-50%); font-size: 15px; line-height: 1; color: var(--chalk-faint); }
+.rtf-step-when { font-family: var(--font-mono); font-size: var(--fs-2xs); letter-spacing: 0.1em; text-transform: uppercase; color: var(--chalk-faint); }
+.rtf-step-name { font-size: 13px; font-weight: 700; color: var(--chalk); line-height: 1.25; }
+.rtf-step-legs { font-family: var(--font-mono); font-size: var(--fs-2xs); color: var(--chalk-faint); }
+.rtf-cup { border-color: rgba(255, 194, 60, 0.4); background: linear-gradient(180deg, rgba(255, 194, 60, 0.12), rgba(13, 36, 25, 0.6)); }
+.rtf-cup .rtf-step-name, .rtf-cup .rtf-step-when { color: var(--floodlight); }
+.rtf-foot { margin-top: 16px; max-width: 70ch; }
+
+@media (max-width: 620px) {
+  .rtf-chain { flex-direction: column; }
+  .rtf-step { flex: 1 1 auto; }
+  /* Stacked, the chevron belongs above each step rather than beside it. */
+  .rtf-step + .rtf-step::before { content: "⌄"; left: 50%; top: -9px; transform: translateX(-50%); }
+}
