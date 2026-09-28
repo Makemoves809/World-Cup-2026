@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-14T09:50:05.025Z",
+  "updatedAt": "2026-09-28T10:52:05.047Z",
   "squads": {
     "dor": {
       "crest": "https://crests.football-data.org/4.png",
@@ -225,6 +225,13 @@
       "colors": "Red / White",
       "players": [
         {
+          "name": "Wiktor Nowak",
+          "position": "Midfield",
+          "number": null,
+          "nationality": "Poland",
+          "dateOfBirth": "2004-09-20"
+        },
+        {
           "name": "David Barčot",
           "position": null,
           "number": null,
@@ -251,13 +258,6 @@
           "number": null,
           "nationality": "Czech Republic",
           "dateOfBirth": "2006-09-12"
-        },
-        {
-          "name": "Wiktor Nowak",
-          "position": null,
-          "number": null,
-          "nationality": "Poland",
-          "dateOfBirth": "2004-09-20"
         },
         {
           "name": "Oskar Kubiak",
