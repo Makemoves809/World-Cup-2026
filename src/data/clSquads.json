@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-28T10:52:05.047Z",
+  "updatedAt": "2026-10-12T11:55:27.364Z",
   "squads": {
     "dor": {
       "crest": "https://crests.football-data.org/4.png",
@@ -27,7 +27,7 @@
     },
     "ars": {
       "crest": "https://crests.football-data.org/57.png",
-      "coach": null,
+      "coach": "Mikel Arteta",
       "venue": "Emirates Stadium",
       "founded": 1886,
       "colors": "Red / White",
@@ -35,7 +35,7 @@
     },
     "avl": {
       "crest": "https://crests.football-data.org/58.png",
-      "coach": null,
+      "coach": "Unai Emery",
       "venue": "Villa Park",
       "founded": 1872,
       "colors": "Claret / Sky Blue",
@@ -43,7 +43,7 @@
     },
     "liv": {
       "crest": "https://crests.football-data.org/64.png",
-      "coach": null,
+      "coach": "Andoni Iraola",
       "venue": "Anfield",
       "founded": 1892,
       "colors": "Red / White",
@@ -51,7 +51,7 @@
     },
     "mci": {
       "crest": "https://crests.football-data.org/65.png",
-      "coach": null,
+      "coach": "Enzo Maresca",
       "venue": "Etihad Stadium",
       "founded": 1880,
       "colors": "Sky Blue / White",
@@ -59,7 +59,7 @@
     },
     "mun": {
       "crest": "https://crests.football-data.org/66.png",
-      "coach": null,
+      "coach": "Michael Carrick",
       "venue": "Old Trafford",
       "founded": 1878,
       "colors": "Red / White",
