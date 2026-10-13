@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-10T22:39:42.537Z",
+  "updatedAt": "2026-10-13T18:25:11.926Z",
   "results": {
     "cl-aek-las": [
       1,
@@ -654,7 +654,18 @@
   },
   "koResults": [],
   "liveKo": [],
-  "liveScores": {},
+  "liveScores": {
+    "cl-len-spo": {
+      "home": 0,
+      "away": 1,
+      "minute": null
+    },
+    "cl-sab-sla": {
+      "home": 1,
+      "away": 0,
+      "minute": null
+    }
+  },
   "attendance": {},
   "goals": [
     {
@@ -919,6 +930,24 @@
       "type": "REGULAR"
     },
     {
+      "matchId": "cl-len-spo",
+      "team": "spo",
+      "scorer": "Luis Suárez",
+      "assist": null,
+      "minute": 22,
+      "extra": null,
+      "type": "REGULAR"
+    },
+    {
+      "matchId": "cl-len-spo",
+      "team": "spo",
+      "scorer": "Issa Doumbia",
+      "assist": null,
+      "minute": 74,
+      "extra": null,
+      "type": "REGULAR"
+    },
+    {
       "matchId": "cl-lil-bet",
       "team": "lil",
       "scorer": "Ayase Ueda",
@@ -1162,6 +1191,15 @@
       "type": "REGULAR"
     },
     {
+      "matchId": "cl-sab-sla",
+      "team": "sab",
+      "scorer": "Kaheem Parris",
+      "assist": null,
+      "minute": 49,
+      "extra": null,
+      "type": "REGULAR"
+    },
+    {
       "matchId": "cl-sla-len",
       "team": "sla",
       "scorer": "Danijel Sturm",
@@ -1309,8 +1347,21 @@
   },
   "standings": [
     {
-      "clubId": "psg",
+      "clubId": "spo",
       "position": 1,
+      "played": 2,
+      "won": 2,
+      "drawn": 0,
+      "lost": 0,
+      "gf": 4,
+      "ga": 1,
+      "gd": 3,
+      "points": 6,
+      "form": null
+    },
+    {
+      "clubId": "psg",
+      "position": 2,
       "played": 1,
       "won": 1,
       "drawn": 0,
@@ -1323,7 +1374,7 @@
     },
     {
       "clubId": "bay",
-      "position": 2,
+      "position": 3,
       "played": 1,
       "won": 1,
       "drawn": 0,
@@ -1336,7 +1387,7 @@
     },
     {
       "clubId": "bar",
-      "position": 3,
+      "position": 4,
       "played": 1,
       "won": 1,
       "drawn": 0,
@@ -1349,7 +1400,7 @@
     },
     {
       "clubId": "mun",
-      "position": 4,
+      "position": 5,
       "played": 1,
       "won": 1,
       "drawn": 0,
@@ -1362,7 +1413,7 @@
     },
     {
       "clubId": "com",
-      "position": 5,
+      "position": 6,
       "played": 1,
       "won": 1,
       "drawn": 0,
@@ -1374,21 +1425,8 @@
       "form": null
     },
     {
-      "clubId": "spo",
-      "position": 6,
-      "played": 1,
-      "won": 1,
-      "drawn": 0,
-      "lost": 0,
-      "gf": 3,
-      "ga": 1,
-      "gd": 2,
-      "points": 3,
-      "form": null
-    },
-    {
       "clubId": "stu",
-      "position": 6,
+      "position": 7,
       "played": 1,
       "won": 1,
       "drawn": 0,
@@ -1426,19 +1464,6 @@
       "form": null
     },
     {
-      "clubId": "len",
-      "position": 9,
-      "played": 1,
-      "won": 1,
-      "drawn": 0,
-      "lost": 0,
-      "gf": 3,
-      "ga": 2,
-      "gd": 1,
-      "points": 3,
-      "form": null
-    },
-    {
       "clubId": "bet",
       "position": 9,
       "played": 1,
@@ -1453,7 +1478,7 @@
     },
     {
       "clubId": "dor",
-      "position": 12,
+      "position": 11,
       "played": 1,
       "won": 1,
       "drawn": 0,
@@ -1466,7 +1491,7 @@
     },
     {
       "clubId": "liv",
-      "position": 13,
+      "position": 12,
       "played": 1,
       "won": 1,
       "drawn": 0,
@@ -1479,7 +1504,7 @@
     },
     {
       "clubId": "rma",
-      "position": 13,
+      "position": 12,
       "played": 1,
       "won": 1,
       "drawn": 0,
@@ -1492,7 +1517,7 @@
     },
     {
       "clubId": "ars",
-      "position": 15,
+      "position": 14,
       "played": 1,
       "won": 1,
       "drawn": 0,
@@ -1505,7 +1530,7 @@
     },
     {
       "clubId": "aek",
-      "position": 16,
+      "position": 15,
       "played": 1,
       "won": 1,
       "drawn": 0,
@@ -1517,8 +1542,34 @@
       "form": null
     },
     {
-      "clubId": "rom",
+      "clubId": "len",
+      "position": 16,
+      "played": 2,
+      "won": 1,
+      "drawn": 0,
+      "lost": 1,
+      "gf": 3,
+      "ga": 3,
+      "gd": 0,
+      "points": 3,
+      "form": null
+    },
+    {
+      "clubId": "sab",
       "position": 17,
+      "played": 2,
+      "won": 1,
+      "drawn": 0,
+      "lost": 1,
+      "gf": 1,
+      "ga": 4,
+      "gd": -3,
+      "points": 3,
+      "form": null
+    },
+    {
+      "clubId": "rom",
+      "position": 18,
       "played": 1,
       "won": 0,
       "drawn": 1,
@@ -1531,7 +1582,7 @@
     },
     {
       "clubId": "sha",
-      "position": 17,
+      "position": 18,
       "played": 1,
       "won": 0,
       "drawn": 1,
@@ -1544,7 +1595,7 @@
     },
     {
       "clubId": "fen",
-      "position": 19,
+      "position": 20,
       "played": 1,
       "won": 0,
       "drawn": 1,
@@ -1557,7 +1608,7 @@
     },
     {
       "clubId": "psv",
-      "position": 19,
+      "position": 20,
       "played": 1,
       "won": 0,
       "drawn": 1,
@@ -1570,7 +1621,7 @@
     },
     {
       "clubId": "vil",
-      "position": 21,
+      "position": 22,
       "played": 1,
       "won": 0,
       "drawn": 0,
@@ -1583,7 +1634,7 @@
     },
     {
       "clubId": "clb",
-      "position": 22,
+      "position": 23,
       "played": 1,
       "won": 0,
       "drawn": 0,
@@ -1596,20 +1647,7 @@
     },
     {
       "clubId": "lil",
-      "position": 22,
-      "played": 1,
-      "won": 0,
-      "drawn": 0,
-      "lost": 1,
-      "gf": 2,
-      "ga": 3,
-      "gd": -1,
-      "points": 0,
-      "form": null
-    },
-    {
-      "clubId": "sla",
-      "position": 22,
+      "position": 23,
       "played": 1,
       "won": 0,
       "drawn": 0,
@@ -1673,8 +1711,21 @@
       "form": null
     },
     {
-      "clubId": "gal",
+      "clubId": "sla",
       "position": 29,
+      "played": 2,
+      "won": 0,
+      "drawn": 0,
+      "lost": 2,
+      "gf": 2,
+      "ga": 4,
+      "gd": -2,
+      "points": 0,
+      "form": null
+    },
+    {
+      "clubId": "gal",
+      "position": 30,
       "played": 1,
       "won": 0,
       "drawn": 0,
@@ -1687,7 +1738,7 @@
     },
     {
       "clubId": "vik",
-      "position": 29,
+      "position": 30,
       "played": 1,
       "won": 0,
       "drawn": 0,
@@ -1700,7 +1751,7 @@
     },
     {
       "clubId": "por",
-      "position": 31,
+      "position": 32,
       "played": 1,
       "won": 0,
       "drawn": 0,
@@ -1713,7 +1764,7 @@
     },
     {
       "clubId": "rbl",
-      "position": 32,
+      "position": 33,
       "played": 1,
       "won": 0,
       "drawn": 0,
@@ -1726,26 +1777,13 @@
     },
     {
       "clubId": "fey",
-      "position": 33,
+      "position": 34,
       "played": 1,
       "won": 0,
       "drawn": 0,
       "lost": 1,
       "gf": 1,
       "ga": 5,
-      "gd": -4,
-      "points": 0,
-      "form": null
-    },
-    {
-      "clubId": "sab",
-      "position": 34,
-      "played": 1,
-      "won": 0,
-      "drawn": 0,
-      "lost": 1,
-      "gf": 0,
-      "ga": 4,
       "gd": -4,
       "points": 0,
       "form": null
@@ -1839,6 +1877,15 @@
       "assists": 2,
       "penalties": null,
       "nationality": "France",
+      "position": "Offence"
+    },
+    {
+      "name": "Luis Suárez",
+      "clubId": "spo",
+      "goals": 2,
+      "assists": null,
+      "penalties": 1,
+      "nationality": "Colombia",
       "position": "Offence"
     },
     {
@@ -2082,15 +2129,6 @@
       "assists": null,
       "penalties": null,
       "nationality": "Mozambique",
-      "position": "Offence"
-    },
-    {
-      "name": "Luis Suárez",
-      "clubId": "spo",
-      "goals": 1,
-      "assists": null,
-      "penalties": 1,
-      "nationality": "Colombia",
       "position": "Offence"
     },
     {
