@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-14T20:51:48.312Z",
+  "updatedAt": "2026-10-14T23:35:00.778Z",
   "results": {
     "cl-aek-las": [
       1,
@@ -116,6 +116,34 @@
     "cl-fey-com": [
       3,
       2
+    ],
+    "cl-rom-rma": [
+      3,
+      4
+    ],
+    "cl-mci-psg": [
+      2,
+      4
+    ],
+    "cl-bod-dor": [
+      1,
+      0
+    ],
+    "cl-avl-fen": [
+      6,
+      0
+    ],
+    "cl-bet-por": [
+      3,
+      2
+    ],
+    "cl-sha-aek": [
+      3,
+      1
+    ],
+    "cl-slb-stu": [
+      0,
+      3
     ]
   },
   "fixtures": {
@@ -698,43 +726,7 @@
   },
   "koResults": [],
   "liveKo": [],
-  "liveScores": {
-    "cl-rom-rma": {
-      "home": 3,
-      "away": 3,
-      "minute": null
-    },
-    "cl-mci-psg": {
-      "home": 2,
-      "away": 4,
-      "minute": null
-    },
-    "cl-bod-dor": {
-      "home": 1,
-      "away": 0,
-      "minute": null
-    },
-    "cl-avl-fen": {
-      "home": 5,
-      "away": 0,
-      "minute": null
-    },
-    "cl-bet-por": {
-      "home": 3,
-      "away": 2,
-      "minute": null
-    },
-    "cl-sha-aek": {
-      "home": 3,
-      "away": 1,
-      "minute": null
-    },
-    "cl-slb-stu": {
-      "home": 0,
-      "away": 2,
-      "minute": null
-    }
-  },
+  "liveScores": {},
   "attendance": {},
   "goals": [
     {
@@ -1811,7 +1803,7 @@
     {
       "matchId": "cl-sha-aek",
       "team": "sha",
-      "scorer": "Vinicius Augusto",
+      "scorer": "Vinícius Tobias",
       "assist": null,
       "minute": 80,
       "extra": null,
@@ -2182,7 +2174,7 @@
       "form": null
     },
     {
-      "clubId": "bet",
+      "clubId": "rma",
       "position": 8,
       "played": 2,
       "won": 2,
@@ -2195,8 +2187,21 @@
       "form": null
     },
     {
-      "clubId": "bay",
+      "clubId": "bet",
       "position": 9,
+      "played": 2,
+      "won": 2,
+      "drawn": 0,
+      "lost": 0,
+      "gf": 6,
+      "ga": 4,
+      "gd": 2,
+      "points": 6,
+      "form": null
+    },
+    {
+      "clubId": "bay",
+      "position": 10,
       "played": 2,
       "won": 1,
       "drawn": 1,
@@ -2209,7 +2214,7 @@
     },
     {
       "clubId": "sha",
-      "position": 10,
+      "position": 11,
       "played": 2,
       "won": 1,
       "drawn": 1,
@@ -2217,19 +2222,6 @@
       "gf": 4,
       "ga": 2,
       "gd": 2,
-      "points": 4,
-      "form": null
-    },
-    {
-      "clubId": "rma",
-      "position": 11,
-      "played": 2,
-      "won": 1,
-      "drawn": 1,
-      "lost": 0,
-      "gf": 5,
-      "ga": 4,
-      "gd": 1,
       "points": 4,
       "form": null
     },
@@ -2407,12 +2399,12 @@
       "position": 25,
       "played": 2,
       "won": 0,
-      "drawn": 2,
-      "lost": 0,
+      "drawn": 1,
+      "lost": 1,
       "gf": 4,
-      "ga": 4,
-      "gd": 0,
-      "points": 2,
+      "ga": 5,
+      "gd": -1,
+      "points": 1,
       "form": null
     },
     {
