@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-13T22:59:10.720Z",
+  "updatedAt": "2026-10-14T17:26:17.841Z",
   "results": {
     "cl-aek-las": [
       1,
@@ -690,7 +690,18 @@
   },
   "koResults": [],
   "liveKo": [],
-  "liveScores": {},
+  "liveScores": {
+    "cl-las-liv": {
+      "home": 0,
+      "away": 2,
+      "minute": null
+    },
+    "cl-fey-com": {
+      "home": 1,
+      "away": 1,
+      "minute": null
+    }
+  },
   "attendance": {},
   "goals": [
     {
@@ -1000,6 +1011,24 @@
       "type": "REGULAR"
     },
     {
+      "matchId": "cl-fey-com",
+      "team": "com",
+      "scorer": "Assane Diao",
+      "assist": null,
+      "minute": 18,
+      "extra": null,
+      "type": "REGULAR"
+    },
+    {
+      "matchId": "cl-fey-com",
+      "team": "fey",
+      "scorer": "Gjivai Zechiël",
+      "assist": null,
+      "minute": 20,
+      "extra": null,
+      "type": "REGULAR"
+    },
+    {
       "matchId": "cl-gal-bar",
       "team": "gal",
       "scorer": "Alexey Batrakov",
@@ -1104,6 +1133,33 @@
       "scorer": "Ange-Yoan Bonny",
       "assist": null,
       "minute": 90,
+      "extra": null,
+      "type": "REGULAR"
+    },
+    {
+      "matchId": "cl-las-liv",
+      "team": "liv",
+      "scorer": "Ronald Araújo",
+      "assist": null,
+      "minute": 22,
+      "extra": null,
+      "type": "REGULAR"
+    },
+    {
+      "matchId": "cl-las-liv",
+      "team": "liv",
+      "scorer": "Bradley Barcola",
+      "assist": null,
+      "minute": 24,
+      "extra": null,
+      "type": "REGULAR"
+    },
+    {
+      "matchId": "cl-las-liv",
+      "team": "liv",
+      "scorer": "Bradley Barcola",
+      "assist": null,
+      "minute": 37,
       "extra": null,
       "type": "REGULAR"
     },
@@ -1672,8 +1728,21 @@
       "form": null
     },
     {
-      "clubId": "bay",
+      "clubId": "liv",
       "position": 4,
+      "played": 2,
+      "won": 2,
+      "drawn": 0,
+      "lost": 0,
+      "gf": 4,
+      "ga": 1,
+      "gd": 3,
+      "points": 6,
+      "form": null
+    },
+    {
+      "clubId": "bay",
+      "position": 5,
       "played": 2,
       "won": 1,
       "drawn": 1,
@@ -1685,8 +1754,21 @@
       "form": null
     },
     {
+      "clubId": "com",
+      "position": 6,
+      "played": 2,
+      "won": 1,
+      "drawn": 1,
+      "lost": 0,
+      "gf": 5,
+      "ga": 2,
+      "gd": 3,
+      "points": 4,
+      "form": null
+    },
+    {
       "clubId": "psg",
-      "position": 5,
+      "position": 7,
       "played": 1,
       "won": 1,
       "drawn": 0,
@@ -1698,21 +1780,8 @@
       "form": null
     },
     {
-      "clubId": "com",
-      "position": 6,
-      "played": 1,
-      "won": 1,
-      "drawn": 0,
-      "lost": 0,
-      "gf": 4,
-      "ga": 1,
-      "gd": 3,
-      "points": 3,
-      "form": null
-    },
-    {
       "clubId": "mun",
-      "position": 7,
+      "position": 8,
       "played": 2,
       "won": 1,
       "drawn": 0,
@@ -1725,7 +1794,7 @@
     },
     {
       "clubId": "stu",
-      "position": 8,
+      "position": 9,
       "played": 1,
       "won": 1,
       "drawn": 0,
@@ -1738,7 +1807,7 @@
     },
     {
       "clubId": "mci",
-      "position": 9,
+      "position": 10,
       "played": 1,
       "won": 1,
       "drawn": 0,
@@ -1751,7 +1820,7 @@
     },
     {
       "clubId": "vil",
-      "position": 10,
+      "position": 11,
       "played": 2,
       "won": 1,
       "drawn": 0,
@@ -1764,7 +1833,7 @@
     },
     {
       "clubId": "avl",
-      "position": 11,
+      "position": 12,
       "played": 1,
       "won": 1,
       "drawn": 0,
@@ -1777,7 +1846,7 @@
     },
     {
       "clubId": "bet",
-      "position": 11,
+      "position": 12,
       "played": 1,
       "won": 1,
       "drawn": 0,
@@ -1790,7 +1859,7 @@
     },
     {
       "clubId": "atm",
-      "position": 13,
+      "position": 14,
       "played": 2,
       "won": 1,
       "drawn": 0,
@@ -1803,7 +1872,7 @@
     },
     {
       "clubId": "dor",
-      "position": 14,
+      "position": 15,
       "played": 1,
       "won": 1,
       "drawn": 0,
@@ -1815,21 +1884,8 @@
       "form": null
     },
     {
-      "clubId": "liv",
-      "position": 15,
-      "played": 1,
-      "won": 1,
-      "drawn": 0,
-      "lost": 0,
-      "gf": 2,
-      "ga": 1,
-      "gd": 1,
-      "points": 3,
-      "form": null
-    },
-    {
       "clubId": "rma",
-      "position": 15,
+      "position": 16,
       "played": 1,
       "won": 1,
       "drawn": 0,
@@ -1971,16 +2027,16 @@
       "form": null
     },
     {
-      "clubId": "las",
+      "clubId": "fey",
       "position": 27,
-      "played": 1,
+      "played": 2,
       "won": 0,
-      "drawn": 0,
+      "drawn": 1,
       "lost": 1,
-      "gf": 0,
-      "ga": 1,
-      "gd": -1,
-      "points": 0,
+      "gf": 2,
+      "ga": 6,
+      "gd": -4,
+      "points": 1,
       "form": null
     },
     {
@@ -2036,27 +2092,27 @@
       "form": null
     },
     {
-      "clubId": "lil",
+      "clubId": "las",
       "position": 32,
+      "played": 2,
+      "won": 0,
+      "drawn": 0,
+      "lost": 2,
+      "gf": 0,
+      "ga": 3,
+      "gd": -3,
+      "points": 0,
+      "form": null
+    },
+    {
+      "clubId": "lil",
+      "position": 33,
       "played": 2,
       "won": 0,
       "drawn": 0,
       "lost": 2,
       "gf": 2,
       "ga": 6,
-      "gd": -4,
-      "points": 0,
-      "form": null
-    },
-    {
-      "clubId": "fey",
-      "position": 33,
-      "played": 1,
-      "won": 0,
-      "drawn": 0,
-      "lost": 1,
-      "gf": 1,
-      "ga": 5,
       "gd": -4,
       "points": 0,
       "form": null
@@ -2220,6 +2276,15 @@
       "position": "Offence"
     },
     {
+      "name": "Assane Diao",
+      "clubId": "com",
+      "goals": 2,
+      "assists": null,
+      "penalties": null,
+      "nationality": "Senegal",
+      "position": "Offence"
+    },
+    {
       "name": "Danijel Sturm",
       "clubId": "sla",
       "goals": 2,
@@ -2235,6 +2300,15 @@
       "assists": 1,
       "penalties": null,
       "nationality": "Argentina",
+      "position": "Offence"
+    },
+    {
+      "name": "Bradley Barcola",
+      "clubId": "liv",
+      "goals": 2,
+      "assists": null,
+      "penalties": null,
+      "nationality": "France",
       "position": "Offence"
     },
     {
@@ -2533,24 +2607,6 @@
       "penalties": null,
       "nationality": "Argentina",
       "position": "Defence"
-    },
-    {
-      "name": "Martin Baturina",
-      "clubId": "com",
-      "goals": 1,
-      "assists": 1,
-      "penalties": null,
-      "nationality": "Croatia",
-      "position": "Midfield"
-    },
-    {
-      "name": "Anastasios Douvikas",
-      "clubId": "com",
-      "goals": 1,
-      "assists": null,
-      "penalties": null,
-      "nationality": "Greece",
-      "position": "Offence"
     }
   ]
 }
