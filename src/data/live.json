@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-14T23:35:00.778Z",
+  "updatedAt": "2026-10-20T18:13:42.585Z",
   "results": {
     "cl-aek-las": [
       1,
@@ -726,7 +726,18 @@
   },
   "koResults": [],
   "liveKo": [],
-  "liveScores": {},
+  "liveScores": {
+    "cl-sab-dor": {
+      "home": 1,
+      "away": 2,
+      "minute": null
+    },
+    "cl-fen-sla": {
+      "home": 2,
+      "away": 1,
+      "minute": null
+    }
+  },
   "attendance": {},
   "goals": [
     {
@@ -1140,6 +1151,33 @@
       "scorer": "Archie Brown",
       "assist": null,
       "minute": 48,
+      "extra": null,
+      "type": "REGULAR"
+    },
+    {
+      "matchId": "cl-fen-sla",
+      "team": "fen",
+      "scorer": "Oguz Aydin",
+      "assist": null,
+      "minute": 4,
+      "extra": null,
+      "type": "REGULAR"
+    },
+    {
+      "matchId": "cl-fen-sla",
+      "team": "fen",
+      "scorer": "Mason Greenwood",
+      "assist": null,
+      "minute": 11,
+      "extra": null,
+      "type": "REGULAR"
+    },
+    {
+      "matchId": "cl-fen-sla",
+      "team": "sla",
+      "scorer": "Lukás Provod",
+      "assist": null,
+      "minute": 15,
       "extra": null,
       "type": "REGULAR"
     },
@@ -1765,6 +1803,33 @@
       "type": "REGULAR"
     },
     {
+      "matchId": "cl-sab-dor",
+      "team": "dor",
+      "scorer": "Serhou Guirassy",
+      "assist": null,
+      "minute": 10,
+      "extra": null,
+      "type": "REGULAR"
+    },
+    {
+      "matchId": "cl-sab-dor",
+      "team": "sab",
+      "scorer": "Aden Mccarthy",
+      "assist": null,
+      "minute": 39,
+      "extra": null,
+      "type": "REGULAR"
+    },
+    {
+      "matchId": "cl-sab-dor",
+      "team": "dor",
+      "scorer": "Serhou Guirassy",
+      "assist": null,
+      "minute": 53,
+      "extra": null,
+      "type": "REGULAR"
+    },
+    {
       "matchId": "cl-sab-sla",
       "team": "sab",
       "scorer": "Kaheem Parris",
@@ -2200,8 +2265,21 @@
       "form": null
     },
     {
-      "clubId": "bay",
+      "clubId": "dor",
       "position": 10,
+      "played": 3,
+      "won": 2,
+      "drawn": 0,
+      "lost": 1,
+      "gf": 5,
+      "ga": 4,
+      "gd": 1,
+      "points": 6,
+      "form": null
+    },
+    {
+      "clubId": "bay",
+      "position": 11,
       "played": 2,
       "won": 1,
       "drawn": 1,
@@ -2214,7 +2292,7 @@
     },
     {
       "clubId": "sha",
-      "position": 11,
+      "position": 12,
       "played": 2,
       "won": 1,
       "drawn": 1,
@@ -2226,8 +2304,21 @@
       "form": null
     },
     {
+      "clubId": "fen",
+      "position": 13,
+      "played": 3,
+      "won": 1,
+      "drawn": 1,
+      "lost": 1,
+      "gf": 3,
+      "ga": 8,
+      "gd": -5,
+      "points": 4,
+      "form": null
+    },
+    {
       "clubId": "com",
-      "position": 12,
+      "position": 14,
       "played": 2,
       "won": 1,
       "drawn": 0,
@@ -2240,7 +2331,7 @@
     },
     {
       "clubId": "mun",
-      "position": 13,
+      "position": 15,
       "played": 2,
       "won": 1,
       "drawn": 0,
@@ -2253,7 +2344,7 @@
     },
     {
       "clubId": "vil",
-      "position": 14,
+      "position": 16,
       "played": 2,
       "won": 1,
       "drawn": 0,
@@ -2266,7 +2357,7 @@
     },
     {
       "clubId": "atm",
-      "position": 15,
+      "position": 17,
       "played": 2,
       "won": 1,
       "drawn": 0,
@@ -2279,7 +2370,7 @@
     },
     {
       "clubId": "clb",
-      "position": 16,
+      "position": 18,
       "played": 2,
       "won": 1,
       "drawn": 0,
@@ -2292,7 +2383,7 @@
     },
     {
       "clubId": "mci",
-      "position": 17,
+      "position": 19,
       "played": 2,
       "won": 1,
       "drawn": 0,
@@ -2304,21 +2395,8 @@
       "form": null
     },
     {
-      "clubId": "dor",
-      "position": 18,
-      "played": 2,
-      "won": 1,
-      "drawn": 0,
-      "lost": 1,
-      "gf": 3,
-      "ga": 3,
-      "gd": 0,
-      "points": 3,
-      "form": null
-    },
-    {
       "clubId": "len",
-      "position": 19,
+      "position": 20,
       "played": 2,
       "won": 1,
       "drawn": 0,
@@ -2331,7 +2409,7 @@
     },
     {
       "clubId": "aek",
-      "position": 20,
+      "position": 21,
       "played": 2,
       "won": 1,
       "drawn": 0,
@@ -2344,19 +2422,6 @@
     },
     {
       "clubId": "rbl",
-      "position": 21,
-      "played": 2,
-      "won": 1,
-      "drawn": 0,
-      "lost": 1,
-      "gf": 2,
-      "ga": 4,
-      "gd": -2,
-      "points": 3,
-      "form": null
-    },
-    {
-      "clubId": "sab",
       "position": 22,
       "played": 2,
       "won": 1,
@@ -2382,8 +2447,21 @@
       "form": null
     },
     {
-      "clubId": "bod",
+      "clubId": "sab",
       "position": 24,
+      "played": 3,
+      "won": 1,
+      "drawn": 0,
+      "lost": 2,
+      "gf": 3,
+      "ga": 6,
+      "gd": -3,
+      "points": 3,
+      "form": null
+    },
+    {
+      "clubId": "bod",
+      "position": 25,
       "played": 2,
       "won": 1,
       "drawn": 0,
@@ -2396,7 +2474,7 @@
     },
     {
       "clubId": "rom",
-      "position": 25,
+      "position": 26,
       "played": 2,
       "won": 0,
       "drawn": 1,
@@ -2409,7 +2487,7 @@
     },
     {
       "clubId": "psv",
-      "position": 26,
+      "position": 27,
       "played": 2,
       "won": 0,
       "drawn": 1,
@@ -2422,7 +2500,7 @@
     },
     {
       "clubId": "vik",
-      "position": 27,
+      "position": 28,
       "played": 2,
       "won": 0,
       "drawn": 1,
@@ -2430,19 +2508,6 @@
       "gf": 4,
       "ga": 6,
       "gd": -2,
-      "points": 1,
-      "form": null
-    },
-    {
-      "clubId": "fen",
-      "position": 28,
-      "played": 2,
-      "won": 0,
-      "drawn": 1,
-      "lost": 1,
-      "gf": 1,
-      "ga": 7,
-      "gd": -6,
       "points": 1,
       "form": null
     },
@@ -2473,21 +2538,8 @@
       "form": null
     },
     {
-      "clubId": "sla",
-      "position": 31,
-      "played": 2,
-      "won": 0,
-      "drawn": 0,
-      "lost": 2,
-      "gf": 2,
-      "ga": 5,
-      "gd": -3,
-      "points": 0,
-      "form": null
-    },
-    {
       "clubId": "nap",
-      "position": 32,
+      "position": 31,
       "played": 2,
       "won": 0,
       "drawn": 0,
@@ -2495,6 +2547,19 @@
       "gf": 1,
       "ga": 4,
       "gd": -3,
+      "points": 0,
+      "form": null
+    },
+    {
+      "clubId": "sla",
+      "position": 32,
+      "played": 3,
+      "won": 0,
+      "drawn": 0,
+      "lost": 3,
+      "gf": 3,
+      "ga": 7,
+      "gd": -4,
       "points": 0,
       "form": null
     },
@@ -2571,6 +2636,15 @@
       "position": "Offence"
     },
     {
+      "name": "Sehrou Guirassy",
+      "clubId": "dor",
+      "goals": 4,
+      "assists": null,
+      "penalties": 1,
+      "nationality": "Guinea",
+      "position": "Offence"
+    },
+    {
       "name": "Ermedin Demirovic",
       "clubId": "stu",
       "goals": 4,
@@ -2641,15 +2715,6 @@
       "penalties": null,
       "nationality": "Uruguay",
       "position": "Defence"
-    },
-    {
-      "name": "Sehrou Guirassy",
-      "clubId": "dor",
-      "goals": 2,
-      "assists": null,
-      "penalties": 1,
-      "nationality": "Guinea",
-      "position": "Offence"
     },
     {
       "name": "Bartra",
