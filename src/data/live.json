@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-20T18:13:42.585Z",
+  "updatedAt": "2026-10-20T21:39:58.508Z",
   "results": {
     "cl-aek-las": [
       1,
@@ -144,6 +144,42 @@
     "cl-slb-stu": [
       0,
       3
+    ],
+    "cl-sab-dor": [
+      1,
+      2
+    ],
+    "cl-fen-sla": [
+      2,
+      2
+    ],
+    "cl-mci-aek": [
+      5,
+      1
+    ],
+    "cl-stu-atm": [
+      1,
+      1
+    ],
+    "cl-liv-vil": [
+      4,
+      3
+    ],
+    "cl-rom-slb": [
+      4,
+      0
+    ],
+    "cl-por-psv": [
+      0,
+      1
+    ],
+    "cl-nap-bod": [
+      4,
+      3
+    ],
+    "cl-psg-bar": [
+      4,
+      2
     ]
   },
   "fixtures": {
@@ -726,18 +762,7 @@
   },
   "koResults": [],
   "liveKo": [],
-  "liveScores": {
-    "cl-sab-dor": {
-      "home": 1,
-      "away": 2,
-      "minute": null
-    },
-    "cl-fen-sla": {
-      "home": 2,
-      "away": 1,
-      "minute": null
-    }
-  },
+  "liveScores": {},
   "attendance": {},
   "goals": [
     {
@@ -1182,6 +1207,15 @@
       "type": "REGULAR"
     },
     {
+      "matchId": "cl-fen-sla",
+      "team": "sla",
+      "scorer": "Pavel Kacor",
+      "assist": null,
+      "minute": 90,
+      "extra": null,
+      "type": "REGULAR"
+    },
+    {
       "matchId": "cl-fey-com",
       "team": "com",
       "scorer": "Assane Diao",
@@ -1506,6 +1540,123 @@
       "type": "REGULAR"
     },
     {
+      "matchId": "cl-liv-vil",
+      "team": "vil",
+      "scorer": "Georges Mikautadze",
+      "assist": null,
+      "minute": 4,
+      "extra": null,
+      "type": "REGULAR"
+    },
+    {
+      "matchId": "cl-liv-vil",
+      "team": "vil",
+      "scorer": "Sergi Cardona",
+      "assist": null,
+      "minute": 29,
+      "extra": null,
+      "type": "REGULAR"
+    },
+    {
+      "matchId": "cl-liv-vil",
+      "team": "liv",
+      "scorer": "Alexis Mac Allister",
+      "assist": null,
+      "minute": 36,
+      "extra": null,
+      "type": "REGULAR"
+    },
+    {
+      "matchId": "cl-liv-vil",
+      "team": "liv",
+      "scorer": "Ronald Araújo",
+      "assist": null,
+      "minute": 45,
+      "extra": null,
+      "type": "REGULAR"
+    },
+    {
+      "matchId": "cl-liv-vil",
+      "team": "liv",
+      "scorer": "Alexis Mac Allister",
+      "assist": null,
+      "minute": 65,
+      "extra": null,
+      "type": "REGULAR"
+    },
+    {
+      "matchId": "cl-liv-vil",
+      "team": "liv",
+      "scorer": "Florian Wirtz",
+      "assist": null,
+      "minute": 68,
+      "extra": null,
+      "type": "REGULAR"
+    },
+    {
+      "matchId": "cl-liv-vil",
+      "team": "vil",
+      "scorer": "Tani Oluwaseyi",
+      "assist": null,
+      "minute": 87,
+      "extra": null,
+      "type": "REGULAR"
+    },
+    {
+      "matchId": "cl-mci-aek",
+      "team": "mci",
+      "scorer": "Elliot Anderson",
+      "assist": null,
+      "minute": 12,
+      "extra": null,
+      "type": "REGULAR"
+    },
+    {
+      "matchId": "cl-mci-aek",
+      "team": "mci",
+      "scorer": "Phil Foden",
+      "assist": null,
+      "minute": 34,
+      "extra": null,
+      "type": "REGULAR"
+    },
+    {
+      "matchId": "cl-mci-aek",
+      "team": "aek",
+      "scorer": "Stavros Pilios",
+      "assist": null,
+      "minute": 52,
+      "extra": null,
+      "type": "REGULAR"
+    },
+    {
+      "matchId": "cl-mci-aek",
+      "team": "mci",
+      "scorer": "Rayan Cherki",
+      "assist": null,
+      "minute": 57,
+      "extra": null,
+      "type": "REGULAR"
+    },
+    {
+      "matchId": "cl-mci-aek",
+      "team": "mci",
+      "scorer": "Phil Foden",
+      "assist": null,
+      "minute": 65,
+      "extra": null,
+      "type": "REGULAR"
+    },
+    {
+      "matchId": "cl-mci-aek",
+      "team": "mci",
+      "scorer": "Phil Foden",
+      "assist": null,
+      "minute": 76,
+      "extra": null,
+      "type": "REGULAR"
+    },
+    {
       "matchId": "cl-mci-psg",
       "team": "psg",
       "scorer": "Désiré Doué",
@@ -1605,6 +1756,69 @@
       "type": "REGULAR"
     },
     {
+      "matchId": "cl-nap-bod",
+      "team": "nap",
+      "scorer": "Matteo Politano",
+      "assist": null,
+      "minute": 1,
+      "extra": null,
+      "type": "REGULAR"
+    },
+    {
+      "matchId": "cl-nap-bod",
+      "team": "bod",
+      "scorer": "Jens Petter Hauge",
+      "assist": null,
+      "minute": 27,
+      "extra": null,
+      "type": "REGULAR"
+    },
+    {
+      "matchId": "cl-nap-bod",
+      "team": "nap",
+      "scorer": "Scott McTominay",
+      "assist": null,
+      "minute": 41,
+      "extra": null,
+      "type": "REGULAR"
+    },
+    {
+      "matchId": "cl-nap-bod",
+      "team": "bod",
+      "scorer": "Andreas Helmersen",
+      "assist": null,
+      "minute": 62,
+      "extra": null,
+      "type": "REGULAR"
+    },
+    {
+      "matchId": "cl-nap-bod",
+      "team": "nap",
+      "scorer": "Scott McTominay",
+      "assist": null,
+      "minute": 75,
+      "extra": null,
+      "type": "REGULAR"
+    },
+    {
+      "matchId": "cl-nap-bod",
+      "team": "nap",
+      "scorer": "Odin Bjørtuft",
+      "assist": null,
+      "minute": 88,
+      "extra": null,
+      "type": "OWN"
+    },
+    {
+      "matchId": "cl-nap-bod",
+      "team": "bod",
+      "scorer": "Sondre Brunstad Fet",
+      "assist": null,
+      "minute": 90,
+      "extra": null,
+      "type": "REGULAR"
+    },
+    {
       "matchId": "cl-por-mci",
       "team": "mci",
       "scorer": "Erling Haaland",
@@ -1619,6 +1833,69 @@
       "scorer": "Erling Haaland",
       "assist": null,
       "minute": 90,
+      "extra": null,
+      "type": "REGULAR"
+    },
+    {
+      "matchId": "cl-por-psv",
+      "team": "psv",
+      "scorer": "Guus Til",
+      "assist": null,
+      "minute": 57,
+      "extra": null,
+      "type": "REGULAR"
+    },
+    {
+      "matchId": "cl-psg-bar",
+      "team": "psg",
+      "scorer": "Désiré Doué",
+      "assist": null,
+      "minute": 38,
+      "extra": null,
+      "type": "REGULAR"
+    },
+    {
+      "matchId": "cl-psg-bar",
+      "team": "bar",
+      "scorer": "Xavi Espart",
+      "assist": null,
+      "minute": 55,
+      "extra": null,
+      "type": "REGULAR"
+    },
+    {
+      "matchId": "cl-psg-bar",
+      "team": "psg",
+      "scorer": "Lucas Hernández",
+      "assist": null,
+      "minute": 72,
+      "extra": null,
+      "type": "REGULAR"
+    },
+    {
+      "matchId": "cl-psg-bar",
+      "team": "bar",
+      "scorer": "Lamine Yamal",
+      "assist": null,
+      "minute": 79,
+      "extra": null,
+      "type": "REGULAR"
+    },
+    {
+      "matchId": "cl-psg-bar",
+      "team": "psg",
+      "scorer": "Vitinha",
+      "assist": null,
+      "minute": 81,
+      "extra": null,
+      "type": "REGULAR"
+    },
+    {
+      "matchId": "cl-psg-bar",
+      "team": "psg",
+      "scorer": "Fabián Ruiz",
+      "assist": null,
+      "minute": 86,
       "extra": null,
       "type": "REGULAR"
     },
@@ -1801,6 +2078,42 @@
       "minute": 90,
       "extra": null,
       "type": "REGULAR"
+    },
+    {
+      "matchId": "cl-rom-slb",
+      "team": "rom",
+      "scorer": "Mario Hermoso",
+      "assist": null,
+      "minute": 21,
+      "extra": null,
+      "type": "REGULAR"
+    },
+    {
+      "matchId": "cl-rom-slb",
+      "team": "rom",
+      "scorer": "Nahuel Molina",
+      "assist": null,
+      "minute": 39,
+      "extra": null,
+      "type": "REGULAR"
+    },
+    {
+      "matchId": "cl-rom-slb",
+      "team": "rom",
+      "scorer": "Niccolò Pisilli",
+      "assist": null,
+      "minute": 52,
+      "extra": null,
+      "type": "REGULAR"
+    },
+    {
+      "matchId": "cl-rom-slb",
+      "team": "rom",
+      "scorer": "Donyell Malen",
+      "assist": null,
+      "minute": 58,
+      "extra": null,
+      "type": "PENALTY"
     },
     {
       "matchId": "cl-sab-dor",
@@ -1992,6 +2305,24 @@
       "type": "REGULAR"
     },
     {
+      "matchId": "cl-stu-atm",
+      "team": "stu",
+      "scorer": "Jamie Leweling",
+      "assist": null,
+      "minute": 36,
+      "extra": null,
+      "type": "REGULAR"
+    },
+    {
+      "matchId": "cl-stu-atm",
+      "team": "atm",
+      "scorer": "Julián Álvarez",
+      "assist": null,
+      "minute": 47,
+      "extra": null,
+      "type": "REGULAR"
+    },
+    {
       "matchId": "cl-stu-vik",
       "team": "stu",
       "scorer": "Ermedin Demirovic",
@@ -2150,71 +2481,84 @@
     {
       "clubId": "psg",
       "position": 1,
+      "played": 3,
+      "won": 3,
+      "drawn": 0,
+      "lost": 0,
+      "gf": 14,
+      "ga": 5,
+      "gd": 9,
+      "points": 9,
+      "form": null
+    },
+    {
+      "clubId": "liv",
+      "position": 2,
+      "played": 3,
+      "won": 3,
+      "drawn": 0,
+      "lost": 0,
+      "gf": 12,
+      "ga": 7,
+      "gd": 5,
+      "points": 9,
+      "form": null
+    },
+    {
+      "clubId": "stu",
+      "position": 3,
+      "played": 3,
+      "won": 2,
+      "drawn": 1,
+      "lost": 0,
+      "gf": 7,
+      "ga": 2,
+      "gd": 5,
+      "points": 7,
+      "form": null
+    },
+    {
+      "clubId": "avl",
+      "position": 4,
       "played": 2,
       "won": 2,
       "drawn": 0,
       "lost": 0,
-      "gf": 10,
-      "ga": 3,
+      "gf": 9,
+      "ga": 2,
       "gd": 7,
       "points": 6,
       "form": null
     },
     {
       "clubId": "bar",
-      "position": 2,
-      "played": 2,
+      "position": 5,
+      "played": 3,
       "won": 2,
       "drawn": 0,
-      "lost": 0,
-      "gf": 9,
-      "ga": 2,
-      "gd": 7,
-      "points": 6,
-      "form": null
-    },
-    {
-      "clubId": "avl",
-      "position": 3,
-      "played": 2,
-      "won": 2,
-      "drawn": 0,
-      "lost": 0,
-      "gf": 9,
-      "ga": 2,
-      "gd": 7,
-      "points": 6,
-      "form": null
-    },
-    {
-      "clubId": "stu",
-      "position": 4,
-      "played": 2,
-      "won": 2,
-      "drawn": 0,
-      "lost": 0,
-      "gf": 6,
-      "ga": 1,
+      "lost": 1,
+      "gf": 11,
+      "ga": 6,
       "gd": 5,
       "points": 6,
       "form": null
     },
     {
-      "clubId": "liv",
-      "position": 5,
-      "played": 2,
+      "clubId": "mci",
+      "position": 6,
+      "played": 3,
       "won": 2,
       "drawn": 0,
-      "lost": 0,
-      "gf": 8,
-      "ga": 4,
+      "lost": 1,
+      "gf": 9,
+      "ga": 5,
       "gd": 4,
       "points": 6,
       "form": null
     },
     {
       "clubId": "spo",
-      "position": 6,
+      "position": 7,
       "played": 2,
       "won": 2,
       "drawn": 0,
@@ -2227,7 +2571,7 @@
     },
     {
       "clubId": "ars",
-      "position": 7,
+      "position": 8,
       "played": 2,
       "won": 2,
       "drawn": 0,
@@ -2240,19 +2584,6 @@
     },
     {
       "clubId": "rma",
-      "position": 8,
-      "played": 2,
-      "won": 2,
-      "drawn": 0,
-      "lost": 0,
-      "gf": 6,
-      "ga": 4,
-      "gd": 2,
-      "points": 6,
-      "form": null
-    },
-    {
-      "clubId": "bet",
       "position": 9,
       "played": 2,
       "won": 2,
@@ -2265,8 +2596,21 @@
       "form": null
     },
     {
-      "clubId": "dor",
+      "clubId": "bet",
       "position": 10,
+      "played": 2,
+      "won": 2,
+      "drawn": 0,
+      "lost": 0,
+      "gf": 6,
+      "ga": 4,
+      "gd": 2,
+      "points": 6,
+      "form": null
+    },
+    {
+      "clubId": "dor",
+      "position": 11,
       "played": 3,
       "won": 2,
       "drawn": 0,
@@ -2279,7 +2623,7 @@
     },
     {
       "clubId": "bay",
-      "position": 11,
+      "position": 12,
       "played": 2,
       "won": 1,
       "drawn": 1,
@@ -2291,8 +2635,21 @@
       "form": null
     },
     {
+      "clubId": "rom",
+      "position": 13,
+      "played": 3,
+      "won": 1,
+      "drawn": 1,
+      "lost": 1,
+      "gf": 8,
+      "ga": 5,
+      "gd": 3,
+      "points": 4,
+      "form": null
+    },
+    {
       "clubId": "sha",
-      "position": 12,
+      "position": 14,
       "played": 2,
       "won": 1,
       "drawn": 1,
@@ -2304,21 +2661,34 @@
       "form": null
     },
     {
-      "clubId": "fen",
-      "position": 13,
+      "clubId": "atm",
+      "position": 15,
       "played": 3,
       "won": 1,
       "drawn": 1,
       "lost": 1,
-      "gf": 3,
-      "ga": 8,
-      "gd": -5,
+      "gf": 4,
+      "ga": 3,
+      "gd": 1,
+      "points": 4,
+      "form": null
+    },
+    {
+      "clubId": "psv",
+      "position": 16,
+      "played": 3,
+      "won": 1,
+      "drawn": 1,
+      "lost": 1,
+      "gf": 2,
+      "ga": 2,
+      "gd": 0,
       "points": 4,
       "form": null
     },
     {
       "clubId": "com",
-      "position": 14,
+      "position": 17,
       "played": 2,
       "won": 1,
       "drawn": 0,
@@ -2331,7 +2701,7 @@
     },
     {
       "clubId": "mun",
-      "position": 15,
+      "position": 18,
       "played": 2,
       "won": 1,
       "drawn": 0,
@@ -2344,33 +2714,20 @@
     },
     {
       "clubId": "vil",
-      "position": 16,
-      "played": 2,
+      "position": 19,
+      "played": 3,
       "won": 1,
       "drawn": 0,
-      "lost": 1,
-      "gf": 5,
-      "ga": 4,
-      "gd": 1,
-      "points": 3,
-      "form": null
-    },
-    {
-      "clubId": "atm",
-      "position": 17,
-      "played": 2,
-      "won": 1,
-      "drawn": 0,
-      "lost": 1,
-      "gf": 3,
-      "ga": 2,
-      "gd": 1,
+      "lost": 2,
+      "gf": 8,
+      "ga": 8,
+      "gd": 0,
       "points": 3,
       "form": null
     },
     {
       "clubId": "clb",
-      "position": 18,
+      "position": 20,
       "played": 2,
       "won": 1,
       "drawn": 0,
@@ -2382,21 +2739,8 @@
       "form": null
     },
     {
-      "clubId": "mci",
-      "position": 19,
-      "played": 2,
-      "won": 1,
-      "drawn": 0,
-      "lost": 1,
-      "gf": 4,
-      "ga": 4,
-      "gd": 0,
-      "points": 3,
-      "form": null
-    },
-    {
       "clubId": "len",
-      "position": 20,
+      "position": 21,
       "played": 2,
       "won": 1,
       "drawn": 0,
@@ -2408,21 +2752,21 @@
       "form": null
     },
     {
-      "clubId": "aek",
-      "position": 21,
-      "played": 2,
+      "clubId": "nap",
+      "position": 22,
+      "played": 3,
       "won": 1,
       "drawn": 0,
-      "lost": 1,
-      "gf": 2,
-      "ga": 3,
-      "gd": -1,
+      "lost": 2,
+      "gf": 5,
+      "ga": 7,
+      "gd": -2,
       "points": 3,
       "form": null
     },
     {
       "clubId": "rbl",
-      "position": 22,
+      "position": 23,
       "played": 2,
       "won": 1,
       "drawn": 0,
@@ -2435,7 +2779,7 @@
     },
     {
       "clubId": "fey",
-      "position": 23,
+      "position": 24,
       "played": 2,
       "won": 1,
       "drawn": 0,
@@ -2448,7 +2792,7 @@
     },
     {
       "clubId": "sab",
-      "position": 24,
+      "position": 25,
       "played": 3,
       "won": 1,
       "drawn": 0,
@@ -2461,46 +2805,46 @@
     },
     {
       "clubId": "bod",
-      "position": 25,
-      "played": 2,
+      "position": 26,
+      "played": 3,
       "won": 1,
       "drawn": 0,
-      "lost": 1,
-      "gf": 1,
-      "ga": 5,
-      "gd": -4,
+      "lost": 2,
+      "gf": 4,
+      "ga": 9,
+      "gd": -5,
       "points": 3,
       "form": null
     },
     {
-      "clubId": "rom",
-      "position": 26,
-      "played": 2,
-      "won": 0,
-      "drawn": 1,
-      "lost": 1,
-      "gf": 4,
-      "ga": 5,
-      "gd": -1,
-      "points": 1,
+      "clubId": "aek",
+      "position": 27,
+      "played": 3,
+      "won": 1,
+      "drawn": 0,
+      "lost": 2,
+      "gf": 3,
+      "ga": 8,
+      "gd": -5,
+      "points": 3,
       "form": null
     },
     {
-      "clubId": "psv",
-      "position": 27,
-      "played": 2,
+      "clubId": "fen",
+      "position": 28,
+      "played": 3,
       "won": 0,
-      "drawn": 1,
+      "drawn": 2,
       "lost": 1,
-      "gf": 1,
-      "ga": 2,
-      "gd": -1,
-      "points": 1,
+      "gf": 3,
+      "ga": 9,
+      "gd": -6,
+      "points": 2,
       "form": null
     },
     {
       "clubId": "vik",
-      "position": 28,
+      "position": 29,
       "played": 2,
       "won": 0,
       "drawn": 1,
@@ -2508,12 +2852,25 @@
       "gf": 4,
       "ga": 6,
       "gd": -2,
+      "points": 1,
+      "form": null
+    },
+    {
+      "clubId": "sla",
+      "position": 30,
+      "played": 3,
+      "won": 0,
+      "drawn": 1,
+      "lost": 2,
+      "gf": 4,
+      "ga": 7,
+      "gd": -3,
       "points": 1,
       "form": null
     },
     {
       "clubId": "int",
-      "position": 29,
+      "position": 31,
       "played": 2,
       "won": 0,
       "drawn": 0,
@@ -2525,38 +2882,12 @@
       "form": null
     },
     {
-      "clubId": "por",
-      "position": 30,
-      "played": 2,
-      "won": 0,
-      "drawn": 0,
-      "lost": 2,
-      "gf": 2,
-      "ga": 5,
-      "gd": -3,
-      "points": 0,
-      "form": null
-    },
-    {
-      "clubId": "nap",
-      "position": 31,
-      "played": 2,
-      "won": 0,
-      "drawn": 0,
-      "lost": 2,
-      "gf": 1,
-      "ga": 4,
-      "gd": -3,
-      "points": 0,
-      "form": null
-    },
-    {
-      "clubId": "sla",
+      "clubId": "las",
       "position": 32,
-      "played": 3,
+      "played": 2,
       "won": 0,
       "drawn": 0,
-      "lost": 3,
+      "lost": 2,
       "gf": 3,
       "ga": 7,
       "gd": -4,
@@ -2564,14 +2895,14 @@
       "form": null
     },
     {
-      "clubId": "las",
+      "clubId": "por",
       "position": 33,
-      "played": 2,
+      "played": 3,
       "won": 0,
       "drawn": 0,
-      "lost": 2,
-      "gf": 3,
-      "ga": 7,
+      "lost": 3,
+      "gf": 2,
+      "ga": 6,
       "gd": -4,
       "points": 0,
       "form": null
@@ -2605,13 +2936,13 @@
     {
       "clubId": "slb",
       "position": 36,
-      "played": 2,
+      "played": 3,
       "won": 0,
       "drawn": 0,
-      "lost": 2,
+      "lost": 3,
       "gf": 1,
-      "ga": 9,
-      "gd": -8,
+      "ga": 13,
+      "gd": -12,
       "points": 0,
       "form": null
     }
@@ -2663,6 +2994,15 @@
       "position": "Offence"
     },
     {
+      "name": "Alexis Mac Allister",
+      "clubId": "liv",
+      "goals": 3,
+      "assists": null,
+      "penalties": null,
+      "nationality": "Argentina",
+      "position": "Midfield"
+    },
+    {
       "name": "Ousmane Dembélé",
       "clubId": "psg",
       "goals": 3,
@@ -2697,6 +3037,24 @@
       "penalties": null,
       "nationality": "France",
       "position": "Offence"
+    },
+    {
+      "name": "Donyell Malen",
+      "clubId": "rom",
+      "goals": 3,
+      "assists": 2,
+      "penalties": 1,
+      "nationality": "Netherlands",
+      "position": "Offence"
+    },
+    {
+      "name": "Phil Foden",
+      "clubId": "mci",
+      "goals": 3,
+      "assists": 1,
+      "penalties": null,
+      "nationality": "England",
+      "position": "Midfield"
     },
     {
       "name": "Kylian Mbappé",
@@ -2742,6 +3100,24 @@
       "penalties": null,
       "nationality": "Germany",
       "position": "Offence"
+    },
+    {
+      "name": "Lamine Yamal",
+      "clubId": "bar",
+      "goals": 2,
+      "assists": 4,
+      "penalties": null,
+      "nationality": "Spain",
+      "position": "Offence"
+    },
+    {
+      "name": "Fabián Ruiz",
+      "clubId": "psg",
+      "goals": 2,
+      "assists": 1,
+      "penalties": null,
+      "nationality": "Spain",
+      "position": "Midfield"
     },
     {
       "name": "Luis Suárez",
@@ -2807,6 +3183,33 @@
       "position": "Offence"
     },
     {
+      "name": "Georges Mikautadze",
+      "clubId": "vil",
+      "goals": 2,
+      "assists": 1,
+      "penalties": null,
+      "nationality": "Georgia",
+      "position": "Offence"
+    },
+    {
+      "name": "Tani Oluwaseyi",
+      "clubId": "vil",
+      "goals": 2,
+      "assists": null,
+      "penalties": null,
+      "nationality": "Canada",
+      "position": "Offence"
+    },
+    {
+      "name": "Ronald Araújo",
+      "clubId": "liv",
+      "goals": 2,
+      "assists": 1,
+      "penalties": null,
+      "nationality": "Uruguay",
+      "position": "Defence"
+    },
+    {
       "name": "Florian Flecker",
       "clubId": "las",
       "goals": 2,
@@ -2816,13 +3219,22 @@
       "position": "Midfield"
     },
     {
-      "name": "Donyell Malen",
-      "clubId": "rom",
+      "name": "Desire Doue",
+      "clubId": "psg",
       "goals": 2,
-      "assists": 1,
+      "assists": 2,
       "penalties": null,
-      "nationality": "Netherlands",
+      "nationality": "France",
       "position": "Offence"
+    },
+    {
+      "name": "Vitinha",
+      "clubId": "psg",
+      "goals": 2,
+      "assists": null,
+      "penalties": null,
+      "nationality": "Portugal",
+      "position": "Midfield"
     },
     {
       "name": "Ross Barkley",
@@ -2831,6 +3243,15 @@
       "assists": 1,
       "penalties": 1,
       "nationality": "England",
+      "position": "Midfield"
+    },
+    {
+      "name": "Scott McTominay",
+      "clubId": "nap",
+      "goals": 2,
+      "assists": null,
+      "penalties": null,
+      "nationality": "Scotland",
       "position": "Midfield"
     },
     {
@@ -2915,15 +3336,6 @@
       "position": "Offence"
     },
     {
-      "name": "Lamine Yamal",
-      "clubId": "bar",
-      "goals": 1,
-      "assists": 4,
-      "penalties": null,
-      "nationality": "Spain",
-      "position": "Offence"
-    },
-    {
       "name": "Sem Steijn",
       "clubId": "fey",
       "goals": 1,
@@ -2969,15 +3381,6 @@
       "position": "Midfield"
     },
     {
-      "name": "Alexis Mac Allister",
-      "clubId": "liv",
-      "goals": 1,
-      "assists": null,
-      "penalties": null,
-      "nationality": "Argentina",
-      "position": "Midfield"
-    },
-    {
       "name": "Suleiman Camara Sanneh",
       "clubId": "slb",
       "goals": 1,
@@ -2987,15 +3390,6 @@
       "position": "Offence"
     },
     {
-      "name": "Fabián Ruiz",
-      "clubId": "psg",
-      "goals": 1,
-      "assists": 1,
-      "penalties": null,
-      "nationality": "Spain",
-      "position": "Midfield"
-    },
-    {
       "name": "Martin Ødegaard",
       "clubId": "ars",
       "goals": 1,
@@ -3003,69 +3397,6 @@
       "penalties": null,
       "nationality": "Norway",
       "position": "Midfield"
-    },
-    {
-      "name": "Geny Catamo",
-      "clubId": "spo",
-      "goals": 1,
-      "assists": null,
-      "penalties": null,
-      "nationality": "Mozambique",
-      "position": "Offence"
-    },
-    {
-      "name": "Rodrigo Zalazar",
-      "clubId": "spo",
-      "goals": 1,
-      "assists": null,
-      "penalties": null,
-      "nationality": "Uruguay",
-      "position": "Midfield"
-    },
-    {
-      "name": "Bryan Cristante",
-      "clubId": "rom",
-      "goals": 1,
-      "assists": null,
-      "penalties": null,
-      "nationality": "Italy",
-      "position": "Midfield"
-    },
-    {
-      "name": "Archie Brown",
-      "clubId": "fen",
-      "goals": 1,
-      "assists": null,
-      "penalties": null,
-      "nationality": "England",
-      "position": "Defence"
-    },
-    {
-      "name": "Sergiño Dest",
-      "clubId": "psv",
-      "goals": 1,
-      "assists": null,
-      "penalties": null,
-      "nationality": "USA",
-      "position": "Defence"
-    },
-    {
-      "name": "Jamal Musiala",
-      "clubId": "bay",
-      "goals": 1,
-      "assists": null,
-      "penalties": null,
-      "nationality": "Germany",
-      "position": "Midfield"
-    },
-    {
-      "name": "Alphonso Davies",
-      "clubId": "bay",
-      "goals": 1,
-      "assists": null,
-      "penalties": null,
-      "nationality": "Canada",
-      "position": "Defence"
     }
   ]
 }
