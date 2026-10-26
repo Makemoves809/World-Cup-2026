@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-19T09:51:23.477Z",
+  "updatedAt": "2026-10-26T10:04:19.432Z",
   "squads": {
     "dor": {
       "crest": "https://crests.football-data.org/4.png",
@@ -126,13 +126,6 @@
           "number": null,
           "nationality": "Germany",
           "dateOfBirth": "2000-10-10"
-        },
-        {
-          "name": "Giannis Konstantelias",
-          "position": "Midfield",
-          "number": null,
-          "nationality": "Greece",
-          "dateOfBirth": null
         },
         {
           "name": "Carney Chukwuemeka",
@@ -592,13 +585,6 @@
           "number": null,
           "nationality": "Germany",
           "dateOfBirth": "2005-02-15"
-        },
-        {
-          "name": "Justin Diehl",
-          "position": "Offence",
-          "number": null,
-          "nationality": "Germany",
-          "dateOfBirth": "2024-06-30"
         },
         {
           "name": "Leo Sauer",
@@ -1712,13 +1698,6 @@
           "dateOfBirth": "2005-03-15"
         },
         {
-          "name": "Pablo Barrios",
-          "position": "Midfield",
-          "number": null,
-          "nationality": "Spain",
-          "dateOfBirth": "2025-06-30"
-        },
-        {
           "name": "Kang-in Lee",
           "position": "Midfield",
           "number": null,
@@ -2566,7 +2545,7 @@
           "position": "Goalkeeper",
           "number": null,
           "nationality": "Colombia",
-          "dateOfBirth": "2026-06-30"
+          "dateOfBirth": "1998-05-12"
         },
         {
           "name": "Giorgio De Marzi",
@@ -3487,11 +3466,11 @@
           "dateOfBirth": "2001-02-01"
         },
         {
-          "name": "Samu Omorodion",
+          "name": "Samu Aghehowa",
           "position": "Offence",
           "number": null,
           "nationality": "Spain",
-          "dateOfBirth": null
+          "dateOfBirth": "2004-05-05"
         },
         {
           "name": "Oskar Pietuszewski",
