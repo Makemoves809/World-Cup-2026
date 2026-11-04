@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-03T21:24:07.877Z",
+  "updatedAt": "2026-11-04T01:31:58.383Z",
   "results": {
     "cl-aek-las": [
       1,
@@ -223,6 +223,34 @@
     ],
     "cl-gal-stu": [
       2,
+      0
+    ],
+    "cl-fey-int": [
+      0,
+      3
+    ],
+    "cl-bar-avl": [
+      3,
+      0
+    ],
+    "cl-atm-bay": [
+      0,
+      2
+    ],
+    "cl-vil-psg": [
+      0,
+      6
+    ],
+    "cl-mun-rom": [
+      3,
+      2
+    ],
+    "cl-bod-lil": [
+      0,
+      0
+    ],
+    "cl-las-slb": [
+      4,
       0
     ]
   },
@@ -806,43 +834,7 @@
   },
   "koResults": [],
   "liveKo": [],
-  "liveScores": {
-    "cl-fey-int": {
-      "home": 0,
-      "away": 3,
-      "minute": null
-    },
-    "cl-bar-avl": {
-      "home": 2,
-      "away": 0,
-      "minute": null
-    },
-    "cl-atm-bay": {
-      "home": 0,
-      "away": 1,
-      "minute": null
-    },
-    "cl-vil-psg": {
-      "home": 0,
-      "away": 5,
-      "minute": null
-    },
-    "cl-mun-rom": {
-      "home": 0,
-      "away": 2,
-      "minute": null
-    },
-    "cl-bod-lil": {
-      "home": 0,
-      "away": 0,
-      "minute": null
-    },
-    "cl-las-slb": {
-      "home": 4,
-      "away": 0,
-      "minute": null
-    }
-  },
+  "liveScores": {},
   "attendance": {},
   "goals": [
     {
@@ -887,6 +879,15 @@
       "scorer": "Lennart Karl",
       "assist": null,
       "minute": 54,
+      "extra": null,
+      "type": "REGULAR"
+    },
+    {
+      "matchId": "cl-atm-bay",
+      "team": "bay",
+      "scorer": "Konrad Laimer",
+      "assist": null,
+      "minute": 74,
       "extra": null,
       "type": "REGULAR"
     },
@@ -1013,6 +1014,15 @@
       "scorer": "Raphinha",
       "assist": null,
       "minute": 52,
+      "extra": null,
+      "type": "REGULAR"
+    },
+    {
+      "matchId": "cl-bar-avl",
+      "team": "bar",
+      "scorer": "Raphinha",
+      "assist": null,
+      "minute": 64,
       "extra": null,
       "type": "REGULAR"
     },
@@ -2142,6 +2152,24 @@
       "type": "PENALTY"
     },
     {
+      "matchId": "cl-mun-rom",
+      "team": "mun",
+      "scorer": "Matheus Cunha",
+      "assist": null,
+      "minute": 83,
+      "extra": null,
+      "type": "REGULAR"
+    },
+    {
+      "matchId": "cl-mun-rom",
+      "team": "mun",
+      "scorer": "Matheus Cunha",
+      "assist": null,
+      "minute": 86,
+      "extra": null,
+      "type": "REGULAR"
+    },
+    {
       "matchId": "cl-mun-sab",
       "team": "mun",
       "scorer": "Matheus Cunha",
@@ -3022,6 +3050,15 @@
       "minute": 50,
       "extra": null,
       "type": "REGULAR"
+    },
+    {
+      "matchId": "cl-vil-psg",
+      "team": "psg",
+      "scorer": "David Boly",
+      "assist": null,
+      "minute": 78,
+      "extra": null,
+      "type": "REGULAR"
     }
   ],
   "lastEventsCheck": {
@@ -3060,9 +3097,9 @@
       "won": 4,
       "drawn": 0,
       "lost": 0,
-      "gf": 19,
+      "gf": 20,
       "ga": 5,
-      "gd": 14,
+      "gd": 15,
       "points": 12,
       "form": null
     },
@@ -3073,9 +3110,9 @@
       "won": 3,
       "drawn": 0,
       "lost": 1,
-      "gf": 13,
+      "gf": 14,
       "ga": 6,
-      "gd": 7,
+      "gd": 8,
       "points": 9,
       "form": null
     },
@@ -3087,8 +3124,8 @@
       "drawn": 0,
       "lost": 1,
       "gf": 12,
-      "ga": 5,
-      "gd": 7,
+      "ga": 6,
+      "gd": 6,
       "points": 9,
       "form": null
     },
@@ -3151,28 +3188,15 @@
       "won": 2,
       "drawn": 2,
       "lost": 0,
-      "gf": 11,
+      "gf": 12,
       "ga": 5,
-      "gd": 6,
+      "gd": 7,
       "points": 8,
       "form": null
     },
     {
-      "clubId": "rom",
-      "position": 9,
-      "played": 4,
-      "won": 2,
-      "drawn": 1,
-      "lost": 1,
-      "gf": 10,
-      "ga": 6,
-      "gd": 4,
-      "points": 7,
-      "form": null
-    },
-    {
       "clubId": "ars",
-      "position": 10,
+      "position": 9,
       "played": 3,
       "won": 2,
       "drawn": 1,
@@ -3185,7 +3209,7 @@
     },
     {
       "clubId": "stu",
-      "position": 11,
+      "position": 10,
       "played": 4,
       "won": 2,
       "drawn": 1,
@@ -3198,7 +3222,7 @@
     },
     {
       "clubId": "com",
-      "position": 12,
+      "position": 11,
       "played": 3,
       "won": 2,
       "drawn": 0,
@@ -3211,7 +3235,7 @@
     },
     {
       "clubId": "mci",
-      "position": 13,
+      "position": 12,
       "played": 3,
       "won": 2,
       "drawn": 0,
@@ -3224,7 +3248,7 @@
     },
     {
       "clubId": "clb",
-      "position": 14,
+      "position": 13,
       "played": 3,
       "won": 2,
       "drawn": 0,
@@ -3237,7 +3261,7 @@
     },
     {
       "clubId": "int",
-      "position": 15,
+      "position": 14,
       "played": 4,
       "won": 2,
       "drawn": 0,
@@ -3250,7 +3274,7 @@
     },
     {
       "clubId": "las",
-      "position": 16,
+      "position": 15,
       "played": 4,
       "won": 2,
       "drawn": 0,
@@ -3263,7 +3287,7 @@
     },
     {
       "clubId": "dor",
-      "position": 17,
+      "position": 16,
       "played": 3,
       "won": 2,
       "drawn": 0,
@@ -3271,6 +3295,19 @@
       "gf": 5,
       "ga": 4,
       "gd": 1,
+      "points": 6,
+      "form": null
+    },
+    {
+      "clubId": "mun",
+      "position": 17,
+      "played": 4,
+      "won": 2,
+      "drawn": 0,
+      "lost": 2,
+      "gf": 8,
+      "ga": 8,
+      "gd": 0,
       "points": 6,
       "form": null
     },
@@ -3288,15 +3325,15 @@
       "form": null
     },
     {
-      "clubId": "atm",
+      "clubId": "rom",
       "position": 19,
       "played": 4,
       "won": 1,
       "drawn": 1,
       "lost": 2,
-      "gf": 4,
-      "ga": 4,
-      "gd": 0,
+      "gf": 10,
+      "ga": 8,
+      "gd": 2,
       "points": 4,
       "form": null
     },
@@ -3327,8 +3364,21 @@
       "form": null
     },
     {
-      "clubId": "bod",
+      "clubId": "atm",
       "position": 22,
+      "played": 4,
+      "won": 1,
+      "drawn": 1,
+      "lost": 2,
+      "gf": 4,
+      "ga": 5,
+      "gd": -1,
+      "points": 4,
+      "form": null
+    },
+    {
+      "clubId": "bod",
+      "position": 23,
       "played": 4,
       "won": 1,
       "drawn": 1,
@@ -3337,19 +3387,6 @@
       "ga": 9,
       "gd": -5,
       "points": 4,
-      "form": null
-    },
-    {
-      "clubId": "mun",
-      "position": 23,
-      "played": 4,
-      "won": 1,
-      "drawn": 0,
-      "lost": 3,
-      "gf": 6,
-      "ga": 8,
-      "gd": -2,
-      "points": 3,
       "form": null
     },
     {
@@ -3392,21 +3429,8 @@
       "form": null
     },
     {
-      "clubId": "vil",
-      "position": 27,
-      "played": 4,
-      "won": 1,
-      "drawn": 0,
-      "lost": 3,
-      "gf": 8,
-      "ga": 13,
-      "gd": -5,
-      "points": 3,
-      "form": null
-    },
-    {
       "clubId": "aek",
-      "position": 28,
+      "position": 27,
       "played": 3,
       "won": 1,
       "drawn": 0,
@@ -3419,7 +3443,7 @@
     },
     {
       "clubId": "rbl",
-      "position": 28,
+      "position": 27,
       "played": 3,
       "won": 1,
       "drawn": 0,
@@ -3427,6 +3451,19 @@
       "gf": 3,
       "ga": 8,
       "gd": -5,
+      "points": 3,
+      "form": null
+    },
+    {
+      "clubId": "vil",
+      "position": 29,
+      "played": 4,
+      "won": 1,
+      "drawn": 0,
+      "lost": 3,
+      "gf": 8,
+      "ga": 14,
+      "gd": -6,
       "points": 3,
       "form": null
     },
@@ -3551,6 +3588,15 @@
       "position": "Offence"
     },
     {
+      "name": "Raphinha",
+      "clubId": "bar",
+      "goals": 4,
+      "assists": null,
+      "penalties": null,
+      "nationality": "Brazil",
+      "position": "Offence"
+    },
+    {
       "name": "Ermedin Demirovic",
       "clubId": "stu",
       "goals": 4,
@@ -3581,7 +3627,7 @@
       "name": "Harry Kane",
       "clubId": "bay",
       "goals": 4,
-      "assists": 2,
+      "assists": 3,
       "penalties": 2,
       "nationality": "England",
       "position": "Offence"
@@ -3623,15 +3669,6 @@
       "position": "Offence"
     },
     {
-      "name": "Raphinha",
-      "clubId": "bar",
-      "goals": 3,
-      "assists": null,
-      "penalties": null,
-      "nationality": "Brazil",
-      "position": "Offence"
-    },
-    {
       "name": "Lamine Yamal",
       "clubId": "bar",
       "goals": 3,
@@ -3665,6 +3702,15 @@
       "assists": null,
       "penalties": null,
       "nationality": "Spain",
+      "position": "Offence"
+    },
+    {
+      "name": "Matheus Cunha",
+      "clubId": "mun",
+      "goals": 3,
+      "assists": null,
+      "penalties": null,
+      "nationality": "Brazil",
       "position": "Offence"
     },
     {
@@ -3962,15 +4008,6 @@
       "assists": 1,
       "penalties": null,
       "nationality": "Belgium",
-      "position": "Midfield"
-    },
-    {
-      "name": "Răzvan Marin",
-      "clubId": "aek",
-      "goals": 1,
-      "assists": null,
-      "penalties": null,
-      "nationality": "Romania",
       "position": "Midfield"
     }
   ]
