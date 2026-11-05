@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-04T21:44:46.650Z",
+  "updatedAt": "2026-11-05T01:49:50.345Z",
   "results": {
     "cl-aek-las": [
       1,
@@ -252,6 +252,42 @@
     "cl-las-slb": [
       4,
       0
+    ],
+    "cl-aek-rma": [
+      2,
+      3
+    ],
+    "cl-fen-liv": [
+      3,
+      2
+    ],
+    "cl-rbl-mci": [
+      2,
+      3
+    ],
+    "cl-sla-ars": [
+      1,
+      2
+    ],
+    "cl-psv-clb": [
+      1,
+      2
+    ],
+    "cl-dor-bet": [
+      2,
+      1
+    ],
+    "cl-por-nap": [
+      4,
+      1
+    ],
+    "cl-len-com": [
+      1,
+      9
+    ],
+    "cl-vik-sab": [
+      4,
+      1
     ]
   },
   "fixtures": {
@@ -3484,8 +3520,8 @@
       "drawn": 1,
       "lost": 0,
       "gf": 8,
-      "ga": 2,
-      "gd": 6,
+      "ga": 3,
+      "gd": 5,
       "points": 10,
       "form": null
     },
@@ -3496,9 +3532,9 @@
       "won": 3,
       "drawn": 0,
       "lost": 1,
-      "gf": 18,
+      "gf": 19,
       "ga": 6,
-      "gd": 12,
+      "gd": 13,
       "points": 9,
       "form": null
     },
@@ -3724,8 +3760,21 @@
       "form": null
     },
     {
-      "clubId": "atm",
+      "clubId": "vik",
       "position": 22,
+      "played": 4,
+      "won": 1,
+      "drawn": 1,
+      "lost": 2,
+      "gf": 9,
+      "ga": 10,
+      "gd": -1,
+      "points": 4,
+      "form": null
+    },
+    {
+      "clubId": "atm",
+      "position": 23,
       "played": 4,
       "won": 1,
       "drawn": 1,
@@ -3738,7 +3787,7 @@
     },
     {
       "clubId": "psv",
-      "position": 23,
+      "position": 24,
       "played": 4,
       "won": 1,
       "drawn": 1,
@@ -3746,19 +3795,6 @@
       "gf": 3,
       "ga": 4,
       "gd": -1,
-      "points": 4,
-      "form": null
-    },
-    {
-      "clubId": "vik",
-      "position": 24,
-      "played": 4,
-      "won": 1,
-      "drawn": 1,
-      "lost": 2,
-      "gf": 7,
-      "ga": 10,
-      "gd": -3,
       "points": 4,
       "form": null
     },
@@ -3776,47 +3812,34 @@
       "form": null
     },
     {
-      "clubId": "nap",
+      "clubId": "por",
       "position": 26,
       "played": 4,
       "won": 1,
       "drawn": 0,
       "lost": 3,
       "gf": 6,
-      "ga": 9,
-      "gd": -3,
+      "ga": 7,
+      "gd": -1,
       "points": 3,
       "form": null
     },
     {
-      "clubId": "por",
+      "clubId": "nap",
       "position": 27,
       "played": 4,
       "won": 1,
       "drawn": 0,
       "lost": 3,
-      "gf": 4,
-      "ga": 7,
-      "gd": -3,
-      "points": 3,
-      "form": null
-    },
-    {
-      "clubId": "sab",
-      "position": 28,
-      "played": 4,
-      "won": 1,
-      "drawn": 0,
-      "lost": 3,
-      "gf": 4,
-      "ga": 8,
-      "gd": -4,
+      "gf": 6,
+      "ga": 11,
+      "gd": -5,
       "points": 3,
       "form": null
     },
     {
       "clubId": "vil",
-      "position": 29,
+      "position": 28,
       "played": 4,
       "won": 1,
       "drawn": 0,
@@ -3829,7 +3852,7 @@
     },
     {
       "clubId": "aek",
-      "position": 30,
+      "position": 29,
       "played": 4,
       "won": 1,
       "drawn": 0,
@@ -3842,13 +3865,26 @@
     },
     {
       "clubId": "rbl",
-      "position": 30,
+      "position": 29,
       "played": 4,
       "won": 1,
       "drawn": 0,
       "lost": 3,
       "gf": 5,
       "ga": 11,
+      "gd": -6,
+      "points": 3,
+      "form": null
+    },
+    {
+      "clubId": "sab",
+      "position": 31,
+      "played": 4,
+      "won": 1,
+      "drawn": 0,
+      "lost": 3,
+      "gf": 4,
+      "ga": 10,
       "gd": -6,
       "points": 3,
       "form": null
@@ -3874,8 +3910,8 @@
       "drawn": 0,
       "lost": 3,
       "gf": 4,
-      "ga": 15,
-      "gd": -11,
+      "ga": 16,
+      "gd": -12,
       "points": 3,
       "form": null
     },
@@ -3886,9 +3922,9 @@
       "won": 0,
       "drawn": 1,
       "lost": 3,
-      "gf": 4,
+      "gf": 5,
       "ga": 9,
-      "gd": -5,
+      "gd": -4,
       "points": 1,
       "form": null
     },
@@ -4311,7 +4347,7 @@
       "name": "Peter Christiansen",
       "clubId": "vik",
       "goals": 2,
-      "assists": null,
+      "assists": 1,
       "penalties": null,
       "nationality": "Denmark",
       "position": "Offence"
